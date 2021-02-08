@@ -21,6 +21,8 @@ class SkillTreeNode(object):
     pass_requirement = []
     # Whether this skill is mastered
     mastered = False
+    # Whether this node is abstract(used for classification purpose)
+    is_abstract = False
 
     def __init__(self):
         """
@@ -33,6 +35,13 @@ class SkillTreeNode(object):
         Needed to implement the verification of prerequisite
         :param other: the object to compare
         :return: true if self === other
+        """
+        pass
+
+    def __str__(self):
+        """
+        The representation to be shown in a printed graph
+        :return: a string containing key identification part of this node
         """
         pass
 
@@ -66,6 +75,13 @@ class SkillTreeNode(object):
         """
         pass
 
+    def get_is_abstract(self):
+        """
+        Getter of the is_abstract
+        :return: is_abstract
+        """
+        pass
+
     def try_to_pass(self, your_result):
         """
         Compare your result to the pass requirements, if passed then return True and modify the mastered status
@@ -73,5 +89,3 @@ class SkillTreeNode(object):
         :return: True if this skill is considered mastered and False otherwise
         """
         pass
-
-
