@@ -1,6 +1,6 @@
 # -*- encoding:utf-8 -*-
 # Dependencies
-import SkillTreeNode
+from SkillTreeNode import SkillTreeNode
 
 
 class SkillTree:
@@ -12,8 +12,8 @@ class SkillTree:
     """
 
     # The entry to the tree
-    root_node: SkillTreeNode = None
-
+    def __init__(self):
+        self.root_node = None
 
     def readSkillTreeFromFile(self, input_file):
         """
@@ -23,12 +23,12 @@ class SkillTree:
         """
         pass
 
-    def addSkill(self, skill, parent, child):
+    def addSkill(self, skill, parent=None, child=None):
         """
         Add the given skill to the skill tree (not only in the skill tree representation but also the skill itself)
         :param skill: skill to be added
-        :param parent: parent of the skill
-        :param child: child of the skill
+        :param parent: parent of the skill (None as default)
+        :param child: child of the skill (None as default)
         :return: None
         """
         pass
@@ -68,4 +68,3 @@ class SkillTree:
        :return: True if all the nodes are contained and mastered
        """
         pass
-
