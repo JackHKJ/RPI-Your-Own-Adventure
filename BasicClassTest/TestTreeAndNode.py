@@ -4,8 +4,8 @@
 from basicClasses.SkillTree import SkillTree
 from basicClasses.SkillTreeNode import SkillTreeNode
 
-def Test1_printer_test():
 
+def Test1_printer_test():
     nodeA = SkillTreeNode(ID='001', shortName="NODE_A")
     nodeB = SkillTreeNode(ID='002', shortName="NODE_B")
     nodeC = SkillTreeNode(ID='003', shortName="NODE_C")
@@ -21,5 +21,20 @@ def Test1_printer_test():
         print(line)
 
 
+def Test2_basicTreeTest():
+    Tree = SkillTree(name="Admin")
+    nodeA = SkillTreeNode(ID='001', shortName="NODE_A")
+    nodeB = SkillTreeNode(ID='002', shortName="NODE_B")
+    nodeC = SkillTreeNode(ID='003', shortName="NODE_C")
+    nodeD = SkillTreeNode(ID='004', shortName="NODE_D")
+
+    Tree.addSkill(skill=nodeA, parent=Tree.root_node)
+    Tree.addSkill(skill=nodeB, parent=nodeA)
+    Tree.addSkill(skill=nodeC, parent=nodeA)
+    Tree.addSkill(skill=nodeD, parent=nodeB)
+
+    Tree.print_tree()
+
+
 if __name__ == "__main__":
-    Test1_printer_test()
+    Test2_basicTreeTest()

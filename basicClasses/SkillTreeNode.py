@@ -50,6 +50,9 @@ class SkillTreeNode():
         """
         return "[SKILL " + self.ID + ":" + self.shortName + "]"
 
+    def __hash__(self):
+        return hash(str(self))
+
     def pretty_print_with_height(self):
         """
         Pretty printing the node with formatting
