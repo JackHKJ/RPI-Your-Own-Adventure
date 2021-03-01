@@ -55,6 +55,9 @@ class SkillTreeNode():
         Pretty printing the node with formatting
         :return: list of printed str of the node, one for each line
         """
+        if self.is_leaf():
+            return [str(self)+"--LEAF"]
+
         front_spacing = (len(str(self)) + 1) * " "
         ret_list = [str(self) + ":/---"]
         for child in self.children:
@@ -149,3 +152,10 @@ class SkillTreeNode():
         :return: True if this skill is considered mastered and False otherwise
         """
         pass
+
+    def is_leaf(self):
+        """
+        Judge whether this node is a leaf node
+        :return: True if the child list is empty, False otherwise
+        """
+        return len(self.children) == 0
