@@ -60,18 +60,18 @@ class Request(object):
         """
         pass
 
-    def check_prerequisite(self, current_state):
+    def check_prerequisite(self, person):
         """
         Check whether the prerequisite is satisfied by the current state, modify the status if necessary
-        :param current_state: the current state of the user
+        :param person: the current state of the user
         :return: True if all prerequisite satisfied, False otherwise
         """
         pass
 
-    def try_to_complete(self, current_state):
+    def try_to_complete(self, person):
         """
         Try to complete the given request by examine the current state with the complete_requirements
-        :param current_state: The current status of the requests
+        :param person: The current status of the requests
         :return: None
         """
         pass

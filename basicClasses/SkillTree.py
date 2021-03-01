@@ -10,6 +10,11 @@ class SkillTree:
     2. Show availability of selectable courses/skills
     other usage may be extended
     """
+    """
+    Use a set to manage all the learned skills, each is a node pointing to its parent
+    1. prerequisite check: inclusive check using in
+    2. adding child: manage the parent pointer
+    """
 
     # The entry to the tree
     def __init__(self):
@@ -68,3 +73,7 @@ class SkillTree:
        :return: True if all the nodes are contained and mastered
        """
         pass
+
+
+
+
