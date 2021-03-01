@@ -1,6 +1,6 @@
 # -*- encoding:utf-8 -*-
 # Dependencies
-from SkillTreeNode import SkillTreeNode
+from basicClasses.SkillTreeNode import SkillTreeNode
 
 
 class SkillTree:
@@ -17,8 +17,11 @@ class SkillTree:
     """
 
     # The entry to the tree
-    def __init__(self):
-        self.root_node = None
+    def __init__(self, root=None):
+        if root is None:
+            self.root_node = None
+            return
+        self.root_node = SkillTreeNode(fullName="$ROOTNODE$", shortName="$ROOTNODE$", ID="00000", is_abstract=True)
 
     def readSkillTreeFromFile(self, input_file):
         """
@@ -73,6 +76,10 @@ class SkillTree:
        :return: True if all the nodes are contained and mastered
        """
         pass
+
+    def print_whole_tree(self):
+        for line in self.root_node.pretty_print_with_height():
+            print(line)
 
 
 
