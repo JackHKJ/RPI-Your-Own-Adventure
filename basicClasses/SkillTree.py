@@ -19,8 +19,8 @@ class SkillTree():
     # The entry to the tree
     def __init__(self, root=None, name="#DEFAULT_NAME"):
         self.name = name
-        if root is not None:
-            self.root_node = None
+        if root is not None and isinstance(root, SkillTreeNode):
+            self.root_node = root
         else:
             self.root_node = SkillTreeNode(fullName=self.name, shortName=self.name, ID="00000", is_abstract=True)
         self.node_set = set()
