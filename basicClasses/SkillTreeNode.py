@@ -139,14 +139,14 @@ class SkillTreeNode():
         Getter of the mastered
         :return: mastered
         """
-        pass
+        return self.mastered
 
     def get_is_abstract(self):
         """
         Getter of the is_abstract
         :return: is_abstract
         """
-        pass
+        return self.is_abstract
 
     def try_to_pass(self, your_result):
         """

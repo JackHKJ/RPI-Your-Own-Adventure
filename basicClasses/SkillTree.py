@@ -63,6 +63,16 @@ class SkillTree():
                 skill.add_child(child)
         self.node_set.add(skill)
 
+    def remove_skill(self, skill:SkillTreeNode):
+        """
+        remove the given skill from the skill tree (not only in the skill tree representation but also the skill itself)
+        :param skill: skill to be added
+        :param parent: parent of the skill (None as default)
+        :param child: child of the skill (None as default)
+        :return: None
+        """
+        pass
+
     def get_node_by_ID(self, ID):
         """
         Get the node by ID
