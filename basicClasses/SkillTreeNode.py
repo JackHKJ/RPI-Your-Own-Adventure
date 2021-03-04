@@ -20,10 +20,10 @@ class SkillTreeNode():
         """
         if ID is None:
             raise Exception("Error, ID must be entered")
-        self.ID = ID
-        self.fullName = fullName
-        self.shortName = shortName
-        self.skillType = skillType
+        self.ID = str(ID)
+        self.fullName = str(fullName)
+        self.shortName = str(shortName)
+        self.skillType = str(skillType)
         self.additional_info = additionalInfo
         self.pass_requirement = passReq
         self.is_abstract = is_abstract
@@ -31,7 +31,6 @@ class SkillTreeNode():
         self.parent = []
         self.children = []
         self.mastered = False
-
 
     def __eq__(self, other):
         """
@@ -59,7 +58,7 @@ class SkillTreeNode():
         :return: list of printed str of the node, one for each line
         """
         if self.is_leaf():
-            return [str(self)+"--LEAF"]
+            return [str(self) + "--LEAF"]
 
         front_spacing = (len(str(self)) + 1) * " "
         ret_list = [str(self) + ":/---"]
