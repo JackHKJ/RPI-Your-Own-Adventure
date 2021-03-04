@@ -38,25 +38,6 @@ def Test2_basicTreeTest():
 
     Tree.print_tree()
 
-def Test3_basicGetNodeTest():
-    Tree = SkillTree(name="Admin")
-    nodeA = SkillTreeNode(ID='001', shortName="NODE_A")
-    nodeB = SkillTreeNode(ID='002', shortName="NODE_B",fullName="fullName_B")
-    nodeC = SkillTreeNode(ID='003', shortName="NODE_C")
-    nodeD = SkillTreeNode(ID='004', shortName="NODE_D")
-
-    Tree.addSkill(skill=nodeA, parent=Tree.root_node)
-    Tree.addSkill(skill=nodeB, parent=nodeA)
-    Tree.addSkill(skill=nodeC, parent=nodeA)
-    Tree.addSkill(skill=nodeD, parent=nodeB)
-
-    print(Tree.get_node_by_ID('001'))
-    print(Tree.get_node_by_shortName("NODE_B"))
-    print(Tree.get_node_by_fullName("fullName_B"))
-
-    print(Tree.get_node_by_ID('005'))
-    print(Tree.get_node_by_shortName("NODE_E"))
-    print(Tree.get_node_by_fullName("fullName_A"))
 
 if __name__ == "__main__":
-    Test3_basicGetNodeTest()
+    Test2_basicTreeTest()
