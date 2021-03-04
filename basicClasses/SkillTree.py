@@ -79,7 +79,10 @@ class SkillTree():
         :param ID: The ID of the Node
         :return: Node found by ID, None otherwise
         """
-        pass
+        for node in self.node_set:
+            if (node.ID==ID):
+                return node
+        return None
 
     def get_node_by_shortName(self, shortName):
         """
@@ -87,7 +90,10 @@ class SkillTree():
         :param shortName: shortName of the node
         :return: Node found by shortName, None otherwise
         """
-        pass
+        for node in self.node_set:
+            if (node.shortName==shortName):
+                return node
+        return None
 
     def get_node_by_fullName(self, fullName):
         """
@@ -95,7 +101,10 @@ class SkillTree():
         :param fullName: fullName of the Node
         :return: Node found by fullName, None otherwise
         """
-        pass
+        for node in self.node_set:
+            if (node.fullName==fullName):
+                return node
+        return None
 
     def get_leaves(self, root_node: SkillTreeNode):
         """
