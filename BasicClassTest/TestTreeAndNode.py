@@ -1,5 +1,8 @@
 # -*- encoding:utf-8 -*-
 # Dependencies
+import os
+import sys
+sys.path.append(os.getcwd())
 
 from basicClasses.SkillTree import SkillTree
 from basicClasses.SkillTreeNode import SkillTreeNode
