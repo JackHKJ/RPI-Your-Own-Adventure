@@ -39,5 +39,19 @@ def Test2_basicTreeTest():
     Tree.print_tree()
 
 
+def Test3_readSkillTreeFromFileTest():
+    st = SkillTree(
+        SkillTreeNode(
+            ID=1,
+            fullName='Computer Science Root',
+            shortName='CSCI',
+            is_abstract=True),
+        'Computer Science Tree')
+    st.readSkillTreeFromFile('test_file.csv')
+    st.print_tree()
+
+
 if __name__ == "__main__":
-    Test2_basicTreeTest()
+    # Test1_printer_test()
+    # Test2_basicTreeTest()
+    Test3_readSkillTreeFromFileTest()

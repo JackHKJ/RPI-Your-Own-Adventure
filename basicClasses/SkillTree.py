@@ -158,14 +158,3 @@ class SkillTree():
        :return: True if all the nodes are contained and mastered
        """
         pass
-
-if __name__ == '__main__':
-    st = SkillTree(
-        SkillTreeNode(
-            ID=1,
-            fullName='Computer Science Root', 
-            shortName='CSCI',
-            is_abstract=True),
-        'Computer Science Tree')
-    st.readSkillTreeFromFile('test_file.csv')
-    st.print_tree()
