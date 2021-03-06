@@ -1,0 +1,81 @@
+course_crn,full_name,short_name,prerequisites
+15982,Computer Science I,CSCI-1100,[]
+40377,Data Structures,CSCI-1200,['CSCI-1100']
+42470,Foundations of Computer Science,CSCI-2200,"['CSCI-1200', 'MATH-1010', 'MATH-1500', 'MATH-1020', 'MATH-2010', 'MATH-1020']"
+41336,Introduction to Algorithms,CSCI-2300,"['CSCI-1200', 'CSCI-2200', 'MATH-1010', 'MATH-1500', 'MATH-1020', 'MATH-2010']"
+41520,Computer Organization,CSCI-2500,['CSCI-1200']
+16355,Principles of Software,CSCI-2600,"['CSCI-1200', 'CSCI-2200']"
+16536,,CSCI-2960,
+30242,,CSCI-2961,
+40335,Design and Analysis of Algorithms,CSCI-4020,['CSCI-2300']
+44840,Machine Learning from Data,CSCI-4100,['CSCI-2300']
+42678,Introduction to Artificial Intelligence,CSCI-4150,['CSCI-2300']
+16351,Operating Systems,CSCI-4210,"['CSCI-2300', 'CSCI-2500', 'ECSE-2660']"
+29179,Network Programming,CSCI-4220,"['CSCI-2300', 'CSCI-2500']"
+44842,Cryptography and Network Security I,CSCI-4230,"['CSCI-2300', 'CSCI-4210', 'CSCI-4220']"
+28568,Frontiers of Network Science,CSCI-4250,['CSCI-2300']
+40328,Graph Theory,CSCI-4260,"['CSCI-1100', 'CSCI-2200']"
+44844,Computational Vision,CSCI-4270,"['CSCI-2300', 'MATH-2010']"
+29652,Networking in the Linux Kernel,CSCI-4310,"['CSCI-4210', 'ECSE-2660']"
+43182,Parallel Programming,CSCI-4320,"['CSCI-2300', 'CSCI-2500', 'ECSE-2660']"
+29249,Ontologies,CSCI-4340,['CSCI-2300']
+28050,Data Science,CSCI-4350,"['CSCI-1200', 'CSCI-4380']"
+43185,Data and Society,CSCI-4370,"['CSCI-4350', 'ITWS-4350']"
+40331,Database Systems,CSCI-4380,['CSCI-2300']
+28066,Data Mining,CSCI-4390,['CSCI-2300']
+42622,X-informatics,CSCI-4400,['CSCI-1200']
+44917,Computability and Logic,CSCI-4420,"['PHIL-2140', 'CSCI-2200']"
+26077,Programming Languages,CSCI-4430,"['CSCI-2300', 'CSCI-2600']"
+41973,Software Design and Documentation,CSCI-4440,['CSCI-2300']
+43708,Principles of Program Analysis,CSCI-4450,['CSCI-4430']
+29650,Large-Scale Programming and Testing,CSCI-4460,['CSCI-2300']
+44903,Open Source Software,CSCI-4470,"['CSCI-2300', 'CSCI-2600']"
+27057,Robotics I,CSCI-4480,['MATH-2400']
+44024,Distributed Computing Over The Internet,CSCI-4500,"['CSCI-4430', 'CSCI-4210', 'CSCI-4220']"
+28879,Distributed Systems and Algorithms,CSCI-4510,['CSCI-4210']
+44106,Advanced Computer Graphics,CSCI-4530,"['CSCI-2300', 'CSCI-2600', 'ECSE-4750']"
+43993,Game Development II,CSCI-4540,[]
+16280,Numerical Computing,CSCI-4800,"['MATH-2010', 'MATH-2400']"
+44513,Topics in Computer Science,CSCI-4960,[]
+41952,,CSCI-4961,
+43734,,CSCI-4962,
+16290,,CSCI-4963,
+43828,,CSCI-4964,
+16537,,CSCI-4965,
+16694,,CSCI-4966,
+44026,,CSCI-4967,
+29637,,CSCI-4968,
+30281,,CSCI-4969,
+28891,,CSCI-4970,
+42807,,CSCI-4976,
+44841,Machine Learning from Data,CSCI-6100,['CSCI-2300']
+44843,Cryptography and Network Security I,CSCI-6230,"['CSCI-2300', 'CSCI-4210', 'CSCI-4220']"
+28569,Frontiers of Network Science,CSCI-6250,['CSCI-2300']
+44845,Computational Vision,CSCI-6270,"['CSCI-2300', 'MATH-2010']"
+29653,Networking in the Linux Kernel,CSCI-6310,"['CSCI-4210', 'ECSE-2660']"
+29250,Ontologies,CSCI-6340,['CSCI-2300']
+28051,Data Science,CSCI-6350,"['CSCI-1200', 'CSCI-4380']"
+43183,Parallel Computing,CSCI-6360,['CSCI-4210']
+43186,Data and Society,CSCI-6370,"['CSCI-4350', 'ITWS-4350']"
+29222,Data Mining,CSCI-6390,['CSCI-2300']
+42623,X-informatics,CSCI-6400,['CSCI-1200']
+43709,Principles of Program Analysis,CSCI-6450,['CSCI-4430']
+29651,Large-Scale Programming and Testing,CSCI-6460,['CSCI-2300']
+44025,Distributed Computing Over The Internet,CSCI-6500,"['CSCI-4430', 'CSCI-4210', 'CSCI-4220']"
+28880,Distributed Systems and Algorithms,CSCI-6510,['CSCI-4210']
+44107,Advanced Computer Graphics,CSCI-6530,"['CSCI-2300', 'CSCI-2600', 'ECSE-4750']"
+26039,Computational Linear Algebra,CSCI-6800,"['MATH-4800', 'CSCI-4800']"
+44831,Numerical Solution of Ordinary Differential Equations,CSCI-6820,"['MATH-4800', 'CSCI-4800']"
+44866,Numerical Solution of Partial Differential Equations,CSCI-6840,"['MATH-4800', 'CSCI-4800']"
+30138,Finite Element Analysis,CSCI-6860,"['MATH-4800', 'CSCI-4800']"
+40537,Computer Science Seminar,CSCI-6900,[]
+41991,Topics in Computer Science,CSCI-6960,[]
+16702,,CSCI-6961,
+43735,,CSCI-6962,
+28106,,CSCI-6964,
+44027,,CSCI-6967,
+45036,,CSCI-6969,
+43245,Professional Project,CSCI-6970,[]
+15846,Master's Project,CSCI-6980,[]
+15894,Master’s Thesis,CSCI-6990,[]
+15897,Dissertation,CSCI-9990,[]

@@ -1,6 +1,10 @@
 # -*- encoding:utf-8 -*-
 # Dependencies
+import os
+print(os.getcwd())
 from basicClasses.SkillTreeNode import SkillTreeNode
+import pandas as pd
+import math
 
 
 class SkillTree():
@@ -32,7 +36,31 @@ class SkillTree():
         :param input_file: the file to read
         :return: None
         """
-        pass
+        f = pd.read_csv(input_file)
+        pool = set()
+        for i in range(f.shape[0]):
+            row = f.iloc[i]
+            node = SkillTreeNode(
+                row['course_crn'],
+                row['full_name'],
+                row['short_name'])
+            prereq = row['prerequisites']
+            if type(prereq) != str:
+                self.root_node.add_child(node)
+            else:
+                prereq = prereq[1:-1]
+                if len(prereq) == 0:
+                    self.root_node.add_child(node)
+                else:
+                    prereq = prereq.split(', ')
+                    prereq = list(map(lambda s: s.strip("'"), prereq))
+                    for p in prereq:
+                        for n in pool:
+                            if n.shortName == p:
+                                n.add_child(node)
+                                node.add_parent(n)
+                                break
+            pool.add(node)
 
     def addSkill(self, skill:SkillTreeNode, parent=None, child=None):
         """
@@ -139,7 +167,3 @@ class SkillTree():
        :return: True if all the nodes are contained and mastered
        """
         pass
-
-
-
-
