@@ -1,7 +1,6 @@
 # -*- encoding:utf-8 -*-
 # Dependencies
 import os
-print(os.getcwd())
 from basicClasses.SkillTreeNode import SkillTreeNode
 import pandas as pd
 import math
@@ -41,9 +40,9 @@ class SkillTree():
         for i in range(f.shape[0]):
             row = f.iloc[i]
             node = SkillTreeNode(
-                row['course_crn'],
-                row['full_name'],
-                row['short_name'])
+                ID=row['course_crn'],
+                fullName=row['full_name'],
+                shortName=row['short_name'])
             prereq = row['prerequisites']
             if type(prereq) != str:
                 self.root_node.add_child(node)
@@ -51,6 +50,7 @@ class SkillTree():
                 prereq = prereq[1:-1]
                 if len(prereq) == 0:
                     self.root_node.add_child(node)
+
                 else:
                     prereq = prereq.split(', ')
                     prereq = list(map(lambda s: s.strip("'"), prereq))
@@ -61,6 +61,7 @@ class SkillTree():
                                 node.add_parent(n)
                                 break
             pool.add(node)
+            self.node_set.add(node)
 
     def addSkill(self, skill:SkillTreeNode, parent=None, child=None):
         """
@@ -74,7 +75,7 @@ class SkillTree():
             print("Skill already added, returning without operation")
             return
         if parent is not None:
-            if isinstance(parent,list):
+            if isinstance(parent, list):
                 for par in parent:
                     par.add_child(skill)
                     skill.add_parent(par)
@@ -82,7 +83,7 @@ class SkillTree():
                 parent.add_child(skill)
                 skill.add_parent(parent)
         if child is not None:
-            if isinstance(child,list):
+            if isinstance(child, list):
                 for chi in child:
                     chi.add_parent(skill)
                     skill.add_child(chi)
@@ -91,7 +92,7 @@ class SkillTree():
                 skill.add_child(child)
         self.node_set.add(skill)
 
-    def remove_skill(self, skill:SkillTreeNode):
+    def remove_skill(self, skill: SkillTreeNode):
         """
         Remove the given skill from the skill tree (not only in the skill tree representation but also the skill itself)
         :param skill: skill to be added
@@ -118,7 +119,7 @@ class SkillTree():
         :return: Node found by ID, None otherwise
         """
         for node in self.node_set:
-            if (node.ID==ID):
+            if node.ID == ID:
                 return node
         return None
 
@@ -129,7 +130,7 @@ class SkillTree():
         :return: Node found by shortName, None otherwise
         """
         for node in self.node_set:
-            if (node.shortName==shortName):
+            if node.shortName == shortName:
                 return node
         return None
 
@@ -140,14 +141,14 @@ class SkillTree():
         :return: Node found by fullName, None otherwise
         """
         for node in self.node_set:
-            if (node.fullName==fullName):
+            if node.fullName == fullName:
                 return node
         return None
 
-    def get_leaves(self, root_node: SkillTreeNode):
+    def get_available_skills(self, person):
         """
         Use the BFS manner, find the leave Nodes of the given root node(available skill to choose)
-        :param root_node: the root node to start the search
+        :param person: the person to find the skills on
         :return: a collection of potential node(skill) to master
         """
         pass
@@ -160,7 +161,6 @@ class SkillTree():
         """
         for line in self.root_node.pretty_print_with_height():
             print(line)
-
 
     def is_contained(self, nodes):
         """

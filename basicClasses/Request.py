@@ -3,6 +3,7 @@
 # import SkillTreeNode
 # import SkillTree
 from enum import Enum, unique
+from .Person import Person
 
 
 @unique
@@ -60,7 +61,7 @@ class Request(object):
         """
         pass
 
-    def check_prerequisite(self, person):
+    def check_prerequisite(self, person:Person):
         """
         Check whether the prerequisite is satisfied by the current state, modify the status if necessary
         :param person: the current state of the user

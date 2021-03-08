@@ -61,7 +61,7 @@ def Test3_basicGetNodeTest():
     print(Tree.get_node_by_fullName("fullName_A"))
 
 
-def Test3_readSkillTreeFromFileTest():
+def Test4_readSkillTreeFromFileTest():
     st = SkillTree(
         SkillTreeNode(
             ID=1,
@@ -69,11 +69,15 @@ def Test3_readSkillTreeFromFileTest():
             shortName='CSCI',
             is_abstract=True),
         'Computer Science Tree')
-    st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('test_file.csv')
     st.print_tree()
 
 
 if __name__ == "__main__":
-    # Test1_printer_test()
-    # Test2_basicTreeTest()
-    Test3_readSkillTreeFromFileTest()
+    Test1_printer_test()
+    Test2_basicTreeTest()
+    Test3_basicGetNodeTest()
+    Test4_readSkillTreeFromFileTest()
