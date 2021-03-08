@@ -54,6 +54,31 @@ def Test2_testVisualizationOfPerson_complex():
 
     someone.visualize_skills()
 
+def Test3_partially_print_user_tree():
+    st = SkillTree(
+        SkillTreeNode(
+            ID=1,
+            fullName='Computer Science Root',
+            shortName='CSCI',
+            is_abstract=True),
+        'Computer Science Tree')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('test_file.csv')
+
+    # st.command_print_tree()
+
+    someone = Person("someone")
+    someone.add_skill(st, st.get_node_by_shortName("CSCI-1100"))
+    someone.add_skill(st, st.get_node_by_shortName("CSCI-1200"))
+    someone.add_skill(st, st.get_node_by_shortName("CSCI-2200"))
+    someone.add_skill(st, st.get_node_by_shortName("CSCI-2300"))
+    someone.add_skill(st, st.get_node_by_shortName("CSCI-2600"))
+
+    st.pretty_print_partial_tree(someone.skills)
+
 if __name__ == "__main__":
     # Test1_testVisualizationOfPerson_simple()
-    Test2_testVisualizationOfPerson_complex()
+    # Test2_testVisualizationOfPerson_complex()
+    Test3_partially_print_user_tree()

@@ -64,3 +64,4 @@ class Person(object):
         pos = nx.kamada_kawai_layout(g)
         nx.draw_networkx(g, pos=pos)
         plt.show()
+
