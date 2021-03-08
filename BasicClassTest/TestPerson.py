@@ -43,7 +43,7 @@ def Test2_testVisualizationOfPerson_complex():
     except FileNotFoundError:
         st.readSkillTreeFromFile('test_file.csv')
 
-    st.print_tree()
+    st.command_print_tree()
 
     someone = Person("someone")
     someone.add_skill(st, st.get_node_by_shortName("CSCI-1100"))

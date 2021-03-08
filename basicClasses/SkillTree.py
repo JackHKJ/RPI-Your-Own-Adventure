@@ -3,7 +3,8 @@
 import os
 from basicClasses.SkillTreeNode import SkillTreeNode
 import pandas as pd
-import math
+import networkx as nx
+import matplotlib.pyplot as plt
 
 
 class SkillTree():
@@ -21,6 +22,11 @@ class SkillTree():
 
     # The entry to the tree
     def __init__(self, root=None, name="#DEFAULT_NAME"):
+        """
+        Initialization function of the SkillTree
+        :param root: optional root node
+        :param name: name for this tree
+        """
         self.name = name
         if root is not None and isinstance(root, SkillTreeNode):
             self.root_node = root
@@ -28,6 +34,7 @@ class SkillTree():
             self.root_node = SkillTreeNode(fullName=self.name, shortName=self.name, ID="00000", is_abstract=True)
         self.node_set = set()
         self.node_set.add(self.root_node)
+        self.connection = []
 
     def readSkillTreeFromFile(self, input_file):
         """
@@ -43,27 +50,21 @@ class SkillTree():
                 ID=row['course_crn'],
                 fullName=row['full_name'],
                 shortName=row['short_name'])
-            prereq = row['prerequisites']
-            if type(prereq) != str:
-                self.root_node.add_child(node)
+            pre_req = row['prerequisites']
+            if type(pre_req) != str or len(pre_req[1:-1]) == 0:
+                self.addSkill(node, parent=self.root_node)
             else:
-                prereq = prereq[1:-1]
-                if len(prereq) == 0:
-                    self.root_node.add_child(node)
-
-                else:
-                    prereq = prereq.split(', ')
-                    prereq = list(map(lambda s: s.strip("'"), prereq))
-                    for p in prereq:
-                        for n in pool:
-                            if n.shortName == p:
-                                n.add_child(node)
-                                node.add_parent(n)
-                                break
+                pre_req = pre_req[1:-1].split(', ')
+                pre_req = list(map(lambda s: s.strip("'"), pre_req))
+                for p in pre_req:
+                    for n in pool:
+                        if n.shortName == p:
+                            self.addSkill(node, parent=n)
+                            break
             pool.add(node)
             self.node_set.add(node)
 
-    def addSkill(self, skill:SkillTreeNode, parent=None, child=None):
+    def addSkill(self, skill: SkillTreeNode, parent=None, child=None):
         """
         Add the given skill to the skill tree (not only in the skill tree representation but also the skill itself)
         :param skill: skill to be added
@@ -72,24 +73,32 @@ class SkillTree():
         :return: None
         """
         if skill in self.node_set:
-            print("Skill already added, returning without operation")
+            # print("Skill already added, returning without operation")
             return
         if parent is not None:
             if isinstance(parent, list):
                 for par in parent:
                     par.add_child(skill)
                     skill.add_parent(par)
+                    if [str(par), str(child)] not in self.connection:
+                        self.connection.append([str(par), str(child)])
             elif isinstance(parent, SkillTreeNode):
                 parent.add_child(skill)
                 skill.add_parent(parent)
+                if [str(skill), str(parent)] not in self.connection:
+                    self.connection.append([str(skill), str(parent)])
         if child is not None:
             if isinstance(child, list):
                 for chi in child:
                     chi.add_parent(skill)
                     skill.add_child(chi)
+                    if [str(chi), str(child)] not in self.connection:
+                        self.connection.append([str(chi), str(child)])
             elif isinstance(child, SkillTreeNode):
                 child.add_parent(skill)
                 skill.add_child(child)
+                if [str(skill), str(child)] not in self.connection:
+                    self.connection.append([str(skill), str(child)])
         self.node_set.add(skill)
 
     def remove_skill(self, skill: SkillTreeNode):
@@ -153,7 +162,7 @@ class SkillTree():
         """
         pass
 
-    def print_tree(self, layer=3):
+    def command_print_tree(self, layer=3):
         """
         Output the structure of the tree in str manner with layer as the maximum level counting from the root.
         :param layer: maximum layer to print
@@ -161,6 +170,13 @@ class SkillTree():
         """
         for line in self.root_node.pretty_print_with_height():
             print(line)
+
+    def pretty_print_tree(self):
+        g = nx.Graph()
+        g.add_edges_from(self.connection)
+        pos = nx.kamada_kawai_layout(g)
+        nx.draw_networkx(g, pos=pos)
+        plt.show()
 
     def is_contained(self, nodes):
         """

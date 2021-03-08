@@ -2,63 +2,61 @@
 # Dependencies
 import os
 import sys
-
 sys.path.append(os.getcwd())
-
 from basicClasses.SkillTree import SkillTree
 from basicClasses.SkillTreeNode import SkillTreeNode
 
 
 def Test1_printer_test():
-    nodeA = SkillTreeNode(ID='001', shortName="NODE_A")
-    nodeB = SkillTreeNode(ID='002', shortName="NODE_B")
-    nodeC = SkillTreeNode(ID='003', shortName="NODE_C")
-    nodeD = SkillTreeNode(ID='004', shortName="NODE_D")
+    node_a = SkillTreeNode(ID='001', shortName="NODE_A")
+    node_b = SkillTreeNode(ID='002', shortName="NODE_B")
+    node_c = SkillTreeNode(ID='003', shortName="NODE_C")
+    node_d = SkillTreeNode(ID='004', shortName="NODE_D")
 
-    # print(str(nodeA))
+    # print(str(node_a))
 
-    nodeA.add_child(nodeB)
-    nodeA.add_child(nodeC)
-    nodeB.add_child(nodeD)
+    node_a.add_child(node_b)
+    node_a.add_child(node_c)
+    node_b.add_child(node_d)
 
-    for line in nodeA.pretty_print_with_height():
+    for line in node_a.pretty_print_with_height():
         print(line)
 
 
 def Test2_basicTreeTest():
-    Tree = SkillTree(name="Admin")
-    nodeA = SkillTreeNode(ID='001', shortName="NODE_A")
-    nodeB = SkillTreeNode(ID='002', shortName="NODE_B")
-    nodeC = SkillTreeNode(ID='003', shortName="NODE_C")
-    nodeD = SkillTreeNode(ID='004', shortName="NODE_D")
+    tree = SkillTree(name="Admin")
+    node_a = SkillTreeNode(ID='001', shortName="NODE_A")
+    node_b = SkillTreeNode(ID='002', shortName="NODE_B")
+    node_c = SkillTreeNode(ID='003', shortName="NODE_C")
+    node_d = SkillTreeNode(ID='004', shortName="NODE_D")
 
-    Tree.addSkill(skill=nodeA, parent=Tree.root_node)
-    Tree.addSkill(skill=nodeB, parent=nodeA)
-    Tree.addSkill(skill=nodeC, parent=nodeA)
-    Tree.addSkill(skill=nodeD, parent=nodeB)
+    tree.addSkill(skill=node_a, parent=tree.root_node)
+    tree.addSkill(skill=node_b, parent=node_a)
+    tree.addSkill(skill=node_c, parent=node_a)
+    tree.addSkill(skill=node_d, parent=node_b)
 
-    Tree.print_tree()
+    tree.command_print_tree()
 
 
 def Test3_basicGetNodeTest():
-    Tree = SkillTree(name="Admin")
-    nodeA = SkillTreeNode(ID='001', shortName="NODE_A")
-    nodeB = SkillTreeNode(ID='002', shortName="NODE_B", fullName="fullName_B")
-    nodeC = SkillTreeNode(ID='003', shortName="NODE_C")
-    nodeD = SkillTreeNode(ID='004', shortName="NODE_D")
+    tree = SkillTree(name="Admin")
+    node_a = SkillTreeNode(ID='001', shortName="NODE_A")
+    node_b = SkillTreeNode(ID='002', shortName="NODE_B")
+    node_c = SkillTreeNode(ID='003', shortName="NODE_C")
+    node_d = SkillTreeNode(ID='004', shortName="NODE_D")
 
-    Tree.addSkill(skill=nodeA, parent=Tree.root_node)
-    Tree.addSkill(skill=nodeB, parent=nodeA)
-    Tree.addSkill(skill=nodeC, parent=nodeA)
-    Tree.addSkill(skill=nodeD, parent=nodeB)
+    tree.addSkill(skill=node_a, parent=tree.root_node)
+    tree.addSkill(skill=node_b, parent=node_a)
+    tree.addSkill(skill=node_c, parent=node_a)
+    tree.addSkill(skill=node_d, parent=node_b)
 
-    print(Tree.get_node_by_ID('001'))
-    print(Tree.get_node_by_shortName("NODE_B"))
-    print(Tree.get_node_by_fullName("fullName_B"))
+    print(tree.get_node_by_ID('001'))
+    print(tree.get_node_by_shortName("NODE_B"))
+    print(tree.get_node_by_fullName("fullName_B"))
 
-    print(Tree.get_node_by_ID('005'))
-    print(Tree.get_node_by_shortName("NODE_E"))
-    print(Tree.get_node_by_fullName("fullName_A"))
+    print(tree.get_node_by_ID('005'))
+    print(tree.get_node_by_shortName("NODE_E"))
+    print(tree.get_node_by_fullName("fullName_A"))
 
 
 def Test4_readSkillTreeFromFileTest():
@@ -73,11 +71,27 @@ def Test4_readSkillTreeFromFileTest():
         st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
     except FileNotFoundError:
         st.readSkillTreeFromFile('test_file.csv')
-    st.print_tree()
+    st.command_print_tree()
+
+
+def Test5_pretty_print_tree():
+    st = SkillTree(
+        SkillTreeNode(
+            ID=1,
+            fullName='Computer Science Root',
+            shortName='CSCI',
+            is_abstract=True),
+        'Computer Science Tree')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('test_file.csv')
+    st.pretty_print_tree()
 
 
 if __name__ == "__main__":
-    Test1_printer_test()
-    Test2_basicTreeTest()
-    Test3_basicGetNodeTest()
-    Test4_readSkillTreeFromFileTest()
+    # Test1_printer_test()
+    # Test2_basicTreeTest()
+    # Test3_basicGetNodeTest()
+    # Test4_readSkillTreeFromFileTest()
+    Test5_pretty_print_tree()

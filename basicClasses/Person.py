@@ -61,5 +61,6 @@ class Person(object):
     def visualize_skills(self):
         g = nx.Graph()
         g.add_edges_from(self.skillConnection)
-        nx.draw_networkx(g)
+        pos = nx.kamada_kawai_layout(g)
+        nx.draw_networkx(g, pos=pos)
         plt.show()
