@@ -2,6 +2,7 @@
 # Dependencies
 import os
 import sys
+
 sys.path.append(os.getcwd())
 
 from basicClasses.SkillTree import SkillTree
@@ -38,10 +39,11 @@ def Test2_basicTreeTest():
 
     Tree.print_tree()
 
+
 def Test3_basicGetNodeTest():
     Tree = SkillTree(name="Admin")
     nodeA = SkillTreeNode(ID='001', shortName="NODE_A")
-    nodeB = SkillTreeNode(ID='002', shortName="NODE_B",fullName="fullName_B")
+    nodeB = SkillTreeNode(ID='002', shortName="NODE_B", fullName="fullName_B")
     nodeC = SkillTreeNode(ID='003', shortName="NODE_C")
     nodeD = SkillTreeNode(ID='004', shortName="NODE_D")
 
@@ -57,6 +59,7 @@ def Test3_basicGetNodeTest():
     print(Tree.get_node_by_ID('005'))
     print(Tree.get_node_by_shortName("NODE_E"))
     print(Tree.get_node_by_fullName("fullName_A"))
+
 
 def Test3_readSkillTreeFromFileTest():
     st = SkillTree(
@@ -74,4 +77,3 @@ if __name__ == "__main__":
     # Test1_printer_test()
     # Test2_basicTreeTest()
     Test3_readSkillTreeFromFileTest()
-

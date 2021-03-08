@@ -1,7 +1,7 @@
 # -*- encoding:utf-8 -*-
 # Dependencies
 
-class SkillTreeNode():
+class SkillTreeNode:
     """
     This is the class designed for represent a single course in the full skill tree
     """
@@ -61,11 +61,11 @@ class SkillTreeNode():
             return [str(self) + "--LEAF"]
 
         front_spacing = (len(str(self)) + 1) * " "
-        ret_list = [str(self) + ":/---"]
+        ret_list = [str(self) + r":/---"]
         for child in self.children:
             for line in child.pretty_print_with_height():
                 ret_list.append(front_spacing + line)
-        ret_list.append(front_spacing + "\---")
+        ret_list.append(front_spacing + r"\---")
         return ret_list
 
     def add_parent(self, parent):
