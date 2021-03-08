@@ -93,13 +93,23 @@ class SkillTree():
 
     def remove_skill(self, skill:SkillTreeNode):
         """
-        remove the given skill from the skill tree (not only in the skill tree representation but also the skill itself)
+        Remove the given skill from the skill tree (not only in the skill tree representation but also the skill itself)
         :param skill: skill to be added
-        :param parent: parent of the skill (None as default)
-        :param child: child of the skill (None as default)
         :return: None
         """
-        pass
+        if skill not in self.node_set:
+            print("Skill not exist, returning without operation")
+            return
+        parLst = skill.get_parent()
+        chiLst = skill.get_child()
+
+        for par in parLst:
+            if par in self.node_set:
+                par.remove_child(skill)
+        for chi in chiLst:
+            if chi in self.node_set:
+                chi.remove_parent(skill)
+        self.node_set.remove(skill)
 
     def get_node_by_ID(self, ID):
         """
