@@ -69,7 +69,7 @@ def Test3_readSkillTreeFromFileTest():
             shortName='CSCI',
             is_abstract=True),
         'Computer Science Tree')
-    st.readSkillTreeFromFile('test_file.csv')
+    st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
     st.print_tree()
 
 
