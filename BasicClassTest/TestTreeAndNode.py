@@ -90,10 +90,35 @@ def Test5_pretty_print_tree():
 
 
 
+def Test6_pretty_print_all():
+    st = SkillTree(
+        SkillTreeNode(
+            ID=1,
+            fullName='All Courses Root',
+            shortName='Courses',
+            is_abstract=True
+        ),
+        'All Courses Tree')
+    st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
+
+    st.command_print_tree()
+
+    # very slow, uncomment carefully
+    # st.pretty_print_tree()
+
+    # A better way to construct a skill tree for all courses is to have all
+    # courses from a single department form their own tree, then attach all tree
+    # to one root. For example, all MATH courses and all CSCI courses are in
+    # two separate trees. However, this will hide prerequisites from another
+    # discipline, i.e. even if CSCI 2200 has MATH 1010 as a prerequisite, the
+    # former won't be the latter's child since they are in separate trees. This
+    # also requires changes to readSkillTreeFromFile().
+
 
 if __name__ == "__main__":
     # Test1_printer_test()
     # Test2_basicTreeTest()
     # Test3_basicGetNodeTest()
     # Test4_readSkillTreeFromFileTest()
-    Test5_pretty_print_tree()
+    # Test5_pretty_print_tree()
+    Test6_pretty_print_all()
