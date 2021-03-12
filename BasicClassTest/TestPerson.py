@@ -20,7 +20,7 @@ def Test1_testVisualizationOfPerson_simple():
     Tree.addSkill(skill=nodeA, parent=Tree.root_node)
     Tree.addSkill(skill=nodeB, parent=nodeA)
     Tree.addSkill(skill=nodeC, parent=nodeA)
-    Tree.addSkill(skill=nodeD, parent=[nodeC,nodeB])
+    Tree.addSkill(skill=nodeD, parent=[nodeC, nodeB])
 
     someone = Person("someone")
     someone.add_skill(Tree, Tree.get_node_by_shortName("NODE_A"))
@@ -54,6 +54,7 @@ def Test2_testVisualizationOfPerson_complex():
 
     someone.visualize_skills()
 
+
 def Test3_partially_print_user_tree():
     st = SkillTree(
         SkillTreeNode(
@@ -77,6 +78,7 @@ def Test3_partially_print_user_tree():
     someone.add_skill(st, st.get_node_by_shortName("CSCI-2600"))
 
     st.pretty_print_partial_tree(someone.skills)
+
 
 if __name__ == "__main__":
     # Test1_testVisualizationOfPerson_simple()
