@@ -3,6 +3,8 @@
 import os
 import sys
 
+from basicClasses.InfoGatherer import InfoGatherer
+
 sys.path.append(os.getcwd())
 
 from basicClasses.Person import Person
@@ -79,8 +81,32 @@ def Test3_partially_print_user_tree():
 
     st.pretty_print_partial_tree(someone.skills)
 
+def Test4_print_a_real_user_tree():
+
+    st = SkillTree(
+        SkillTreeNode(
+            ID=1,
+            fullName='All Courses Root',
+            shortName='Courses',
+            is_abstract=True
+        ),
+        'All Courses Tree')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('all_courses.csv')
+
+    gatherer = InfoGatherer(input("Enter your SIS username: "), input("Enter your sis password: "))
+    if not gatherer.logged_in:
+        raise Exception("Failed to log in")
+
+    someone = Person("someone")
+    someone.add_skills_by_shortName(st, gatherer.get_learned_courses())
+    st.pretty_print_partial_tree(someone.skills)
+
 
 if __name__ == "__main__":
     # Test1_testVisualizationOfPerson_simple()
     # Test2_testVisualizationOfPerson_complex()
-    Test3_partially_print_user_tree()
+    # Test3_partially_print_user_tree()
+    Test4_print_a_real_user_tree()

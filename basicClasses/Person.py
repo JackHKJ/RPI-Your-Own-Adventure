@@ -58,6 +58,19 @@ class Person(object):
                 if this_child in self.skills:
                     self.skillConnection.append([str(this_child), str(this_skill)])
 
+    def add_skills_by_shortName(self, skill_tree:SkillTree, skills):
+        """
+        This function tries to add a list of skills by finding them in the main tree using shortNames
+        :param skill_tree: the skill tree where the skills came from
+        :param skills: a list of shortName of the skill to be added
+        :return: None
+        """
+        for skill in skills:
+            this_node = skill_tree.get_node_by_shortName(skill)
+            if this_node is not None:
+                self.add_skill(skill_tree, this_node)
+
+
     def visualize_skills(self):
         g = nx.Graph()
         g.add_edges_from(self.skillConnection)

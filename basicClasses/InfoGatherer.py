@@ -27,6 +27,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.common.exceptions import WebDriverException
 
 Locator = namedtuple('Locator', ['by', 'value'])
 
@@ -41,11 +42,26 @@ def chromedriver_init():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument("--incognito")
-    browser = webdriver.Chrome(options=chrome_options)
-    # # Use the line below if you want to specify your chromedriver path
-    # browser = webdriver.Chrome(options=chrome_options,executable_path="FILL YOUR PATH HERE")
+    try:
+        browser = webdriver.Chrome(options=chrome_options)
+    except WebDriverException:
+        browser = webdriver.Chrome(options=chrome_options,executable_path="../chromedriver.exe")
     browser.maximize_window()
     return browser
+
+
+def course_list_parser(courses):
+    """
+    This function takes in a list of courses and parse it into SkillTreeNode shortName standard
+    :param courses: a list of string, each represent a course
+    :return: a list of shortnames
+    """
+    parsed = []
+    for course in courses:
+        course = str(course)
+        if len(course) != 0:
+            parsed.append("-".join(course.split(" ")).upper())
+    return parsed
 
 
 class InfoGatherer:
@@ -190,7 +206,7 @@ class InfoGatherer:
         """
         self.__goto_page()
         self.__wait_element('//div[@class="headerlinksdiv"]//table[@class="plaintable"]//table//td[3]')
-        return self.__try_to_fetch_learned_courses()
+        return course_list_parser(self.__try_to_fetch_learned_courses())
 
 
 if __name__ == "__main__":
