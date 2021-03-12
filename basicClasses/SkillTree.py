@@ -174,37 +174,54 @@ class SkillTree():
         for line in self.root_node.pretty_print_with_height():
             print(line)
 
-    def _pretty_print_helper(self, connection_list):
+    def _pretty_print_helper(self, connection_list, method):
         g = nx.Graph()
         g.add_edges_from(connection_list)
         pos_counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         pos = dict()
         color_map = []
 
-        for node in g:
-            node = str(node)
-            if node == str(self.root_node):
-                color_map.append(self.root_color)
-                pos[node] = [-1, 0]
-            elif node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
-                hard_level = int(node[node.rfind('-') + 1:node.rfind('-') + 2]) - 1
-                color_map.append(self.colors[hard_level])
-                pos[node] = [hard_level, pos_counter[hard_level]]
-                pos_counter[hard_level] += 1
-            else:
-                color_map.append('#777777')
-        # pos = nx.kamada_kawai_layout(g)
-        nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666")
-        plt.show()
+        if method == "Stack":
+            for node in g:
+                node = str(node)
+                if node == str(self.root_node):
+                    color_map.append(self.root_color)
+                    pos[node] = [-1, 0]
+                elif node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
+                    hard_level = int(node[node.rfind('-') + 1:node.rfind('-') + 2]) - 1
+                    color_map.append(self.colors[hard_level])
+                    pos[node] = [hard_level, pos_counter[hard_level]]
+                    pos_counter[hard_level] += 1
+                else:
+                    color_map.append('#777777')
+            # pos = nx.kamada_kawai_layout(g)
+            nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666")
+            plt.show()
+        elif method == "Spring":
+            for node in g:
+                node = str(node)
+                if node == str(self.root_node):
+                    color_map.append(self.root_color)
+                elif node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
+                    hard_level = int(node[node.rfind('-') + 1:node.rfind('-') + 2]) - 1
+                    color_map.append(self.colors[hard_level])
+                    pos_counter[hard_level] += 1
+                else:
+                    color_map.append('#777777')
+            pos = nx.spring_layout(g)
+            nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666")
+            plt.show()
 
-    def pretty_print_tree(self):
+    def pretty_print_tree(self, method="Stack"):
         """
         This function uses the networkx package to print the whole tree
+        The method statement is defaulted to 'Stack'
+        Method can be ['Stack','Spring']
         :return:
         """
-        self._pretty_print_helper(self.connection)
+        self._pretty_print_helper(self.connection, method)
 
-    def pretty_print_partial_tree(self, nodes):
+    def pretty_print_partial_tree(self, nodes, method="Stack"):
         """
         Print partially of the tree structure, print only the nodes passed in
         :param nodes:
@@ -216,7 +233,7 @@ class SkillTree():
             if left in node_str and right in node_str:
                 this_connection.append([left, right])
 
-        self._pretty_print_helper(this_connection)
+        self._pretty_print_helper(this_connection, method)
 
     def is_contained(self, nodes):
         """

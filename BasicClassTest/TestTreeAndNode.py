@@ -99,7 +99,10 @@ def Test6_pretty_print_all():
             is_abstract=True
         ),
         'All Courses Tree')
-    st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('all_courses.csv')
 
     st.command_print_tree()
 

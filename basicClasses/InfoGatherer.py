@@ -59,10 +59,19 @@ class InfoGatherer:
         :param username: your SIS username
         :param password: your SIS password
         """
+        # Record the username and password
         self.driver = chromedriver_init()
         self.url = "http://sis.rpi.edu"
         self.username = username
         self.password = password
+        # Initialize and stay in the login stage
+        self.__go_until_login_page_loaded()
+        if self.__try_to_login():
+            print("Log in successful")
+            self.logged_in = True
+        else:
+            print("Log in failure, username&password combination incorrect")
+            self.logged_in = False
 
     def __goto_page(self):
         """
@@ -131,7 +140,7 @@ class InfoGatherer:
     def __try_to_login(self):
         """
         This sequence tries to load the SIS main system, will print error message on failure
-        :return:
+        :return: True if the page successfully log into the SIS main page, False otherwise
         """
         self.__text_input('//*[@id="username"]', self.username)
         # time.sleep(1)
@@ -139,12 +148,13 @@ class InfoGatherer:
         # time.sleep(1)
         self.__click('//*[@id="password"]/../../..//input[@name="submit"]')
         # time.sleep(1)
-        self.__wait_element('//div[@class="headerlinksdiv"]//table[@class="plaintable"]//table//td[3]')
+        return self.__wait_element('//div[@class="headerlinksdiv"]//table[@class="plaintable"]//table//td[3]',
+                                   time_limit=10)
 
     def __try_to_fetch_learned_courses(self):
         """
         This function tries to fetch learned courses
-        :return:
+        :return: The learned courses in a string
         """
         self.__click('//div[@class="headerlinksdiv"]//table[@class="plaintable"]//table//td[3]')
         # time.sleep(1)
@@ -156,13 +166,15 @@ class InfoGatherer:
         # time.sleep(1)
 
         # Try to read out the course name and print
-        self.__wait_element('//div[@role="dialog"]//*[@id="TermDivider"]/..//div//tr/td[1]')
-        course_list = self.driver.find_elements_by_xpath(
-            '//div[@role="dialog"]//*[@id="TermDivider"]/..//div//tr/td[1]')
-        course_str = [ele.text for ele in course_list if len(ele.text) > 0]
+        if self.__wait_element('//div[@role="dialog"]//*[@id="TermDivider"]/..//div//tr/td[1]'):
+            course_list = self.driver.find_elements_by_xpath(
+                '//div[@role="dialog"]//*[@id="TermDivider"]/..//div//tr/td[1]')
+            course_str = [ele.text for ele in course_list if len(ele.text) > 0]
 
-        # print(course_str)
-        return course_str
+            # print(course_str)
+            return course_str
+        else:
+            raise Exception("Failed to enter the degreework page")
 
     def quit(self):
         """
@@ -176,13 +188,14 @@ class InfoGatherer:
         Get the learned courses of the SIS user provided in initialization
         :return: A list of learned courses
         """
-        self.__go_until_login_page_loaded()
-        self.__try_to_login()
+        self.__goto_page()
+        self.__wait_element('//div[@class="headerlinksdiv"]//table[@class="plaintable"]//table//td[3]')
         return self.__try_to_fetch_learned_courses()
 
 
 if __name__ == "__main__":
     Gatherer = InfoGatherer(input("Enter your SIS username: "), input("Enter your sis password: "))
-    print(Gatherer.get_learned_courses())
+    if Gatherer.logged_in:
+        print(Gatherer.get_learned_courses())
     Gatherer.quit()
     time.sleep(5)
