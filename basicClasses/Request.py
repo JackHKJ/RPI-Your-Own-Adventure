@@ -63,13 +63,12 @@ class Request(object):
         :return: a str representation of requirements
         """
         prereq_string=""
-        for i in range(len(self.prerequisite)):
+        for prereq_list in self.prerequisite:
             prereq_string+="("
-            for j in range(len(self.prerequisite[i])):
-                prereq_string+=" "+self.prerequisite[i][j]+" "
-                if (j!=len(self.prerequisite[i])-1): prereq_string+="or"
-            prereq_string+=")"
-            if (i!=len(self.prerequisite)-1): prereq_string+="\n"
+            for i in range(len(prereq_list)):
+                prereq_string+=" "+prereq_list[i]+" "
+                if (i!=len(prereq_list)-1): prereq_string+="or"
+            prereq_string+=")\n"
         return prereq_string
 
 
