@@ -17,7 +17,6 @@ class RequestStatusEnum(Enum):
     COMPLETED = "COMPLETED"
     FAILED = "FAILED"
 
-
 class Request(object):
     """
     This class is used to define a "request", which should
@@ -46,20 +45,33 @@ class Request(object):
         Getter of the name of the request
         :return: the name of the request
         """
-        pass
+        return self.request_name
 
     def get_achievement(self):
         """
         Check the status of the request to decide whether to return achievement
         :return: None if the status is not RequestStatusEnum.COMPLETED, return the achievement otherwise
         """
+        if (self.request_status==RequestStatusEnum.COMPLETED):
+            return self.achievement
+        else:
+            return None
 
     def show_prerequisite(self):
         """
         Show the prerequisite of the request, this function is used to tell the user which prerequisite to get
         :return: a str representation of requirements
         """
-        pass
+        prereq_string=""
+        for i in range(len(self.prerequisite)):
+            prereq_string+="("
+            for j in range(len(self.prerequisite[i])):
+                prereq_string+=" "+self.prerequisite[i][j]+" "
+                if (j!=len(self.prerequisite[i])-1): prereq_string+="or"
+            prereq_string+=")"
+            if (i!=len(self.prerequisite)-1): prereq_string+="\n"
+        return prereq_string
+
 
     def check_prerequisite(self, person:Person):
         """
@@ -75,7 +87,10 @@ class Request(object):
         :param person: The current status of the requests
         :return: None
         """
-        pass
+        """
+        For now, assuming that there is no complete_requirements
+        """
+        self.request_status=RequestStatusEnum.COMPLETED
 
     def __str__(self):
         """
