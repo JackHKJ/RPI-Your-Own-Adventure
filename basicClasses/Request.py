@@ -26,7 +26,7 @@ class Request(object):
     3. Achievement after completion(None as default)
     """
 
-    def __init__(self, request_name, prerequisite, achievement, complete_requirement, real_world_constrains=None):
+    def __init__(self, request_name, prerequisite, achievement, complete_requirement=None, real_world_constrains=None):
         """
         The initializing function
         :param request_name: the name of the request

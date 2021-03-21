@@ -105,8 +105,41 @@ def Test4_print_a_real_user_tree():
     st.pretty_print_partial_tree(someone.skills)
 
 
+def Test5_filter_a_persons_selectable_course():
+    st = SkillTree(
+        SkillTreeNode(
+            ID=1,
+            fullName='All Courses Root',
+            shortName='Courses',
+            is_abstract=True
+        ),
+        'All Courses Tree')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('all_courses.csv')
+
+    # st.command_print_tree()
+
+    st.command_print_tree()
+    print("################################################################")
+    someone = Person("someone")
+    someone.add_skill(st, st.get_node_by_shortName("CSCI-1100"))
+    print("All the course someone can select")
+    print([str(rep) for rep in someone.get_selectable_courses(st)])
+    print("################################################################")
+    print("With CSCI filter")
+    print([str(rep) for rep in someone.get_selectable_courses_filtered(st, "CSCI")])
+    print("################################################################")
+    print("With full name filter")
+
+
+
+
+
 if __name__ == "__main__":
     # Test1_testVisualizationOfPerson_simple()
     # Test2_testVisualizationOfPerson_complex()
     # Test3_partially_print_user_tree()
-    Test4_print_a_real_user_tree()
+    # Test4_print_a_real_user_tree()
+    Test5_filter_a_persons_selectable_course()

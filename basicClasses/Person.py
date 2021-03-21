@@ -11,15 +11,15 @@ class Person(object):
     This class is to represent a player in our game
     """
 
-    def __init__(self, name):
+    def __init__(self, name, location="TROY", gender="UNKNOWN", tel="UNKNOWN", mail="UNKNOWN"):
         """
         The initializing function of the class
         """
         self.name = name
-        self.location = "TROY"
-        self.gender = "UNKNOWN"
-        self.tel = "UNKNOWN"
-        self.mail = "UNKNOWN"
+        self.location = location
+        self.gender = gender
+        self.tel = tel
+        self.mail = mail
         self.skills = set()
         self.skillConnection = []
 
@@ -58,7 +58,7 @@ class Person(object):
                 if this_child in self.skills:
                     self.skillConnection.append([str(this_child), str(this_skill)])
 
-    def add_skills_by_shortName(self, skill_tree:SkillTree, skills):
+    def add_skills_by_shortName(self, skill_tree: SkillTree, skills):
         """
         This function tries to add a list of skills by finding them in the main tree using shortNames
         :param skill_tree: the skill tree where the skills came from
@@ -70,11 +70,37 @@ class Person(object):
             if this_node is not None:
                 self.add_skill(skill_tree, this_node)
 
+    def get_selectable_courses(self, skillTree: SkillTree):
+        """
+        Get the selectable courses of a person
+        :param skillTree: the skillTree to be utilized
+        :return: list of SkillTreeNode that is selectable for the person
+        """
+        selectable_course = []
+        for course in skillTree.node_set:
+            if len(course.parent) == 0 or (len(course.parent) == 1 and course.parent[0] == skillTree.root_node):
+                selectable_course.append(course)
+                continue
+            selectable = True
+            for req in course.parent:
+                if req not in self.skills:
+                    selectable = False
+                    break
+            if selectable:
+                selectable_course.append(course)
+                continue
+        return selectable_course
 
-    def visualize_skills(self):
-        g = nx.Graph()
-        g.add_edges_from(self.skillConnection)
-        pos = nx.kamada_kawai_layout(g)
-        nx.draw_networkx(g, pos=pos)
-        plt.show()
-
+    def get_selectable_courses_filtered(self, skillTree: SkillTree, filter_str: str):
+        """
+        Get the selectable course with filter applied
+        :param skillTree:the skillTree to be utilized
+        :param filter_str:the filter to be applied
+        :return:list of SkillTreeNode that is selectable for the person with filter applied
+        """
+        selectable_courses = self.get_selectable_courses(skillTree)
+        filtered = []
+        for course in selectable_courses:
+            if filter_str in course.fullName or filter_str in course.shortName or filter_str in course.ID:
+                filtered.append(course)
+        return filtered
