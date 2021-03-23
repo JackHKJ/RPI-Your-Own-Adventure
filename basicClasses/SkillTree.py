@@ -5,6 +5,7 @@ from basicClasses.SkillTreeNode import SkillTreeNode
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
+import json
 
 
 class SkillTree():
@@ -39,33 +40,36 @@ class SkillTree():
         self.node_set.add(self.root_node)
         self.connection = []
 
-    def readSkillTreeFromFile(self, input_file):
+    def readSkillTreeFromFile(self):
         """
         read the input file to form a full skill tree
-        :param input_file: the file to read
         :return: None
         """
-        f = pd.read_csv(input_file)
-        pool = set()
-        for i in range(f.shape[0]):
-            row = f.iloc[i]
-            node = SkillTreeNode(
-                ID=row['course_crn'],
+        for term in os.listdir('./data'):
+            courses = pd.read_csv('./data/{}/courses.csv'.format(term))
+            prereqs = open('./data/{}/prerequisites.json'.format(term), 'r')
+            prereqs = json.load(prereqs)
+            pool = set()
+            for i in range(courses.shape[0]):
+                row = courses.iloc[i]
+                crn = str(row['course_crn'])
+                node = SkillTreeNode(
+                ID=crn,
                 fullName=row['full_name'],
                 shortName=row['short_name'])
-            pre_req = row['prerequisites']
-            if type(pre_req) != str or len(pre_req[1:-1]) == 0:
-                self.addSkill(node, parent=self.root_node)
-            else:
-                pre_req = pre_req[1:-1].split(', ')
-                pre_req = list(map(lambda s: s.strip("'"), pre_req))
-                for p in pre_req:
-                    for n in pool:
-                        if n.shortName == p:
-                            self.addSkill(node, parent=n)
-                            break
-            pool.add(node)
-            self.node_set.add(node)
+                if not crn in prereqs or not 'prerequisites' in prereqs[crn]:
+                    self.addSkill(node, parent=self.root_node)
+                else:
+                    p = self.__parse(prereqs[crn]['prerequisites'])
+                    flatten = self.__flatten(p)
+                    parents = []
+                    for p in flatten:
+                        for n in pool:
+                            if n.shortName == p:
+                                parents.append(n)
+                    self.addSkill(node, parent=parents)
+                pool.add(node)
+                self.node_set.add(node)
 
     def addSkill(self, skill: SkillTreeNode, parent=None, child=None):
         """
@@ -250,3 +254,30 @@ class SkillTree():
        :return: True if all the nodes are contained and mastered
        """
         pass
+
+    def __parse(self, prereq_dict):
+        """
+        Private method to parse the prerequisites into a list from a dict
+        :param prereq_dict: dict that holds the prerequisites of a course
+        """
+        prereqs = []
+        t = prereq_dict['type']
+        if t == 'course':
+            return prereq_dict['course']
+        if t == 'and':
+            return [self.__parse(x) for x in prereq_dict['nested']]
+        if t == 'or':
+            return [[self.__parse(x) for x in prereq_dict['nested']]]
+        return t
+
+    def __flatten(self, l):
+        """
+        Flatten a logical prereq list
+        : param l: the list to be flattened
+        """
+        if type(l) != list:
+            return [l]
+        ret = []
+        for x in l:
+            ret += self.__flatten(x)
+        return ret

@@ -99,15 +99,13 @@ def Test6_pretty_print_all():
             is_abstract=True
         ),
         'All Courses Tree')
-    try:
-        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
-    except FileNotFoundError:
-        st.readSkillTreeFromFile('all_courses.csv')
 
-    st.command_print_tree()
+    st.readSkillTreeFromFile()
+
+    # st.command_print_tree()
 
     # very slow, uncomment carefully
-    # st.pretty_print_tree()
+    st.pretty_print_tree()
 
     # A better way to construct a skill tree for all courses is to have all
     # courses from a single department form their own tree, then attach all tree
