@@ -217,7 +217,7 @@ class SkillTree:
         for line in self.root_node.pretty_print_with_height():
             print(line)
 
-    def _pretty_print_helper(self, connection_list, method):
+    def _pretty_print_helper(self, connection_list, method, save_fig=False):
         g = nx.Graph()
         g.add_edges_from(connection_list)
         pos_counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -239,7 +239,7 @@ class SkillTree:
                     color_map.append('#777777')
             # pos = nx.kamada_kawai_layout(g)
             nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666")
-            plt.show()
+
         elif method == "Spring":
             for node in g:
                 node = str(node)
@@ -253,21 +253,31 @@ class SkillTree:
                     color_map.append('#777777')
             pos = nx.spring_layout(g)
             nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666")
-            plt.show()
 
-    def pretty_print_tree(self, method="Stack"):
+        if not save_fig:
+            plt.show()
+        else:
+            try:
+                plt.savefig(fname="../pic_save/temp_fig.png")
+            except FileNotFoundError:
+                plt.savefig(fname="./pic_save/temp_fig.png")
+
+    def pretty_print_tree(self, method="Stack", save_fig=False):
         """
         This function uses the networkx package to print the whole tree
-        The method statement is defaulted to 'Stack'
+        :param method: The method statement is defaulted to 'Stack'
+        :param save_fig: The indicator whether to show the fig or to save it in the file
         Method can be ['Stack','Spring']
         :return:
         """
-        self._pretty_print_helper(self.connection, method)
+        self._pretty_print_helper(self.connection, method, save_fig=save_fig)
 
-    def pretty_print_partial_tree(self, nodes, method="Stack"):
+    def pretty_print_partial_tree(self, nodes, method="Stack", save_fig=False):
         """
         Print partially of the tree structure, print only the nodes passed in
-        :param nodes:
+        :param nodes: the list of SkillTreeNode to be printed
+        :param method: The method statement is defaulted to 'Stack'. Method can be ['Stack','Spring']
+        :param save_fig: The indicator whether to show the fig or to save it in the file
         :return:
         """
         node_str = [str(this_node) for this_node in nodes]
@@ -276,7 +286,7 @@ class SkillTree:
             if left in node_str and right in node_str:
                 this_connection.append([left, right])
 
-        self._pretty_print_helper(this_connection, method)
+        self._pretty_print_helper(this_connection, method, save_fig=save_fig)
 
     def is_contained(self, nodes):
         """

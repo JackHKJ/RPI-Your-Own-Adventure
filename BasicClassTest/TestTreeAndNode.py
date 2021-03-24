@@ -116,10 +116,25 @@ def Test6_pretty_print_all():
     # also requires changes to readSkillTreeFromFile().
 
 
+def Test7_savefigTest():
+    st = SkillTree(
+        SkillTreeNode(
+            ID=1,
+            fullName='Computer Science Root',
+            shortName='CSCI',
+            is_abstract=True),
+        'Computer Science Tree')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('test_file.csv')
+    st.pretty_print_tree(save_fig=True)
+
 if __name__ == "__main__":
     # Test1_printer_test()
     # Test2_basicTreeTest()
     # Test3_basicGetNodeTest()
     # Test4_readSkillTreeFromFileTest()
     # Test5_pretty_print_tree()
-    Test6_pretty_print_all()
+    # Test6_pretty_print_all()
+    Test7_savefigTest()
