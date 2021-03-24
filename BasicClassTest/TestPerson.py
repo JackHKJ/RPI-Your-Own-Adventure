@@ -54,22 +54,27 @@ def Test2_testVisualizationOfPerson_complex():
     someone.add_skill(st, st.get_node_by_shortName("CSCI-2300"))
     someone.add_skill(st, st.get_node_by_shortName("CSCI-2600"))
 
-    someone.visualize_skills()
+    st.pretty_print_partial_tree(someone.skills)
 
 
 def Test3_partially_print_user_tree():
     st = SkillTree(
         SkillTreeNode(
             ID=1,
-            fullName='Computer Science Root',
-            shortName='CSCI',
-            is_abstract=True),
-        'Computer Science Tree')
-    try:
-        st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
-    except FileNotFoundError:
-        st.readSkillTreeFromFile('test_file.csv')
+            fullName='All Courses Root',
+            shortName='Courses',
+            is_abstract=True
+        ),
+        'All Courses Tree')
 
+
+
+    # try:
+    #     st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
+    # except FileNotFoundError:
+    #     st.readSkillTreeFromFile('test_file.csv')
+    #
+    st.readSkillTreeFromFileDefaultPath()
     # st.command_print_tree()
 
     someone = Person("someone")
@@ -91,10 +96,7 @@ def Test4_print_a_real_user_tree():
             is_abstract=True
         ),
         'All Courses Tree')
-    try:
-        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
-    except FileNotFoundError:
-        st.readSkillTreeFromFile('all_courses.csv')
+    st.readSkillTreeFromFileDefaultPath()
 
     gatherer = InfoGatherer(input("Enter your SIS username: "), input("Enter your sis password: "))
     if not gatherer.logged_in:
@@ -114,10 +116,7 @@ def Test5_filter_a_persons_selectable_course():
             is_abstract=True
         ),
         'All Courses Tree')
-    try:
-        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
-    except FileNotFoundError:
-        st.readSkillTreeFromFile('all_courses.csv')
+    st.readSkillTreeFromFileDefaultPath()
 
     # st.command_print_tree()
 
@@ -140,6 +139,6 @@ def Test5_filter_a_persons_selectable_course():
 if __name__ == "__main__":
     # Test1_testVisualizationOfPerson_simple()
     # Test2_testVisualizationOfPerson_complex()
-    # Test3_partially_print_user_tree()
+    Test3_partially_print_user_tree()
     # Test4_print_a_real_user_tree()
-    Test5_filter_a_persons_selectable_course()
+    # Test5_filter_a_persons_selectable_course()

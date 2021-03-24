@@ -2,6 +2,7 @@
 # Dependencies
 import os
 import sys
+
 sys.path.append(os.getcwd())
 from basicClasses.SkillTree import SkillTree
 from basicClasses.SkillTreeNode import SkillTreeNode
@@ -89,7 +90,6 @@ def Test5_pretty_print_tree():
     st.pretty_print_tree()
 
 
-
 def Test6_pretty_print_all():
     st = SkillTree(
         SkillTreeNode(
@@ -100,7 +100,7 @@ def Test6_pretty_print_all():
         ),
         'All Courses Tree')
 
-    st.readSkillTreeFromFile()
+    st.readSkillTreeFromFileDefaultPath()
 
     # st.command_print_tree()
 

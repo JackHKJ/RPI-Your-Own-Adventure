@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import json
 
 
-class SkillTree():
+class SkillTree:
     """
     This is the FullSkillTree class that is designed for:
     1. Show one's achieved skill
@@ -40,24 +40,35 @@ class SkillTree():
         self.node_set.add(self.root_node)
         self.connection = []
 
-    def readSkillTreeFromFile(self):
+    def readSkillTreeFromFileDefaultPath(self):
         """
         read the input file to form a full skill tree
         :return: None
         """
-        for term in os.listdir('./data'):
-            courses = pd.read_csv('./data/{}/courses.csv'.format(term))
-            prereqs = open('./data/{}/prerequisites.json'.format(term), 'r')
+        try:
+            home_dir = os.listdir('./data')
+        except FileNotFoundError:
+            home_dir = os.listdir('../data')
+
+        for term in home_dir:
+            try:
+                courses = pd.read_csv('./data/{}/courses.csv'.format(term))
+            except FileNotFoundError:
+                courses = pd.read_csv('../data/{}/courses.csv'.format(term))
+            try:
+                prereqs = open('./data/{}/prerequisites.json'.format(term), 'r')
+            except FileNotFoundError:
+                prereqs = open('../data/{}/prerequisites.json'.format(term), 'r')
             prereqs = json.load(prereqs)
             pool = set()
             for i in range(courses.shape[0]):
                 row = courses.iloc[i]
                 crn = str(row['course_crn'])
                 node = SkillTreeNode(
-                ID=crn,
-                fullName=row['full_name'],
-                shortName=row['short_name'])
-                if not crn in prereqs or not 'prerequisites' in prereqs[crn]:
+                    ID=crn,
+                    fullName=row['full_name'],
+                    shortName=row['short_name'])
+                if crn not in prereqs or not 'prerequisites' in prereqs[crn]:
                     self.addSkill(node, parent=self.root_node)
                 else:
                     p = self.__parse(prereqs[crn]['prerequisites'])
@@ -70,6 +81,34 @@ class SkillTree():
                     self.addSkill(node, parent=parents)
                 pool.add(node)
                 self.node_set.add(node)
+
+    def readSkillTreeFromFile(self, input_file):
+        """
+        read the input file to form a full skill tree
+        :param input_file: the file to read
+        :return: None
+        """
+        f = pd.read_csv(input_file)
+        pool = set()
+        for i in range(f.shape[0]):
+            row = f.iloc[i]
+            node = SkillTreeNode(
+                ID=row['course_crn'],
+                fullName=row['full_name'],
+                shortName=row['short_name'])
+            pre_req = row['prerequisites']
+            if type(pre_req) != str or len(pre_req[1:-1]) == 0:
+                self.addSkill(node, parent=self.root_node)
+            else:
+                pre_req = pre_req[1:-1].split(', ')
+                pre_req = list(map(lambda s: s.strip("'"), pre_req))
+                for p in pre_req:
+                    for n in pool:
+                        if n.shortName == p:
+                            self.addSkill(node, parent=n)
+                            break
+            pool.add(node)
+            self.node_set.add(node)
 
     def addSkill(self, skill: SkillTreeNode, parent=None, child=None):
         """
