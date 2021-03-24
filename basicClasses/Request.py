@@ -7,7 +7,7 @@ from .Person import Person
 
 
 @unique
-class RequestStatusEnum(Enum):
+class RequestStatus(Enum):
     """
     The class for representing the status of the request
     """
@@ -36,7 +36,7 @@ class Request(object):
         self.prerequisite = prerequisite
         self.achievement = achievement
         self.real_world_constrains = real_world_constrains
-        self.request_status = RequestStatusEnum.UNACCEPTABLE
+        self.request_status = RequestStatus.UNACCEPTABLE
         self.complete_requirement = complete_requirement
         # TODO: add more if necessary
 
@@ -52,7 +52,7 @@ class Request(object):
         Check the status of the request to decide whether to return achievement
         :return: None if the status is not RequestStatusEnum.COMPLETED, return the achievement otherwise
         """
-        if (self.request_status==RequestStatusEnum.COMPLETED):
+        if (self.request_status==RequestStatus.COMPLETED):
             return self.achievement
         else:
             return None
@@ -89,7 +89,7 @@ class Request(object):
         """
         For now, assuming that there is no complete_requirements
         """
-        self.request_status=RequestStatusEnum.COMPLETED
+        self.request_status=RequestStatus.COMPLETED
 
     def __str__(self):
         """
@@ -97,7 +97,7 @@ class Request(object):
         information
         :return: the string representation of the request
         """
-        return "Request (name: {}, completed: {})".format(self.request_name, self.request_status)
+        return "Request (name: {}, status: {})".format(self.request_name, self.request_status)
 
     def __check_prerequisites(self, pl, skills, mode=all):
         """
