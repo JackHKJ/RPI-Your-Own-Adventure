@@ -89,7 +89,7 @@ class SkillTree:
         :return: None
         """
         f = pd.read_csv(input_file)
-        pool = set()
+        find_parents = {}
         for i in range(f.shape[0]):
             row = f.iloc[i]
             node = SkillTreeNode(
@@ -100,15 +100,19 @@ class SkillTree:
             if type(pre_req) != str or len(pre_req[1:-1]) == 0:
                 self.addSkill(node, parent=self.root_node)
             else:
-                pre_req = pre_req[1:-1].split(', ')
-                pre_req = list(map(lambda s: s.strip("'"), pre_req))
-                for p in pre_req:
-                    for n in pool:
-                        if n.shortName == p:
-                            self.addSkill(node, parent=n)
-                            break
-            pool.add(node)
-            self.node_set.add(node)
+                find_parents[node] = pre_req
+        pool = set(find_parents.keys()) | self.node_set
+        for node in find_parents:
+            parents = []
+            pre_req = find_parents[node]
+            pre_req = pre_req[1:-1].split(', ')
+            pre_req = list(map(lambda s: s.strip("'"), pre_req))
+            for p in pre_req:
+                for n in pool:
+                    if n.shortName == p:
+                        parents.append(n)
+                        break
+            self.addSkill(node, parent=parents)
 
     def addSkill(self, skill: SkillTreeNode, parent=None, child=None):
         """
@@ -126,8 +130,8 @@ class SkillTree:
                 for par in parent:
                     par.add_child(skill)
                     skill.add_parent(par)
-                    if [str(par), str(child)] not in self.connection:
-                        self.connection.append([str(par), str(child)])
+                    if [str(skill), str(par)] not in self.connection:
+                        self.connection.append([str(skill), str(par)])
             elif isinstance(parent, SkillTreeNode):
                 parent.add_child(skill)
                 skill.add_parent(parent)
@@ -138,13 +142,13 @@ class SkillTree:
                 for chi in child:
                     chi.add_parent(skill)
                     skill.add_child(chi)
-                    if [str(chi), str(child)] not in self.connection:
-                        self.connection.append([str(chi), str(child)])
+                    if [str(chi), str(skill)] not in self.connection:
+                        self.connection.append([str(chi), str(skill)])
             elif isinstance(child, SkillTreeNode):
                 child.add_parent(skill)
                 skill.add_child(child)
-                if [str(skill), str(child)] not in self.connection:
-                    self.connection.append([str(skill), str(child)])
+                if [str(child), str(skill)] not in self.connection:
+                    self.connection.append([str(child), str(skill)])
         self.node_set.add(skill)
 
     def remove_skill(self, skill: SkillTreeNode):
