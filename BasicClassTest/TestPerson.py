@@ -69,12 +69,12 @@ def Test3_partially_print_user_tree():
 
 
 
-    # try:
-    #     st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
-    # except FileNotFoundError:
-    #     st.readSkillTreeFromFile('test_file.csv')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('all_courses.csv')
     #
-    st.readSkillTreeFromFileDefaultPath()
+    # st.readSkillTreeFromFileDefaultPath()
     # st.command_print_tree()
 
     someone = Person("someone")
