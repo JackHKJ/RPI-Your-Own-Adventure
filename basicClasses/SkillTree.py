@@ -107,7 +107,7 @@ class SkillTree:
             pre_req = pre_req[1:-1].split(', ')
             pre_req = list(map(lambda s: s.strip("'"), pre_req))
             for p in pre_req:
-                for n in set(find_parents.keys()) and self.node_set:
+                for n in set(find_parents.keys()) | self.node_set:
                     if n.shortName == p:
                         parents.append(n)
             self.addSkill(node, parent=parents)

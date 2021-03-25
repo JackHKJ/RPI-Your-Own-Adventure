@@ -69,10 +69,10 @@ def Test4_readSkillTreeFromFileTest():
             is_abstract=True),
         'Computer Science Tree')
     try:
-        st.readSkillTreeFromFile('./BasicClassTest/test_file.csv')
+        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
     except FileNotFoundError:
-        st.readSkillTreeFromFile('test_file.csv')
-    st.command_print_tree()
+        st.readSkillTreeFromFile('all_courses.csv')
+    # st.command_print_tree()
 
 
 def Test5_pretty_print_tree():
@@ -134,7 +134,7 @@ if __name__ == "__main__":
     # Test1_printer_test()
     # Test2_basicTreeTest()
     # Test3_basicGetNodeTest()
-    # Test4_readSkillTreeFromFileTest()
+    Test4_readSkillTreeFromFileTest()
     # Test5_pretty_print_tree()
     # Test6_pretty_print_all()
-    Test7_savefigTest()
+    # Test7_savefigTest()
