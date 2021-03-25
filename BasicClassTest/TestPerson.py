@@ -12,6 +12,21 @@ from basicClasses.SkillTreeNode import SkillTreeNode
 from basicClasses.SkillTree import SkillTree
 
 
+def TreeGenerator():
+    st = SkillTree(
+        SkillTreeNode(
+            ID=1,
+            fullName='All Course Root',
+            shortName='Root',
+            is_abstract=True),
+        'Full Course Tree')
+    try:
+        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
+    except FileNotFoundError:
+        st.readSkillTreeFromFile('all_courses.csv')
+    return st
+
+
 def Test1_testVisualizationOfPerson_simple():
     Tree = SkillTree(name="Admin")
     nodeA = SkillTreeNode(ID='001', shortName="NODE_A")
@@ -29,7 +44,7 @@ def Test1_testVisualizationOfPerson_simple():
     someone.add_skill(Tree, Tree.get_node_by_shortName("NODE_B"))
     someone.add_skill(Tree, Tree.get_node_by_shortName("NODE_C"))
     someone.add_skill(Tree, Tree.get_node_by_shortName("NODE_D"))
-    someone.visualize_skills()
+    Tree.pretty_print_partial_tree(someone.skills)
 
 
 def Test2_testVisualizationOfPerson_complex():
@@ -58,22 +73,9 @@ def Test2_testVisualizationOfPerson_complex():
 
 
 def Test3_partially_print_user_tree():
-    st = SkillTree(
-        SkillTreeNode(
-            ID=1,
-            fullName='All Courses Root',
-            shortName='Courses',
-            is_abstract=True
-        ),
-        'All Courses Tree')
+    st = TreeGenerator()
+    st.command_print_tree()
 
-
-
-    try:
-        st.readSkillTreeFromFile('./BasicClassTest/all_courses.csv')
-    except FileNotFoundError:
-        st.readSkillTreeFromFile('all_courses.csv')
-    #
     # st.readSkillTreeFromFileDefaultPath()
     # st.command_print_tree()
 
@@ -86,17 +88,9 @@ def Test3_partially_print_user_tree():
 
     st.pretty_print_partial_tree(someone.skills)
 
-def Test4_print_a_real_user_tree():
 
-    st = SkillTree(
-        SkillTreeNode(
-            ID=1,
-            fullName='All Courses Root',
-            shortName='Courses',
-            is_abstract=True
-        ),
-        'All Courses Tree')
-    st.readSkillTreeFromFileDefaultPath()
+def Test4_print_a_real_user_tree():
+    st = TreeGenerator()
 
     gatherer = InfoGatherer(input("Enter your SIS username: "), input("Enter your sis password: "))
     if not gatherer.logged_in:
@@ -133,12 +127,9 @@ def Test5_filter_a_persons_selectable_course():
     print("With full name filter")
 
 
-
-
-
 if __name__ == "__main__":
     # Test1_testVisualizationOfPerson_simple()
     # Test2_testVisualizationOfPerson_complex()
-    Test3_partially_print_user_tree()
-    # Test4_print_a_real_user_tree()
+    # Test3_partially_print_user_tree()
+    Test4_print_a_real_user_tree()
     # Test5_filter_a_persons_selectable_course()
