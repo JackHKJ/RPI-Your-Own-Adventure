@@ -5,9 +5,10 @@ from basicClasses.InfoGatherer import InfoGatherer
 from PIL import Image, ImageTk
 import time
 
-class mainWindow():
+
+class loginWindow:
     """
-    This is the First page
+    This is the page for user login / Guest mode selection
     """
 
     def __init__(self, master):
@@ -15,7 +16,7 @@ class mainWindow():
         """
         define logo title and window dimension
         """
-        self.img = PhotoImage(file='rpi.gif')
+        self.img = PhotoImage(file='src/rpi.gif')
         self.label_img = Label(self.master, image=self.img)
         self.label_img.pack()
         self.screen_width = master.maxsize()[0]
@@ -63,7 +64,7 @@ class mainWindow():
     def goNext(self):
         self.master.destroy()
         newwindow = Tk()
-        newContant = secondPage(newwindow)
+        newContant = mainWindow(newwindow)
         newwindow.mainloop()
 
     def guest_mode(self):
@@ -71,12 +72,15 @@ class mainWindow():
         self.goNext()
 
 
-class secondPage():
+class mainWindow:
+    """
+    This is the main page that shows the skill tree, the requests and the available options
+    """
     def __init__(self, master):
-        #resize the image
-        skill_tree_path='pic_save/temp_fig.png'
-        #change the image ratio here
-        resize_img=Image.open(skill_tree_path).resize((620,348))      
+        # resize the image
+        skill_tree_path = 'pic_save/temp_fig.png'
+        # change the image ratio here
+        resize_img = Image.open(skill_tree_path).resize((620, 348))
 
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -100,8 +104,8 @@ class secondPage():
         # self.courselist.pack()
         # self.courselist.place(x=100, y=50)
         ##################
-        self.requestlist=Listbox(self.master,width=50, height=20)
-        for item in ['Request1', 'Request2', 'Request3','Request4', 'Request5', 'Request6']:
+        self.requestlist = Listbox(self.master, width=50, height=20)
+        for item in ['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']:
             self.requestlist.insert(END, item)
         self.requestlist.pack()
         self.requestlist.place(x=700, y=50)
@@ -133,7 +137,7 @@ class secondPage():
     def goThird(self):
         self.master.deiconify()
         newwindow = Toplevel(self.master)
-        newContant = thirdPage(newwindow)
+        newContant = AddSkillPage(newwindow)
         newwindow.mainloop()
 
     def ModifyQuest(self):
@@ -144,11 +148,14 @@ class secondPage():
     def goFourth(self):
         self.master.deiconify()
         newwindow = Toplevel(self.master)
-        newContant = fourthPage(newwindow)
+        newContant = requestWindow(newwindow)
         newwindow.mainloop()
 
 
-class thirdPage():
+class AddSkillPage:
+    """
+    This is the page that allows you modify your skill tree via SIS
+    """
     def __init__(self, master):
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -157,49 +164,54 @@ class thirdPage():
         self.master.geometry(f'1200x800+{self.w}+{self.h}')
         self.master.resizable(width=False, height=False)
         ###############Statu Bar set up############################
-        self.statusvar=StringVar()
+        self.statusvar = StringVar()
         self.statusvar.set("Ready")
-        self.console=Label(self.master, textvariable=self.statusvar,height=3, relief=SUNKEN, anchor="w")
+        self.console = Label(self.master, textvariable=self.statusvar, height=3, relief=SUNKEN, anchor="w")
         self.console.pack(side=BOTTOM, fill=X)
         ############End#############################
 
         ##############Courselist set up here################################
-        self.courselist=Listbox(self.master,width=50, height=20)
-        #give me a function that can return a courselist
+        self.courselist = Listbox(self.master, width=50, height=20)
+        # give me a function that can return a courselist
         for item in ['Operating System', 'Principle of Software', 'Intro to algorithm']:
             self.courselist.insert(END, item)
         self.courselist.pack()
         self.courselist.place(x=100, y=50)
         #############END###################################################
         ##############CRN input#########################
-        self.CRN_num=StringVar
-        self.CRNinput=Entry(self.master,textvariable=self.CRN_num)
-        self.CRNinput.insert(0,"Enter CRN here")
+        self.CRN_num = StringVar
+        self.CRNinput = Entry(self.master, textvariable=self.CRN_num)
+        self.CRNinput.insert(0, "Enter CRN here")
         self.CRNinput.pack()
-        self.CRNinput.place(x=600, y=200,width=200, height=50)
+        self.CRNinput.place(x=600, y=200, width=200, height=50)
 
-        self.addByCRN = Button(self.master, text="Add By CRN",command=lambda: self.add_CRN(),height=3, width=18, bg='white', compound='center')
+        self.addByCRN = Button(self.master, text="Add By CRN", command=lambda: self.add_CRN(), height=3, width=18,
+                               bg='white', compound='center')
         self.addByCRN.pack()
         self.addByCRN.place(x=600, y=250)
         ###############End#################################################
         ##########Filter Text#############################
-        self.filter_text=StringVar
-        self.Filter = Entry(self.master,textvariable=self.filter_text)
-        self.Filter.insert(0,"Filter Text")
+        self.filter_text = StringVar
+        self.Filter = Entry(self.master, textvariable=self.filter_text)
+        self.Filter.insert(0, "Filter Text")
         self.Filter.pack()
-        self.Filter.place(x=100, y=400,width=200, height=60)
+        self.Filter.place(x=100, y=400, width=200, height=60)
 
-        self.Apply = Button(self.master, text="Apply",command=lambda: self.filter(), height=3, width=18, bg='white', compound='center')
+        self.Apply = Button(self.master, text="Apply", command=lambda: self.filter(), height=3, width=18, bg='white',
+                            compound='center')
         self.Apply.pack()
         self.Apply.place(x=300, y=400)
         ###########End##################################################
-        self.add = Button(self.master, text="ADD",command=lambda: self.add_CRN(), height=3, width=18, bg='white', compound='center')
+        self.add = Button(self.master, text="ADD", command=lambda: self.add_CRN(), height=3, width=18, bg='white',
+                          compound='center')
         self.add.pack()
         self.add.place(x=600, y=50)
 
-        self.back = Button(self.master, text="Go Back",command=lambda: self.goBack(), height=3, width=18, bg='white', compound='center')
+        self.back = Button(self.master, text="Go Back", command=lambda: self.goBack(), height=3, width=18, bg='white',
+                           compound='center')
         self.back.pack()
         self.back.place(x=600, y=400)
+
     def just_add(self):
         self.statusvar.set("Busy!!! Adding course........")
         self.console.update()
@@ -207,6 +219,7 @@ class thirdPage():
         self.statusvar.set("Course is added!!!!!")
         ########TO DO: add the course######
         pass
+
     def add_CRN(self):
         self.statusvar.set("Busy!!! Adding course........")
         self.console.update()
@@ -214,6 +227,7 @@ class thirdPage():
         self.statusvar.set("Course is added!!!!!")
         ########TO DO: add the course with CRN######
         pass
+
     def filter(self):
         self.statusvar.set("Busy!!! Filtering Text..........")
         self.console.update()
@@ -226,7 +240,7 @@ class thirdPage():
         self.master.destroy()
 
 
-class fourthPage():
+class requestWindow():
     def __init__(self, master):
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -235,50 +249,56 @@ class fourthPage():
         self.master.geometry(f'1200x800+{self.w}+{self.h}')
         self.master.resizable(width=False, height=False)
 
-
         ###############Request processing############
         ####available request#####
-        self.avail_request=Listbox(self.master,width=50, height=25)
-        for item in ['Request1', 'Request2', 'Request3','Request4', 'Request5', 'Request6']:
-            self.avail_request.insert(END,item)
+        self.avail_request = Listbox(self.master, width=50, height=25)
+        for item in ['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']:
+            self.avail_request.insert(END, item)
         self.avail_request.pack()
         self.avail_request.place(x=100, y=50)
         ######accept request#####
-        self.accept_request=Listbox(self.master,width=50, height=25)
+        self.accept_request = Listbox(self.master, width=50, height=25)
         self.accept_request.pack()
         self.accept_request.place(x=600, y=50)
         ###############End##########################
 
-        self.accept = Button(self.master, text="Accept >>",command=lambda:self.accept_move(),height=3, width=50, bg='white', compound='center')
+        self.accept = Button(self.master, text="Accept >>", command=lambda: self.accept_move(), height=3, width=50,
+                             bg='white', compound='center')
         self.accept.pack()
         self.accept.place(x=100, y=500)
 
-        self.remove = Button(self.master, text="<< Remove",command=lambda:self.remove_move(), height=3, width=50, bg='white', compound='center')
+        self.remove = Button(self.master, text="<< Remove", command=lambda: self.remove_move(), height=3, width=50,
+                             bg='white', compound='center')
         self.remove.pack()
         self.remove.place(x=600, y=500)
 
-        self.check = Button(self.master, text="Check as finished", command=lambda:self.finished(),height=3, width=50, bg='white', compound='center')
+        self.check = Button(self.master, text="Check as finished", command=lambda: self.finished(), height=3, width=50,
+                            bg='white', compound='center')
         self.check.pack()
         self.check.place(x=600, y=600)
 
-        self.back = Button(self.master, text="Go Back",command=lambda: self.goBack(), height=3, width=50, bg='white', compound='center')
+        self.back = Button(self.master, text="Go Back", command=lambda: self.goBack(), height=3, width=50, bg='white',
+                           compound='center')
         self.back.pack()
         self.back.place(x=100, y=600)
 
     def accept_move(self):
-        self.accept_request.insert(0,self.avail_request.get(self.avail_request.curselection()))
+        self.accept_request.insert(0, self.avail_request.get(self.avail_request.curselection()))
         self.avail_request.delete(self.avail_request.curselection())
+
     def remove_move(self):
-        self.avail_request.insert(0,self.accept_request.get(self.accept_request.curselection()))
+        self.avail_request.insert(0, self.accept_request.get(self.accept_request.curselection()))
         self.accept_request.delete(self.accept_request.curselection())
+
     def finished(self):
         ############TO DO:Update request back to the back end#########################
         pass
+
     def goBack(self):
         self.master.destroy()
 
 
 if __name__ == "__main__":
     root = Tk()
-    cls = mainWindow(root)
+    cls = loginWindow(root)
     root.mainloop()
