@@ -5,6 +5,7 @@ from basicClasses.InfoGatherer import InfoGatherer
 from PIL import Image, ImageTk
 import time
 import enum
+import os
 
 
 class UserTypeEnum(enum.Enum):
@@ -13,6 +14,7 @@ class UserTypeEnum(enum.Enum):
     """
     STUDENT = "STUDENT"
     GUEST = "GUEST"
+
 
 class loginWindow:
     """
@@ -23,6 +25,9 @@ class loginWindow:
         self.master = master
         # Data segment
         self.user_type = None
+        self.gatherer = None
+        self.RIN = None
+        self.next = None
         """
         define logo title and window dimension
         """
@@ -65,33 +70,51 @@ class loginWindow:
         self.guestButton.place(x=350, y=150 + 40)
 
     def check_password(self):
-        gather = InfoGatherer(username=self.RIN_entry.get(), password=self.Password_entry.get())
+        self.master.title("Logging in, please wait")
+        self.RIN = self.RIN_entry.get()
+        self.gatherer = InfoGatherer(username=self.RIN_entry.get(), password=self.Password_entry.get())
         # if gather.logged_in:
         #     self.goNext()
         # else:
         #     self.master.title("Failed to log in, please retry.")
-        if gather.logged_in:
+        if self.gatherer.logged_in:
             self.user_type = UserTypeEnum.STUDENT
+            self.goNext()
+        else:
+            self.master.title("Failed to log in, please retry.")
 
     def goNext(self):
-        self.master.destroy()
-        newwindow = Tk()
-        newContant = mainWindow(newwindow)
-        newwindow.mainloop()
+        self.master.quit()
+        # self.master = Tk()
+        self.next = mainWindow(self.master)
+        self.master.mainloop()
+
+    # def close_and_create(self):
+    #     self.master.destroy()
+    #     self.master = Tk()
+    #
+    # def goto_mainWindow(self):
+    #     mainWindow(self.master)
+    #     self.master.mainloop()
 
     def guest_mode(self):
         # # placeholder
         # self.goNext()
         self.user_type = UserTypeEnum.GUEST
+        self.goNext()
+
+
 class mainWindow:
     """
     This is the main page that shows the skill tree, the requests and the available options
     """
+
     def __init__(self, master):
         # resize the image
-        skill_tree_path = 'pic_save/place_holder_fig_for_skilltree.png'
+        skill_tree_path = '../pic_save/place_holder_fig_for_skilltree.png'
         # change the image ratio here
-        resize_img = Image.open(skill_tree_path).resize((620, 348))
+
+        resize_img = Image.open('pic_save/place_holder_fig_for_skilltree.png').resize((620, 348))
 
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -140,6 +163,13 @@ class mainWindow:
         self.modify_request.pack()
         self.modify_request.place(x=800, y=400)
 
+    def Update_skilltree(self):
+        resize_img = Image.open('pic_save/temp_fig.png').resize((620, 348))
+        self.skillImg = ImageTk.PhotoImage(resize_img)
+        self.label1 = Label(self.master, image=self.skillImg)
+        self.label1.pack()
+        self.label1.place(x=70, y=50)
+
     def addSis(self):
         # function main body
         # placeholder
@@ -167,6 +197,7 @@ class AddSkillPage:
     """
     This is the page that allows you modify your skill tree via SIS
     """
+
     def __init__(self, master):
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -307,6 +338,7 @@ class requestWindow():
 
     def goBack(self):
         self.master.destroy()
+
 
 # class App(threading.Thread):
 #     def __init__(self):

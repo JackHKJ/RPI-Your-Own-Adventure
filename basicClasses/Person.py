@@ -23,6 +23,9 @@ class Person(object):
         self.skills = set()
         self.skillConnection = []
 
+    def __str__(self):
+        return "User [{}]".format(self.name)
+
     def get_name(self):
         """
         Getter of the name
