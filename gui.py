@@ -19,8 +19,8 @@ class loginWindow:
         self.img = PhotoImage(file='src/rpi.gif')
         self.label_img = Label(self.master, image=self.img)
         self.label_img.pack()
-        self.screen_width = master.maxsize()[0]
-        self.screen_height = master.maxsize()[1]
+        self.screen_width = self.master.maxsize()[0]
+        self.screen_height = self.master.maxsize()[1]
         self.w = int((self.screen_width - 600) / 2)
         self.h = int((self.screen_height - 400) / 2)
         self.master.geometry(f'600x400+{self.w}+{self.h}')
@@ -29,27 +29,27 @@ class loginWindow:
 
         self.RIN_lable = Label(self.master, width=7, text='RIN', compound='center')
         self.RIN_lable.place(x=200, y=120)
-        self.password_label = Label(root, width=7, text='Password: ', compound='center')
+        self.password_label = Label(self.master, width=7, text='Password: ', compound='center')
         self.password_label.place(x=200, y=120 + 40)
 
         global RIN, password
         RIN = StringVar
         password = StringVar
 
-        self.RIN_entry = Entry(root, textvariable=RIN, bg='yellow')
+        self.RIN_entry = Entry(self.master, textvariable=RIN, bg='yellow')
         self.RIN_entry.pack()
         self.RIN_entry.place(x=280, y=80 + 40)
 
-        self.Password_entry = Entry(root, textvariable=password, show='*', bg='yellow')
+        self.Password_entry = Entry(self.master, textvariable=password, show='*', bg='yellow')
         self.Password_entry.pack()
         self.Password_entry.place(x=280, y=120 + 40)
 
-        self.loginButton = Button(root, text="Login in as RPI student", width=20, compound='center',
+        self.loginButton = Button(self.master, text="Login in as RPI student", width=20, compound='center',
                                   command=lambda: self.check_password(),
                                   fg='black', bg='yellow')
         self.loginButton.pack()
         self.loginButton.place(x=150, y=150 + 40)
-        self.guestButton = Button(root, text="Guest Mode", width=15, compound='center',
+        self.guestButton = Button(self.master, text="Guest Mode", width=15, compound='center',
                                   command=lambda: self.guest_mode(), fg='black', bg='yellow')
         self.guestButton.pack()
         self.guestButton.place(x=350, y=150 + 40)
