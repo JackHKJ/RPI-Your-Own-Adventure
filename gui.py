@@ -196,6 +196,10 @@ class thirdPage():
         self.add = Button(self.master, text="ADD",command=lambda: self.add_CRN(), height=3, width=18, bg='white', compound='center')
         self.add.pack()
         self.add.place(x=600, y=50)
+
+        self.back = Button(self.master, text="Go Back",command=lambda: self.goBack(), height=3, width=18, bg='white', compound='center')
+        self.back.pack()
+        self.back.place(x=600, y=400)
     def just_add(self):
         self.statusvar.set("Busy!!! Adding course........")
         self.console.update()
@@ -218,6 +222,8 @@ class thirdPage():
         ########TO DO: filter
         pass
 
+    def goBack(self):
+        self.master.destroy()
 
 
 class fourthPage():
@@ -254,6 +260,11 @@ class fourthPage():
         self.check = Button(self.master, text="Check as finished", command=lambda:self.finished(),height=3, width=50, bg='white', compound='center')
         self.check.pack()
         self.check.place(x=600, y=600)
+
+        self.back = Button(self.master, text="Go Back",command=lambda: self.goBack(), height=3, width=50, bg='white', compound='center')
+        self.back.pack()
+        self.back.place(x=100, y=600)
+
     def accept_move(self):
         self.accept_request.insert(0,self.avail_request.get(self.avail_request.curselection()))
         self.avail_request.delete(self.avail_request.curselection())
@@ -263,6 +274,8 @@ class fourthPage():
     def finished(self):
         ############TO DO:Update request back to the back end#########################
         pass
+    def goBack(self):
+        self.master.destroy()
 
 
 if __name__ == "__main__":
