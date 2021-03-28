@@ -4,7 +4,15 @@ from tkinter import *
 from basicClasses.InfoGatherer import InfoGatherer
 from PIL import Image, ImageTk
 import time
+import enum
 
+
+class UserTypeEnum(enum.Enum):
+    """
+    The Class for representing the user Types
+    """
+    STUDENT = "STUDENT"
+    GUEST = "GUEST"
 
 class loginWindow:
     """
@@ -13,6 +21,8 @@ class loginWindow:
 
     def __init__(self, master):
         self.master = master
+        # Data segment
+        self.user_type = None
         """
         define logo title and window dimension
         """
@@ -56,10 +66,12 @@ class loginWindow:
 
     def check_password(self):
         gather = InfoGatherer(username=self.RIN_entry.get(), password=self.Password_entry.get())
+        # if gather.logged_in:
+        #     self.goNext()
+        # else:
+        #     self.master.title("Failed to log in, please retry.")
         if gather.logged_in:
-            self.goNext()
-        else:
-            self.master.title("Failed to log in, please retry.")
+            self.user_type = UserTypeEnum.STUDENT
 
     def goNext(self):
         self.master.destroy()
@@ -68,17 +80,16 @@ class loginWindow:
         newwindow.mainloop()
 
     def guest_mode(self):
-        # placeholder
-        self.goNext()
-
-
+        # # placeholder
+        # self.goNext()
+        self.user_type = UserTypeEnum.GUEST
 class mainWindow:
     """
     This is the main page that shows the skill tree, the requests and the available options
     """
     def __init__(self, master):
         # resize the image
-        skill_tree_path = 'pic_save/temp_fig.png'
+        skill_tree_path = 'pic_save/place_holder_fig_for_skilltree.png'
         # change the image ratio here
         resize_img = Image.open(skill_tree_path).resize((620, 348))
 
@@ -297,8 +308,28 @@ class requestWindow():
     def goBack(self):
         self.master.destroy()
 
+# class App(threading.Thread):
+#     def __init__(self):
+#         super(App, self).__init__()
+#         self.start()
+#
+#     def callback(self):
+#         self.root.quit()
+#
+#     def run(self):
+#         self.root = Tk()
+#         self.root.protocol("WM_DELETE_WINDOW", self.callback)
+#         loginWindow(self.root)
+#         self.root.mainloop()
+#
+
 
 if __name__ == "__main__":
     root = Tk()
-    cls = loginWindow(root)
+    loginWindow(root)
     root.mainloop()
+    # App()
+    #
+    # for i in range(1000):
+    #     time.sleep(1)
+    #     print(i)
