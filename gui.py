@@ -5,7 +5,9 @@ from basicClasses.InfoGatherer import InfoGatherer
 from PIL import Image, ImageTk
 import time
 import enum
-import os
+
+TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
+INFO_GATHERER = None
 
 
 class UserTypeEnum(enum.Enum):
@@ -14,6 +16,16 @@ class UserTypeEnum(enum.Enum):
     """
     STUDENT = "STUDENT"
     GUEST = "GUEST"
+
+
+class pageEnum(enum.Enum):
+    """
+    The class for representing the current page
+    """
+    loginWindow = "loginWindow"
+    mainWindow = "mainWindow"
+    AddSkillPage = "AddSkillPage"
+    requestWindow = "requestWindow"
 
 
 class loginWindow:
@@ -28,6 +40,7 @@ class loginWindow:
         self.gatherer = None
         self.RIN = None
         self.next = None
+        self.page_name = pageEnum.loginWindow
         """
         define logo title and window dimension
         """
@@ -40,7 +53,7 @@ class loginWindow:
         self.h = int((self.screen_height - 400) / 2)
         self.master.geometry(f'600x400+{self.w}+{self.h}')
         self.master.resizable(width=False, height=False)
-        self.master.title("RPI YOUR OWN ADVENTURE")
+        self.master.title(TEAM_SLOGAN_STR)
 
         self.RIN_lable = Label(self.master, width=7, text='RIN', compound='center')
         self.RIN_lable.place(x=200, y=120)
@@ -110,6 +123,13 @@ class mainWindow:
     """
 
     def __init__(self, master):
+        # Data segment
+        self.page_name = pageEnum.mainWindow
+        self.sub_page_name = None
+        self.sub_page_window = None
+        self.PersonObj = None
+        self.ST = None
+
         # resize the image
         skill_tree_path = '../pic_save/place_holder_fig_for_skilltree.png'
         # change the image ratio here
@@ -122,7 +142,7 @@ class mainWindow:
         self.h = int((self.screen_height - 800) / 2)
         self.master.geometry(f'1200x800+{self.w}+{self.h}')
         self.master.resizable(width=False, height=False)
-        self.master.title("RPI YOUR OWN ADVENTURE")
+        self.master.title(TEAM_SLOGAN_STR)
         #####resize skill tree#########
         self.skillImg = ImageTk.PhotoImage(resize_img)
         self.label1 = Label(self.master, image=self.skillImg)
@@ -176,10 +196,15 @@ class mainWindow:
         self.goThird()
 
     def goThird(self):
+        self.sub_page_name = pageEnum.AddSkillPage
+
         self.master.deiconify()
         newwindow = Toplevel(self.master)
-        newContant = AddSkillPage(newwindow)
+        AddSkillPage(newwindow, personObj=self.PersonObj, st=self.ST)
+        self.sub_page_window = newwindow
         newwindow.mainloop()
+        self.sub_page_name = None
+        self.sub_page_window = None
 
     def ModifyQuest(self):
         # function main body
@@ -198,7 +223,12 @@ class AddSkillPage:
     This is the page that allows you modify your skill tree via SIS
     """
 
-    def __init__(self, master):
+    def __init__(self, master, personObj=None, st=None):
+        # Data segment
+        self.page_name = pageEnum.AddSkillPage
+        self.PersonObj = personObj
+        self.ST = st
+
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
         self.w = int((self.screen_width - 1200) / 2)
@@ -214,8 +244,13 @@ class AddSkillPage:
 
         ##############Courselist set up here################################
         self.courselist = Listbox(self.master, width=50, height=20)
+        # Available course list:
+        if self.PersonObj is not None:
+            course_list = [str(item) for item in self.PersonObj.get_selectable_courses(self.ST)]
+        else:
+            course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
         # give me a function that can return a courselist
-        for item in ['Operating System', 'Principle of Software', 'Intro to algorithm']:
+        for item in course_list:
             self.courselist.insert(END, item)
         self.courselist.pack()
         self.courselist.place(x=100, y=50)
@@ -271,19 +306,26 @@ class AddSkillPage:
         pass
 
     def filter(self):
-        self.statusvar.set("Busy!!! Filtering Text..........")
-        self.console.update()
-        time.sleep(5)
-        self.statusvar.set("The course is founded")
-        ########TO DO: filter
-        pass
+        self.courselist.delete(0, self.courselist.size())
+        filter_text = self.Filter.get()
+        if filter_text == "" or filter_text == "Filter Text":
+            return
+        course_list = [str(item) for item in
+                       self.PersonObj.get_selectable_courses_filtered(self.ST, filter_text)]
+        for item in course_list:
+            self.courselist.insert(END, item)
 
     def goBack(self):
         self.master.destroy()
 
 
 class requestWindow():
-    def __init__(self, master):
+    def __init__(self, master, personObj=None, st=None):
+        # Data segment
+        self.page_name = pageEnum.requestWindow
+        self.PersonObj = personObj
+        self.ST = st
+
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
         self.w = int((self.screen_width - 1200) / 2)

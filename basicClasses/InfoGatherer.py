@@ -208,6 +208,10 @@ class InfoGatherer:
         self.__wait_element('//div[@class="headerlinksdiv"]//table[@class="plaintable"]//table//td[3]')
         return course_list_parser(self.__try_to_fetch_learned_courses())
 
+    def add_course_from_SIS(self):
+        print("Simulating adding course from SIS, to be implemented")
+        pass
+
 
 if __name__ == "__main__":
     Gatherer = InfoGatherer(input("Enter your SIS username: "), input("Enter your sis password: "))

@@ -22,7 +22,6 @@ tree_loader.start()
 
 class GUIThread(threading.Thread):
 
-
     def __init__(self, window_class):
         super(GUIThread, self).__init__()
         self.window_class = window_class
@@ -40,25 +39,23 @@ class GUIThread(threading.Thread):
         self.root.mainloop()
 
 
-
-
 # Global data segment
 User = None
 USER_TYPE = None
+USER_GATHERER = None
 
 # if __name__ == "__main__":
 #     login_thread = GUIThread(loginWindow)
 #
 
 
-
 if __name__ == "__main__":
 
     # Load the login page, wait until user choose guest_mode or
-    login_thread = GUIThread(loginWindow)
+    GUI_thread = GUIThread(loginWindow)
     while True:
-        if login_thread.window is not None and login_thread.window.user_type is not None:
-            USER_TYPE = login_thread.window.user_type
+        if GUI_thread.window is not None and GUI_thread.window.user_type is not None:
+            USER_TYPE = GUI_thread.window.user_type
             break
     print("User is {}".format(USER_TYPE))
     # Ensures the tree complete loading
@@ -68,21 +65,27 @@ if __name__ == "__main__":
     if USER_TYPE == UserTypeEnum.GUEST:
         User = Person("Guest")
     if USER_TYPE == UserTypeEnum.STUDENT:
-        User = Person(login_thread.window.RIN)
-        User.add_skills_by_shortName(st, login_thread.window.gatherer.get_learned_courses())
+        User = Person(GUI_thread.window.RIN)
+        User.add_skills_by_shortName(st, GUI_thread.window.gatherer.get_learned_courses())
         st.pretty_print_partial_tree(User.get_skills(), save_fig=True)
-
-    # Close the login page
+        USER_GATHERER = GUI_thread.window.gatherer
 
     # Open the main page
     while True:
-        if login_thread.window.next is not None:
-            login_thread.window = login_thread.window.next
+        if GUI_thread.window.next is not None:
+            GUI_thread.window = GUI_thread.window.next
+            GUI_thread.window.PersonObj = User
+            GUI_thread.window.ST = st
             break
 
     # Try to show the user skillTree fig
     if USER_TYPE == UserTypeEnum.STUDENT:
-        login_thread.window.Update_skilltree()
+        GUI_thread.window.title("Updating your Skill Tree...")
+        GUI_thread.window.Update_skilltree()
+        GUI_thread.window.title(TEAM_SLOGAN_STR)
 
+    # pass the person item to the page
+
+    # Enter the main loop:
 
     print('Reached the end')
