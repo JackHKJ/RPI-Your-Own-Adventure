@@ -74,7 +74,7 @@ def Test2_testVisualizationOfPerson_complex():
 
 def Test3_partially_print_user_tree():
     st = TreeGenerator()
-    st.command_print_tree()
+    # st.command_print_tree()
 
     # st.readSkillTreeFromFileDefaultPath()
     # st.command_print_tree()
@@ -127,9 +127,16 @@ def Test5_filter_a_persons_selectable_course():
     print("With full name filter")
 
 
+def Test6_gusetCourseAvailabilityTest():
+    st = TreeGenerator()
+    someone = Person("someone")
+    print(someone.get_selectable_courses(st))
+
+
 if __name__ == "__main__":
     # Test1_testVisualizationOfPerson_simple()
     # Test2_testVisualizationOfPerson_complex()
-    # Test3_partially_print_user_tree()
-    Test4_print_a_real_user_tree()
+    Test3_partially_print_user_tree()
+    # Test4_print_a_real_user_tree()
     # Test5_filter_a_persons_selectable_course()
+    # Test6_gusetCourseAvailabilityTest()

@@ -28,6 +28,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import WebDriverException
+import platform
 
 Locator = namedtuple('Locator', ['by', 'value'])
 
@@ -42,11 +43,29 @@ def chromedriver_init():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument("--incognito")
-    try:
-        browser = webdriver.Chrome(options=chrome_options)
-    except WebDriverException:
-        browser = webdriver.Chrome(options=chrome_options,executable_path="../chromedriver.exe")
+    if "windows" in platform.system().lower():
+        try:
+            browser = webdriver.Chrome(options=chrome_options)
+        except WebDriverException:
+            browser = webdriver.Chrome(options=chrome_options, executable_path="../chromedriver.exe")
+    elif "linux" in platform.system().lower():
+        try:
+            browser = webdriver.Chrome(options=chrome_options, executable_path="chromedriver_linux")
+        except WebDriverException:
+            browser = webdriver.Chrome(options=chrome_options, executable_path="../chromedriver_linux")
+    elif "darwin" in platform.system().lower():
+        try:
+            browser = webdriver.Chrome(options=chrome_options, executable_path="chromedriver_mac")
+        except WebDriverException:
+            browser = webdriver.Chrome(options=chrome_options, executable_path="../chromedriver_mac")
+    else:
+        try:
+            browser = webdriver.Chrome(options=chrome_options)
+        except WebDriverException:
+            browser = webdriver.Chrome(options=chrome_options, executable_path="../chromedriver.exe")
+
     browser.maximize_window()
+
     return browser
 
 
@@ -207,6 +226,11 @@ class InfoGatherer:
         self.__goto_page()
         self.__wait_element('//div[@class="headerlinksdiv"]//table[@class="plaintable"]//table//td[3]')
         return course_list_parser(self.__try_to_fetch_learned_courses())
+
+    def add_course_from_SIS(self):
+        print("Simulating adding course from SIS, to be implemented")
+        pass
+
 
 
 if __name__ == "__main__":

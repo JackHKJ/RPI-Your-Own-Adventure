@@ -23,6 +23,9 @@ class Person(object):
         self.skills = set()
         self.skillConnection = []
 
+    def __str__(self):
+        return "User [{}]".format(self.name)
+
     def get_name(self):
         """
         Getter of the name
@@ -86,7 +89,7 @@ class Person(object):
                 if req not in self.skills:
                     selectable = False
                     break
-            if selectable:
+            if selectable and course not in self.skills:
                 selectable_course.append(course)
                 continue
         return selectable_course
