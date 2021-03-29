@@ -136,7 +136,7 @@ def Test6_gusetCourseAvailabilityTest():
 if __name__ == "__main__":
     # Test1_testVisualizationOfPerson_simple()
     # Test2_testVisualizationOfPerson_complex()
-    # Test3_partially_print_user_tree()
+    Test3_partially_print_user_tree()
     # Test4_print_a_real_user_tree()
     # Test5_filter_a_persons_selectable_course()
-    Test6_gusetCourseAvailabilityTest()
+    # Test6_gusetCourseAvailabilityTest()

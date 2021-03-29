@@ -89,7 +89,7 @@ class Person(object):
                 if req not in self.skills:
                     selectable = False
                     break
-            if selectable:
+            if selectable and course not in self.skills:
                 selectable_course.append(course)
                 continue
         return selectable_course

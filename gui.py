@@ -7,7 +7,6 @@ import time
 import enum
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
-INFO_GATHERER = None
 
 
 class UserTypeEnum(enum.Enum):
@@ -128,7 +127,9 @@ class mainWindow:
         self.sub_page_name = None
         self.sub_page_window = None
         self.PersonObj = None
+        self.user_type = None
         self.ST = None
+        self.gatherer = None
 
         # resize the image
         skill_tree_path = '../pic_save/place_holder_fig_for_skilltree.png'
@@ -197,14 +198,11 @@ class mainWindow:
 
     def goThird(self):
         self.sub_page_name = pageEnum.AddSkillPage
-
         self.master.deiconify()
-        newwindow = Toplevel(self.master)
-        AddSkillPage(newwindow, personObj=self.PersonObj, st=self.ST)
-        self.sub_page_window = newwindow
-        newwindow.mainloop()
-        self.sub_page_name = None
-        self.sub_page_window = None
+        new_window = Toplevel(self.master)
+        AddSkillPage(new_window, personObj=self.PersonObj, st=self.ST, parent=self)
+        self.sub_page_window = new_window
+        new_window.mainloop()
 
     def ModifyQuest(self):
         # function main body
@@ -223,11 +221,12 @@ class AddSkillPage:
     This is the page that allows you modify your skill tree via SIS
     """
 
-    def __init__(self, master, personObj=None, st=None):
+    def __init__(self, master, personObj=None, st=None, parent=None):
         # Data segment
         self.page_name = pageEnum.AddSkillPage
         self.PersonObj = personObj
         self.ST = st
+        self.parent = parent
 
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -245,10 +244,17 @@ class AddSkillPage:
         ##############Courselist set up here################################
         self.courselist = Listbox(self.master, width=50, height=20)
         # Available course list:
+        self.course_dict = dict()
+        course_list = []
         if self.PersonObj is not None:
-            course_list = [str(item) for item in self.PersonObj.get_selectable_courses(self.ST)]
+            for item in self.PersonObj.get_selectable_courses(self.ST):
+                course_list.append(str(item))
+                self.course_dict[str(item)] = item
         else:
             course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
+            for item in course_list:
+                self.course_dict[item] = item
+
         # give me a function that can return a courselist
         for item in course_list:
             self.courselist.insert(END, item)
@@ -279,7 +285,7 @@ class AddSkillPage:
         self.Apply.pack()
         self.Apply.place(x=300, y=400)
         ###########End##################################################
-        self.add = Button(self.master, text="ADD", command=lambda: self.add_CRN(), height=3, width=18, bg='white',
+        self.add = Button(self.master, text="ADD", command=lambda: self.just_add(), height=3, width=18, bg='white',
                           compound='center')
         self.add.pack()
         self.add.place(x=600, y=50)
@@ -290,12 +296,19 @@ class AddSkillPage:
         self.back.place(x=600, y=400)
 
     def just_add(self):
-        self.statusvar.set("Busy!!! Adding course........")
+        self.statusvar.set("Adding course........")
         self.console.update()
-        time.sleep(5)
-        self.statusvar.set("Course is added!!!!!")
-        ########TO DO: add the course######
-        pass
+        print(self.courselist.curselection()[0])
+        if self.courselist.curselection()[0] >= 0:
+            selected = self.courselist.get(self.courselist.curselection())
+            self.PersonObj.add_skill(self.ST, self.course_dict[selected])
+            self.courselist.delete(self.courselist.curselection())
+            self.statusvar.set("Added {}".format(selected))
+            self.console.update()
+
+            # Try to add to SIS if logged in
+            if self.parent.user_type == UserTypeEnum.STUDENT:
+                self.parent.gatherer.add_course_from_SIS()
 
     def add_CRN(self):
         self.statusvar.set("Busy!!! Adding course........")
@@ -306,16 +319,16 @@ class AddSkillPage:
         pass
 
     def filter(self):
-        self.courselist.delete(0, self.courselist.size())
         filter_text = self.Filter.get()
         if filter_text == "" or filter_text == "Filter Text":
             return
-        course_list = [str(item) for item in
-                       self.PersonObj.get_selectable_courses_filtered(self.ST, filter_text)]
-        for item in course_list:
+        self.courselist.delete(0, self.courselist.size())
+        for item in self.PersonObj.get_selectable_courses_filtered(self.ST, filter_text):
             self.courselist.insert(END, item)
 
     def goBack(self):
+        self.parent.sub_page_name = None
+        self.parent.sub_page_window = None
         self.master.destroy()
 
 
