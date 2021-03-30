@@ -4,6 +4,7 @@
 # import SkillTree
 from enum import Enum, unique
 from .Person import Person
+from basicClasses.Node import Node
 
 
 @unique
@@ -17,7 +18,8 @@ class RequestStatus(Enum):
     COMPLETED = "COMPLETED"
     FAILED = "FAILED"
 
-class Request(object):
+
+class Request(Node):
     """
     This class is used to define a "request", which should
     1. Check whether a request can be accepted (prerequisite)
@@ -25,20 +27,20 @@ class Request(object):
     3. Achievement after completion(None as default)
     """
 
-    def __init__(self, request_name, prerequisite, achievement, complete_requirement=None, real_world_constrains=None):
+    def __init__(self, ID, prerequisite, achievement, complete_requirement=None, real_world_constrains=None):
         """
         The initializing function
-        :param request_name: the name of the request
+        :param ID: the identification string of the request
         :param prerequisite: prerequisite to be checked
         :param achievement: achievement to recieve
         """
-        self.request_name = request_name
+        super().__init__(ID)
+        self.request_name = ID
         self.prerequisite = prerequisite
         self.achievement = achievement
         self.real_world_constrains = real_world_constrains
         self.request_status = RequestStatus.UNACCEPTABLE
         self.complete_requirement = complete_requirement
-        # TODO: add more if necessary
 
     def get_name(self):
         """
@@ -52,7 +54,7 @@ class Request(object):
         Check the status of the request to decide whether to return achievement
         :return: None if the status is not RequestStatusEnum.COMPLETED, return the achievement otherwise
         """
-        if (self.request_status==RequestStatus.COMPLETED):
+        if self.request_status == RequestStatus.COMPLETED:
             return self.achievement
         else:
             return None
@@ -62,17 +64,16 @@ class Request(object):
         Show the prerequisite of the request, this function is used to tell the user which prerequisite to get
         :return: a str representation of requirements
         """
-        prereq_string=""
+        prereq_string = ""
         for prereq_list in self.prerequisite:
-            prereq_string+="("
+            prereq_string += "("
             for i in range(len(prereq_list)):
-                prereq_string+=" "+prereq_list[i]+" "
-                if (i!=len(prereq_list)-1): prereq_string+="or"
-            prereq_string+=")\n"
+                prereq_string += " " + prereq_list[i] + " "
+                if (i != len(prereq_list) - 1): prereq_string += "or"
+            prereq_string += ")\n"
         return prereq_string
 
-
-    def check_prerequisite(self, person:Person):
+    def check_prerequisite(self, person: Person):
         """
         Check whether the prerequisite is satisfied by the current state, modify the status if necessary
         :param person: the current state of the user
@@ -89,7 +90,7 @@ class Request(object):
         """
         For now, assuming that there is no complete_requirements
         """
-        self.request_status=RequestStatus.COMPLETED
+        self.request_status = RequestStatus.COMPLETED
 
     def __str__(self):
         """
