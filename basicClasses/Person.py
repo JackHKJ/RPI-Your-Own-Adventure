@@ -56,8 +56,8 @@ class Person(object):
             for this_parent in this_skill.parent:
                 if this_parent in self.skills:
                     self.skillConnection.append([str(this_parent), str(this_skill)])
-        if this_skill.children is not None:
-            for this_child in this_skill.children:
+        if this_skill.child is not None:
+            for this_child in this_skill.child:
                 if this_child in self.skills:
                     self.skillConnection.append([str(this_child), str(this_skill)])
 
