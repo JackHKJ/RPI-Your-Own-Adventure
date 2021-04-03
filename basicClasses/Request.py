@@ -35,27 +35,27 @@ class Request(Node):
         :param achievement: achievement to recieve
         """
         super().__init__(ID)
-        self.request_name = ID
-        self.prerequisite = prerequisite
-        self.achievement = achievement
-        self.real_world_constrains = real_world_constrains
-        self.request_status = RequestStatus.UNACCEPTABLE
-        self.complete_requirement = complete_requirement
+        self.__request_name = ID
+        self.__prerequisite = prerequisite
+        self.__achievement = achievement
+        self.__real_world_constrains = real_world_constrains
+        self.__request_status = RequestStatus.UNACCEPTABLE
+        self.__complete_requirement = complete_requirement
 
     def get_name(self):
         """
         Getter of the name of the request
         :return: the name of the request
         """
-        return self.request_name
+        return self.__request_name
 
     def get_achievement(self):
         """
         Check the status of the request to decide whether to return achievement
         :return: None if the status is not RequestStatusEnum.COMPLETED, return the achievement otherwise
         """
-        if self.request_status == RequestStatus.COMPLETED:
-            return self.achievement
+        if self.__request_status == RequestStatus.COMPLETED:
+            return self.__achievement
         else:
             return None
 
@@ -65,7 +65,7 @@ class Request(Node):
         :return: a str representation of requirements
         """
         prereq_string = ""
-        for prereq_list in self.prerequisite:
+        for prereq_list in self.__prerequisite:
             prereq_string += "("
             for i in range(len(prereq_list)):
                 prereq_string += " " + prereq_list[i] + " "
@@ -79,7 +79,7 @@ class Request(Node):
         :param person: the current state of the user
         :return: True if all prerequisite satisfied, False otherwise
         """
-        return self.__check_prerequisites(self.prerequisite, person.get_skills())
+        return self.__check_prerequisites(self.__prerequisite, person.get_skills())
 
     def try_to_complete(self, person):
         """
@@ -90,7 +90,7 @@ class Request(Node):
         """
         For now, assuming that there is no complete_requirements
         """
-        self.request_status = RequestStatus.COMPLETED
+        self.__request_status = RequestStatus.COMPLETED
 
     def __str__(self):
         """
@@ -98,7 +98,7 @@ class Request(Node):
         information
         :return: the string representation of the request
         """
-        return "Request (name: {}, status: {})".format(self.request_name, self.request_status)
+        return "Request (name: {}, status: {})".format(self.__request_name, self.__request_status)
 
     def __check_prerequisites(self, pl, skills, mode=all):
         """
