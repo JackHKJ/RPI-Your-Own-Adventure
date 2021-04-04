@@ -98,6 +98,7 @@ class loginWindow:
     def goNext(self):
         self.master.quit()
         # self.master = Tk()
+        self.label_img.destroy()
         self.next = mainWindow(self.master)
         self.master.mainloop()
 
@@ -142,7 +143,7 @@ class mainWindow:
         self.w = int((self.screen_width - 1200) / 2)
         self.h = int((self.screen_height - 800) / 2)
         self.master.geometry(f'1200x800+{self.w}+{self.h}')
-        self.master.resizable(width=False, height=False)
+        self.master.resizable(width=True, height=True)
         self.master.title(TEAM_SLOGAN_STR)
         #####resize skill tree#########
         self.skillImg = ImageTk.PhotoImage(resize_img)
