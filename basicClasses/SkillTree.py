@@ -227,7 +227,7 @@ class SkillTree:
     def _pretty_print_helper(self, connection_list, method, save_fig=False):
         g = nx.Graph()
         g.add_edges_from(connection_list)
-        pos_counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        pos_counter = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
         pos = dict()
         color_map = []
 
@@ -240,12 +240,16 @@ class SkillTree:
                 elif node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
                     hard_level = int(node[node.rfind('-') + 1:node.rfind('-') + 2]) - 1
                     color_map.append(self.colors[hard_level])
-                    pos[node] = [hard_level, pos_counter[hard_level]]
-                    pos_counter[hard_level] += 1
+                    pos[node] = [hard_level - 0.1 * pos_counter[hard_level], pos_counter[hard_level]]
+                    pos_counter[hard_level] += 2
                 else:
                     color_map.append('#777777')
             # pos = nx.kamada_kawai_layout(g)
-            nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666")
+
+            ax1 = plt.subplot(111)
+            ax1.margins(0.1)
+
+            nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666", ax=ax1)
 
         elif method == "Spring":
             for node in g:

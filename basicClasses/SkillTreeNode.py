@@ -50,10 +50,10 @@ class SkillTreeNode(Node):
         The representation to be shown in a printed graph
         :return: a string containing key identification part of this node
         """
-        return "[SKILL " + self.ID + ":" + self.shortName + "]"
+        return str(self.shortName)
 
     def __hash__(self):
-        return hash(str(self))
+        return hash("[SKILL " + self.ID + ":" + self.shortName + "]")
 
     def pretty_print_with_height(self):
         """
