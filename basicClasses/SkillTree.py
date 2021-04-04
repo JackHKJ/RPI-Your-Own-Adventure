@@ -283,16 +283,20 @@ class SkillTree:
         """
         self._pretty_print_helper(self.connection, method, save_fig=save_fig)
 
-    def pretty_print_partial_tree(self, nodes, method="Stack", root_name="root-0000", save_fig=False):
+    def pretty_print_partial_tree(self, nodes, method="Stack", root_name="root-0000", save_fig=False, verbose=False):
         """
         Print partially of the tree structure, print only the nodes passed in
         :param nodes: the list of SkillTreeNode to be printed
         :param method: The method statement is defaulted to 'Stack'. Method can be ['Stack','Spring']
         :param root_name: The name for the root node, default to 'root'
         :param save_fig: The indicator whether to show the fig or to save it in the file
+        :param verbose: if set to True, then print the verbose information of each node
         :return:
         """
-        node_str = [str(this_node) for this_node in nodes]
+        if not verbose:
+            node_str = [str(this_node) for this_node in nodes]
+        else:
+            node_str = [str(this_node.ID) + ":" + str(this_node.shortName) for this_node in nodes]
         chosen_set = set()
         this_connection = []
         for left, right in self.connection:
