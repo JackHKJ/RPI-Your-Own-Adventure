@@ -66,7 +66,7 @@ if __name__ == "__main__":
         User = Person("Guest")
     if USER_TYPE == UserTypeEnum.STUDENT:
         User = Person(GUI_thread.window.RIN)
-        User.add_skills_by_shortName(st, GUI_thread.window.gatherer.get_learned_courses())
+        User.add_skills_by_shortName(st, GUI_thread.window.gatherer.get_courses())
         st.pretty_print_partial_tree(User.get_skills(), save_fig=True)
         USER_GATHERER = GUI_thread.window.gatherer
 
