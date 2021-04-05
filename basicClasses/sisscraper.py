@@ -34,18 +34,18 @@ class SISscraper:
 
         text = response.text.encode("utf8")
         if b"Main Menu" not in text:
-            return False, text
-        return True, None
+            return False
+        return True
 
     def get_courses(self):
         for _ in range(self.__LOGIN_RETRY_NUM):
-            result, data = self.login()
+            result = self.login()
             if result:
                 break
             self.__session.cookies.clear()
             time.sleep(30)
         else:
-            print(f"Failed to login to SIS {data}")
+            print(f"Failed to login to SIS")
             return []
 
         response = self.__session.request('POST', transcript_url, data=f"levl=&tprt=UWEB")  
