@@ -38,16 +38,6 @@ class SISscraper:
         return True
 
     def get_courses(self):
-        for _ in range(self.__LOGIN_RETRY_NUM):
-            result = self.login()
-            if result:
-                break
-            self.__session.cookies.clear()
-            time.sleep(30)
-        else:
-            print(f"Failed to login to SIS")
-            return []
-
         response = self.__session.request('POST', transcript_url, data=f"levl=&tprt=UWEB")  
         transcript_soup = BeautifulSoup(response.text.encode('utf8'), 'html.parser')
         course_dept = transcript_soup.find_all('td', class_='dddefault', string=re.compile('^[A-Z]{4}$'))
@@ -57,4 +47,5 @@ class SISscraper:
 if __name__ == '__main__':
     load_dotenv()
     scraper = SISscraper(os.getenv('RIN'), os.getenv('PASSWORD'))
+    print(scraper.login())
     print(scraper.get_courses())
