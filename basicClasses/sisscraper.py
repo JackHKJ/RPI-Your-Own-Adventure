@@ -38,7 +38,6 @@ class SISscraper:
         return True
 
     def get_courses(self):
-
         response = self.__session.request('POST', transcript_url, data=f"levl=&tprt=UWEB")  
         transcript_soup = BeautifulSoup(response.text.encode('utf8'), 'html.parser')
         course_dept = transcript_soup.find_all('td', class_='dddefault', string=re.compile('^[A-Z]{4}$'))
