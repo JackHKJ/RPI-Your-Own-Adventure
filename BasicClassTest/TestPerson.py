@@ -86,7 +86,7 @@ def Test3_partially_print_user_tree():
     someone.add_skill(st, st.get_node_by_shortName("CSCI-2300"))
     someone.add_skill(st, st.get_node_by_shortName("CSCI-2600"))
 
-    st.pretty_print_partial_tree(someone.skills, verbose=True)
+    st.pretty_print_partial_tree(someone.skills, verbose=False)
 
 
 def Test4_print_a_real_user_tree():
