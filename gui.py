@@ -7,7 +7,8 @@ import time
 import enum
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
-
+avail_list=['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']
+accept_list=[]
 
 class UserTypeEnum(enum.Enum):
     """
@@ -160,9 +161,8 @@ class mainWindow:
         # self.courselist.pack()
         # self.courselist.place(x=100, y=50)
         ##################
-        self.requestlist = Listbox(self.master, width=50, height=20)
-        for item in ['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']:
-            self.requestlist.insert(END, item)
+        self.request_data=StringVar()
+        self.requestlist = Listbox(self.master, width=50, height=20,listvariable=self.request_data)
         self.requestlist.pack()
         self.requestlist.place(x=700, y=50)
 
@@ -213,8 +213,10 @@ class mainWindow:
     def goFourth(self):
         self.master.deiconify()
         newwindow = Toplevel(self.master)
-        newContant = requestWindow(newwindow)
-        newwindow.mainloop()
+        request = requestWindow(newwindow)
+        self.master.wait_window(newwindow)
+        accept_list=request.return_list()
+        self.request_data.set(accept_list)
 
 
 class AddSkillPage:
@@ -268,11 +270,17 @@ class AddSkillPage:
         self.CRNinput.insert(0, "Enter CRN here")
         self.CRNinput.pack()
         self.CRNinput.place(x=600, y=200, width=200, height=50)
-
+        #add course
         self.addByCRN = Button(self.master, text="Add By CRN", command=lambda: self.add_CRN(), height=3, width=18,
                                bg='white', compound='center')
         self.addByCRN.pack()
         self.addByCRN.place(x=600, y=250)
+        #End
+        #remove course
+        self.removeByCRN=Button(self.master, text="Remove By CRN", command=lambda: self.remove_CRN(), height=3, width=18,
+                               bg='white', compound='center')
+        self.removeByCRN.pack()
+        self.removeByCRN.place(x=600, y=300)
         ###############End#################################################
         ##########Filter Text#############################
         self.filter_text = StringVar
@@ -318,6 +326,13 @@ class AddSkillPage:
         self.statusvar.set("Course is added!!!!!")
         ########TO DO: add the course with CRN######
         pass
+    def remove_CRN(self):
+        self.statusvar.set("Busy!!! removing course........")
+        self.console.update()
+        time.sleep(5)
+        self.statusvar.set("Course is removed!!!!!")
+        ########TO DO: remove the course with CRN######
+        pass
 
     def filter(self):
         filter_text = self.Filter.get()
@@ -339,6 +354,7 @@ class requestWindow():
         self.page_name = pageEnum.requestWindow
         self.PersonObj = personObj
         self.ST = st
+        self.requestinfo=None
 
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -349,13 +365,17 @@ class requestWindow():
 
         ###############Request processing############
         ####available request#####
-        self.avail_request = Listbox(self.master, width=50, height=25)
-        for item in ['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']:
-            self.avail_request.insert(END, item)
+        self.avail_item=StringVar()
+        #TO DO: set up the request here 
+        self.avail_item.set(avail_list)
+        self.avail_request = Listbox(self.master, width=50, height=25,listvariable=self.avail_item)
         self.avail_request.pack()
         self.avail_request.place(x=100, y=50)
         ######accept request#####
-        self.accept_request = Listbox(self.master, width=50, height=25)
+
+        self.accept_item=StringVar()
+        self.accept_item.set(accept_list)
+        self.accept_request = Listbox(self.master, width=50, height=25,listvariable=self.accept_item)
         self.accept_request.pack()
         self.accept_request.place(x=600, y=50)
         ###############End##########################
@@ -375,22 +395,32 @@ class requestWindow():
         self.check.pack()
         self.check.place(x=600, y=600)
 
-        self.back = Button(self.master, text="Go Back", command=lambda: self.goBack(), height=3, width=50, bg='white',
+        self.back = Button(self.master, text="Update", command=lambda: self.goBack(), height=3, width=50, bg='white',
                            compound='center')
         self.back.pack()
         self.back.place(x=100, y=600)
 
     def accept_move(self):
-        self.accept_request.insert(0, self.avail_request.get(self.avail_request.curselection()))
-        self.avail_request.delete(self.avail_request.curselection())
+        # self.accept_request.insert(0, self.avail_request.get(self.avail_request.curselection()))
+        # self.avail_request.delete(self.avail_request.curselection())
+        avail_list.remove(self.avail_request.get(self.avail_request.curselection()))
+        accept_list.append(self.avail_request.get(self.avail_request.curselection()))
+        self.avail_item.set(avail_list)
+        self.accept_item.set(accept_list)
 
     def remove_move(self):
-        self.avail_request.insert(0, self.accept_request.get(self.accept_request.curselection()))
-        self.accept_request.delete(self.accept_request.curselection())
+        # self.avail_request.insert(0, self.accept_request.get(self.accept_request.curselection()))
+        # self.accept_request.delete(self.accept_request.curselection())
+        accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
+        avail_list.append(self.accept_request.get(self.accept_request.curselection()))
+        self.avail_item.set(avail_list)
+        self.accept_item.set(accept_list)
 
     def finished(self):
         ############TO DO:Update request back to the back end#########################
         pass
+    def return_list(self):
+        return accept_list
 
     def goBack(self):
         self.master.destroy()
