@@ -7,8 +7,9 @@ import time
 import enum
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
-avail_list=['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']
-accept_list=[]
+#TO DO: connect you request list
+avail_list=['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']# list that is available 
+accept_list=[]# list you have accepted
 
 class UserTypeEnum(enum.Enum):
     """
@@ -395,35 +396,33 @@ class requestWindow():
         self.check.pack()
         self.check.place(x=600, y=600)
 
-        self.back = Button(self.master, text="Update", command=lambda: self.goBack(), height=3, width=50, bg='white',
-                           compound='center')
-        self.back.pack()
-        self.back.place(x=100, y=600)
+        # self.back = Button(self.master, text="Update", command=lambda: self.goBack(), height=3, width=50, bg='white',
+        #                    compound='center')
+        # self.back.pack()
+        # self.back.place(x=100, y=600)
 
     def accept_move(self):
-        # self.accept_request.insert(0, self.avail_request.get(self.avail_request.curselection()))
-        # self.avail_request.delete(self.avail_request.curselection())
+        #TO DO: sychronize your accept operation with your function
         avail_list.remove(self.avail_request.get(self.avail_request.curselection()))
         accept_list.append(self.avail_request.get(self.avail_request.curselection()))
         self.avail_item.set(avail_list)
         self.accept_item.set(accept_list)
 
     def remove_move(self):
-        # self.avail_request.insert(0, self.accept_request.get(self.accept_request.curselection()))
-        # self.accept_request.delete(self.accept_request.curselection())
+        #TO DO: sychronize your remove operation with your function
         accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
         avail_list.append(self.accept_request.get(self.accept_request.curselection()))
         self.avail_item.set(avail_list)
         self.accept_item.set(accept_list)
 
     def finished(self):
-        ############TO DO:Update request back to the back end#########################
+        #TO DO: what you wanna do with check as finished buttion
         pass
     def return_list(self):
         return accept_list
 
-    def goBack(self):
-        self.master.destroy()
+    # def goBack(self):
+    #     self.master.destroy()
 
 
 # class App(threading.Thread):
