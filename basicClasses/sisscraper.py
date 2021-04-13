@@ -15,7 +15,8 @@ class SISscraper:
         self.__LOGIN_RETRY_NUM = 3
         self.__session = requests.Session()
 
-    def login(self):
+    @property
+    def logged_in(self):
         headers = {
             "Content-Type": "application/x-www-form-urlencoded",
         }
@@ -37,7 +38,7 @@ class SISscraper:
             return False
         return True
 
-    def get_courses(self):
+    def get_learned_courses(self):
         response = self.__session.request('POST', transcript_url, data=f"levl=&tprt=UWEB")  
         transcript_soup = BeautifulSoup(response.text.encode('utf8'), 'html.parser')
         course_dept = transcript_soup.find_all('td', class_='dddefault', string=re.compile('^[A-Z]{4}$'))
@@ -47,5 +48,5 @@ class SISscraper:
 if __name__ == '__main__':
     load_dotenv()
     scraper = SISscraper(os.getenv('RIN'), os.getenv('PASSWORD'))
-    print(scraper.login())
-    print(scraper.get_courses())
+    print(scraper.logged_in())
+    print(scraper.get_learned_courses())

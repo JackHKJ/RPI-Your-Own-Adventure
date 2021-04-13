@@ -8,9 +8,13 @@ import time
 import enum
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
-#TO DO: connect you request list
-avail_list=['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']# list that is available 
-accept_list=[]# list you have accepted
+# TO DO: connect you request list
+avail_list = ['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']  # list that is available
+accept_list = []  # list you have accepted
+
+COURSE_GATHERER_FLAG = "CRAPER"
+# COURSE_GATHERER_FLAG = "CHROME"
+
 
 class UserTypeEnum(enum.Enum):
     """
@@ -87,12 +91,12 @@ class loginWindow:
     def check_password(self):
         self.master.title("Logging in, please wait")
         self.RIN = self.RIN_entry.get()
-        self.gatherer = SISscraper(rin=self.RIN_entry.get(), password=self.Password_entry.get())
-        # if gather.logged_in:
-        #     self.goNext()
-        # else:
-        #     self.master.title("Failed to log in, please retry.")
-        if self.gatherer.login():
+        if COURSE_GATHERER_FLAG == "CRAPER":
+            self.gatherer = SISscraper(rin=self.RIN_entry.get(), password=self.Password_entry.get())
+        else:
+            self.gatherer = InfoGatherer(username=self.RIN_entry.get(), password=self.Password_entry.get())
+
+        if self.gatherer.logged_in:
             self.user_type = UserTypeEnum.STUDENT
             self.goNext()
         else:
@@ -104,14 +108,6 @@ class loginWindow:
         self.label_img.destroy()
         self.next = mainWindow(self.master)
         self.master.mainloop()
-
-    # def close_and_create(self):
-    #     self.master.destroy()
-    #     self.master = Tk()
-    #
-    # def goto_mainWindow(self):
-    #     mainWindow(self.master)
-    #     self.master.mainloop()
 
     def guest_mode(self):
         # # placeholder
@@ -163,8 +159,8 @@ class mainWindow:
         # self.courselist.pack()
         # self.courselist.place(x=100, y=50)
         ##################
-        self.request_data=StringVar()
-        self.requestlist = Listbox(self.master, width=50, height=20,listvariable=self.request_data)
+        self.request_data = StringVar()
+        self.requestlist = Listbox(self.master, width=50, height=20, listvariable=self.request_data)
         self.requestlist.pack()
         self.requestlist.place(x=700, y=50)
 
@@ -217,7 +213,7 @@ class mainWindow:
         newwindow = Toplevel(self.master)
         request = requestWindow(newwindow)
         self.master.wait_window(newwindow)
-        accept_list=request.return_list()
+        accept_list = request.return_list()
         self.request_data.set(accept_list)
 
 
@@ -272,15 +268,16 @@ class AddSkillPage:
         self.CRNinput.insert(0, "Enter CRN here")
         self.CRNinput.pack()
         self.CRNinput.place(x=600, y=200, width=200, height=50)
-        #add course
+        # add course
         self.addByCRN = Button(self.master, text="Add By CRN", command=lambda: self.add_CRN(), height=3, width=18,
                                bg='white', compound='center')
         self.addByCRN.pack()
         self.addByCRN.place(x=600, y=250)
-        #End
-        #remove course
-        self.removeByCRN=Button(self.master, text="Remove By CRN", command=lambda: self.remove_CRN(), height=3, width=18,
-                               bg='white', compound='center')
+        # End
+        # remove course
+        self.removeByCRN = Button(self.master, text="Remove By CRN", command=lambda: self.remove_CRN(), height=3,
+                                  width=18,
+                                  bg='white', compound='center')
         self.removeByCRN.pack()
         self.removeByCRN.place(x=600, y=300)
         ###############End#################################################
@@ -328,6 +325,7 @@ class AddSkillPage:
         self.statusvar.set("Course is added!!!!!")
         ########TO DO: add the course with CRN######
         pass
+
     def remove_CRN(self):
         self.statusvar.set("Busy!!! removing course........")
         self.console.update()
@@ -356,7 +354,7 @@ class requestWindow():
         self.page_name = pageEnum.requestWindow
         self.PersonObj = personObj
         self.ST = st
-        self.requestinfo=None
+        self.requestinfo = None
 
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -367,17 +365,17 @@ class requestWindow():
 
         ###############Request processing############
         ####available request#####
-        self.avail_item=StringVar()
-        #TO DO: set up the request here 
+        self.avail_item = StringVar()
+        # TO DO: set up the request here
         self.avail_item.set(avail_list)
-        self.avail_request = Listbox(self.master, width=50, height=25,listvariable=self.avail_item)
+        self.avail_request = Listbox(self.master, width=50, height=25, listvariable=self.avail_item)
         self.avail_request.pack()
         self.avail_request.place(x=100, y=50)
         ######accept request#####
 
-        self.accept_item=StringVar()
+        self.accept_item = StringVar()
         self.accept_item.set(accept_list)
-        self.accept_request = Listbox(self.master, width=50, height=25,listvariable=self.accept_item)
+        self.accept_request = Listbox(self.master, width=50, height=25, listvariable=self.accept_item)
         self.accept_request.pack()
         self.accept_request.place(x=600, y=50)
         ###############End##########################
@@ -403,22 +401,23 @@ class requestWindow():
         # self.back.place(x=100, y=600)
 
     def accept_move(self):
-        #TO DO: sychronize your accept operation with your function
+        # TO DO: sychronize your accept operation with your function
         avail_list.remove(self.avail_request.get(self.avail_request.curselection()))
         accept_list.append(self.avail_request.get(self.avail_request.curselection()))
         self.avail_item.set(avail_list)
         self.accept_item.set(accept_list)
 
     def remove_move(self):
-        #TO DO: sychronize your remove operation with your function
+        # TO DO: sychronize your remove operation with your function
         accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
         avail_list.append(self.accept_request.get(self.accept_request.curselection()))
         self.avail_item.set(avail_list)
         self.accept_item.set(accept_list)
 
     def finished(self):
-        #TO DO: what you wanna do with check as finished buttion
+        # TO DO: what you wanna do with check as finished buttion
         pass
+
     def return_list(self):
         return accept_list
 
