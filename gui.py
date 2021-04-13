@@ -2,6 +2,7 @@
 # Dependencies
 from tkinter import *
 from basicClasses.InfoGatherer import InfoGatherer
+from basicClasses.sisscraper import SISscraper
 from PIL import Image, ImageTk
 import time
 import enum
@@ -86,12 +87,12 @@ class loginWindow:
     def check_password(self):
         self.master.title("Logging in, please wait")
         self.RIN = self.RIN_entry.get()
-        self.gatherer = InfoGatherer(username=self.RIN_entry.get(), password=self.Password_entry.get())
+        self.gatherer = SISscraper(rin=self.RIN_entry.get(), password=self.Password_entry.get())
         # if gather.logged_in:
         #     self.goNext()
         # else:
         #     self.master.title("Failed to log in, please retry.")
-        if self.gatherer.logged_in:
+        if self.gatherer.login():
             self.user_type = UserTypeEnum.STUDENT
             self.goNext()
         else:
