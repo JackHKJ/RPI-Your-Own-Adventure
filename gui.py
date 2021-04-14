@@ -172,6 +172,13 @@ class mainWindow:
         self.Add_sis.pack()
         self.Add_sis.place(x=100, y=400)
 
+        ######TO DO:####
+        self.show=Button(self.master, text="Show the skill tree", compound='center', height=3, width=18,
+                              bg='white', command=lambda: self.show_skill())
+        self.show.pack()
+        self.show.place(x=100,y=500)
+        #####End####
+
         self.Add_Extra = Button(self.master, text="Add Extracurricular", compound='center',
                                 height=3, width=18, bg='white')
         self.Add_Extra.pack()
@@ -197,6 +204,9 @@ class mainWindow:
         # function main body
         # placeholder
         self.goThird()
+    def show_skill(self):
+        #TO DO: zoom 
+        pass
 
     def goThird(self):
         self.sub_page_name = pageEnum.AddSkillPage
