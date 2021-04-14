@@ -8,6 +8,8 @@ from gui import UserTypeEnum
 from basicClasses.SkillTree import *
 from basicClasses.Person import *
 
+
+
 # Load the SkillTree
 st = SkillTree(
     SkillTreeNode(
