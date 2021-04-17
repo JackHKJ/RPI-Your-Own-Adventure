@@ -167,26 +167,22 @@ class mainWindow:
         self.requestlist.pack()
         self.requestlist.place(x=700, y=50)
 
-        self.Add_sis = Button(self.master, text="Add from SIS", compound='center', height=3, width=18,
-                              bg='white', command=lambda: self.addSis())
-        self.Add_sis.pack()
-        self.Add_sis.place(x=100, y=400)
+        self.add_or_remove = Button(self.master, text="Add/Remove from SIS", compound='center', height=3, width=18,
+                              bg='white', command=lambda: self.addOrRemove())
+        self.add_or_remove.pack()
+        self.add_or_remove.place(x=100, y=400)
 
         ######TO DO:####
         self.show = Button(self.master, text="Show the skill tree", compound='center', height=3, width=18,
                            bg='white', command=lambda: self.show_skill())
         self.show.pack()
-        self.show.place(x=100, y=500)
+        self.show.place(x=500, y=400)
         #####End####
 
         self.Add_Extra = Button(self.master, text="Add Extracurricular", compound='center',
                                 height=3, width=18, bg='white')
         self.Add_Extra.pack()
         self.Add_Extra.place(x=300, y=400)
-
-        self.remove = Button(self.master, text="Remove", height=3, width=18, bg='white', compound='center')
-        self.remove.pack()
-        self.remove.place(x=500, y=400)
 
         self.modify_request = Button(self.master, text="Modify Request", height=3, width=24, compound='center',
                                      bg='white', command=lambda: self.ModifyQuest())
@@ -200,7 +196,7 @@ class mainWindow:
         self.label1.pack()
         self.label1.place(x=70, y=50)
 
-    def addSis(self):
+    def addOrRemove(self):
         # function main body
         # placeholder
         self.goThird()
@@ -256,7 +252,7 @@ class AddSkillPage:
         ############End#############################
 
         ##############Courselist set up here################################
-        self.courselist = Listbox(self.master, width=50, height=20)
+        self.courselist = Listbox(self.master, width=25, height=20)
         # Available course list:
         self.course_dict = dict()
         course_list = []
@@ -275,6 +271,13 @@ class AddSkillPage:
         self.courselist.pack()
         self.courselist.place(x=100, y=50)
         #############END###################################################
+
+        self.addedList = Listbox(self.master, width=25, height=20)
+        self.addedList.pack()
+        self.addedList.place(x=350, y=50)
+
+
+
         ##############CRN input#########################
         self.CRN_num = StringVar
         self.CRNinput = Entry(self.master, textvariable=self.CRN_num)
@@ -310,6 +313,11 @@ class AddSkillPage:
                           compound='center')
         self.add.pack()
         self.add.place(x=600, y=50)
+
+        self.remove = Button(self.master, text="REMOVE", command=lambda: self.just_remove(), height=3, width=18, bg='white',
+                          compound='center')
+        self.remove.pack()
+        self.remove.place(x=600, y=125)
 
         self.back = Button(self.master, text="Go Back", command=lambda: self.goBack(), height=3, width=18, bg='white',
                            compound='center')
