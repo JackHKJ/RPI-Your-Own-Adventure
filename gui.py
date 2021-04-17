@@ -13,6 +13,8 @@ avail_list = ['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Reque
 accept_list = []  # list you have accepted
 
 COURSE_GATHERER_FLAG = "CRAPER"
+
+
 # COURSE_GATHERER_FLAG = "CHROME"
 
 
@@ -130,6 +132,7 @@ class mainWindow:
         self.user_type = None
         self.ST = None
         self.gatherer = None
+        self.show_skill_flag = False
 
         # resize the image
         skill_tree_path = '../pic_save/place_holder_fig_for_skilltree.png'
@@ -170,10 +173,10 @@ class mainWindow:
         self.Add_sis.place(x=100, y=400)
 
         ######TO DO:####
-        self.show=Button(self.master, text="Show the skill tree", compound='center', height=3, width=18,
-                              bg='white', command=lambda: self.show_skill())
+        self.show = Button(self.master, text="Show the skill tree", compound='center', height=3, width=18,
+                           bg='white', command=lambda: self.show_skill())
         self.show.pack()
-        self.show.place(x=100,y=500)
+        self.show.place(x=100, y=500)
         #####End####
 
         self.Add_Extra = Button(self.master, text="Add Extracurricular", compound='center',
@@ -201,9 +204,9 @@ class mainWindow:
         # function main body
         # placeholder
         self.goThird()
+
     def show_skill(self):
-        #TO DO: zoom 
-        pass
+        self.show_skill_flag = True
 
     def goThird(self):
         self.sub_page_name = pageEnum.AddSkillPage
