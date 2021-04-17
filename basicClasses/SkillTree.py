@@ -154,6 +154,17 @@ class SkillTree:
                     self.connection.append([str(child), str(skill)])
         self.node_set.add(skill)
 
+    def add_custom_skill(self, skill_name, parent=None, child=None):
+        """
+        :param skill_name: str, the name of the custom skill to be added
+        :param parent: a list of skillTreeNode to be added as the parent
+        :param child: a list of skillTreeNode to be added as the child
+        :return: None
+        """
+        this_skill_node = SkillTreeNode(hash(skill_name), parent, child)
+        self.addSkill(this_skill_node, parent, child)
+
+
     def remove_skill(self, skill: SkillTreeNode):
         """
         Remove the given skill from the skill tree (not only in the skill tree representation but also the skill itself)
