@@ -236,6 +236,7 @@ class SkillTree:
             print(line)
 
     def _pretty_print_helper(self, connection_list, method, save_fig=False):
+        plt.clf()
         g = nx.Graph()
         g.add_edges_from(connection_list)
         pos_counter = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
