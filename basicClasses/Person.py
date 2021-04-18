@@ -50,7 +50,6 @@ class Person(object):
         # If already contained, pass
         if this_skill in self.skills:
             return
-
         self.skills.add(this_skill)
         if this_skill.parent is not None:
             for this_parent in this_skill.parent:
@@ -60,6 +59,23 @@ class Person(object):
             for this_child in this_skill.child:
                 if this_child in self.skills:
                     self.skillConnection.append([str(this_child), str(this_skill)])
+
+    def remove_skill(self, main_tree: SkillTree, this_skill: SkillTreeNode):
+        """
+        Remove a skill from the current representation
+        :param main_tree: The main tree for usage
+        :param this_skill: skill to be removed
+        :return: None
+        """
+        if this_skill not in self.skills:
+            return
+        updated_connection = []
+        str_rep = str(this_skill)
+        for connection in self.skillConnection:
+            if str_rep not in connection:
+                updated_connection.append(connection)
+        self.skillConnection = updated_connection
+        self.skills.remove(this_skill)
 
     def add_skills_by_shortName(self, skill_tree: SkillTree, skills):
         """
@@ -102,8 +118,14 @@ class Person(object):
         :return:list of SkillTreeNode that is selectable for the person with filter applied
         """
         selectable_courses = self.get_selectable_courses(skillTree)
+        if filter_str is None or filter_str == "":
+            return selectable_courses
         filtered = []
+        filter_str = filter_str.lower()
         for course in selectable_courses:
-            if filter_str in course.fullName or filter_str in course.shortName or filter_str in course.ID:
+            if course.shortName.lower() == "root" or course.fullName.lower() == 'root':
+                continue
+            if filter_str in (course.fullName.lower()) or filter_str in (course.shortName.lower()) or filter_str in\
+                    course.ID:
                 filtered.append(course)
         return filtered

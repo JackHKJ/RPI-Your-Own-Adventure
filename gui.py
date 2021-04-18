@@ -134,9 +134,7 @@ class mainWindow:
         self.gatherer = None
         self.show_skill_flag = False
 
-        # resize the image
-        skill_tree_path = '../pic_save/place_holder_fig_for_skilltree.png'
-        # change the image ratio here
+        # Resizing the image
 
         resize_img = Image.open('pic_save/place_holder_fig_for_skilltree.png').resize((620, 348))
 
@@ -147,21 +145,15 @@ class mainWindow:
         self.master.geometry(f'1200x800+{self.w}+{self.h}')
         self.master.resizable(width=True, height=True)
         self.master.title(TEAM_SLOGAN_STR)
-        #####resize skill tree#########
+
+        # Resizing the skillTree
         self.skillImg = ImageTk.PhotoImage(resize_img)
         self.label1 = Label(self.master, image=self.skillImg)
         self.label1.pack()
         self.label1.place(x=70, y=50)
-        #####resize skill tree#######
-        ######################Request listbox############################
-        ################
-        # self.courselist=Listbox(self.master,width=50, height=20)
-        # #give me a function that can return a courselist
-        # for item in ['Operating System', 'Principle of Software', 'Intro to algorithm']:
-        #     self.courselist.insert(END, item)
-        # self.courselist.pack()
-        # self.courselist.place(x=100, y=50)
-        ##################
+
+        # The Listbox for storing the Request
+
         self.request_data = StringVar()
         self.requestlist = Listbox(self.master, width=50, height=20, listvariable=self.request_data)
         self.requestlist.pack()
@@ -172,7 +164,7 @@ class mainWindow:
         self.add_or_remove.pack()
         self.add_or_remove.place(x=100, y=400)
 
-        ######TO DO:####
+        # Button to show skillTree in a separate window
         self.show = Button(self.master, text="Show the skill tree", compound='center', height=3, width=18,
                            bg='white', command=lambda: self.show_skill())
         self.show.pack()
@@ -242,7 +234,7 @@ class AddSkillPage:
         self.addedList_listbox = None
         # Data representation for the course/added list as dict
         self.course_dict = None
-        self.added_dict = None
+        # self.added_dict = None
         # Temp list for addition
         self.course_list = None
         self.added_list = None
@@ -265,7 +257,7 @@ class AddSkillPage:
         # Available course list:
         self.course_dict = dict()
         self.course_list = []
-        self.added_dict = dict()
+        # self.added_dict = dict()
         self.added_list = []
 
         if self.PersonObj is not None:
@@ -276,7 +268,7 @@ class AddSkillPage:
             # Update the selected courses
             for course in self.PersonObj.get_skills():
                 self.added_list.append(str(course))
-                self.added_dict[str(course)] = course
+                # self.added_dict[str(course)] = course
         else:
             self.course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
             for item in self.course_list:
@@ -362,6 +354,26 @@ class AddSkillPage:
             # Try to add to SIS if logged in
             if self.parent.user_type == UserTypeEnum.STUDENT:
                 self.parent.gatherer.add_course_from_SIS()
+
+    def just_remove(self):
+        self.statusvar.set("Removing course........")
+        self.console.update()
+        print(self.addedList_listbox.curselection()[0])
+        if self.addedList_listbox.curselection()[0] >= 0:
+            # Get selection and remove the skill
+            selected = self.addedList_listbox.get(self.addedList_listbox.curselection())
+            self.PersonObj.remove_skill(self.ST, self.course_dict[selected])
+            self.addedList_listbox.delete(self.addedList_listbox.curselection())
+            self.added_list.remove(str(self.course_dict[selected]))
+            # Update the available skills
+            self.courseList_listbox.insert(END, str(self.course_dict[selected]))
+            self.course_list.append(str(self.course_dict[selected]))
+            self.statusvar.set("Removed {}".format(selected))
+            self.console.update()
+
+            # Try to remove from SIS if logged in
+            if self.parent.user_type == UserTypeEnum.STUDENT:
+                self.parent.gatherer.remove_course_from_SIS()
 
     def add_CRN(self):
         self.statusvar.set("Busy!!! Adding course........")
