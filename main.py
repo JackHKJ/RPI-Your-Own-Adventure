@@ -98,10 +98,12 @@ if __name__ == "__main__":
                 if GUI_thread.window.sub_page_name is None:
                     print("Returning to the main Page")
                     print(User.get_skills())
-                    st.pretty_print_partial_tree(User.get_skills(),root_name=User.name + "-0000",save_fig=True)
+                    st.pretty_print_partial_tree(User.get_skills(), root_name=User.name + "-0000", save_fig=True)
                     GUI_thread.window.Update_skilltree()
-
                     break
 
+        if GUI_thread.window.show_skill_flag:
+            st.pretty_print_partial_tree(User.get_skills(), root_name=User.name + "-0000", save_fig=False)
+            GUI_thread.window.show_skill_flag = False
 
     print('Reached the end')

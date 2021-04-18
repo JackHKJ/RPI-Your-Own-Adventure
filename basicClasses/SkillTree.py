@@ -154,6 +154,17 @@ class SkillTree:
                     self.connection.append([str(child), str(skill)])
         self.node_set.add(skill)
 
+    def add_custom_skill(self, skill_name, parent=None, child=None):
+        """
+        :param skill_name: str, the name of the custom skill to be added
+        :param parent: a list of skillTreeNode to be added as the parent
+        :param child: a list of skillTreeNode to be added as the child
+        :return: None
+        """
+        this_skill_node = SkillTreeNode(hash(skill_name), parent, child)
+        self.addSkill(this_skill_node, parent, child)
+
+
     def remove_skill(self, skill: SkillTreeNode):
         """
         Remove the given skill from the skill tree (not only in the skill tree representation but also the skill itself)
@@ -227,7 +238,7 @@ class SkillTree:
     def _pretty_print_helper(self, connection_list, method, save_fig=False):
         g = nx.Graph()
         g.add_edges_from(connection_list)
-        pos_counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        pos_counter = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
         pos = dict()
         color_map = []
 
@@ -240,12 +251,16 @@ class SkillTree:
                 elif node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
                     hard_level = int(node[node.rfind('-') + 1:node.rfind('-') + 2]) - 1
                     color_map.append(self.colors[hard_level])
-                    pos[node] = [hard_level, pos_counter[hard_level]]
-                    pos_counter[hard_level] += 1
+                    pos[node] = [hard_level - 0.1 * pos_counter[hard_level], pos_counter[hard_level]]
+                    pos_counter[hard_level] += 2
                 else:
                     color_map.append('#777777')
             # pos = nx.kamada_kawai_layout(g)
-            nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666")
+
+            ax1 = plt.subplot(111)
+            ax1.margins(0.1)
+
+            nx.draw_networkx(g, pos=pos, node_color=color_map, edge_color="#666666", ax=ax1)
 
         elif method == "Spring":
             for node in g:
@@ -279,16 +294,20 @@ class SkillTree:
         """
         self._pretty_print_helper(self.connection, method, save_fig=save_fig)
 
-    def pretty_print_partial_tree(self, nodes, method="Stack", root_name="root-0000", save_fig=False):
+    def pretty_print_partial_tree(self, nodes, method="Stack", root_name="root-0000", save_fig=False, verbose=False):
         """
         Print partially of the tree structure, print only the nodes passed in
         :param nodes: the list of SkillTreeNode to be printed
         :param method: The method statement is defaulted to 'Stack'. Method can be ['Stack','Spring']
         :param root_name: The name for the root node, default to 'root'
         :param save_fig: The indicator whether to show the fig or to save it in the file
+        :param verbose: if set to True, then print the verbose information of each node
         :return:
         """
-        node_str = [str(this_node) for this_node in nodes]
+        if not verbose:
+            node_str = [str(this_node) for this_node in nodes]
+        else:
+            node_str = [str(this_node.ID) + ":" + str(this_node.shortName) for this_node in nodes]
         chosen_set = set()
         this_connection = []
         for left, right in self.connection:
