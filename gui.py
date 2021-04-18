@@ -168,7 +168,7 @@ class mainWindow:
         self.requestlist.place(x=700, y=50)
 
         self.add_or_remove = Button(self.master, text="Add/Remove from SIS", compound='center', height=3, width=18,
-                              bg='white', command=lambda: self.addOrRemove())
+                                    bg='white', command=lambda: self.addOrRemove())
         self.add_or_remove.pack()
         self.add_or_remove.place(x=100, y=400)
 
@@ -237,6 +237,15 @@ class AddSkillPage:
         self.PersonObj = personObj
         self.ST = st
         self.parent = parent
+        # Listbox representation for displaying the added/available courses
+        self.courseList_listbox = None
+        self.addedList_listbox = None
+        # Data representation for the course/added list as dict
+        self.course_dict = None
+        self.added_dict = None
+        # Temp list for addition
+        self.course_list = None
+        self.added_list = None
 
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -252,31 +261,40 @@ class AddSkillPage:
         ############End#############################
 
         ##############Courselist set up here################################
-        self.courselist = Listbox(self.master, width=25, height=20)
+        self.courseList_listbox = Listbox(self.master, width=25, height=20)
         # Available course list:
         self.course_dict = dict()
-        course_list = []
+        self.course_list = []
+        self.added_dict = dict()
+        self.added_list = []
+
         if self.PersonObj is not None:
+            # Update the selectable courses
             for item in self.PersonObj.get_selectable_courses(self.ST):
-                course_list.append(str(item))
+                self.course_list.append(str(item))
                 self.course_dict[str(item)] = item
+            # Update the selected courses
+            for course in self.PersonObj.get_skills():
+                self.added_list.append(str(course))
+                self.added_dict[str(course)] = course
         else:
-            course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
-            for item in course_list:
+            self.course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
+            for item in self.course_list:
                 self.course_dict[item] = item
 
-        # give me a function that can return a courselist
-        for item in course_list:
-            self.courselist.insert(END, item)
-        self.courselist.pack()
-        self.courselist.place(x=100, y=50)
+        # Show the representation in a list
+        for item in self.course_list:
+            if item not in self.added_list:
+                self.courseList_listbox.insert(END, item)
+        self.courseList_listbox.pack()
+        self.courseList_listbox.place(x=100, y=50)
         #############END###################################################
 
-        self.addedList = Listbox(self.master, width=25, height=20)
-        self.addedList.pack()
-        self.addedList.place(x=350, y=50)
-
-
+        self.addedList_listbox = Listbox(self.master, width=25, height=20)
+        for course in self.added_list:
+            self.addedList_listbox.insert(END, course)
+        self.addedList_listbox.pack()
+        self.addedList_listbox.place(x=350, y=50)
 
         ##############CRN input#########################
         self.CRN_num = StringVar
@@ -314,8 +332,9 @@ class AddSkillPage:
         self.add.pack()
         self.add.place(x=600, y=50)
 
-        self.remove = Button(self.master, text="REMOVE", command=lambda: self.just_remove(), height=3, width=18, bg='white',
-                          compound='center')
+        self.remove = Button(self.master, text="REMOVE", command=lambda: self.just_remove(), height=3, width=18,
+                             bg='white',
+                             compound='center')
         self.remove.pack()
         self.remove.place(x=600, y=125)
 
@@ -327,11 +346,16 @@ class AddSkillPage:
     def just_add(self):
         self.statusvar.set("Adding course........")
         self.console.update()
-        print(self.courselist.curselection()[0])
-        if self.courselist.curselection()[0] >= 0:
-            selected = self.courselist.get(self.courselist.curselection())
+        print(self.courseList_listbox.curselection()[0])
+        if self.courseList_listbox.curselection()[0] >= 0:
+            # Get selection and add the skill
+            selected = self.courseList_listbox.get(self.courseList_listbox.curselection())
             self.PersonObj.add_skill(self.ST, self.course_dict[selected])
-            self.courselist.delete(self.courselist.curselection())
+            self.courseList_listbox.delete(self.courseList_listbox.curselection())
+            self.course_list.remove(str(self.course_dict[selected]))
+            # Update the added skill
+            self.addedList_listbox.insert(END, str(self.course_dict[selected]))
+            self.added_list.append(str(self.course_dict[selected]))
             self.statusvar.set("Added {}".format(selected))
             self.console.update()
 
@@ -359,9 +383,10 @@ class AddSkillPage:
         filter_text = self.Filter.get()
         if filter_text == "" or filter_text == "Filter Text":
             return
-        self.courselist.delete(0, self.courselist.size())
+        self.courseList_listbox.delete(0, self.courseList_listbox.size())
         for item in self.PersonObj.get_selectable_courses_filtered(self.ST, filter_text):
-            self.courselist.insert(END, item)
+            if str(item) not in self.added_list:
+                self.courseList_listbox.insert(END, item)
 
     def goBack(self):
         self.parent.sub_page_name = None
