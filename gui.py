@@ -378,24 +378,40 @@ class AddSkillPage:
     def add_CRN(self):
         self.statusvar.set("Busy!!! Adding course........")
         self.console.update()
-        time.sleep(5)
+        this_input = self.CRNinput.get()
+        print(this_input)
+        # Try to find the course in the ST:
+        this_course = self.ST.get_node_by_ID(this_input)
+        if this_course is None:
+            self.statusvar.set("No such course found.")
+            self.console.update()
+            return
+        if this_course not in self.PersonObj.get_selectable_courses(self.ST):
+            self.statusvar.set("Course cannot be selected, prerequisite not satisfied")
+            self.console.update()
+            return
+        self.filter(force_str=str(this_course))
+        self.courseList_listbox.selection_set(0)
+        self.just_add()
+        self.filter(force_str="$RELOAD$")
         self.statusvar.set("Course is added!!!!!")
-        ########TO DO: add the course with CRN######
-        pass
+        self.console.update()
 
     def remove_CRN(self):
-        self.statusvar.set("Busy!!! removing course........")
-        self.console.update()
-        time.sleep(5)
-        self.statusvar.set("Course is removed!!!!!")
-        ########TO DO: remove the course with CRN######
         pass
+        # Considering removing this method
 
-    def filter(self):
-        filter_text = self.Filter.get()
+    def filter(self, force_str=None):
+        if force_str is not None:
+            filter_text = force_str
+        else:
+            filter_text = self.Filter.get()
         if filter_text == "" or filter_text == "Filter Text":
             return
         self.courseList_listbox.delete(0, self.courseList_listbox.size())
+        if filter_text == "$RELOAD$":
+            for item in self.PersonObj.get_selectable_courses(self.ST):
+                self.courseList_listbox.insert(END, item)
         for item in self.PersonObj.get_selectable_courses_filtered(self.ST, filter_text):
             if str(item) not in self.added_list:
                 self.courseList_listbox.insert(END, item)

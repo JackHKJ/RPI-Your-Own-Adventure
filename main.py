@@ -103,7 +103,7 @@ if __name__ == "__main__":
                     break
 
         if GUI_thread.window.show_skill_flag:
-            st.pretty_print_partial_tree(User.get_skills(), root_name=User.name + "-0000", save_fig=False)
+            st.pretty_print_partial_tree(User.get_skills(), root_name=User.name + "-0000", save_fig=False, verbose=True)
             GUI_thread.window.show_skill_flag = False
 
     print('Reached the end')
