@@ -224,6 +224,10 @@ class AddSkillPage:
     """
 
     def __init__(self, master, personObj=None, st=None, parent=None):
+        self.course = Label(master, width=20, text='CourseList', compound='center',font=("Georgia", 25))
+        self.course.place(x=100, y=10)
+        self.added=Label(master, width=20, text='Added courses', compound='center',font=("Georgia", 25))
+        self.added.place(x=550, y=10)
         # Data segment
         self.page_name = pageEnum.AddSkillPage
         self.PersonObj = personObj
@@ -253,7 +257,7 @@ class AddSkillPage:
         ############End#############################
 
         ##############Courselist set up here################################
-        self.courseList_listbox = Listbox(self.master, width=25, height=20)
+        self.courseList_listbox = Listbox(self.master, width=35, height=35)
         # Available course list:
         self.course_dict = dict()
         self.course_list = []
@@ -282,58 +286,53 @@ class AddSkillPage:
         self.courseList_listbox.place(x=100, y=50)
         #############END###################################################
 
-        self.addedList_listbox = Listbox(self.master, width=25, height=20)
+        self.addedList_listbox = Listbox(self.master, width=35, height=35)
         for course in self.added_list:
             self.addedList_listbox.insert(END, course)
         self.addedList_listbox.pack()
-        self.addedList_listbox.place(x=350, y=50)
+        self.addedList_listbox.place(x=550, y=50)
 
         ##############CRN input#########################
         self.CRN_num = StringVar
         self.CRNinput = Entry(self.master, textvariable=self.CRN_num)
         self.CRNinput.insert(0, "Enter CRN here")
         self.CRNinput.pack()
-        self.CRNinput.place(x=600, y=200, width=200, height=50)
+        self.CRNinput.place(x=900, y=200, width=200, height=50)
         # add course
         self.addByCRN = Button(self.master, text="Add By CRN", command=lambda: self.add_CRN(), height=3, width=18,
                                bg='white', compound='center')
         self.addByCRN.pack()
-        self.addByCRN.place(x=600, y=250)
+        self.addByCRN.place(x=900, y=250)
         # End
         # remove course
-        self.removeByCRN = Button(self.master, text="Remove By CRN", command=lambda: self.remove_CRN(), height=3,
-                                  width=18,
-                                  bg='white', compound='center')
-        self.removeByCRN.pack()
-        self.removeByCRN.place(x=600, y=300)
         ###############End#################################################
         ##########Filter Text#############################
         self.filter_text = StringVar
         self.Filter = Entry(self.master, textvariable=self.filter_text)
         self.Filter.insert(0, "Filter Text")
         self.Filter.pack()
-        self.Filter.place(x=100, y=400, width=200, height=60)
+        self.Filter.place(x=900, y=400, width=200, height=60)
 
         self.Apply = Button(self.master, text="Apply", command=lambda: self.filter(), height=3, width=18, bg='white',
                             compound='center')
         self.Apply.pack()
-        self.Apply.place(x=300, y=400)
+        self.Apply.place(x=900, y=460)
         ###########End##################################################
         self.add = Button(self.master, text="ADD", command=lambda: self.just_add(), height=3, width=18, bg='white',
                           compound='center')
         self.add.pack()
-        self.add.place(x=600, y=50)
+        self.add.place(x=900, y=50)
 
         self.remove = Button(self.master, text="REMOVE", command=lambda: self.just_remove(), height=3, width=18,
                              bg='white',
                              compound='center')
         self.remove.pack()
-        self.remove.place(x=600, y=125)
+        self.remove.place(x=900, y=125)
 
         self.back = Button(self.master, text="Go Back", command=lambda: self.goBack(), height=3, width=18, bg='white',
                            compound='center')
         self.back.pack()
-        self.back.place(x=600, y=400)
+        self.back.place(x=900, y=590)
 
     def just_add(self):
         self.statusvar.set("Adding course........")
@@ -397,9 +396,6 @@ class AddSkillPage:
         self.statusvar.set("Course is added!!!!!")
         self.console.update()
 
-    def remove_CRN(self):
-        pass
-        # Considering removing this method
 
     def filter(self, force_str=None):
         if force_str is not None:
