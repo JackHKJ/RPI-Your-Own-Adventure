@@ -3,18 +3,12 @@
 from tkinter import *
 from basicClasses.InfoGatherer import InfoGatherer
 from PIL import Image, ImageTk
-import time
 import enum
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
-# TO DO: connect you request list
+# The following list is a stub when failed to load from SIS
 avail_list = ['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']  # list that is available
 accept_list = []  # list you have accepted
-
-COURSE_GATHERER_FLAG = "CRAPER"
-
-
-# COURSE_GATHERER_FLAG = "CHROME"
 
 
 class UserTypeEnum(enum.Enum):
@@ -41,6 +35,9 @@ class loginWindow:
     """
 
     def __init__(self, master):
+        """
+        :param master: the tkinter instance used to initialize the page
+        """
         self.master = master
         # Data segment
         self.user_type = None
@@ -62,12 +59,11 @@ class loginWindow:
         self.master.resizable(width=False, height=False)
         self.master.title(TEAM_SLOGAN_STR)
 
-        self.RIN_lable = Label(self.master, width=7, text='RIN', compound='center')
-        self.RIN_lable.place(x=200, y=120)
+        self.RIN_label = Label(self.master, width=7, text='RIN', compound='center')
+        self.RIN_label.place(x=200, y=120)
         self.password_label = Label(self.master, width=7, text='Password: ', compound='center')
         self.password_label.place(x=200, y=120 + 40)
 
-        global RIN, password
         RIN = StringVar
         password = StringVar
 
@@ -90,6 +86,9 @@ class loginWindow:
         self.guestButton.place(x=350, y=150 + 40)
 
     def check_password(self):
+        """
+        This function checks the set username and password and set the logged_in status accordingly
+        """
         self.master.title("Logging in, please wait")
         self.RIN = self.RIN_entry.get()
         self.gatherer = InfoGatherer(rin=self.RIN_entry.get(), password=self.Password_entry.get())
@@ -101,6 +100,9 @@ class loginWindow:
             self.master.title("Failed to log in, please retry.")
 
     def goNext(self):
+        """
+        Initialize and assign the next page to te current variable
+        """
         self.master.quit()
         # self.master = Tk()
         self.label_img.destroy()
@@ -108,8 +110,9 @@ class loginWindow:
         self.master.mainloop()
 
     def guest_mode(self):
-        # # placeholder
-        # self.goNext()
+        """
+        Start as guest (no skillTreeNode, an empty Tree is initialized)
+        """
         self.user_type = UserTypeEnum.GUEST
         self.goNext()
 
@@ -120,6 +123,9 @@ class mainWindow:
     """
 
     def __init__(self, master):
+        """
+        :param master: the tkinter instance used to initialize the page
+        """
         # Data segment
         self.page_name = pageEnum.mainWindow
         self.sub_page_name = None
@@ -131,7 +137,6 @@ class mainWindow:
         self.show_skill_flag = False
 
         # Resizing the image
-
         resize_img = Image.open('pic_save/place_holder_fig_for_skilltree.png').resize((620, 348))
 
         self.master = master
@@ -149,7 +154,6 @@ class mainWindow:
         self.label1.place(x=70, y=50)
 
         # The Listbox for storing the Request
-
         self.request_data = StringVar()
         self.requestlist = Listbox(self.master, width=50, height=20, listvariable=self.request_data)
         self.requestlist.pack()
@@ -165,7 +169,6 @@ class mainWindow:
                            bg='white', command=lambda: self.show_skill())
         self.show.pack()
         self.show.place(x=500, y=400)
-        #####End####
 
         self.Add_Extra = Button(self.master, text="Add Extracurricular", compound='center',
                                 height=3, width=18, bg='white')
@@ -178,6 +181,9 @@ class mainWindow:
         self.modify_request.place(x=800, y=400)
 
     def Update_skilltree(self):
+        """
+        Reload the skillTree image from stored path
+        """
         resize_img = Image.open('pic_save/temp_fig.png').resize((620, 348))
         self.skillImg = ImageTk.PhotoImage(resize_img)
         self.label1 = Label(self.master, image=self.skillImg)
@@ -185,14 +191,21 @@ class mainWindow:
         self.label1.place(x=70, y=50)
 
     def addOrRemove(self):
-        # function main body
-        # placeholder
-        self.goThird()
+        """
+        Switch to the add/remove page
+        """
+        self.goto_add_remove_page()
 
     def show_skill(self):
+        """
+        Show the skillTree in a separate window
+        """
         self.show_skill_flag = True
 
-    def goThird(self):
+    def goto_add_remove_page(self):
+        """
+        Initialize and show the add/remove page
+        """
         self.sub_page_name = pageEnum.AddSkillPage
         self.master.deiconify()
         new_window = Toplevel(self.master)
@@ -201,11 +214,15 @@ class mainWindow:
         new_window.mainloop()
 
     def ModifyQuest(self):
-        # function main body
-        # placeholder
-        self.goFourth()
+        """
+        Goto the request modification page
+        """
+        self.goto_modify_request_page()
 
-    def goFourth(self):
+    def goto_modify_request_page(self):
+        """
+        Initialize the request page and then show it
+        """
         self.master.deiconify()
         newwindow = Toplevel(self.master)
         request = requestWindow(newwindow)
@@ -220,9 +237,15 @@ class AddSkillPage:
     """
 
     def __init__(self, master, personObj=None, st=None, parent=None):
-        self.course = Label(master, width=20, text='CourseList', compound='center',font=("Georgia", 25))
+        """
+        :param master: the tkinter instance used to initialize the page
+        :param personObj: the Person class instance used to store user info
+        :param st: the SkillTree instance for fetching the courses
+        :param parent: the parent page of the current page
+        """
+        self.course = Label(master, width=20, text='CourseList', compound='center', font=("Georgia", 25))
         self.course.place(x=100, y=10)
-        self.added=Label(master, width=20, text='Added courses', compound='center',font=("Georgia", 25))
+        self.added = Label(master, width=20, text='Added courses', compound='center', font=("Georgia", 25))
         self.added.place(x=550, y=10)
         # Data segment
         self.page_name = pageEnum.AddSkillPage
@@ -234,7 +257,6 @@ class AddSkillPage:
         self.addedList_listbox = None
         # Data representation for the course/added list as dict
         self.course_dict = None
-        # self.added_dict = None
         # Temp list for addition
         self.course_list = None
         self.added_list = None
@@ -245,19 +267,18 @@ class AddSkillPage:
         self.h = int((self.screen_height - 800) / 2)
         self.master.geometry(f'1200x800+{self.w}+{self.h}')
         self.master.resizable(width=False, height=False)
-        ###############Statu Bar set up############################
+
+        # Set up the status bar
         self.statusvar = StringVar()
         self.statusvar.set("Ready")
         self.console = Label(self.master, textvariable=self.statusvar, height=3, relief=SUNKEN, anchor="w")
         self.console.pack(side=BOTTOM, fill=X)
-        ############End#############################
 
-        ##############Courselist set up here################################
+        # Set up the course list
         self.courseList_listbox = Listbox(self.master, width=35, height=35)
         # Available course list:
         self.course_dict = dict()
         self.course_list = []
-        # self.added_dict = dict()
         self.added_list = []
 
         if self.PersonObj is not None:
@@ -268,27 +289,26 @@ class AddSkillPage:
             # Update the selected courses
             for course in self.PersonObj.get_skills():
                 self.added_list.append(str(course))
-                # self.added_dict[str(course)] = course
         else:
             self.course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
             for item in self.course_list:
                 self.course_dict[item] = item
 
-        # Show the representation in a list
+        # Show the selectable course in a list
         for item in self.course_list:
             if item not in self.added_list:
                 self.courseList_listbox.insert(END, item)
         self.courseList_listbox.pack()
         self.courseList_listbox.place(x=100, y=50)
-        #############END###################################################
 
+        # Show the added course in a list
         self.addedList_listbox = Listbox(self.master, width=35, height=35)
         for course in self.added_list:
             self.addedList_listbox.insert(END, course)
         self.addedList_listbox.pack()
         self.addedList_listbox.place(x=550, y=50)
 
-        ##############CRN input#########################
+        # CRN input box
         self.CRN_num = StringVar
         self.CRNinput = Entry(self.master, textvariable=self.CRN_num)
         self.CRNinput.insert(0, "Enter CRN here")
@@ -299,10 +319,8 @@ class AddSkillPage:
                                bg='white', compound='center')
         self.addByCRN.pack()
         self.addByCRN.place(x=900, y=250)
-        # End
-        # remove course
-        ###############End#################################################
-        ##########Filter Text#############################
+
+        # The text input for filtering
         self.filter_text = StringVar
         self.Filter = Entry(self.master, textvariable=self.filter_text)
         self.Filter.insert(0, "Filter Text")
@@ -313,7 +331,8 @@ class AddSkillPage:
                             compound='center')
         self.Apply.pack()
         self.Apply.place(x=900, y=460)
-        ###########End##################################################
+
+        # The remove button
         self.add = Button(self.master, text="ADD", command=lambda: self.just_add(), height=3, width=18, bg='white',
                           compound='center')
         self.add.pack()
@@ -331,10 +350,13 @@ class AddSkillPage:
         self.back.place(x=900, y=590)
 
     def just_add(self):
+        """
+        Add the selected course from the list to the user skillTree, if nothing is selected, return
+        """
         self.statusvar.set("Adding course........")
         self.console.update()
         print(self.courseList_listbox.curselection()[0])
-        if self.courseList_listbox.curselection()[0] >= 0:
+        if self.courseList_listbox.curselection()[0] is not None and self.courseList_listbox.curselection()[0] >= 0:
             # Get selection and add the skill
             selected = self.courseList_listbox.get(self.courseList_listbox.curselection())
             self.PersonObj.add_skill(self.ST, self.course_dict[selected])
@@ -351,10 +373,13 @@ class AddSkillPage:
                 self.parent.gatherer.add_course_from_SIS()
 
     def just_remove(self):
+        """
+        Remove the selected course from the added list, if nothing is selected, return
+        """
         self.statusvar.set("Removing course........")
         self.console.update()
         print(self.addedList_listbox.curselection()[0])
-        if self.addedList_listbox.curselection()[0] >= 0:
+        if self.addedList_listbox.curselection()[0] is not None and self.addedList_listbox.curselection()[0] >= 0:
             # Get selection and remove the skill
             selected = self.addedList_listbox.get(self.addedList_listbox.curselection())
             self.PersonObj.remove_skill(self.ST, self.course_dict[selected])
@@ -371,6 +396,9 @@ class AddSkillPage:
                 self.parent.gatherer.remove_course_from_SIS()
 
     def add_CRN(self):
+        """
+        Add the course by the CRN input, hint when necessary
+        """
         self.statusvar.set("Busy!!! Adding course........")
         self.console.update()
         this_input = self.CRNinput.get()
@@ -392,8 +420,11 @@ class AddSkillPage:
         self.statusvar.set("Course is added!!!!!")
         self.console.update()
 
-
     def filter(self, force_str=None):
+        """
+        Filter the selectable course by the given string, null string or default text will not be recognized
+        :param force_str: the str used to adjust the status
+        """
         if force_str is not None:
             filter_text = force_str
         else:
@@ -409,13 +440,25 @@ class AddSkillPage:
                 self.courseList_listbox.insert(END, item)
 
     def goBack(self):
+        """
+        Go back to the parent page
+        """
         self.parent.sub_page_name = None
         self.parent.sub_page_window = None
         self.master.destroy()
 
 
-class requestWindow():
+class requestWindow:
+    """
+    The window for modifying the request
+    """
+
     def __init__(self, master, personObj=None, st=None):
+        """
+        :param master: the tkinter instance used to initialize the page
+        :param personObj: the Person class instance used to store user info
+        :param st: the SkillTree instance for fetching the courses
+        """
         # Data segment
         self.page_name = pageEnum.requestWindow
         self.PersonObj = personObj
@@ -429,90 +472,73 @@ class requestWindow():
         self.master.geometry(f'1200x800+{self.w}+{self.h}')
         self.master.resizable(width=False, height=False)
 
-        ###############Request processing############
-        ####available request#####
+        # Selectable request
         self.avail_item = StringVar()
-        # TO DO: set up the request here
         self.avail_item.set(avail_list)
         self.avail_request = Listbox(self.master, width=50, height=25, listvariable=self.avail_item)
         self.avail_request.pack()
         self.avail_request.place(x=100, y=50)
-        ######accept request#####
 
+        # Accepted request
         self.accept_item = StringVar()
         self.accept_item.set(accept_list)
         self.accept_request = Listbox(self.master, width=50, height=25, listvariable=self.accept_item)
         self.accept_request.pack()
         self.accept_request.place(x=600, y=50)
-        ###############End##########################
 
+        # The accept button
         self.accept = Button(self.master, text="Accept >>", command=lambda: self.accept_move(), height=3, width=50,
                              bg='white', compound='center')
         self.accept.pack()
         self.accept.place(x=100, y=500)
 
+        # The remove button
         self.remove = Button(self.master, text="<< Remove", command=lambda: self.remove_move(), height=3, width=50,
                              bg='white', compound='center')
         self.remove.pack()
         self.remove.place(x=600, y=500)
 
+        # The check button
         self.check = Button(self.master, text="Check as finished", command=lambda: self.finished(), height=3, width=50,
                             bg='white', compound='center')
         self.check.pack()
         self.check.place(x=600, y=600)
 
-        # self.back = Button(self.master, text="Update", command=lambda: self.goBack(), height=3, width=50, bg='white',
-        #                    compound='center')
-        # self.back.pack()
-        # self.back.place(x=100, y=600)
-
     def accept_move(self):
-        # TO DO: sychronize your accept operation with your function
+        """
+        Accept the selected request
+        """
         avail_list.remove(self.avail_request.get(self.avail_request.curselection()))
         accept_list.append(self.avail_request.get(self.avail_request.curselection()))
         self.avail_item.set(avail_list)
         self.accept_item.set(accept_list)
 
     def remove_move(self):
-        # TO DO: sychronize your remove operation with your function
+        """
+        Remove the selected request
+        """
         accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
         avail_list.append(self.accept_request.get(self.accept_request.curselection()))
         self.avail_item.set(avail_list)
         self.accept_item.set(accept_list)
 
     def finished(self):
-        # TO DO: what you wanna do with check as finished buttion
-        pass
+        """
+        Check the selected request as finished
+        """
+        accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
+        self.avail_item.set(avail_list)
+        self.accept_item.set(accept_list)
 
     def return_list(self):
+        """
+        Return the accepted list
+        """
         return accept_list
-
-    # def goBack(self):
-    #     self.master.destroy()
-
-
-# class App(threading.Thread):
-#     def __init__(self):
-#         super(App, self).__init__()
-#         self.start()
-#
-#     def callback(self):
-#         self.root.quit()
-#
-#     def run(self):
-#         self.root = Tk()
-#         self.root.protocol("WM_DELETE_WINDOW", self.callback)
-#         loginWindow(self.root)
-#         self.root.mainloop()
-#
 
 
 if __name__ == "__main__":
+    # #Do not use this in the actual runtime
     root = Tk()
     loginWindow(root)
     root.mainloop()
-    # App()
-    #
-    # for i in range(1000):
-    #     time.sleep(1)
-    #     print(i)
