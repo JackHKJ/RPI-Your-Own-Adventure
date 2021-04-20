@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import urllib.parse
-from dotenv import load_dotenv
 import re
 
 transcript_url = 'https://sis.rpi.edu/rss/bwskotrn.P_ViewTran'
@@ -57,8 +56,3 @@ class InfoGatherer:
         course_num = transcript_soup.find_all('td', class_='dddefault', string=re.compile('^[0-9]{4}$'))
         return [x.next_element + '-' + y.next_element for x, y in zip(course_dept, course_num)]
 
-if __name__ == '__main__':
-    load_dotenv()
-    scraper = InfoGatherer(os.getenv('RIN'), os.getenv('PASSWORD'))
-    print(scraper.logged_in)
-    print(scraper.get_learned_courses())
