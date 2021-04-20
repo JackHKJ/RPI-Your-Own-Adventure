@@ -4,7 +4,6 @@ import os
 import urllib.parse
 from dotenv import load_dotenv
 import re
-import time
 
 transcript_url = 'https://sis.rpi.edu/rss/bwskotrn.P_ViewTran'
 
