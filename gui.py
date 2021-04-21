@@ -8,7 +8,8 @@ from tkinter import ttk
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
 # The following list is a stub when failed to load from SIS
-avail_list = ['Request1', 'Request2', 'Request3', 'Request4', 'Request5', 'Request6']  # list that is available
+avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
+            'Join the sorosity', 'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
 accept_list = []  # list you have accepted
 
 
