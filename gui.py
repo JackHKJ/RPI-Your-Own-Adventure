@@ -138,7 +138,7 @@ class mainWindow:
         self.show_skill_flag = False
 
         # Resizing the image
-        resize_img = Image.open('pic_save/place_holder_fig_for_skilltree.png').resize((620, 348))
+        resize_img = Image.open('pic_save/place_holder_fig_for_skilltree.png').resize((800, 570))
 
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
@@ -149,42 +149,49 @@ class mainWindow:
         self.master.title(TEAM_SLOGAN_STR)
 
         # Resizing the skillTree
+        self.skillframe=LabelFrame(self.master, text="Skill Tree Diagram: ",padx=10,pady=12,font=("Georgia", 20))
+        self.skillframe.pack()
         self.skillImg = ImageTk.PhotoImage(resize_img)
-        self.label1 = Label(self.master, image=self.skillImg)
+        self.label1 = Label(self.skillframe, image=self.skillImg)
         self.label1.pack()
-        self.label1.place(x=70, y=50)
+        self.skillframe.place(x=0, y=0)
 
         # The Listbox for storing the Request
+        self.requestframe=LabelFrame(self.master, text="Request List: ",font=("Georgia", 20))
+        self.requestframe.pack()
         self.request_data = StringVar()
-        self.requestlist = Listbox(self.master, width=50, height=20, listvariable=self.request_data)
+        self.requestlist = Listbox(self.requestframe, width=40, height=34, listvariable=self.request_data)
         self.requestlist.pack()
-        self.requestlist.place(x=700, y=50)
+        self.requestframe.place(x=830, y=0)
 
-        self.add_btn=PhotoImage(file='button_add-remove-from-sis.png')
-        self.test=Button(self.master,image=self.add_btn,borderwidth=0)
-        self.test.pack()
-        self.test.place(x=100,y=600)
+        
+        self.group = LabelFrame(self.master, text="",padx=200,pady=60)
+        self.group.pack(side=BOTTOM)
+        # self.add_btn=PhotoImage(file='button_add-remove-from-sis.png')
+        # self.test=Button(self.group,image=self.add_btn,borderwidth=0)
+        # self.test.pack()
+        # self.test.place(x=100,y=600)
 
-        self.add_or_remove = Button(self.master, text="Add/Remove from SIS", compound='center', height=3, width=18,
+        self.add_or_remove = Button(self.group, text="Add/Remove from SIS", compound='center', height=3, width=18,
                                     bg='white', command=lambda: self.addOrRemove())
-        self.add_or_remove.pack()
-        self.add_or_remove.place(x=100, y=400)
+        self.add_or_remove.pack(side=LEFT)
+        # self.add_or_remove.place(x=100, y=400)
 
         # Button to show skillTree in a separate window
-        self.show = Button(self.master, text="Show the skill tree", compound='center', height=3, width=18,
+        self.show = Button(self.group, text="Show the skill tree", compound='center', height=3, width=18,
                            bg='white', command=lambda: self.show_skill())
-        self.show.pack()
-        self.show.place(x=500, y=400)
+        self.show.pack(side=LEFT)
+        # self.show.place(x=500, y=400)
 
-        self.Add_Extra = Button(self.master, text="Add Extracurricular", compound='center',
+        self.Add_Extra = Button(self.group, text="Add Extracurricular", compound='center',
                                 height=3, width=18, bg='white')
-        self.Add_Extra.pack()
-        self.Add_Extra.place(x=300, y=400)
+        self.Add_Extra.pack(side=LEFT)
+        # self.Add_Extra.place(x=300, y=400)
 
-        self.modify_request = Button(self.master, text="Modify Request", height=3, width=24, compound='center',
+        self.modify_request = Button(self.group, text="Modify Request", height=3, width=24, compound='center',
                                      bg='white', command=lambda: self.ModifyQuest())
-        self.modify_request.pack()
-        self.modify_request.place(x=800, y=400)
+        self.modify_request.pack(side=RIGHT)
+        # self.modify_request.place(x=800, y=400)
 
     def Update_skilltree(self):
         """
