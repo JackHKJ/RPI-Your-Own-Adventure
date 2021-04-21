@@ -6,6 +6,7 @@ from basicClasses.sisscraper import SISscraper
 from PIL import Image, ImageTk
 import time
 import enum
+from tkinter import ttk
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
 # TO DO: connect you request list
@@ -158,6 +159,11 @@ class mainWindow:
         self.requestlist = Listbox(self.master, width=50, height=20, listvariable=self.request_data)
         self.requestlist.pack()
         self.requestlist.place(x=700, y=50)
+
+        self.add_btn=PhotoImage(file='button_add-remove-from-sis.png')
+        self.test=Button(self.master,image=self.add_btn,borderwidth=0)
+        self.test.pack()
+        self.test.place(x=100,y=600)
 
         self.add_or_remove = Button(self.master, text="Add/Remove from SIS", compound='center', height=3, width=18,
                                     bg='white', command=lambda: self.addOrRemove())
