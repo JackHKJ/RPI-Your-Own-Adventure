@@ -166,34 +166,34 @@ class mainWindow:
         self.requestframe.place(x=830, y=0)
 
         
-        self.group = LabelFrame(self.master, text="",padx=260,pady=56)
+        self.group = LabelFrame(self.master, text="",padx=200,pady=56)
         self.group.pack(side=BOTTOM)
         # self.add_btn=PhotoImage(file='button_add-remove-from-sis.png')
         # self.test=Button(self.group,image=self.add_btn,borderwidth=0)
         # self.test.pack()
         # self.test.place(x=100,y=600)
 
-        self.add_btn=PhotoImage(file='button_add-remove-from-sis.gif')
-        self.add_or_remove = Button(self.group,image=self.add_btn, compound='center', height=3, width=18,
+        # self.add_btn=PhotoImage(file='button_add-remove-from-sis.gif')
+        self.add_or_remove = Button(self.group,text="Add/Remove from SIS", compound='center', height=3, width=18,
                                     bg='white', command=lambda: self.addOrRemove(),borderwidth=0)
         self.add_or_remove.pack(side=LEFT)
         # self.add_or_remove.place(x=100, y=400)
 
         # Button to show skillTree in a separate window
-        self.show_btn=PhotoImage(file='button_show-the-skill-tree.gif')
-        self.show = Button(self.group, image=self.show_btn, compound='center', height=3, width=18,
+        # self.show_btn=PhotoImage(file='button_show-the-skill-tree.gif')
+        self.show = Button(self.group, text="Show the skill tree", compound='center', height=3, width=18,
                            bg='white', command=lambda: self.show_skill())
         self.show.pack(side=LEFT)
         # self.show.place(x=500, y=400)
 
-        self.extra_btn=PhotoImage(file='button_add-extracurricular.gif')
-        self.Add_Extra = Button(self.group, image=self.extra_btn, compound='center',
-                                height=0, width=10, bg='white')
+        # self.extra_btn=PhotoImage(file='button_add-extracurricular.gif')
+        self.Add_Extra = Button(self.group, text="Add extracurricular", compound='center',height=3, width=18,
+                                 bg='white')
         self.Add_Extra.pack(side=LEFT)
         # self.Add_Extra.place(x=300, y=400)
 
-        self.request_btn=PhotoImage(file='button_modify-request.gif')
-        self.modify_request = Button(self.group, image=self.request_btn, height=3, width=18, compound='center',
+        # self.request_btn=PhotoImage(file='button_modify-request.gif')
+        self.modify_request = Button(self.group, text="Modify request", height=3, width=18, compound='center',
                                      bg='white', command=lambda: self.ModifyQuest())
         self.modify_request.pack(side=LEFT)
         # self.modify_request.place(x=800, y=400)
@@ -331,14 +331,14 @@ class AddSkillPage:
         self.CRNframe.pack()
         self.CRN_num = StringVar
         # The remove button
-        self.add_btn=PhotoImage(file='button_add.gif')
-        self.add = Button(self.CRNframe, image=self.add_btn, command=lambda: self.just_add(), height=3, width=30, bg='white',
+        # self.add_btn=PhotoImage(file='button_add.gif')
+        self.add = Button(self.CRNframe, text="Add", command=lambda: self.just_add(), height=3, width=18, bg='white',
                           compound='center')
         self.add.pack()
         self.CRNframe.place(x=900, y=50)
 
-        self.remove_btn=PhotoImage(file='button_remove.gif')
-        self.remove = Button(self.CRNframe, image=self.remove_btn, command=lambda: self.just_remove(), height=3, width=18,
+        # self.remove_btn=PhotoImage(file='button_remove.gif')
+        self.remove = Button(self.CRNframe, text="Remove", command=lambda: self.just_remove(), height=3, width=18,
                              bg='white',
                              compound='center')
         self.remove.pack()
@@ -348,14 +348,14 @@ class AddSkillPage:
         self.CRNinput.pack()
         # self.CRNinput.place(x=900, y=200, width=200, height=50)
         # add course
-        self.CRN_btn=PhotoImage(file='button_add-by-crn.gif')
-        self.addByCRN = Button(self.CRNframe, image=self.CRN_btn, command=lambda: self.add_CRN(), height=3, width=18,
+        # self.CRN_btn=PhotoImage(file='button_add-by-crn.gif')
+        self.addByCRN = Button(self.CRNframe, text="Add By CRN", command=lambda: self.add_CRN(), height=3, width=18,
                                bg='white', compound='center')
         self.addByCRN.pack()
         # self.addByCRN.place(x=900, y=250)
 
-        self.back_btn=PhotoImage(file='button_go-back.gif')
-        self.back = Button(self.master, image=self.back_btn, command=lambda: self.goBack(), height=3, width=18, bg='white',
+        # self.back_btn=PhotoImage(file='button_go-back.gif')
+        self.back = Button(self.master, text="Go Back", command=lambda: self.goBack(), height=3, width=18, bg='white',
                            compound='center')
         self.back.pack()
         self.back.place(x=900, y=590)
@@ -364,13 +364,13 @@ class AddSkillPage:
         self.filterframe=LabelFrame(self.master, text="Filter Text")
         self.filterframe.pack()
         self.filter_text = StringVar
-        self.filter_btn=PhotoImage(file='button_apply.gif')
+        # self.filter_btn=PhotoImage(file='button_apply.gif')
         self.Filter = Entry(self.filterframe, textvariable=self.filter_text)
         self.Filter.insert(0, "Enter Text here")
         self.Filter.pack()
 
         self.filterframe.place(x=900, y=300)
-        self.Apply = Button(self.filterframe, image=self.filter_btn, command=lambda: self.filter(), height=3, width=18, bg='white',
+        self.Apply = Button(self.filterframe, text="Apply", command=lambda: self.filter(), height=3, width=18, bg='white',
                             compound='center')
         self.Apply.pack()
         # self.Filter.place(x=900, y=460, width=200, height=60)
@@ -517,31 +517,31 @@ class requestWindow:
         self.acceptframe.place(x=610, y=0)
 
         # The accept button
-        self.accept_btn=PhotoImage(file='button_accept.gif')
-        self.accept = Button(self.avalframe, image=self.accept_btn, command=lambda: self.accept_move(), height=3, width=50,
+        # self.accept_btn=PhotoImage(file='button_accept.gif')
+        self.accept = Button(self.avalframe, text="Accept >>", command=lambda: self.accept_move(), height=3, width=50,
                              bg='white', compound='center')
         self.accept.pack(side=RIGHT)
         # self.accept.place(x=100, y=500)
 
         # The remove button
-        self.remove_btn=PhotoImage(file='button_remove2.gif')
-        self.remove = Button(self.acceptframe, image=self.remove_btn, command=lambda: self.remove_move(), height=3, width=50,
+        # self.remove_btn=PhotoImage(file='button_remove2.gif')
+        self.remove = Button(self.acceptframe, text="<< Remove", command=lambda: self.remove_move(), height=3, width=50,
                              bg='white', compound='center')
         self.remove.pack(side=LEFT)
         # self.remove.place(x=600, y=500)
         #bottom frame
-        self.bottom_frame=LabelFrame(self.master, text="",padx=400,pady=10)
+        self.bottom_frame=LabelFrame(self.master, text="",padx=120,pady=10)
         self.bottom_frame.pack()
         # The check button
-        self.check_btn=PhotoImage(file='button_check-as-finished.gif')
-        self.check = Button(self.bottom_frame, image=self.check_btn, command=lambda: self.finished(), height=3, width=50,
+        # self.check_btn=PhotoImage(file='button_check-as-finished.gif')
+        self.check = Button(self.bottom_frame, text="Check as finished", command=lambda: self.finished(), height=3, width=50,
                             bg='white', compound='center')
         self.check.pack(side=RIGHT)
         self.bottom_frame.place(x=0,y=680)
         # self.check.place(x=100, y=600)
 
-        self.back_btn=PhotoImage(file='button_go-back.gif')
-        self.back = Button(self.bottom_frame, image=self.back_btn, command=lambda: self.goBack(), height=3, width=18, bg='white',
+        # self.back_btn=PhotoImage(file='button_go-back.gif')
+        self.back = Button(self.bottom_frame, text="Go Back", command=lambda: self.goBack(), height=3, width=50, bg='white',
                            compound='center')
         self.back.pack(side=LEFT)
         # self.bottom_frame.place(x=600,y=700)
