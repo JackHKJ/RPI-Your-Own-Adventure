@@ -7,6 +7,7 @@ from gui import *
 from gui import UserTypeEnum
 from basicClasses.SkillTree import *
 from basicClasses.Person import *
+import time
 
 # Load the SkillTree
 st = SkillTree(

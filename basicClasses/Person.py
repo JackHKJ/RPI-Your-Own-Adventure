@@ -2,8 +2,6 @@
 # Dependencies
 from basicClasses.SkillTreeNode import SkillTreeNode
 from basicClasses.SkillTree import SkillTree
-import networkx as nx
-import matplotlib.pyplot as plt
 
 
 class Person(object):
