@@ -307,6 +307,7 @@ class AddSkillPage:
             # Update the selected courses
             for course in self.PersonObj.get_skills():
                 self.added_list.append(str(course))
+                self.course_dict[str(course)] = course
         else:
             self.course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
             for item in self.course_list:
@@ -394,6 +395,10 @@ class AddSkillPage:
             self.statusvar.set("Added {}".format(selected))
             self.console.update()
 
+        # Try to add to SIS if logged in
+        if self.parent.user_type == UserTypeEnum.STUDENT:
+            self.parent.gatherer.add_course_from_SIS()
+
     def just_remove(self):
         """
         Remove the selected course from the added list, if nothing is selected, return
@@ -404,6 +409,7 @@ class AddSkillPage:
         if self.addedList_listbox.curselection()[0] is not None and self.addedList_listbox.curselection()[0] >= 0:
             # Get selection and remove the skill
             selected = self.addedList_listbox.get(self.addedList_listbox.curselection())
+            # print(self.course_dict)
             self.PersonObj.remove_skill(self.ST, self.course_dict[selected])
             self.addedList_listbox.delete(self.addedList_listbox.curselection())
             self.added_list.remove(str(self.course_dict[selected]))
@@ -437,6 +443,10 @@ class AddSkillPage:
         self.filter(force_str="$RELOAD$")
         self.statusvar.set("Course is added!!!!!")
         self.console.update()
+
+         # Try to remove from SIS if logged in
+        if self.parent.user_type == UserTypeEnum.STUDENT:
+            self.parent.gatherer.remove_course_from_SIS()
 
     def filter(self, force_str=None):
         """
