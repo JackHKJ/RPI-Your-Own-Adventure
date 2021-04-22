@@ -394,10 +394,6 @@ class AddSkillPage:
             self.statusvar.set("Added {}".format(selected))
             self.console.update()
 
-            # Try to add to SIS if logged in
-            if self.parent.user_type == UserTypeEnum.STUDENT:
-                self.parent.gatherer.add_course_from_SIS()
-
     def just_remove(self):
         """
         Remove the selected course from the added list, if nothing is selected, return
@@ -416,10 +412,6 @@ class AddSkillPage:
             self.course_list.append(str(self.course_dict[selected]))
             self.statusvar.set("Removed {}".format(selected))
             self.console.update()
-
-            # Try to remove from SIS if logged in
-            if self.parent.user_type == UserTypeEnum.STUDENT:
-                self.parent.gatherer.remove_course_from_SIS()
 
     def add_CRN(self):
         """
