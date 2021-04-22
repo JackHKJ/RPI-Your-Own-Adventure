@@ -409,7 +409,6 @@ class AddSkillPage:
         if self.addedList_listbox.curselection()[0] is not None and self.addedList_listbox.curselection()[0] >= 0:
             # Get selection and remove the skill
             selected = self.addedList_listbox.get(self.addedList_listbox.curselection())
-            # print(self.course_dict)
             self.PersonObj.remove_skill(self.ST, self.course_dict[selected])
             self.addedList_listbox.delete(self.addedList_listbox.curselection())
             self.added_list.remove(str(self.course_dict[selected]))
