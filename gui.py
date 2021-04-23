@@ -138,9 +138,8 @@ class mainWindow:
         self.gatherer = None
         self.show_skill_flag = False
 
-        # Resizing the image
-        resize_img = Image.open('pic_save/place_holder_fig_for_skilltree.png').resize((800, 570))
-
+        # Skill Tree Diagram
+        resize_img = Image.open("src/skillTreeDiagramPlaceHolder.png").resize((800, 570))
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
         self.w = int((self.screen_width - 1200) / 2)
@@ -149,54 +148,81 @@ class mainWindow:
         self.master.resizable(width=True, height=True)
         self.master.title(TEAM_SLOGAN_STR)
 
-        # Resizing the skillTree
-        self.skillframe=LabelFrame(self.master, text="Skill Tree Diagram: ",padx=10,pady=12,font=("Georgia", 20))
-        self.skillframe.pack()
+        self.skillFrame = LabelFrame(self.master, text="Skill Tree Diagram: ", padx=10, pady=12, font=("Georgia", 20))
+        self.skillFrame.pack()
         self.skillImg = ImageTk.PhotoImage(resize_img)
-        self.label1 = Label(self.skillframe, image=self.skillImg)
+        self.label1 = Label(self.skillFrame, image=self.skillImg)
         self.label1.pack()
-        self.skillframe.place(x=0, y=0)
+        self.skillFrame.place(x=0, y=0)
 
-        # The Listbox for storing the Request
-        self.requestframe=LabelFrame(self.master, text="Request List: ",font=("Georgia", 20))
-        self.requestframe.pack()
+        # Request List
+        self.requestFrame=LabelFrame(self.master, text="Request List: ", font=("Georgia", 20))
+        self.requestFrame.pack()
         self.request_data = StringVar()
-        self.requestlist = Listbox(self.requestframe, width=40, height=34, listvariable=self.request_data)
-        self.requestlist.pack()
-        self.requestframe.place(x=830, y=0)
+        self.requestList = Listbox(self.requestFrame, width=40, height=37, listvariable=self.request_data)
+        self.requestList.pack()
+        self.requestFrame.place(x=840, y=0)
 
-        
-        self.group = LabelFrame(self.master, text="",padx=200,pady=56)
-        self.group.pack(side=BOTTOM)
-        # self.add_btn=PhotoImage(file='button_add-remove-from-sis.png')
-        # self.test=Button(self.group,image=self.add_btn,borderwidth=0)
-        # self.test.pack()
-        # self.test.place(x=100,y=600)
+        # this is a button sample background
+        self.buttonImg = PhotoImage(file="src/buttonSample.png")
+        self.buttonImg = self.buttonImg.subsample(2, 2)
 
-        # self.add_btn=PhotoImage(file='button_add-remove-from-sis.gif')
-        self.add_or_remove = Button(self.group,text="Add/Remove from SIS", compound='center', height=3, width=18,
-                                    bg='white', command=lambda: self.addOrRemove(),borderwidth=0)
-        self.add_or_remove.pack(side=LEFT)
-        # self.add_or_remove.place(x=100, y=400)
+        # Add/remove button
+        self.add_or_remove = Button(
+            self.master,
+            text="Add/Remove From SIS",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.addOrRemove()
+        )
+        self.add_or_remove.config(image=self.buttonImg)
+        self.add_or_remove.pack()
+        self.add_or_remove.place(x=75, y=650)
 
-        # Button to show skillTree in a separate window
-        # self.show_btn=PhotoImage(file='button_show-the-skill-tree.gif')
-        self.show = Button(self.group, text="Show the skill tree", compound='center', height=3, width=18,
-                           bg='white', command=lambda: self.show_skill())
-        self.show.pack(side=LEFT)
-        # self.show.place(x=500, y=400)
+        # show skill tree button
+        self.show = Button(
+            self.master,
+            text="Show Skill Tree",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.show_skill()
+        )
+        self.show.config(image=self.buttonImg)
+        self.show.pack()
+        self.show.place(x=325, y=650)
 
-        # self.extra_btn=PhotoImage(file='button_add-extracurricular.gif')
-        self.Add_Extra = Button(self.group, text="Add extracurricular", compound='center',height=3, width=18,
-                                 bg='white')
-        self.Add_Extra.pack(side=LEFT)
-        # self.Add_Extra.place(x=300, y=400)
+        # Add extracurricular button
+        self.Add_Extra = Button(
+            self.master,
+            text="Add extracurricular",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            # command=lambda: function placeholder
+        )
+        self.Add_Extra.config(image=self.buttonImg)
+        self.Add_Extra.pack()
+        self.Add_Extra.place(x=575, y=650)
 
-        # self.request_btn=PhotoImage(file='button_modify-request.gif')
-        self.modify_request = Button(self.group, text="Modify request", height=3, width=18, compound='center',
-                                     bg='white', command=lambda: self.ModifyQuest())
-        self.modify_request.pack(side=LEFT)
-        # self.modify_request.place(x=800, y=400)
+        # Modify requests button
+        self.modify_request = Button(
+            self.master,
+            text="Modify requests",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.ModifyQuest()
+        )
+        self.modify_request.config(image=self.buttonImg)
+        self.modify_request.pack()
+        self.modify_request.place(x=825, y=650)
+
 
     def Update_skilltree(self):
         """
@@ -262,9 +288,9 @@ class AddSkillPage:
         :param parent: the parent page of the current page
         """
         self.course = Label(master, width=20, text='CourseList', compound='center', font=("Georgia", 25))
-        self.course.place(x=100, y=10)
+        self.course.place(x=0, y=0)
         self.added = Label(master, width=20, text='Added courses', compound='center', font=("Georgia", 25))
-        self.added.place(x=550, y=10)
+        self.added.place(x=350, y=0)
         # Data segment
         self.page_name = pageEnum.AddSkillPage
         self.PersonObj = personObj
@@ -287,9 +313,9 @@ class AddSkillPage:
         self.master.resizable(width=False, height=False)
 
         # Set up the status bar
-        self.statusvar = StringVar()
-        self.statusvar.set("Ready")
-        self.console = Label(self.master, textvariable=self.statusvar, height=3, relief=SUNKEN, anchor="w")
+        self.statusBar = StringVar()
+        self.statusBar.set("Ready")
+        self.console = Label(self.master, textvariable=self.statusBar, height=3, relief=SUNKEN, anchor="w")
         self.console.pack(side=BOTTOM, fill=X)
 
         # Set up the course list
@@ -324,62 +350,108 @@ class AddSkillPage:
         for course in self.added_list:
             self.addedList_listbox.insert(END, course)
         self.addedList_listbox.pack()
-        self.addedList_listbox.place(x=550, y=50)
+        self.addedList_listbox.place(x=450, y=50)
 
-        # CRN input box
-        self.CRNframe=LabelFrame(self.master, text="Add/remove")
-        self.CRNframe.pack()
-        self.CRN_num = StringVar
-        # The remove button
-        # self.add_btn=PhotoImage(file='button_add.gif')
-        self.add = Button(self.CRNframe, text="Add", command=lambda: self.just_add(), height=3, width=18, bg='white',
-                          compound='center')
+        # this is a button sample background
+        self.buttonImg = PhotoImage(file="src/buttonSample.png")
+        self.buttonImg = self.buttonImg.subsample(2, 2)
+
+        # entry for potential added course
+        self.potentialCourseName = StringVar
+        self.entryPotentialCourse = Entry(self.master, textvariable=self.potentialCourseName)
+        self.entryPotentialCourse.insert(0, "Enter course name")
+        self.entryPotentialCourse.pack()
+        self.entryPotentialCourse.place(x=750, y=50, width=150, height=50)
+
+        # Add button
+        self.add = Button(
+            self.master,
+            text="Add",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.just_add()
+        )
+        self.add.config(image=self.buttonImg)
         self.add.pack()
-        self.CRNframe.place(x=900, y=50)
+        self.add.place(x=740, y=110)
 
-        # self.remove_btn=PhotoImage(file='button_remove.gif')
-        self.remove = Button(self.CRNframe, text="Remove", command=lambda: self.just_remove(), height=3, width=18,
-                             bg='white',
-                             compound='center')
+        # remove button
+        self.remove = Button(
+            self.master,
+            text="Remove",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.just_remove()
+        )
+        self.remove.config(image=self.buttonImg)
         self.remove.pack()
-        # self.remove.place(x=900, y=125)
-        self.CRNinput = Entry(self.CRNframe, textvariable=self.CRN_num)
-        self.CRNinput.insert(0, "Enter CRN here")
-        self.CRNinput.pack()
-        # self.CRNinput.place(x=900, y=200, width=200, height=50)
-        # add course
-        # self.CRN_btn=PhotoImage(file='button_add-by-crn.gif')
-        self.addByCRN = Button(self.CRNframe, text="Add By CRN", command=lambda: self.add_CRN(), height=3, width=18,
-                               bg='white', compound='center')
+        self.remove.place(x=740, y=180)
+
+        # entry for CRN input
+        self.CRN_num = StringVar
+        self.entryCRN = Entry(self.master, textvariable=self.CRN_num)
+        self.entryCRN.insert(0, "Enter CRN here")
+        self.entryCRN.pack()
+        self.entryCRN.place(x=750, y=280, width=150, height=50)
+
+        # another add course button
+        self.addByCRN = Button(
+            self.master,
+            text="Add by CRN",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.add_CRN()
+        )
+        self.addByCRN.config(image=self.buttonImg)
         self.addByCRN.pack()
-        # self.addByCRN.place(x=900, y=250)
+        self.addByCRN.place(x=740, y=330)
 
-        # self.back_btn=PhotoImage(file='button_go-back.gif')
-        self.back = Button(self.master, text="Go Back", command=lambda: self.goBack(), height=3, width=18, bg='white',
-                           compound='center')
-        self.back.pack()
-        self.back.place(x=900, y=590)
-
-        # The text input for filtering
-        self.filterframe=LabelFrame(self.master, text="Filter Text")
-        self.filterframe.pack()
+        # entry for filter
         self.filter_text = StringVar
-        # self.filter_btn=PhotoImage(file='button_apply.gif')
-        self.Filter = Entry(self.filterframe, textvariable=self.filter_text)
+        self.Filter = Entry(self.master, textvariable=self.filter_text)
         self.Filter.insert(0, "Enter Text here")
         self.Filter.pack()
+        self.Filter.place(x=750, y=430, width=150, height=50)
 
-        self.filterframe.place(x=900, y=300)
-        self.Apply = Button(self.filterframe, text="Apply", command=lambda: self.filter(), height=3, width=18, bg='white',
-                            compound='center')
+        # apply button
+        self.Apply = Button(
+            self.master,
+            text="Apply Filter",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.filter()
+        )
+        self.Apply.config(image=self.buttonImg)
         self.Apply.pack()
-        # self.Filter.place(x=900, y=460, width=200, height=60)
+        self.Apply.place(x=740, y=480)
+
+        # go back button
+        self.back = Button(
+            self.master,
+            text="Go Back",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.goBack()
+        )
+        self.back.config(image=self.buttonImg)
+        self.back.pack()
+        self.back.place(x=740, y=550)
 
     def just_add(self):
         """
         Add the selected course from the list to the user skillTree, if nothing is selected, return
         """
-        self.statusvar.set("Adding course........")
+        self.statusBar.set("Adding course........")
         self.console.update()
         print(self.courseList_listbox.curselection()[0])
         if self.courseList_listbox.curselection()[0] is not None and self.courseList_listbox.curselection()[0] >= 0:
@@ -391,7 +463,7 @@ class AddSkillPage:
             # Update the added skill
             self.addedList_listbox.insert(END, str(self.course_dict[selected]))
             self.added_list.append(str(self.course_dict[selected]))
-            self.statusvar.set("Added {}".format(selected))
+            self.statusBar.set("Added {}".format(selected))
             self.console.update()
 
             # Try to add to SIS if logged in
@@ -402,7 +474,7 @@ class AddSkillPage:
         """
         Remove the selected course from the added list, if nothing is selected, return
         """
-        self.statusvar.set("Removing course........")
+        self.statusBar.set("Removing course........")
         self.console.update()
         print(self.addedList_listbox.curselection()[0])
         if self.addedList_listbox.curselection()[0] is not None and self.addedList_listbox.curselection()[0] >= 0:
@@ -414,7 +486,7 @@ class AddSkillPage:
             # Update the available skills
             self.courseList_listbox.insert(END, str(self.course_dict[selected]))
             self.course_list.append(str(self.course_dict[selected]))
-            self.statusvar.set("Removed {}".format(selected))
+            self.statusBar.set("Removed {}".format(selected))
             self.console.update()
 
             # Try to remove from SIS if logged in
@@ -425,25 +497,25 @@ class AddSkillPage:
         """
         Add the course by the CRN input, hint when necessary
         """
-        self.statusvar.set("Busy!!! Adding course........")
+        self.statusBar.set("Busy!!! Adding course........")
         self.console.update()
-        this_input = self.CRNinput.get()
+        this_input = self.entryCRN.get()
         print(this_input)
         # Try to find the course in the ST:
         this_course = self.ST.get_node_by_ID(this_input)
         if this_course is None:
-            self.statusvar.set("No such course found.")
+            self.statusBar.set("No such course found.")
             self.console.update()
             return
         if this_course not in self.PersonObj.get_selectable_courses(self.ST):
-            self.statusvar.set("Course cannot be selected, prerequisite not satisfied")
+            self.statusBar.set("Course cannot be selected, prerequisite not satisfied")
             self.console.update()
             return
         self.filter(force_str=str(this_course))
         self.courseList_listbox.selection_set(0)
         self.just_add()
         self.filter(force_str="$RELOAD$")
-        self.statusvar.set("Course is added!!!!!")
+        self.statusBar.set("Course is added!!!!!")
         self.console.update()
 
     def filter(self, force_str=None):
@@ -498,54 +570,83 @@ class requestWindow:
         self.master.geometry(f'1200x760+{self.w}+{self.h}')
         self.master.resizable(width=False, height=False)
 
-        # Selectable request
-        self.avalframe=LabelFrame(self.master, text="Available Request List: ",font=("Georgia", 20))
-        self.avalframe.pack(side=TOP)
+        # Available Request List
+        self.avalFrame=LabelFrame(self.master, text="Available Request List: ", font=("Georgia", 20))
+        self.avalFrame.pack(side=TOP)
         self.avail_item = StringVar()
         self.avail_item.set(avail_list)
-        self.avail_request = Listbox(self.avalframe, width=67, height=35, listvariable=self.avail_item)
+        self.avail_request = Listbox(self.avalFrame, width=67, height=35, listvariable=self.avail_item)
         self.avail_request.pack()
-        self.avalframe.place(x=0, y=0)
+        self.avalFrame.place(x=50, y=0)
 
-        # Accepted request
-        self.acceptframe=LabelFrame(self.master, text="Accepted Request List: ",font=("Georgia", 20))
-        self.acceptframe.pack(side=TOP)
+        # Accepted Request List
+        self.acceptFrame=LabelFrame(self.master, text="Accepted Request List: ", font=("Georgia", 20))
+        self.acceptFrame.pack(side=TOP)
         self.accept_item = StringVar()
         self.accept_item.set(accept_list)
-        self.accept_request = Listbox(self.acceptframe, width=70, height=35, listvariable=self.accept_item)
+        self.accept_request = Listbox(self.acceptFrame, width=70, height=35, listvariable=self.accept_item)
         self.accept_request.pack()
-        self.acceptframe.place(x=610, y=0)
+        self.acceptFrame.place(x=610, y=0)
 
-        # The accept button
-        # self.accept_btn=PhotoImage(file='button_accept.gif')
-        self.accept = Button(self.avalframe, text="Accept >>", command=lambda: self.accept_move(), height=3, width=50,
-                             bg='white', compound='center')
-        self.accept.pack(side=RIGHT)
-        # self.accept.place(x=100, y=500)
+        # this is a button sample background
+        self.buttonImg = PhotoImage(file="src/buttonSample.png")
+        self.buttonImg = self.buttonImg.subsample(2, 2)
 
-        # The remove button
-        # self.remove_btn=PhotoImage(file='button_remove2.gif')
-        self.remove = Button(self.acceptframe, text="<< Remove", command=lambda: self.remove_move(), height=3, width=50,
-                             bg='white', compound='center')
-        self.remove.pack(side=LEFT)
-        # self.remove.place(x=600, y=500)
-        #bottom frame
-        self.bottom_frame=LabelFrame(self.master, text="",padx=120,pady=10)
-        self.bottom_frame.pack()
-        # The check button
-        # self.check_btn=PhotoImage(file='button_check-as-finished.gif')
-        self.check = Button(self.bottom_frame, text="Check as finished", command=lambda: self.finished(), height=3, width=50,
-                            bg='white', compound='center')
-        self.check.pack(side=RIGHT)
-        self.bottom_frame.place(x=0,y=680)
-        # self.check.place(x=100, y=600)
+        # Accept button
+        self.accept = Button(
+            self.master,
+            text="Accept>>",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.accept_move()
+        )
+        self.accept.config(image=self.buttonImg)
+        self.accept.pack()
+        self.accept.place(x=170, y=600)
 
-        # self.back_btn=PhotoImage(file='button_go-back.gif')
-        self.back = Button(self.bottom_frame, text="Go Back", command=lambda: self.goBack(), height=3, width=50, bg='white',
-                           compound='center')
-        self.back.pack(side=LEFT)
-        # self.bottom_frame.place(x=600,y=700)
-        # self.back.place(x=600, y=600)
+        # remove button
+        self.remove = Button(
+            self.master,
+            text="<<Remove",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.remove_move()
+        )
+        self.remove.config(image=self.buttonImg)
+        self.remove.pack()
+        self.remove.place(x=740, y=600)
+
+        # Check button
+        self.check = Button(
+            self.master,
+            text="Check as finished",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.finished()
+        )
+        self.check.config(image=self.buttonImg)
+        self.check.pack()
+        self.check.place(x=740, y=660)
+
+        # go back button
+        self.back = Button(
+            self.master,
+            text="Go Back",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.goBack()
+        )
+        self.back.config(image=self.buttonImg)
+        self.back.pack()
+        self.back.place(x=170, y=660)
 
     def accept_move(self):
         """
