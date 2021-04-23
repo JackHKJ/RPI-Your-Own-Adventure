@@ -634,7 +634,7 @@ class requestWindow:
         self.check.pack()
         self.check.place(x=740, y=660)
 
-        # go back button
+        # Go back button
         self.back = Button(
             self.master,
             text="Go Back",
