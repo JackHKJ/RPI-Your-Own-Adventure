@@ -3,7 +3,7 @@
 # import SkillTreeNode
 # import SkillTree
 from enum import Enum, unique
-from .Person import Person
+#from .Person import Person
 from basicClasses.Node import Node
 
 
@@ -73,7 +73,7 @@ class Request(Node):
             prereq_string += ")\n"
         return prereq_string
 
-    def check_prerequisite(self, person: Person):
+    def check_prerequisite(self, person):
         """
         Check whether the prerequisite is satisfied by the current state, modify the status if necessary
         :param person: the current state of the user
@@ -98,7 +98,9 @@ class Request(Node):
         information
         :return: the string representation of the request
         """
-        return "Request (name: {}, status: {})".format(self.__request_name, self.__request_status)
+        if (self.__request_status == RequestStatus.COMPLETED):
+            return "FINISHED: {}".format(self.__request_name)
+        return self.__request_name
 
     def __check_prerequisites(self, pl, skills, mode=all):
         """
