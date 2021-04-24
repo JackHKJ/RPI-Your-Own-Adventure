@@ -6,12 +6,13 @@ from PIL import Image, ImageTk
 import enum
 from tkinter import ttk
 
+
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
 # The following list is a stub when failed to load from SIS
 avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
             'Join the sorosity', 'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
-accept_list = []  # list you have accepted
-course_list =['intro to algorithm','Principle of Software']
+accept_list = []  # list you have accepted'''
+course_list=[]
 
 class UserTypeEnum(enum.Enum):
     """
@@ -280,7 +281,7 @@ class mainWindow:
         """
         self.master.deiconify()
         newwindow = Toplevel(self.master)
-        request = requestWindow(newwindow)
+        request = requestWindow(newwindow,personObj=self.PersonObj)
         self.master.wait_window(newwindow)
         accept_list = request.return_list()
         self.request_data.set(accept_list)
@@ -380,6 +381,7 @@ class AddSkillPage:
             # Update the selected courses
             for course in self.PersonObj.get_skills():
                 self.added_list.append(str(course))
+                self.course_dict[str(course)] = course
         else:
             self.course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
             for item in self.course_list:
@@ -498,47 +500,49 @@ class AddSkillPage:
         """
         Add the selected course from the list to the user skillTree, if nothing is selected, return
         """
-        self.statusBar.set("Adding course........")
-        self.console.update()
-        print(self.courseList_listbox.curselection()[0])
-        if self.courseList_listbox.curselection()[0] is not None and self.courseList_listbox.curselection()[0] >= 0:
-            # Get selection and add the skill
-            selected = self.courseList_listbox.get(self.courseList_listbox.curselection())
-            self.PersonObj.add_skill(self.ST, self.course_dict[selected])
-            self.courseList_listbox.delete(self.courseList_listbox.curselection())
-            self.course_list.remove(str(self.course_dict[selected]))
-            # Update the added skill
-            self.addedList_listbox.insert(END, str(self.course_dict[selected]))
-            self.added_list.append(str(self.course_dict[selected]))
-            self.statusBar.set("Added {}".format(selected))
+        try:
+            self.statusvar.set("Adding course........")
             self.console.update()
+            print(self.courseList_listbox.curselection()[0])
+            if self.courseList_listbox.curselection()[0] is not None and self.courseList_listbox.curselection()[0] >= 0:
+                # Get selection and add the skill
+                selected = self.courseList_listbox.get(self.courseList_listbox.curselection())
+                self.PersonObj.add_skill(self.ST, self.course_dict[selected])
+                self.courseList_listbox.delete(self.courseList_listbox.curselection())
+                self.course_list.remove(str(self.course_dict[selected]))
+                # Update the added skill
+                self.addedList_listbox.insert(END, str(self.course_dict[selected]))
+                self.added_list.append(str(self.course_dict[selected]))
+                self.statusvar.set("Added {}".format(selected))
+                self.console.update()
 
             # Try to add to SIS if logged in
             if self.parent.user_type == UserTypeEnum.STUDENT:
                 self.parent.gatherer.add_course_from_SIS()
+        except Exception:
+            return
 
     def just_remove(self):
         """
         Remove the selected course from the added list, if nothing is selected, return
         """
-        self.statusBar.set("Removing course........")
-        self.console.update()
-        print(self.addedList_listbox.curselection()[0])
-        if self.addedList_listbox.curselection()[0] is not None and self.addedList_listbox.curselection()[0] >= 0:
-            # Get selection and remove the skill
-            selected = self.addedList_listbox.get(self.addedList_listbox.curselection())
-            self.PersonObj.remove_skill(self.ST, self.course_dict[selected])
-            self.addedList_listbox.delete(self.addedList_listbox.curselection())
-            self.added_list.remove(str(self.course_dict[selected]))
-            # Update the available skills
-            self.courseList_listbox.insert(END, str(self.course_dict[selected]))
-            self.course_list.append(str(self.course_dict[selected]))
-            self.statusBar.set("Removed {}".format(selected))
+        try:
+            self.statusvar.set("Removing course........")
             self.console.update()
-
-            # Try to remove from SIS if logged in
-            if self.parent.user_type == UserTypeEnum.STUDENT:
-                self.parent.gatherer.remove_course_from_SIS()
+            print(self.addedList_listbox.curselection()[0])
+            if self.addedList_listbox.curselection()[0] is not None and self.addedList_listbox.curselection()[0] >= 0:
+                # Get selection and remove the skill
+                selected = self.addedList_listbox.get(self.addedList_listbox.curselection())
+                self.PersonObj.remove_skill(self.ST, self.course_dict[selected])
+                self.addedList_listbox.delete(self.addedList_listbox.curselection())
+                self.added_list.remove(str(self.course_dict[selected]))
+                # Update the available skills
+                self.courseList_listbox.insert(END, str(self.course_dict[selected]))
+                self.course_list.append(str(self.course_dict[selected]))
+                self.statusvar.set("Removed {}".format(selected))
+                self.console.update()
+        except Exception:
+            return
 
     def add_CRN(self):
         """
@@ -564,6 +568,10 @@ class AddSkillPage:
         self.filter(force_str="$RELOAD$")
         self.statusBar.set("Course is added!!!!!")
         self.console.update()
+
+         # Try to remove from SIS if logged in
+        if self.parent.user_type == UserTypeEnum.STUDENT:
+            self.parent.gatherer.remove_course_from_SIS()
 
     def filter(self, force_str=None):
         """
@@ -621,8 +629,8 @@ class requestWindow:
         self.avalFrame=LabelFrame(self.master, text="Available Request List: ", font=("Georgia", 20))
         self.avalFrame.pack(side=TOP)
         self.avail_item = StringVar()
-        self.avail_item.set(avail_list)
-        self.avail_request = Listbox(self.avalFrame, width=67, height=35, listvariable=self.avail_item)
+        self.avail_item.set(self.PersonObj.get_avail_request())
+        self.avail_request = Listbox(self.avalframe, width=67, height=35, listvariable=self.avail_item)
         self.avail_request.pack()
         self.avalFrame.place(x=50, y=0)
 
@@ -630,8 +638,8 @@ class requestWindow:
         self.acceptFrame=LabelFrame(self.master, text="Accepted Request List: ", font=("Georgia", 20))
         self.acceptFrame.pack(side=TOP)
         self.accept_item = StringVar()
-        self.accept_item.set(accept_list)
-        self.accept_request = Listbox(self.acceptFrame, width=70, height=35, listvariable=self.accept_item)
+        self.accept_item.set(self.PersonObj.get_accept_request())
+        self.accept_request = Listbox(self.acceptframe, width=70, height=35, listvariable=self.accept_item)
         self.accept_request.pack()
         self.acceptFrame.place(x=610, y=0)
 
@@ -699,33 +707,41 @@ class requestWindow:
         """
         Accept the selected request
         """
-        avail_list.remove(self.avail_request.get(self.avail_request.curselection()))
-        accept_list.append(self.avail_request.get(self.avail_request.curselection()))
-        self.avail_item.set(avail_list)
-        self.accept_item.set(accept_list)
+        try:
+            self.PersonObj.add_accept_request(self.PersonObj.remove_avail_request(\
+                self.avail_request.get(self.avail_request.curselection())))
+            self.avail_item.set(self.PersonObj.get_avail_request())
+            self.accept_item.set(self.PersonObj.get_accept_request())
+        except Exception:
+            return
 
     def remove_move(self):
         """
         Remove the selected request
         """
-        accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
-        avail_list.append(self.accept_request.get(self.accept_request.curselection()))
-        self.avail_item.set(avail_list)
-        self.accept_item.set(accept_list)
+        try:
+            self.PersonObj.add_avail_request(self.PersonObj.remove_accept_request(
+                self.accept_request.get(self.accept_request.curselection())))
+            self.avail_item.set(self.PersonObj.get_avail_request())
+            self.accept_item.set(self.PersonObj.get_accept_request())
+        except Exception:
+            return
 
     def finished(self):
         """
         Check the selected request as finished
         """
-        accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
-        self.avail_item.set(avail_list)
-        self.accept_item.set(accept_list)
+        try:
+            self.PersonObj.check_finished(self.accept_request.get(self.accept_request.curselection()))
+            self.accept_item.set(self.PersonObj.get_accept_request())
+        except Exception:
+            return
 
     def return_list(self):
         """
         Return the accepted list
         """
-        return accept_list
+        return self.PersonObj.get_accept_request()
     def goBack(self):
         """
         Go back to the parent page
