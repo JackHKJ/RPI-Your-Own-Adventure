@@ -7,8 +7,12 @@ from gui import *
 from gui import UserTypeEnum
 from basicClasses.SkillTree import *
 from basicClasses.Person import *
+from basicClasses.Request import *
 import time
 
+
+avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
+            'Join the sorosity', 'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
 # Load the SkillTree
 st = SkillTree(
     SkillTreeNode(
@@ -70,7 +74,8 @@ if __name__ == "__main__":
         User.add_skills_by_shortName(st, GUI_thread.window.gatherer.get_learned_courses())
         st.pretty_print_partial_tree(User.get_skills(), save_fig=True)
         USER_GATHERER = GUI_thread.window.gatherer
-
+    for request in avail_list:
+        User.add_avail_request(Request(request,[],""))
     # Open the main page
     while True:
         if GUI_thread.window.next is not None:
