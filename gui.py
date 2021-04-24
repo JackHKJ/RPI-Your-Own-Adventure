@@ -11,7 +11,7 @@ TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
 avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
             'Join the sorosity', 'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
 accept_list = []  # list you have accepted
-
+course_list =[]
 
 class UserTypeEnum(enum.Enum):
     """
@@ -203,7 +203,7 @@ class mainWindow:
             font="arial 10",
             fg="black",
             bd=0,
-            # command=lambda: function placeholder
+            command=lambda: self.extra()
         )
         self.Add_Extra.config(image=self.buttonImg)
         self.Add_Extra.pack()
@@ -233,7 +233,16 @@ class mainWindow:
         self.label1 = Label(self.master, image=self.skillImg)
         self.label1.pack()
         self.label1.place(x=70, y=50)
-
+    def extra(self):
+        self.go_extra_page()
+    def go_extra_page(self):
+        """
+        Initialize and go into extracurricular page
+        """
+        self.master.deiconify()
+        new_window = Toplevel(self.master)
+        extrapage(new_window)
+        new_window.mainloop()
     def addOrRemove(self):
         """
         Switch to the add/remove page
@@ -274,6 +283,43 @@ class mainWindow:
         accept_list = request.return_list()
         self.request_data.set(accept_list)
 
+class extrapage:
+    def __init__(self,master):
+        self.master = master
+        self.screen_width, self.screen_height = self.master.maxsize()
+        self.w = int((self.screen_width - 800) / 2)
+        self.h = int((self.screen_height - 600) / 2)
+        self.master.geometry(f'800x600+{self.w}+{self.h}')
+        self.master.resizable(width=False, height=False)
+        #Course List
+        # self.courseframe=LabelFrame(self.master, text="Course List: ", font=("Georgia", 20))
+        # self.courseframe.pack(side=TOP)
+        self.course_data=StringVar()
+        self.courseList = Listbox(self.master, height=30,width=50,listvariable=self.course_data)
+        self.course_data.set(course_list)
+        self.courseList.pack()
+        self.courseList.place(x=10,y=10)
+        #Extra course
+        self.extra_course=StringVar()
+        self.extra_entry=Entry(self.master, textvariable=self.extra_course)
+        self.extra_entry.insert(0, "Enter Course here")
+        self.extra_entry.pack()
+        self.extra_entry.place(x=500, y=150,width=150, height=50)
+        #Added the course 
+        self.addextra = Button(
+            self.master,
+            text="Add",
+            compound='center',
+            font="arial 10",
+            fg="black",
+            bd=0,
+            command=lambda: self.add()
+        )
+        self.addextra.pack()
+        self.addextra.place(x=500,y=200, width=150, height=50)
+    def add(self):
+        #TO DO: add extra course
+        pass
 
 class AddSkillPage:
     """
