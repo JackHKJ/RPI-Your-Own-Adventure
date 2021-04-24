@@ -56,7 +56,7 @@ class InfoGatherer:
         course_num = transcript_soup.find_all('td', class_='dddefault', string=re.compile('^[0-9]{4}$'))
         return [x.next_element + '-' + y.next_element for x, y in zip(course_dept, course_num)]
 
-    def add_course_from_sis():
+    def add_course_from_SIS():
         """
         Method stub for future usage of adding a course from SIS
         """
