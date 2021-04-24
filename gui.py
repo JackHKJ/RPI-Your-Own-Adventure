@@ -307,6 +307,7 @@ class AddSkillPage:
             # Update the selected courses
             for course in self.PersonObj.get_skills():
                 self.added_list.append(str(course))
+                self.course_dict[str(course)] = course
         else:
             self.course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
             for item in self.course_list:
@@ -394,9 +395,9 @@ class AddSkillPage:
             self.statusvar.set("Added {}".format(selected))
             self.console.update()
 
-            # Try to add to SIS if logged in
-            if self.parent.user_type == UserTypeEnum.STUDENT:
-                self.parent.gatherer.add_course_from_SIS()
+        # Try to add to SIS if logged in
+        if self.parent.user_type == UserTypeEnum.STUDENT:
+            self.parent.gatherer.add_course_from_SIS()
 
     def just_remove(self):
         """
@@ -416,10 +417,6 @@ class AddSkillPage:
             self.course_list.append(str(self.course_dict[selected]))
             self.statusvar.set("Removed {}".format(selected))
             self.console.update()
-
-            # Try to remove from SIS if logged in
-            if self.parent.user_type == UserTypeEnum.STUDENT:
-                self.parent.gatherer.remove_course_from_SIS()
 
     def add_CRN(self):
         """
@@ -445,6 +442,10 @@ class AddSkillPage:
         self.filter(force_str="$RELOAD$")
         self.statusvar.set("Course is added!!!!!")
         self.console.update()
+
+         # Try to remove from SIS if logged in
+        if self.parent.user_type == UserTypeEnum.STUDENT:
+            self.parent.gatherer.remove_course_from_SIS()
 
     def filter(self, force_str=None):
         """
