@@ -8,10 +8,12 @@ from tkinter import ttk
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
 # The following list is a stub when failed to load from SIS
-'''avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
-            'Join the sorosity', 'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
+avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
+              'Join the sorosity', 'Work out at the RPI gym',
+              'Take the shuttle around the campus']  # list that is available
 accept_list = []  # list you have accepted
-course_list =[]'''
+course_list = []
+
 
 class UserTypeEnum(enum.Enum):
     """
@@ -29,7 +31,7 @@ class pageEnum(enum.Enum):
     mainWindow = "mainWindow"
     AddSkillPage = "AddSkillPage"
     requestWindow = "requestWindow"
-
+    extraWindow = "extraWindow"
 
 class loginWindow:
     """
@@ -156,7 +158,7 @@ class mainWindow:
         self.skillFrame.place(x=0, y=0)
 
         # Request List
-        self.requestFrame=LabelFrame(self.master, text="Request List: ", font=("Georgia", 20))
+        self.requestFrame = LabelFrame(self.master, text="Request List: ", font=("Georgia", 20))
         self.requestFrame.pack()
         self.request_data = StringVar()
         self.requestList = Listbox(self.requestFrame, width=40, height=37, listvariable=self.request_data)
@@ -223,7 +225,6 @@ class mainWindow:
         self.modify_request.pack()
         self.modify_request.place(x=825, y=650)
 
-
     def Update_skilltree(self):
         """
         Reload the skillTree image from stored path
@@ -233,16 +234,21 @@ class mainWindow:
         self.label1 = Label(self.master, image=self.skillImg)
         self.label1.pack()
         self.label1.place(x=70, y=50)
+
     def extra(self):
         self.go_extra_page()
+
     def go_extra_page(self):
         """
         Initialize and go into extracurricular page
         """
+        self.sub_page_name = pageEnum.extraWindow
         self.master.deiconify()
         new_window = Toplevel(self.master)
-        extrapage(new_window)
+        self.sub_page_window = new_window
+        extrapage(new_window, personObj=self.PersonObj, st=self.ST, parent=self)
         new_window.mainloop()
+
     def addOrRemove(self):
         """
         Switch to the add/remove page
@@ -278,34 +284,71 @@ class mainWindow:
         """
         self.master.deiconify()
         newwindow = Toplevel(self.master)
-        request = requestWindow(newwindow,personObj=self.PersonObj)
+        request = requestWindow(newwindow, personObj=self.PersonObj)
         self.master.wait_window(newwindow)
         accept_list = request.return_list()
         self.request_data.set(accept_list)
 
+
 class extrapage:
-    def __init__(self,master):
+    def __init__(self, master, personObj=None, st=None, parent=None):
         self.master = master
         self.screen_width, self.screen_height = self.master.maxsize()
         self.w = int((self.screen_width - 800) / 2)
         self.h = int((self.screen_height - 600) / 2)
         self.master.geometry(f'800x600+{self.w}+{self.h}')
         self.master.resizable(width=False, height=False)
-        #Course List
+        # Course List
+
+        # ###################################################################################
+        self.PersonObj = personObj
+        self.ST = st
+        self.parent = parent
+        # Listbox representation for displaying the added/available courses
+        self.courseList_listbox = None
+        self.addedList_listbox = None
+        # Data representation for the course/added list as dict
+        self.course_dict = None
+        # Temp list for addition
+        self.course_list = None
+        self.added_list = None
+
+        self.course_dict = dict()
+        self.course_list = []
+        self.added_list = []
+
+        if self.PersonObj is not None:
+            # Update the selectable courses
+            for item in self.PersonObj.get_selectable_courses(self.ST):
+                self.course_list.append(str(item))
+                self.course_dict[str(item)] = item
+            # Update the selected courses
+            for course in self.PersonObj.get_skills():
+                self.added_list.append(str(course))
+        else:
+            self.course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
+            for item in self.course_list:
+                self.course_dict[item] = item
+
         # self.courseframe=LabelFrame(self.master, text="Course List: ", font=("Georgia", 20))
         # self.courseframe.pack(side=TOP)
-        self.course_data=StringVar()
-        self.courseList = Listbox(self.master, height=30,width=50,listvariable=self.course_data)
-        self.course_data.set(course_list)
+        self.course_data = StringVar()
+        self.courseList = Listbox(self.master, height=30, width=50, listvariable=self.course_data,selectmode='multiple')
+
+        print(self.added_list)
+
+        for course in self.added_list:
+            self.courseList.insert(END, course)
+
         self.courseList.pack()
-        self.courseList.place(x=10,y=10)
-        #Extra course
-        self.extra_course=StringVar()
-        self.extra_entry=Entry(self.master, textvariable=self.extra_course)
+        self.courseList.place(x=10, y=10)
+        # Extra course
+        self.extra_course = StringVar()
+        self.extra_entry = Entry(self.master, textvariable=self.extra_course)
         self.extra_entry.insert(0, "Enter Course here")
         self.extra_entry.pack()
-        self.extra_entry.place(x=500, y=150,width=150, height=50)
-        #Added the course 
+        self.extra_entry.place(x=500, y=150, width=150, height=50)
+        # Added the course
         self.addextra = Button(
             self.master,
             text="Add",
@@ -316,10 +359,35 @@ class extrapage:
             command=lambda: self.add()
         )
         self.addextra.pack()
-        self.addextra.place(x=500,y=200, width=150, height=50)
+        self.addextra.place(x=500, y=200, width=150, height=50)
+
     def add(self):
-        #TO DO: add extra course
-        pass
+        # print(self.extra_entry.get())
+        this_input = str(self.extra_entry.get())
+        selected_course_index = []
+        if this_input == "Enter Course here" or this_input == "":
+            return
+        try:
+            selected_course_index = self.courseList.curselection()
+            # print(selected_course_index)
+        except:
+            return
+        selected_course = [self.ST.get_node_by_shortName(self.courseList.get(index)) for index in selected_course_index]
+        this_skill = self.ST.add_custom_skill(skill_name=this_input, parent=selected_course)
+        self.PersonObj.add_skill(self.ST, this_skill)
+
+
+
+        self.go_back()
+
+
+
+
+    def go_back(self):
+        self.parent.sub_page_name = None
+        self.parent.sub_page_window = None
+        self.master.destroy()
+
 
 class AddSkillPage:
     """
@@ -379,6 +447,7 @@ class AddSkillPage:
             # Update the selected courses
             for course in self.PersonObj.get_skills():
                 self.added_list.append(str(course))
+                self.course_dict[str(course)] = course
         else:
             self.course_list = ['mock list', 'Operating System', 'Principle of Software', 'Intro to algorithm']
             for item in self.course_list:
@@ -499,7 +568,7 @@ class AddSkillPage:
         """
         self.statusBar.set("Adding course........")
         self.console.update()
-        print(self.courseList_listbox.curselection()[0])
+        # print(self.courseList_listbox.curselection()[0])
         if self.courseList_listbox.curselection()[0] is not None and self.courseList_listbox.curselection()[0] >= 0:
             # Get selection and add the skill
             selected = self.courseList_listbox.get(self.courseList_listbox.curselection())
@@ -617,7 +686,7 @@ class requestWindow:
         self.master.resizable(width=False, height=False)
 
         # Available Request List
-        self.avalFrame=LabelFrame(self.master, text="Available Request List: ", font=("Georgia", 20))
+        self.avalFrame = LabelFrame(self.master, text="Available Request List: ", font=("Georgia", 20))
         self.avalFrame.pack(side=TOP)
         self.avail_item = StringVar()
         self.avail_item.set(self.PersonObj.get_avail_request())
@@ -626,7 +695,7 @@ class requestWindow:
         self.avalFrame.place(x=50, y=0)
 
         # Accepted Request List
-        self.acceptFrame=LabelFrame(self.master, text="Accepted Request List: ", font=("Georgia", 20))
+        self.acceptFrame = LabelFrame(self.master, text="Accepted Request List: ", font=("Georgia", 20))
         self.acceptFrame.pack(side=TOP)
         self.accept_item = StringVar()
         self.accept_item.set(self.PersonObj.get_accept_request())
@@ -698,7 +767,7 @@ class requestWindow:
         """
         Accept the selected request
         """
-        self.PersonObj.add_accept_request(self.PersonObj.remove_avail_request(\
+        self.PersonObj.add_accept_request(self.PersonObj.remove_avail_request( \
             self.avail_request.get(self.avail_request.curselection())))
         self.avail_item.set(self.PersonObj.get_avail_request())
         self.accept_item.set(self.PersonObj.get_accept_request())
@@ -707,7 +776,7 @@ class requestWindow:
         """
         Remove the selected request
         """
-        self.PersonObj.add_avail_request(self.PersonObj.remove_accept_request(\
+        self.PersonObj.add_avail_request(self.PersonObj.remove_accept_request( \
             self.accept_request.get(self.accept_request.curselection())))
         self.avail_item.set(self.PersonObj.get_avail_request())
         self.accept_item.set(self.PersonObj.get_accept_request())
@@ -724,7 +793,7 @@ class requestWindow:
         Return the accepted list
         """
         return self.PersonObj.get_accept_request()
-        
+
     def goBack(self):
         """
         Go back to the parent page

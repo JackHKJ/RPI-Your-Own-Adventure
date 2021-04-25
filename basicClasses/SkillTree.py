@@ -23,6 +23,7 @@ class SkillTree:
     # The default color sequence for printing the tree
     root_color = '#777777'
     colors = ['#ffff99', '#ffff00', '#ff9933', '#ff6600', '#ff3300', '#cc0000', '#990000', '#660000', '#705c5c']
+    custom_counter = 0
 
     # The entry to the tree
     def __init__(self, root=None, name="#DEFAULT_NAME"):
@@ -140,6 +141,7 @@ class SkillTree:
                 skill.add_parent(parent)
                 if [str(skill), str(parent)] not in self.connection:
                     self.connection.append([str(skill), str(parent)])
+
         if child is not None:
             if isinstance(child, list):
                 for chi in child:
@@ -159,11 +161,12 @@ class SkillTree:
         :param skill_name: str, the name of the custom skill to be added
         :param parent: a list of skillTreeNode to be added as the parent
         :param child: a list of skillTreeNode to be added as the child
-        :return: None
+        :return: the created skillTreeNode
         """
-        this_skill_node = SkillTreeNode(hash(skill_name), parent, child)
-        self.addSkill(this_skill_node, parent, child)
-
+        this_skill_node = SkillTreeNode(ID="Cust-"+str(self.custom_counter), fullName=skill_name, shortName=skill_name)
+        self.custom_counter += 1
+        self.addSkill(skill=this_skill_node, parent=parent, child=child)
+        return this_skill_node
 
     def remove_skill(self, skill: SkillTreeNode):
         """
@@ -255,7 +258,11 @@ class SkillTree:
                     pos[node] = [hard_level - 0.1 * pos_counter[hard_level], pos_counter[hard_level]]
                     pos_counter[hard_level] += 2
                 else:
+                    hard_level = 9
                     color_map.append('#777777')
+                    pos[node] = [hard_level - 0.1 * pos_counter[hard_level], pos_counter[hard_level]]
+                    pos_counter[hard_level] += 2
+
             # pos = nx.kamada_kawai_layout(g)
 
             ax1 = plt.subplot(111)
@@ -305,19 +312,30 @@ class SkillTree:
         :param verbose: if set to True, then print the verbose information of each node
         :return:
         """
+        node_str = dict()
+        rep_dict = dict()
         if not verbose:
-            node_str = [str(this_node) for this_node in nodes]
+            for this_node in nodes:
+                node_str[str(this_node)] = this_node.shortName
+                rep_dict[str(this_node)] = this_node
         else:
-            node_str = [str(this_node.ID) + ":" + str(this_node.shortName) for this_node in nodes]
+            for this_node in nodes:
+                node_str[str(this_node)] = str(this_node.ID) + ":" + str(this_node.shortName)
+                rep_dict[str(this_node)] = this_node
+
         chosen_set = set()
         this_connection = []
         for left, right in self.connection:
             if left in node_str and right in node_str:
-                this_connection.append([left, right])
+                this_connection.append([node_str[left], node_str[right]])
                 chosen_set.add(left)
                 chosen_set.add(right)
         for node in node_str:
-            if node in chosen_set:
+            print("THIS NODE IS:")
+            print(node)
+            print(rep_dict[node].parent)
+
+            if node in chosen_set and rep_dict[node].parent[0] != self.root_node:
                 continue
             this_connection.append([root_name, node])
 

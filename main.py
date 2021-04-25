@@ -103,8 +103,10 @@ if __name__ == "__main__":
                 time.sleep(0.5)
                 if GUI_thread.window.sub_page_name is None:
                     print("Returning to the main Page")
-                    print(User.get_skills())
+                    for skill in User.get_skills():
+                        print(str(skill))
                     st.pretty_print_partial_tree(User.get_skills(), root_name=User.name + "-0000", save_fig=True)
+                    time.sleep(1)
                     GUI_thread.window.Update_skilltree()
                     break
 
