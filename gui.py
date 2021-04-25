@@ -8,10 +8,10 @@ from tkinter import ttk
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
 # The following list is a stub when failed to load from SIS
-avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
+'''avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
             'Join the sorosity', 'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
 accept_list = []  # list you have accepted
-course_list =[]
+course_list =[]'''
 
 class UserTypeEnum(enum.Enum):
     """
@@ -278,7 +278,7 @@ class mainWindow:
         """
         self.master.deiconify()
         newwindow = Toplevel(self.master)
-        request = requestWindow(newwindow)
+        request = requestWindow(newwindow,personObj=self.PersonObj)
         self.master.wait_window(newwindow)
         accept_list = request.return_list()
         self.request_data.set(accept_list)
@@ -620,7 +620,7 @@ class requestWindow:
         self.avalFrame=LabelFrame(self.master, text="Available Request List: ", font=("Georgia", 20))
         self.avalFrame.pack(side=TOP)
         self.avail_item = StringVar()
-        self.avail_item.set(avail_list)
+        self.avail_item.set(self.PersonObj.get_avail_request())
         self.avail_request = Listbox(self.avalFrame, width=67, height=35, listvariable=self.avail_item)
         self.avail_request.pack()
         self.avalFrame.place(x=50, y=0)
@@ -629,7 +629,7 @@ class requestWindow:
         self.acceptFrame=LabelFrame(self.master, text="Accepted Request List: ", font=("Georgia", 20))
         self.acceptFrame.pack(side=TOP)
         self.accept_item = StringVar()
-        self.accept_item.set(accept_list)
+        self.accept_item.set(self.PersonObj.get_accept_request())
         self.accept_request = Listbox(self.acceptFrame, width=70, height=35, listvariable=self.accept_item)
         self.accept_request.pack()
         self.acceptFrame.place(x=610, y=0)
@@ -698,33 +698,33 @@ class requestWindow:
         """
         Accept the selected request
         """
-        avail_list.remove(self.avail_request.get(self.avail_request.curselection()))
-        accept_list.append(self.avail_request.get(self.avail_request.curselection()))
-        self.avail_item.set(avail_list)
-        self.accept_item.set(accept_list)
+        self.PersonObj.add_accept_request(self.PersonObj.remove_avail_request(\
+            self.avail_request.get(self.avail_request.curselection())))
+        self.avail_item.set(self.PersonObj.get_avail_request())
+        self.accept_item.set(self.PersonObj.get_accept_request())
 
     def remove_move(self):
         """
         Remove the selected request
         """
-        accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
-        avail_list.append(self.accept_request.get(self.accept_request.curselection()))
-        self.avail_item.set(avail_list)
-        self.accept_item.set(accept_list)
+        self.PersonObj.add_avail_request(self.PersonObj.remove_accept_request(\
+            self.accept_request.get(self.accept_request.curselection())))
+        self.avail_item.set(self.PersonObj.get_avail_request())
+        self.accept_item.set(self.PersonObj.get_accept_request())
 
     def finished(self):
         """
         Check the selected request as finished
         """
-        accept_list.remove(self.accept_request.get(self.accept_request.curselection()))
-        self.avail_item.set(avail_list)
-        self.accept_item.set(accept_list)
+        self.PersonObj.check_finished(self.accept_request.get(self.accept_request.curselection()))
+        self.accept_item.set(self.PersonObj.get_accept_request())
 
     def return_list(self):
         """
         Return the accepted list
         """
-        return accept_list
+        return self.PersonObj.get_accept_request()
+        
     def goBack(self):
         """
         Go back to the parent page
