@@ -3,7 +3,7 @@
 # import SkillTreeNode
 # import SkillTree
 from enum import Enum, unique
-#from .Person import Person
+# from .Person import Person
 from basicClasses.Node import Node
 
 
@@ -32,7 +32,7 @@ class Request(Node):
         The initializing function
         :param ID: the identification string of the request
         :param prerequisite: prerequisite to be checked
-        :param achievement: achievement to recieve
+        :param achievement: achievement to receive
         """
         super().__init__(ID)
         self.__request_name = ID
@@ -64,14 +64,15 @@ class Request(Node):
         Show the prerequisite of the request, this function is used to tell the user which prerequisite to get
         :return: a str representation of requirements
         """
-        prereq_string = ""
-        for prereq_list in self.__prerequisite:
-            prereq_string += "("
-            for i in range(len(prereq_list)):
-                prereq_string += " " + prereq_list[i] + " "
-                if (i != len(prereq_list) - 1): prereq_string += "or"
-            prereq_string += ")\n"
-        return prereq_string
+        prerequisite_string = ""
+        for prerequisite_list in self.__prerequisite:
+            prerequisite_string += "("
+            for i in range(len(prerequisite_list)):
+                prerequisite_string += " " + prerequisite_list[i] + " "
+                if i != len(prerequisite_list) - 1:
+                    prerequisite_string += "or"
+            prerequisite_string += ")\n"
+        return prerequisite_string
 
     def check_prerequisite(self, person):
         """
@@ -98,7 +99,7 @@ class Request(Node):
         information
         :return: the string representation of the request
         """
-        if (self.__request_status == RequestStatus.COMPLETED):
+        if self.__request_status == RequestStatus.COMPLETED:
             return "FINISHED: {}".format(self.__request_name)
         return self.__request_name
 

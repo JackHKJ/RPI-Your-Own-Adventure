@@ -57,10 +57,10 @@ class SkillTree:
             except FileNotFoundError:
                 courses = pd.read_csv('../data/{}/courses.csv'.format(term))
             try:
-                prereqs = open('./data/{}/prerequisites.json'.format(term), 'r')
+                prerequisites = open('./data/{}/prerequisites.json'.format(term), 'r')
             except FileNotFoundError:
-                prereqs = open('../data/{}/prerequisites.json'.format(term), 'r')
-            prereqs = json.load(prereqs)
+                prerequisites = open('../data/{}/prerequisites.json'.format(term), 'r')
+            prerequisites = json.load(prerequisites)
             pool = set()
             for i in range(courses.shape[0]):
                 row = courses.iloc[i]
@@ -69,10 +69,10 @@ class SkillTree:
                     ID=crn,
                     fullName=row['full_name'],
                     shortName=row['short_name'])
-                if crn not in prereqs or not 'prerequisites' in prereqs[crn]:
+                if crn not in prerequisites or 'prerequisites' not in prerequisites[crn]:
                     self.addSkill(node, parent=self.root_node)
                 else:
-                    p = self.__parse(prereqs[crn]['prerequisites'])
+                    p = self.__parse(prerequisites[crn]['prerequisites'])
                     flatten = self.__flatten(p)
                     parents = []
                     for p in flatten:
@@ -163,7 +163,7 @@ class SkillTree:
         :param child: a list of skillTreeNode to be added as the child
         :return: the created skillTreeNode
         """
-        this_skill_node = SkillTreeNode(ID="Cust-$" + str(self.custom_counter), fullName=skill_name,
+        this_skill_node = SkillTreeNode(ID="Cus-$" + str(self.custom_counter), fullName=skill_name,
                                         shortName=skill_name)
         self.custom_counter += 1
         self.addSkill(skill=this_skill_node, parent=parent, child=child)
@@ -222,22 +222,22 @@ class SkillTree:
                 return node
         return None
 
-    def get_available_skills(self, person):
-        """
-        Use the BFS manner, find the leave Nodes of the given root node(available skill to choose)
-        :param person: the person to find the skills on
-        :return: a collection of potential node(skill) to master
-        """
-        pass
+    # def get_available_skills(self, person):
+    #     """
+    #     Use the BFS manner, find the leave Nodes of the given root node(available skill to choose)
+    #     :param person: the person to find the skills on
+    #     :return: a collection of potential node(skill) to master
+    #     """
+    #     pass
 
-    def command_print_tree(self, layer=3):
-        """
-        Output the structure of the tree in str manner with layer as the maximum level counting from the root.
-        :param layer: maximum layer to print
-        :return: a str representing this part of the tree
-        """
-        for line in self.root_node.pretty_print_with_height():
-            print(line)
+    # def command_print_tree(self, layer=3):
+    #     """
+    #     Output the structure of the tree in str manner with layer as the maximum level counting from the root.
+    #     :param layer: maximum layer to print
+    #     :return: a str representing this part of the tree
+    #     """
+    #     for line in self.root_node.pretty_print_with_height():
+    #         print(line)
 
     def _pretty_print_helper(self, connection_list, method, save_fig=False):
         plt.clf()
@@ -359,29 +359,28 @@ class SkillTree:
        """
         pass
 
-    def __parse(self, prereq_dict):
+    def __parse(self, prerequisite_dict):
         """
         Private method to parse the prerequisites into a list from a dict
-        :param prereq_dict: dict that holds the prerequisites of a course
+        :param prerequisite_dict: dict that holds the prerequisites of a course
         """
-        prereqs = []
-        t = prereq_dict['type']
+        t = prerequisite_dict['type']
         if t == 'course':
-            return prereq_dict['course']
+            return prerequisite_dict['course']
         if t == 'and':
-            return [self.__parse(x) for x in prereq_dict['nested']]
+            return [self.__parse(x) for x in prerequisite_dict['nested']]
         if t == 'or':
-            return [[self.__parse(x) for x in prereq_dict['nested']]]
+            return [[self.__parse(x) for x in prerequisite_dict['nested']]]
         return t
 
-    def __flatten(self, l):
+    def __flatten(self, this_list):
         """
-        Flatten a logical prereq list
+        Flatten a logical prerequisite list
         : param l: the list to be flattened
         """
-        if type(l) != list:
-            return [l]
+        if type(this_list) != list:
+            return [this_list]
         ret = []
-        for x in l:
+        for x in this_list:
             ret += self.__flatten(x)
         return ret

@@ -40,69 +40,69 @@ class Person(object):
         :return: skills
         """
         return self.skills
-    
+
     def get_avail_request(self):
         """
         Getter of the list of available requests
         :return: list of available requests
         """
         return self.__avail_request
-    
+
     def get_accept_request(self):
         """
         Getter of the list of accepted requests
         :return: list of accepted requests
         """
         return self.__accept_request
-    
-    def add_avail_request(self,request: Request):
+
+    def add_avail_request(self, request: Request):
         """
         Add available request to the person class
         :param request: the request to be added to the list of available requests
         :return: None
         """
-        if (request):
+        if request:
             self.__avail_request.append(request)
 
-    def add_accept_request(self,request: Request):
+    def add_accept_request(self, request: Request):
         """
         Add accepted request to the person class
         :param request: the request to be added to the list of accepted requests
         :return: None
         """
-        if (request):
+        if request:
             self.__accept_request.append(request)
 
-    def remove_avail_request(self,name):
+    def remove_avail_request(self, name):
         """
         remove an available request from the person class
         :param name: the name of the request to be removed from the list of available requests
         :return: the request removed or None if not found
         """
         for request in self.__avail_request:
-            if (request.get_name()==name):
+            if request.get_name() == name:
                 return self.__avail_request.pop(self.__avail_request.index(request))
         return None
 
-    def remove_accept_request(self,name):
+    def remove_accept_request(self, name):
         """
         remove an accpeted request from the person class
         :param name: the name of the request to be removed from the list of accepted requests
         :return: the request removed or None if not found
         """
         for request in self.__accept_request:
-            if (request.get_name()==name):
+            if request.get_name() == name:
                 return self.__accept_request.pop(self.__accept_request.index(request))
         return None
 
-    def check_finished(self,name):
+    def check_finished(self, name):
         """
         check finished for an accpeted request from the person class
         :param name: the name of the request to be checked from the list of accepted requests
         :return None
         """
         for request in self.__accept_request:
-            if (request.get_name()==name):
+            if request.get_name() == name:
                 request.try_to_complete(self)
 
     def add_skill(self, main_tree: SkillTree, this_skill: SkillTreeNode):
@@ -190,7 +190,7 @@ class Person(object):
         for course in selectable_courses:
             if course.shortName.lower() == "root" or course.fullName.lower() == 'root':
                 continue
-            if filter_str in (course.fullName.lower()) or filter_str in (course.shortName.lower()) or filter_str in\
+            if filter_str in (course.fullName.lower()) or filter_str in (course.shortName.lower()) or filter_str in \
                     course.ID:
                 filtered.append(course)
         return filtered

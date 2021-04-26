@@ -2,13 +2,16 @@
 # Dependencies
 import os
 import sys
-sys.path.append(os.getcwd())
+
 from basicClasses.Request import Request
 from basicClasses.Person import Person
 from basicClasses.SkillTreeNode import SkillTreeNode
 
+sys.path.append(os.getcwd())
+
+
 def Test1_request_test():
-    r_a=Request("R1",[["Do something"],["Do B","Do C"]],"Good student")
+    r_a = Request("R1", [["Do something"], ["Do B", "Do C"]], "Good student")
     someone = Person("someone")
     print(r_a)
     print(r_a.show_prerequisite())
@@ -26,6 +29,7 @@ def Test1_request_test():
     anotherone.add_skill(None, SkillTreeNode(3, shortName='Do B'))
     print(r_a.check_prerequisite(anotherone))
     print(r_a)
+
 
 if __name__ == "__main__":
     Test1_request_test()

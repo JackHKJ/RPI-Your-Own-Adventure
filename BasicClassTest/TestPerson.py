@@ -60,8 +60,6 @@ def Test2_testVisualizationOfPerson_complex():
     except FileNotFoundError:
         st.readSkillTreeFromFile('test_file.csv')
 
-    st.command_print_tree()
-
     someone = Person("someone")
     someone.add_skill(st, st.get_node_by_shortName("CSCI-1100"))
     someone.add_skill(st, st.get_node_by_shortName("CSCI-1200"))
@@ -112,9 +110,6 @@ def Test5_filter_a_persons_selectable_course():
         'All Courses Tree')
     st.readSkillTreeFromFileDefaultPath()
 
-    # st.command_print_tree()
-
-    st.command_print_tree()
     print("################################################################")
     someone = Person("someone")
     someone.add_skill(st, st.get_node_by_shortName("CSCI-1100"))

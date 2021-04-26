@@ -780,16 +780,15 @@ class requestWindow:
         """
         Accept the selected request
         """
-        self.PersonObj.add_accept_request(self.PersonObj.remove_avail_request( \
+        self.PersonObj.add_accept_request(self.PersonObj.remove_avail_request(
             self.avail_request.get(self.avail_request.curselection())))
         self.avail_item.set(self.PersonObj.get_avail_request())
         self.accept_item.set(self.PersonObj.get_accept_request())
-
     def remove_move(self):
         """
         Remove the selected request
         """
-        self.PersonObj.add_avail_request(self.PersonObj.remove_accept_request( \
+        self.PersonObj.add_avail_request(self.PersonObj.remove_accept_request(
             self.accept_request.get(self.accept_request.curselection())))
         self.avail_item.set(self.PersonObj.get_avail_request())
         self.accept_item.set(self.PersonObj.get_accept_request())

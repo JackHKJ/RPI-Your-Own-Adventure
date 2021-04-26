@@ -2,17 +2,16 @@
 # This is the main executive file for the RPI-Your-Own-Adventure Project
 # Dependencies
 import threading
+import time
 import tkinter
-from gui import *
-from gui import UserTypeEnum
-from basicClasses.SkillTree import *
+
 from basicClasses.Person import *
 from basicClasses.Request import *
-import time
+from gui import *
+from gui import UserTypeEnum
 
-
-avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
-            'Join the sorosity', 'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
+avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', 'Join the sorority',
+              'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
 # Load the SkillTree
 st = SkillTree(
     SkillTreeNode(
@@ -36,6 +35,7 @@ class GUIThread(threading.Thread):
 
     def callback(self):
         self.root.destroy()
+        sys.exit()
 
     def run(self):
         self.root = tkinter.Tk()
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         st.pretty_print_partial_tree(User.get_skills(), save_fig=True)
         USER_GATHERER = GUI_thread.window.gatherer
     for request in avail_list:
-        User.add_avail_request(Request(request,[],""))
+        User.add_avail_request(Request(request, [], ""))
     # Open the main page
     while True:
         if GUI_thread.window.next is not None:
@@ -85,6 +85,7 @@ if __name__ == "__main__":
             GUI_thread.window.user_type = USER_TYPE
             GUI_thread.window.gatherer = USER_GATHERER
             break
+        time.sleep(0.5)
 
     # Try to show the user skillTree fig
     if USER_TYPE == UserTypeEnum.STUDENT:
@@ -113,4 +114,4 @@ if __name__ == "__main__":
             st.pretty_print_partial_tree(User.get_skills(), root_name=User.name + "-0000", save_fig=False, verbose=True)
             GUI_thread.window.show_skill_flag = False
 
-    print('Reached the end')
+

@@ -2,10 +2,10 @@
 # Dependencies
 import os
 import sys
-
-sys.path.append(os.getcwd())
 from basicClasses.SkillTree import SkillTree
 from basicClasses.SkillTreeNode import SkillTreeNode
+
+sys.path.append(os.getcwd())
 
 
 def Test1_printer_test():
@@ -36,7 +36,7 @@ def Test2_basicTreeTest():
     tree.addSkill(skill=node_c, parent=node_a)
     tree.addSkill(skill=node_d, parent=node_b)
 
-    tree.command_print_tree()
+    tree.pretty_print_tree()
 
 
 def Test3_basicGetNodeTest():
@@ -129,6 +129,7 @@ def Test7_savefigTest():
     except FileNotFoundError:
         st.readSkillTreeFromFile('test_file.csv')
     st.pretty_print_tree(save_fig=True)
+
 
 if __name__ == "__main__":
     # Test1_printer_test()
