@@ -1,0 +1,1510 @@
+course_crn,full_name,short_name,prerequisites
+25790,,ADMN-1010,
+29356,,ADMN-1030,
+29809,,ADMN-1100,
+29416,,ADMN-1824,
+26559,,ADMN-1961,
+27433,,ADMN-6700,
+27434,,ADMN-6800,
+28044,The Ethos of Architecture,ARCH-2150,[]
+28045,Architectural Media,ARCH-2160,[]
+25914,Structures 1,ARCH-2330,['ARCH-2510']
+26528,Construction Systems,ARCH-2350,['ARCH-2510']
+28046,Materials and Design,ARCH-2510,[]
+28101,Digital Constructs 1,ARCH-2520,[]
+28292,Digital Constructs 3,ARCH-2540,['ARCH-2530']
+28074,Architectural Design Studio 1,ARCH-2800,[]
+28293,Architectural Design Studio 3,ARCH-2820,['ARCH-2810']
+28588,Building Performance Studio 2,ARCH-2860,['ARCH-2850']
+28041,Bedford Architecture Engineering Seminar,ARCH-4020,['ARCH-2330']
+28836,Cities and Their Territories,ARCH-4050,['ARCH-4100']
+29197,"Cloud Atlas: 20th Century Architecture, Culture and Civilization",ARCH-4120,['ARCH-4100']
+29198,,ARCH-4170,
+30493,,ARCH-4200,
+28589,Structures 2,ARCH-4330,"['ARCH-2510', 'ARCH-2350', 'ARCH-2330']"
+28856,Construction Industry Seminar 1,ARCH-4510,"['ARCH-2360', 'ARCH-4550', 'ARCH-4740']"
+25686,Professional Practice 1,ARCH-4540,[]
+28300,Professional Practice 2,ARCH-4550,[]
+28590,Materials and Enclosures,ARCH-4560,"['ARCH-2510', 'ARCH-2350']"
+29199,,ARCH-4580,
+28302,Architectural Design Studio 5,ARCH-4770,['ARCH-2830']
+28591,Architectural Design Studio 6,ARCH-4780,['ARCH-4770']
+28839,Architectural Design Studio 7,ARCH-4790,['ARCH-4780']
+28594,Integrated Design Schematic,ARCH-4820,['ARCH-2830']
+28843,Integrated Design Development,ARCH-4830,['ARCH-4820']
+25902,Architectural Acoustics 1,ARCH-4840,[]
+27179,Applied Psychoacoustics,ARCH-4860,[]
+28898,Engineering Acoustics,ARCH-4890,[]
+28596,Final Project Design Research Seminar,ARCH-4910,"['ARCH-4780', 'ARCH-4830']"
+29236,,ARCH-4956,
+30374,,ARCH-4957,
+29204,,ARCH-4958,
+29677,,ARCH-4959,
+28600,,ARCH-4961,
+29605,,ARCH-4963,
+28844,,ARCH-4964,
+29203,,ARCH-4965,
+28601,,ARCH-4968,
+28311,"History, Theory, Criticism 1",ARCH-5100,[]
+28313,Structures 1,ARCH-5140,[]
+28329,Structures 2,ARCH-5150,['ARCH-5140']
+29612,Digital Constructs 1,ARCH-5160,[]
+28312,Graduate Architecture Design 1,ARCH-5200,[]
+28314,Materials and Construction Systems,ARCH-5300,[]
+28604,Materials and Enclosures,ARCH-5340,['ARCH-5300']
+29206,Environmental History and Theory,ARCH-6310,[]
+27176,Built Ecologies 1,ARCH-6320,"['ARCH-2360', 'ARCH-4740']"
+29207,Material Systems and Productions,ARCH-6340,[]
+29208,Design Research Studio,ARCH-6350,[]
+28848,Graduate Environmental Parametrics,ARCH-6380,[]
+28328,Graduate Architecture Design 3,ARCH-6610,['ARCH-5210']
+28603,Graduate Architecture Design 5,ARCH-6630,['ARCH-6620']
+28602,Final Project Design Research Seminar,ARCH-6750,['ARCH-6680']
+28605,Research Design Seminar,ARCH-6810,[]
+29209,Engineering Acoustics,ARCH-6840,[]
+27182,Applied Psychoacoustics,ARCH-6860,[]
+29210,Sonics Research Laboratory 1,ARCH-6870,[]
+28029,Doctoral Seminar 1,ARCH-6910,[]
+29613,Doctoral Seminar 2,ARCH-6920,['ARCH-6910']
+26745,Advanced Individual Projects in Architecture and Environmental Design,ARCH-6940,[]
+29692,,ARCH-6961,
+29725,,ARCH-6962,
+30487,,ARCH-6963,
+30491,,ARCH-6964,
+30492,,ARCH-6965,
+28070,Master's Project,ARCH-6980,"['ARCH-6630', 'ARCH-6750']"
+30488,Master's Thesis,ARCH-6990,[]
+26670,Dissertation,ARCH-9990,[]
+25819,Digital Imaging,ARTS-1020,[]
+29548,Digital Filmmaking,ARTS-1030,[]
+28787,Art History,ARTS-1050,[]
+25818,Basic Drawing,ARTS-1200,[]
+29453,Fundamentals of Music and Sound,ARTS-1380,[]
+29248,Intermediate Video,ARTS-2010,['ARTS-1030']
+25821,Music and Technology I,ARTS-2020,[]
+29144,Graphic Storytelling,ARTS-2070,"['ARTS-1020', 'ARTS-1200']"
+29162,Intermediate Drawing,ARTS-2200,['ARTS-1200']
+28344,Sculpture I,ARTS-2210,[]
+29560,Fundamentals of 2D Design,ARTS-2220,[]
+29145,3D Digital Modeling,ARTS-2230,[]
+29452,Music and Sound I,ARTS-2380,['ARTS-1380']
+30146,World Music,ARTS-2520,[]
+28287,The Multimedia Century,ARTS-2540,[]
+30150,Sound Recording and Production I,ARTS-2700,[]
+30349,Private Music Lessons,ARTS-2750,[]
+26746,Studies in the Arts,ARTS-2940,[]
+30468,,ARTS-2961,
+30153,Rethinking Documentary: Video Production,ARTS-4040,['ARTS-1030']
+28288,3D Animation,ARTS-4070,['ARTS-2230']
+28788,Sculpture II,ARTS-4210,['ARTS-2210']
+29163,Painting,ARTS-4220,['ARTS-1200']
+29562,Music and Sound II,ARTS-4380,['ARTS-2380']
+30155,Hactivism,ARTS-4560,[]
+30267,Creative Seminar I,ARTS-4840,[]
+26747,Studies in the Arts,ARTS-4940,[]
+30273,,ARTS-4961,
+29225,,ARTS-4965,
+30157,Rethinking Documentary: Video Production,ARTS-6050,[]
+30158,Painting,ARTS-6220,[]
+28018,Experimental Game Design,ARTS-6400,"['CSCI-4520', 'COGS-4520', 'GSAS-4520']"
+30156,Hactivism,ARTS-6560,[]
+28608,Arts Graduate Colloquium,ARTS-6900,[]
+26748,Studies in Electronic Arts,ARTS-6940,[]
+29247,,ARTS-6965,
+27007,Dissertation,ARTS-9990,[]
+27701,Introductory Astronomy and Astrophysics,ASTR-2050,[]
+25589,Earth and Sky,ASTR-2120,[]
+27563,Astrophysics,ASTR-4220,"['PHYS-2220', 'PHYS-4420']"
+29686,,ASTR-4961,
+29687,,ASTR-6961,
+26822,Research in Biochemistry/Biophysics,BCBP-2900,[]
+26752,Readings in Biochemistry/Biophysics,BCBP-2940,[]
+30389,,BCBP-4470,
+25605,Molecular Biochemistry I,BCBP-4760,"['CHEM-2250', 'BIOL-1010', 'BIOL-2120']"
+28113,Methods in Biophysics,BCBP-4800,['BCBP-4760']
+26728,Protein Structure Determination,BCBP-4870,"['BCBP-4760', 'MATH-1020', 'PHYS-1200']"
+29701,,BCBP-4960,
+29765,,BCBP-4961,
+29928,,BCBP-4967,
+29932,,BCBP-4968,
+29936,,BCBP-4969,
+26516,Senior Research Thesis,BCBP-4990,[]
+30388,,BCBP-6470,
+28114,Methods in Biophysics,BCBP-6800,['BCBP-4760']
+26729,Protein Structure Determination,BCBP-6870,"['BCBP-4760', 'MATH-1020', 'PHYS-1200']"
+28115,Research Rotation,BCBP-6910,[]
+26753,Readings in Biochemistry/Biophysics,BCBP-6940,[]
+29766,,BCBP-6961,
+30211,,BCBP-6962,
+29929,,BCBP-6967,
+29933,,BCBP-6968,
+26997,Dissertation,BCBP-9990,[]
+25601,Introduction to Biology,BIOL-1010,[]
+27895,Introduction to Biology Laboratory,BIOL-1015,[]
+28109,Introduction to Cell and Molecular Biology,BIOL-2120,[]
+30220,Introduction to Geobiology,BIOL-2160,['ERTH-1100']
+25873,Genetics and Evolution,BIOL-2500,['BIOL-2120']
+26823,Research in Biology,BIOL-2900,[]
+26064,Out-of-Classroom Experience in Biology,BIOL-2930,[]
+28707,Investigative Medicine I,BIOL-4110,[]
+27742,Biostatistics,BIOL-4200,"['BIOL-1010', 'MATH-1010']"
+29720,Machine Learning for Environmental Biology,BIOL-4220,['BIOL-4200']
+27151,Advanced Cell Biology,BIOL-4260,"['BIOL-2120', 'BIOL-4620', 'BIOL-4760']"
+25603,Human Physiology,BIOL-4270,"['BIOL-2120', 'BIOL-4620', 'CHEM-2250', 'PHYS-1100']"
+28016,Microbiology Lab,BIOL-4320,['BIOL-2500']
+28015,Virology,BIOL-4350,"['BIOL-4620', 'BIOL-4310']"
+30386,,BIOL-4470,
+27153,Sequence Analysis,BIOL-4540,"['MATH-1020', 'BIOL-4620', 'CSCI-1200']"
+26827,Molecular Biology II,BIOL-4630,"['BIOL-4620', 'BIOL-4760']"
+25704,Molecular Biology Laboratory,BIOL-4720,"['BIOL-2120', 'BIOL-4620']"
+29235,Advanced Cell Biology Laboratory,BIOL-4740,"['BIOL-2120', 'BIOL-2500']"
+25604,Molecular Biochemistry I,BIOL-4760,"['CHEM-2250', 'BIOL-1010']"
+25840,Readings in Biology,BIOL-4940,[]
+29763,Human Population,BIOL-4961,"['BIOL-1010', 'MATH-1010']"
+29926,,BIOL-4967,
+29931,,BIOL-4968,
+29934,,BIOL-4969,
+27394,Non-thesis Research,BIOL-4970,[]
+26515,Senior Research Thesis,BIOL-4990,[]
+29721,Machine Learning for Environmental Biology,BIOL-6220,['BIOL-4200']
+27152,Advanced Cell Biology,BIOL-6260,['BIOL-2120']
+28780,Virology,BIOL-6350,"['BIOL-4620', 'BIOL-4310']"
+28279,Sequence Analysis,BIOL-6410,"['MATH-1020', 'BIOL-4620', 'CSCI-1200']"
+30387,,BIOL-6470,
+27154,Biology Core Course I,BIOL-6510,[]
+27395,Advanced Molecular Biology,BIOL-6690,[]
+25896,Seminar in Biology,BIOL-6900,[]
+26754,Readings in Biology,BIOL-6940,[]
+29174,Current Topics: Cytoskeletal Research,BIOL-6960,"['BIOL-4260', 'BIOL-6260', 'BIOL-4100']"
+29764,,BIOL-6961,
+29364,,BIOL-6962,
+29365,,BIOL-6963,
+30210,,BIOL-6964,
+26054,,BIOL-6965,
+29308,,BIOL-6966,
+29927,,BIOL-6967,
+29930,,BIOL-6968,
+29935,,BIOL-6969,
+27477,Professional Project,BIOL-6970,[]
+30392,,BIOL-6971,
+26824,Master's Thesis,BIOL-6990,[]
+26883,Dissertation,BIOL-9990,[]
+28033,Biomaterials Science and Engineering,BMED-2100,[]
+28035,Bioimaging and Bioinstrumentation,BMED-2300,['PHYS-1200']
+27924,Biomechanics,BMED-2540,['ENGR-1100']
+26755,Studies in Biomedical Engineering,BMED-2940,[]
+29602,Topics in Biomedical Engineering,BMED-2960,[]
+25619,Biomedical Engineering Laboratory,BMED-4010,"['BMED-2100', 'BMED-2300', 'BMED-2540']"
+28962,Investigative Medicine I,BMED-4110,[]
+28098,Modeling of Biomedical Systems,BMED-4200,"['MATH-2010', 'PHYS-1200']"
+28099,Biomedical Product Development and Commercialization,BMED-4260,['ENGR-2050']
+28851,Clinical Orthopaedics and Contemporary Research,BMED-4420,['BMED-4500']
+29678,Biostatistics for Life Science Applications,BMED-4470,"['MATH-2010', 'ENGR-2600']"
+29219,Advanced Systems Physiology,BMED-4500,['BIOL-2120']
+28617,Biomechanics II,BMED-4540,['BMED-2540']
+30286,Cell Biomechanics,BMED-4550,['BMED-2540']
+27839,Biomedical Fluid Mechanics,BMED-4580,['ENGR-2250']
+28661,Medical Imaging,BMED-4590,['BMED-2300']
+29223,Biomedical Engineering Design,BMED-4600,['BMED-4260']
+26756,Studies in Biomedical Engineering,BMED-4940,[]
+28297,Topics in Biomedical Engineering,BMED-4960,[]
+30323,,BMED-4961,
+28852,Clinical Orthopaedics and Contemporary Research,BMED-6420,['BMED-4500']
+30335,Drug and Gene Delivery,BMED-6450,['BMED-2100']
+29679,Biostatistics for Life Science,BMED-6470,[]
+30292,Cell Biomechanics,BMED-6550,['BMED-2540']
+29733,Biomedical Fluid Mechanics,BMED-6580,['ENGR-2250']
+28662,Medical Imaging,BMED-6590,['BMED-2300']
+28116,Discussions in Graduate Research,BMED-6800,[]
+26757,Studies in Biomedical Engineering,BMED-6940,[]
+28298,Topics in Biomedical Engineering,BMED-6960,[]
+29021,,BMED-6963,
+29370,,BMED-6964,
+29309,,BMED-6966,
+27150,Professional Project,BMED-6970,[]
+26903,Master's Project,BMED-6980,[]
+27431,Master's Thesis,BMED-6990,[]
+27617,Dissertation,BMED-9990,[]
+27538,Chemistry I,CHEM-1100,[]
+27017,Chemistry I with Advanced Lab,CHEM-1110,[]
+28824,Materials Science,CHEM-1600,['CHEM-1100']
+29351,,CHEM-1960,
+26070,Equilibrium Chemistry and Quantitative Analysis,CHEM-2110,"['CHEM-1200', 'CHEM-1210']"
+30421,Organic Chemistry Laboratory I,CHEM-2230,[]
+30422,Organic Chemistry Laboratory II,CHEM-2240,"['CHEM-2230', 'CHEM-2260']"
+25882,Organic Chemistry I,CHEM-2250,['CHEM-1100']
+25985,Out-of-Classroom Experience in Chemistry,CHEM-2930,[]
+29476,Special Projects in Chemistry,CHEM-2940,[]
+26814,Undergraduate Research,CHEM-2950,[]
+28545,Inorganic Chemistry II,CHEM-4010,"['CHEM-2030', 'CHEM-4410']"
+26072,Experimental Chemistry III: Inorganic and Physical Methods,CHEM-4020,[]
+30230,Instrumental Methods of Analysis,CHEM-4110,"['CHEM-2110', 'CHEM-2120']"
+30319,Mass Spectrometry,CHEM-4130,"['PHYS-1200', 'MATH-1020']"
+26071,Macroscopic Physical Chemistry,CHEM-4410,['MATH-2400']
+29684,Microscopic Physical Chemistry,CHEM-4420,['MATH-2400']
+29112,Physical Chemistry for Life Sciences,CHEM-4440,"['CHEM-1200', 'MATH-1010']"
+25859,Modern Techniques in Chemistry,CHEM-4530,['CHEM-2250']
+30391,Chemical Biology,CHEM-4710,[]
+25615,Molecular Biochemistry I,CHEM-4760,"['CHEM-2250', 'BIOL-1010', 'BIOL-2120']"
+25897,Professional Development Seminar,CHEM-4900,[]
+26041,Senior Experience,CHEM-4950,[]
+28352,Selected Topics in Chemistry,CHEM-4960,[]
+28627,,CHEM-4962,
+30233,,CHEM-4964,
+26734,Senior Thesis,CHEM-4990,[]
+30320,Mass Spectrometry,CHEM-6130,[]
+29553,Advanced Organic Chemistry I,CHEM-6210,[]
+30234,Electrochemistry,CHEM-6540,[]
+28559,Chemical Biology,CHEM-6710,[]
+29232,Biocatalysis: Fundamentals and Applications,CHEM-6750,[]
+25809,Chemistry Seminar,CHEM-6900,[]
+25616,Chemistry Teaching Seminar,CHEM-6910,[]
+26759,Readings in Chemistry,CHEM-6940,[]
+28117,Introduction to Research,CHEM-6950,[]
+29371,,CHEM-6962,
+29372,,CHEM-6963,
+29311,,CHEM-6966,
+27713,Masters Project,CHEM-6970,[]
+27389,Master's Thesis,CHEM-6990,[]
+25718,Dissertation,CHEM-9990,[]
+27219,Introduction to Chemical Engineering,CHME-1010,[]
+25691,"Material, Energy, and Entropy Balances",CHME-2010,[]
+29685,Introduction to Computational Chemical Engineering,CHME-2050,['MATH-2400']
+26760,Readings in Chemical Engineering,CHME-2940,[]
+25808,Transport Phenomena I,CHME-4010,"['MATH-2400', 'CHME-2010']"
+28902,Transport Phenomena II,CHME-4020,"['MATH-2400', 'CHME-4010']"
+27404,Chemical Process Dynamics and Control,CHME-4030,"['CHME-2010', 'CHME-2050', 'MATH-2400']"
+25866,Chemical Engineering Separations,CHME-4040,"['CHME-2020', 'CHME-4010', 'CHME-4020']"
+25687,Chemical Engineering Laboratory I,CHME-4150,"['CHME-4010', 'CHME-4020', 'CHME-2020']"
+27876,Introduction to Biochemical Engineering,CHME-4430,[]
+28537,Single Molecules Complex Fluid,CHME-4480,['CHME-4020']
+25706,Chemical Reactor Design,CHME-4500,"['CHME-2010', 'CHME-2020', 'CHME-4010', 'CHME-4020']"
+26761,Readings in Chemical Engineering,CHME-4940,[]
+29727,Topics in Chemical Engineering,CHME-4960,[]
+30435,,CHME-4961,
+28342,,CHME-4963,
+30290,,CHME-4965,
+26896,,CHME-4966,
+30436,Advanced Membrane Concepts,CHME-6410,[]
+27877,Biochemical Engineering,CHME-6430,[]
+28538,Single Molecules Complex Fluid,CHME-6480,['CHME-4020']
+25689,Chemical and Phase Equilibrium,CHME-6570,"['CHME-2020', 'MATH-2400']"
+25690,Mathematical Methods in Chemical Engineering I,CHME-6610,['MATH-2400']
+28048,Chemical and Biological Engineering Seminar,CHME-6900,[]
+26762,Readings in Chemical Engineering,CHME-6940,[]
+29728,Topics in Chemical Engineering,CHME-6960,[]
+30438,,CHME-6961,
+29342,,CHME-6963,
+29343,,CHME-6964,
+30291,,CHME-6965,
+29310,,CHME-6966,
+29373,,CHME-6967,
+29374,,CHME-6968,
+26684,Professional Project,CHME-6970,[]
+27476,,CHME-6980,
+26963,Master's Thesis,CHME-6990,[]
+26839,Dissertation,CHME-9990,[]
+27891,Engineering Graphics for Civil Engineers,CIVL-1200,[]
+30444,,CIVL-2050,
+26764,Readings in Civil Engineering,CIVL-2940,[]
+25606,Foundation Engineering,CIVL-4010,['CIVL-2630']
+27843,Bedford Seminar,CIVL-4020,[]
+25613,Steel Design,CIVL-4070,['CIVL-2670']
+28534,Geoenvironmental Engineering,CIVL-4140,[]
+25607,Introduction to Finite Elements,CIVL-4240,"['ENGR-2250', 'ENGR-2530', 'ECSE-4160']"
+29508,Traffic Engineering,CIVL-4660,['CIVL-2030']
+28906,,CIVL-4961,
+30400,,CIVL-4963,
+27267,Mechanics of Solids,CIVL-6170,[]
+30124,Transportation Economics,CIVL-6230,['CIVL-2030']
+29158,Intelligent Transportation Systems,CIVL-6240,['CIVL-2030']
+27544,Advanced Concrete Structures,CIVL-6310,['CIVL-4080']
+27844,Bedford Design Studio,CIVL-6340,"['CIVL-4020', 'CIVL-6310', 'CIVL-6320']"
+30125,Timber Design,CIVL-6360,"['CIVL-4070', 'CIVL-4080']"
+30131,Wind Engineering,CIVL-6390,['ENVE-4310']
+25915,Structural Dynamics,CIVL-6450,['CIVL-4440']
+29505,Advanced Geotechnical Engineering,CIVL-6510,['CIVL-4150']
+28535,Advanced Geoenvironmental Engineering,CIVL-6550,[]
+25614,Fundamentals of Finite Elements,CIVL-6660,[]
+27916,Colloquium Series,CIVL-6910,[]
+26766,Readings in Civil Engineering,CIVL-6940,[]
+30399,,CIVL-6961,
+25707,Master's Project,CIVL-6980,[]
+27447,Master's Thesis,CIVL-6990,[]
+25725,Dissertation,CIVL-9990,[]
+29752,Introduction to Cognitive Science,COGS-2120,[]
+29750,Introduction to Linguistics,COGS-2340,[]
+30427,Introduction to Cognitive Neuroscience,COGS-4330,"['PSYC-1200', 'COGS-2120']"
+28013,Programming for Cognitive Science and Artificial Intelligence,COGS-4410,['CSCI-2300']
+29290,Game AI,COGS-4420,['CSCI-2300']
+30231,Learning and Advanced Game AI,COGS-4430,['COGS-4420']
+29454,Sensibilities,COGS-4440,"['IHSS-1150', 'IHSS-1140', 'PSYC-1200']"
+29279,Cross-linguistic Perspectives,COGS-4560,['COGS-2340']
+30401,Topics in Cognitive Science,COGS-4960,[]
+30235,,COGS-4961,
+30280,,COGS-4962,
+27904,Undergraduate Thesis,COGS-4990,[]
+28014,Programming for Cognitive Science and Artificial Intelligence,COGS-6410,[]
+30232,Learning and Advanced Game AI,COGS-6430,[]
+29280,Cross-linguistic Perspectives,COGS-6560,[]
+30236,,COGS-6961,
+30237,,COGS-6962,
+30238,,COGS-6963,
+30284,,COGS-6964,
+27704,,COGS-6968,
+28087,Master's Project,COGS-6980,[]
+27717,Master’s Thesis,COGS-6990,[]
+27721,Doctoral Thesis,COGS-9990,[]
+28886,,COMM-1960,
+29517,Perspectives on Photography,COMM-2410,[]
+30408,Documentary Film,COMM-2440,[]
+29456,Communication Theory and Practice,COMM-2520,[]
+28923,Introduction to Graphic Design,COMM-2660,[]
+26767,Communication Studies,COMM-2940,[]
+29587,Topics in Communication,COMM-2960,[]
+28019,Writing for Games II,COMM-4250,['COMM-4240']
+30162,Creative Seminar I,COMM-4340,[]
+28943,Foundations of HCI Usability,COMM-4420,[]
+30163,Visual Design: Theory and Application,COMM-4460,[]
+30285,Advertising and Culture,COMM-4580,[]
+26768,Communication Studies,COMM-4940,[]
+30278,Topics in Communication,COMM-4960,[]
+28944,Foundations of Human-Computer Interaction Usability,COMM-6420,[]
+30165,Visual Design: Theory and Application,COMM-6560,[]
+26769,Communication Studies,COMM-6940,[]
+30279,Topics in Communication,COMM-6960,[]
+27028,Dissertation,COMM-9990,[]
+25564,Computer Science I,CSCI-1100,[]
+25569,Data Structures,CSCI-1200,['CSCI-1100']
+27879,Foundations of Computer Science,CSCI-2200,"['CSCI-1200', 'MATH-1010', 'MATH-1500', 'MATH-1020']"
+25572,Introduction to Algorithms,CSCI-2300,"['CSCI-1200', 'MATH-1010', 'CSCI-2200']"
+25574,Computer Organization,CSCI-2500,['CSCI-1200']
+28097,,CSCI-2960,
+30242,,CSCI-2961,
+26871,Machine Learning from Data,CSCI-4100,['CSCI-2300']
+29179,Network Programming,CSCI-4220,"['CSCI-2300', 'CSCI-2500']"
+28568,Frontiers of Network Science,CSCI-4250,['CSCI-2300']
+29652,Networking in the Linux Kernel,CSCI-4310,"['CSCI-4210', 'ECSE-2660']"
+29249,Ontologies,CSCI-4340,['CSCI-2300']
+28050,Data Science,CSCI-4350,"['CSCI-1200', 'CSCI-4380']"
+30396,Data and Society,CSCI-4370,"['CSCI-4350', 'ITWS-4350']"
+25911,Database Systems,CSCI-4380,['CSCI-2300']
+28066,Data Mining,CSCI-4390,['CSCI-2300']
+26077,Programming Languages,CSCI-4430,"['CSCI-2300', 'CSCI-2600']"
+25612,Software Design and Documentation,CSCI-4440,['CSCI-2300']
+29650,Large-Scale Programming and Testing,CSCI-4460,['CSCI-2300']
+27057,Robotics I,CSCI-4480,['MATH-2400']
+28879,Distributed Systems and Algorithms,CSCI-4510,['CSCI-4210']
+25715,Numerical Computing,CSCI-4800,"['CSCI-1100', 'MATH-2010', 'ENGR-1100']"
+27711,Topics in Computer Science,CSCI-4960,[]
+27165,,CSCI-4961,
+29654,,CSCI-4962,
+26529,,CSCI-4964,
+26741,,CSCI-4966,
+27013,,CSCI-4967,
+29637,,CSCI-4968,
+30281,,CSCI-4969,
+28891,,CSCI-4970,
+26872,Machine Learning from Data,CSCI-6100,['CSCI-2300']
+28569,Frontiers of Network Science,CSCI-6250,['CSCI-2300']
+29653,Networking in the Linux Kernel,CSCI-6310,"['CSCI-4210', 'ECSE-2660']"
+29250,Ontologies,CSCI-6340,['CSCI-2300']
+28051,Data Science,CSCI-6350,"['CSCI-1200', 'CSCI-4380']"
+29222,Data Mining,CSCI-6390,['CSCI-2300']
+29651,Large-Scale Programming and Testing,CSCI-6460,['CSCI-2300']
+28880,Distributed Systems and Algorithms,CSCI-6510,['CSCI-4210']
+26039,Computational Linear Algebra,CSCI-6800,"['MATH-4800', 'CSCI-4800']"
+30138,Finite Element Analysis,CSCI-6860,"['MATH-4800', 'CSCI-4800']"
+25912,Computer Science Seminar,CSCI-6900,[]
+29655,,CSCI-6961,
+28986,,CSCI-6962,
+28106,,CSCI-6964,
+25961,,CSCI-6969,
+28392,Master's Project,CSCI-6980,[]
+26837,Master’s Thesis,CSCI-6990,[]
+25726,Dissertation,CSCI-9990,[]
+25525,Intermediate Microeconomic Theory,ECON-2010,"['IHSS-1200', 'MATH-1010', 'MATH-1500']"
+28010,Intermediate Macroeconomic Theory,ECON-2020,"['IHSS-1200', 'MATH-1010', 'MATH-1500']"
+26775,Readings in Economics,ECON-2940,[]
+29489,Economics of Innovation and New Technologies,ECON-4110,"['IHSS-1200', 'ECON-1200', 'MATH-1010', 'MATH-1500']"
+25988,Money and Banking,ECON-4130,"['ECON-1200', 'IHSS-1200']"
+28904,Economics of Government Regulation and Firm Strategy,ECON-4150,"['ECON-1200', 'IHSS-1200']"
+29464,Health Economics and Policy,ECON-4170,"['IHSS-1200', 'ECON-1200', 'MATH-1010', 'MATH-1500']"
+28789,International Economics and Globalization,ECON-4190,"['ECON-1200', 'IHSS-1200']"
+29640,Applied Game Theory,ECON-4220,"['ECON-1200', 'IHSS-1200', 'MATH-2010']"
+29642,Behavioral Economics,ECON-4270,"['ECON-1200', 'IHSS-1200', 'MATH-1010', 'MATH-1500']"
+29644,Econometric Methods for Big Data,ECON-4280,"['ECON-1200', 'IHSS-1200', 'MATH-1500', 'MATH-1010', 'ENGR-2600', 'MGMT-2100', 'MATP-4600', 'PSYC-2310']"
+29293,Economics of Financial Institutions and Markets,ECON-4330,"['ECON-1200', 'IHSS-1200']"
+30175,Behavioral Financial Economics,ECON-4340,"['ECON-1200', 'IHSS-1200', 'ENGR-2600', 'MGMT-2100', 'MATP-4600', 'PSYC-2310']"
+27874,Econometrics,ECON-4570,"['MATH-2010', 'ECON-2010']"
+26678,Seminar in Economics,ECON-4900,['ECON-4570']
+26776,Readings in Economics,ECON-4940,[]
+30370,Topics in Economics,ECON-4960,"['ECON-1200', 'IHSS-1200']"
+30177,Applied Econometrics,ECON-6030,[]
+30179,Economics of Innovation and New Technologies,ECON-6110,[]
+28905,Advanced Economics of Government Regulation and Firm Strategy,ECON-6150,"['ECON-2010', 'IHSS-1200']"
+29465,Health Economics and Policy,ECON-6170,[]
+29128,Advanced International Economics and Globalization,ECON-6190,[]
+29641,Applied Game Theory,ECON-6220,[]
+29643,Behavioral Economics,ECON-6270,[]
+29645,Econometric Methods for Big Data,ECON-6280,[]
+30178,Behavioral Financial Economics,ECON-6340,[]
+27875,Introduction to Econometrics,ECON-6560,"['MATH-2010', 'ECON-2010']"
+26777,Readings in Economics,ECON-6940,[]
+26810,Professional Project,ECON-6970,[]
+30369,Master's Thesis,ECON-6990,[]
+26957,Dissertation,ECON-9990,[]
+28845,"Introduction to Electrical, Computer, and Systems Engineering",ECSE-1010,[]
+28572,Introduction to Mechatronics Hardware and Software,ECSE-1090,[]
+26036,Electric Circuits,ECSE-2010,"['MATH-2400', 'PHYS-1200']"
+25660,Introduction to Electronics,ECSE-2050,['ECSE-2010']
+26101,Fields and Waves I,ECSE-2100,"['ECSE-2010', 'MATH-2010']"
+28819,Electrical Energy Systems,ECSE-2110,['ECSE-2010']
+28127,Microelectronics Technology,ECSE-2210,[]
+25662,Signals and Systems,ECSE-2410,['ECSE-2010']
+27181,Engineering Probability,ECSE-2500,[]
+25663,Computer Components and Operations,ECSE-2610,['CSCI-1100']
+28820,"Computer Architecture, Networks, and Operating Systems",ECSE-2660,['ECSE-2610']
+28061,ECSE Enrichment Seminar,ECSE-2900,[]
+29170,,ECSE-2960,
+28307,Analog IC Design,ECSE-4030,['ECSE-2050']
+28818,Semiconductor Power Electronics,ECSE-4080,['ECSE-2050']
+28040,Mechatronics,ECSE-4090,"['ENGR-2350', 'ECSE-2410']"
+28557,Power Engineering Analysis,ECSE-4110,['ECSE-2110']
+25664,VLSI Design,ECSE-4220,"['ECSE-2050', 'ECSE-2610', 'ECSE-2210']"
+25665,Integrated Circuit Processes and Design,ECSE-4250,['ECSE-2210']
+29268,Fundamentals of Solid State Lighting Systems,ECSE-4380,"['PHYS-1200', 'ECSE-2050']"
+25666,Control Systems Engineering,ECSE-4440,"['ECSE-2410', 'MANE-4050', 'MANE-4500']"
+27060,Robotics I,ECSE-4480,"['MATH-2400', 'MATH-2010', 'ENGR-1100']"
+25667,Communication Systems,ECSE-4520,"['ECSE-2410', 'ECSE-2500']"
+27562,Digital Signal Processing,ECSE-4530,"['ECSE-2410', 'ECSE-2500', 'MATH-2010']"
+25668,Computer Communication Networks,ECSE-4670,"['ECSE-2610', 'ENGR-2600', 'ECSE-2500']"
+29224,Solid-State Physics,ECSE-4720,['PHYS-2220']
+25670,Computer Hardware Design,ECSE-4770,"['ECSE-2610', 'ENGR-2350']"
+25679,Microprocessor Systems,ECSE-4790,"['ECSE-2610', 'ENGR-2350']"
+26037,Multidisciplinary Capstone Design,ECSE-4900,['ENGR-2050']
+26778,"Independent Studies in Electrical, Computer, and Systems Engineering",ECSE-4940,[]
+29238,,ECSE-4962,
+30192,,ECSE-4963,
+30195,,ECSE-4964,
+27409,Power Engineering Analysis,ECSE-6110,['ECSE-2110']
+30194,Advanced Power System Modeling and Control,ECSE-6180,['ECSE-6190']
+28064,Physical Foundations of Solid-State Devices,ECSE-6220,['ECSE-2210']
+25675,Semiconductor Devices and Models I,ECSE-6230,['ECSE-2210']
+25676,Systems Analysis Techniques,ECSE-6400,['ECSE-2410']
+28558,Robotics I,ECSE-6470,"['MATH-2400', 'MATH-2010', 'ENGR-1100']"
+25677,Introduction to Stochastic Signals and Systems,ECSE-6510,"['ECSE-2410', 'ECSE-2500']"
+29237,Pattern Recognition,ECSE-6610,['ECSE-2500']
+29360,Introduction to Probabilistic Graphical Models,ECSE-6810,['ECSE-2500']
+28965,"Seminar in Electrical, Computer, and Systems Engineering",ECSE-6900,[]
+30204,,ECSE-6963,
+30193,,ECSE-6965,
+28702,Professional Project,ECSE-6970,[]
+26816,Master's Project,ECSE-6980,[]
+25832,Master's Thesis,ECSE-6990,[]
+26840,Dissertation,ECSE-9990,[]
+29593,Professional Development I,ENGR-1010,[]
+25527,Introduction to Engineering Analysis,ENGR-1100,[]
+25705,Engineering Graphics and CAD,ENGR-1200,[]
+25534,Engineering Processes,ENGR-1300,[]
+27736,Engineering Communications,ENGR-1400,[]
+25542,Materials Science,ENGR-1600,['CHEM-1100']
+29242,Introduction to Better World Engineering,ENGR-1700,[]
+29676,Design and Innovation Studio III,ENGR-2020,['IHSS-2610']
+25543,Introduction to Engineering Design,ENGR-2050,"['ENGR-1100', 'ECSE-1010', 'CIVL-1200', 'ENGR-1200', 'ENGR-1400']"
+25550,Engineering Dynamics,ENGR-2090,"['ENGR-1100', 'ECSE-1010', 'PHYS-1100']"
+26022,Thermal and Fluids Engineering I,ENGR-2250,"['ENGR-1100', 'ECSE-1010', 'PHYS-1100']"
+27889,Electronic Instrumentation,ENGR-2300,['PHYS-1200']
+25552,Embedded Control,ENGR-2350,"['CSCI-1010', 'CSCI-1100', 'CSCI-1190']"
+25556,Strength of Materials,ENGR-2530,"['ENGR-1100', 'ECSE-1010']"
+25559,Modeling and Analysis of Uncertainty,ENGR-2600,['MATH-1010']
+25562,General Manufacturing Processes,ENGR-2710,[]
+26724,Computer Aided Machining,ENGR-2720,[]
+26779,Engineering Project,ENGR-2940,[]
+25714,,ENGR-2950,
+27399,Professional Development III,ENGR-4010,[]
+26026,Business Issues for Engineers and Scientists,ENGR-4100,[]
+28781,Manufacturing Processes and Systems Laboratory I,ENGR-4710,"['ENGR-1300', 'ENGR-2710']"
+26723,Engineering Economics,ENGR-4760,[]
+26027,Business Issues for Engineers and Scientists,ENGR-6100,[]
+28574,Advanced Manufacturing Processes and Systems,ENGR-6120,['ENGR-4710']
+26780,Readings in Environmental Engineering,ENVE-2940,[]
+29512,Applied Hydrology and Hydraulics,ENVE-4310,"['ENGR-2250', 'CHME-4010']"
+27842,Introduction to Air Quality,ENVE-4330,['ENVE-2110']
+25865,Biological Processes in Environmental Engineering,ENVE-4350,['ENVE-4320']
+27892,Groundwater Hydrology,ENVE-4710,['MATH-1020']
+26781,Studies in Environmental Engineering,ENVE-4940,[]
+29739,,ENVE-4961,
+30132,,ENVE-4962,
+27173,Advanced Groundwater Hydrology,ENVE-6110,['MATH-1020']
+26782,Studies in Environmental Engineering,ENVE-6940,[]
+27185,Master's Project,ENVE-6980,[]
+27411,Master's Thesis,ENVE-6990,[]
+27610,Dissertation,ENVE-9990,[]
+30207,Natural Sciences I,ERTH-1030,[]
+28767,Geology I: Earth's Interior,ERTH-1100,[]
+28770,Geology I: Earth's Interior Lab,ERTH-1150,['ERTH-1100']
+30208,Structural Geology,ERTH-2120,['ERTH-2210']
+30219,Introduction to Geobiology,ERTH-2160,"['ERTH-1100', 'ERTH-2160', 'BIOL-2160']"
+26989,Field Methods,ERTH-2210,"['ERTH-1100', 'ERTH-1200']"
+30221,Applied Micropaleontology,ERTH-4200,"['ERTH-1200', 'ERTH-2610']"
+28052,Data Science,ERTH-4350,"['CSCI-1200', 'CSCI-4380']"
+25608,Groundwater Hydrology,ERTH-4710,['MATH-1020']
+26783,Readings in Geology,ERTH-4940,[]
+30224,Topics in Geology,ERTH-4960,[]
+27903,Out-of-Classroom Experience in Earth Sciences,ERTH-4970,[]
+30222,Applied Micropaleontology,ERTH-6200,"['ERTH-1200', 'ERTH-2610']"
+28053,Data Science,ERTH-6350,"['CSCI-1200', 'CSCI-4380']"
+25609,Advanced Groundwater Hydrology,ERTH-6710,['MATH-1020']
+26784,Readings in Geology,ERTH-6940,[]
+26817,Master's Project,ERTH-6980,[]
+27436,Master's Thesis,ERTH-6990,[]
+27260,Dissertation,ERTH-9990,[]
+27067,Dissertation,ESCI-9990,[]
+29167,Art for Interactive Media,GSAS-1040,[]
+29302,History and Culture of Games,GSAS-1600,[]
+29130,Introduction to Game Design,GSAS-2510,[]
+29133,Introduction to Game Storytelling,GSAS-2520,[]
+29791,Introduction to Game Programming,GSAS-2540,[]
+29132,Experimental Game Design,GSAS-4510,"['ARTS-1040', 'GSAS-1040', 'ARTS-1020']"
+29151,Game Development I,GSAS-4520,['ARTS-4060']
+30295,,GSAS-4961,
+30321,,GSAS-4962,
+30429,,GSAS-4963,
+30293,,GSAS-6960,
+30294,,GSAS-6961,
+30297,,GSAS-6980,
+30225,One Mile of the Hudson River,IENV-4700,[]
+29316,History of Jazz and Improvised Music,IHSS-1080,[]
+28104,Nature/Society,IHSS-1110,[]
+28102,Minds and Machines,IHSS-1140,[]
+29590,The Genome and You,IHSS-1150,[]
+30196,History of Animation,IHSS-1170,[]
+29743,Well-being: Cultivating Curiosity,IHSS-1175,[]
+29770,The Art of Listening,IHSS-1180,[]
+29462,Principles of Economics,IHSS-1200,[]
+28953,Sustainability Debates,IHSS-1240,[]
+29140,Race and Film in U.S. Culture and History,IHSS-1300,[]
+30283,Human Rights in History,IHSS-1500,[]
+29736,Media and Society,IHSS-1560,[]
+26742,Design and Innovation Studio I,IHSS-1610,[]
+29634,Religion in a Global World,IHSS-1666,[]
+29774,Songwriting Workshop,IHSS-1700,[]
+29776,Popular Music and Society,IHSS-1710,[]
+29772,Music and Nature,IHSS-1720,[]
+29788,,IHSS-1958,
+28881,,IHSS-1961,
+30431,,IHSS-1962,
+30269,,IHSS-1964,
+29333,,IHSS-1969,
+29591,,IHSS-1972,
+28910,,IHSS-1973,
+28956,,IHSS-1976,
+29786,,IHSS-1987,
+29959,Research Methods,IHSS-6570,[]
+28858,Topics in Interdisciplinary Humanities and Social Science Studies,IHSS-6960,[]
+28832,Materials Science,ISCI-1600,['CHEM-1100']
+29717,Readings in Astrobiology and the Origins of Life,ISCI-4510,['ISCI-1510']
+27720,Research Rotation,ISCI-4950,[]
+28130,Master's Project,ISCI-6980,[]
+26271,Dissertation,ISCI-9990,[]
+27873,Introduction to Industrial and Systems Engineering,ISYE-1100,[]
+25523,Statistical Analysis,ISYE-4140,"['ENGR-2600', 'MATP-4600']"
+28847,Design and Analysis of Work Systems,ISYE-4200,['ENGR-2600']
+28054,Design and Analysis of Supply Chains,ISYE-4210,"['ISYE-2210', 'MGMT-4110', 'ENGR-2600', 'MGMT-2100']"
+30270,Facilities Design and Industrial Logistics,ISYE-4250,"['ISYE-2210', 'ISYE-4140']"
+26991,Multidisciplinary Capstone Design,ISYE-4270,['ENGR-2050']
+29239,Decision Focused Systems Engineering,ISYE-4280,[]
+28056,Discrete Event Simulation Modeling and Analysis,ISYE-4290,"['ISYE-4140', 'CSCI-1100', 'CSCI-1010']"
+28308,Design of Experiments,ISYE-4330,"['ISYE-4140', 'MATP-4600', 'ISYE-4760', 'MATP-4620']"
+30413,,ISYE-4360,
+25869,Information Systems,ISYE-4530,"['CSCI-1010', 'CSCI-1100']"
+27243,Operations Research Methods,ISYE-4600,"['ENGR-2600', 'MATH-1020']"
+27556,Design of Experiments,ISYE-6020,"['ISYE-4140', 'MATP-4600', 'ISYE-4760', 'MATP-4620']"
+29691,Introduction to Big Data Analytics,ISYE-6190,[]
+28055,Design of Manufacturing System Supply Chains,ISYE-6600,['ISYE-4140']
+26993,Systems Modeling in Decision Sciences,ISYE-6610,['ISYE-4140']
+28057,Discrete-Event Simulation,ISYE-6620,['ISYE-4140']
+30141,Conic Optimization,ISYE-6780,['MATH-4200']
+26825,Professional Project,ISYE-6970,[]
+26815,Master's Project,ISYE-6980,[]
+26870,Master's Thesis,ISYE-6990,[]
+25769,Dissertation,ISYE-9990,[]
+27058,Introduction to Information Technology and Web Science,ITWS-1100,[]
+27709,Web Systems Development,ITWS-2110,"['ITWS-1100', 'CSCI-1200']"
+25913,Information Technology and Web Science Capstone,ITWS-4100,"['ITWS-2210', 'ITWS-4310']"
+30411,,ITWS-4250,
+26093,Business Issues for Engineers and Scientists,ITWS-4300,[]
+25870,Managing IT Resources,ITWS-4310,['ITWS-2110']
+28011,Data Science,ITWS-4350,"['CSCI-1200', 'CSCI-4380']"
+29148,Data Analytics,ITWS-4600,[]
+28543,Software Development,ITWS-4700,[]
+29674,,ITWS-4967,
+27583,Special Projects,ITWS-4980,[]
+27584,Senior Thesis,ITWS-4990,[]
+30412,,ITWS-6250,
+26094,Business Issues for Engineers and Scientists,ITWS-6300,[]
+28012,Data Science,ITWS-6350,"['CSCI-1200', 'CSCI-4380']"
+29534,Big Data Policy,ITWS-6440,[]
+29149,Data Analytics,ITWS-6600,[]
+28542,Software Development,ITWS-6700,[]
+27581,Information Technology Master's Capstone,ITWS-6800,[]
+28705,Master's Project,ITWS-6980,[]
+27582,Master’s Thesis,ITWS-6990,[]
+27902,Chinese I,LANG-1410,[]
+28679,Chinese II,LANG-2410,['LANG-1410']
+29620,Chinese III,LANG-4420,['LANG-2410']
+28678,Chinese IV,LANG-4430,['LANG-4420']
+26521,Lighting Design,LGHT-4230,[]
+28031,Lighting Technologies and Applications,LGHT-4770,[]
+29211,Physics of Light,LGHT-4830,[]
+26522,Human Factors in Lighting,LGHT-4840,['LGHT-6770']
+29741,Lighting Research Design,LGHT-6750,[]
+26523,The Physics of Light,LGHT-6830,[]
+26785,Advanced Individual Projects in Lighting,LGHT-6940,[]
+29811,,LGHT-6962,
+29813,,LGHT-6966,
+29611,Master's Project,LGHT-6980,[]
+28023,Introduction to Literature,LITR-2110,[]
+30228,,LITR-2960,
+29830,Women Writers,LITR-4770,[]
+28571,Introduction to Mechatronics Hardware and Software,MANE-1090,[]
+29566,Numerical Methods and Programming for Engineers,MANE-2110,['ENGR-1100']
+28850,Inventor's Studio 1,MANE-2220,"['ENGR-1100', 'ECSE-1010', 'ENGR-1200', 'ENGR-1400', 'CIVL-1200']"
+29567,Thermodynamics,MANE-2710,"['MATH-1020', 'PHYS-1100', 'PHYS-1150']"
+29570,Fluid Mechanics,MANE-2720,"['ENGR-1100', 'PHYS-1100']"
+29177,Nuclear Phenomena for Engineering Applications,MANE-2830,"['PHYS-1100', 'CHEM-1100']"
+26787,"Readings in Mechanical Engineering, Aerospace Engineering, or Nuclear Engineering",MANE-2940,[]
+25941,Thermal and Fluids Engineering II,MANE-4010,['ENGR-2250']
+25942,Thermal and Fluids Engineering Laboratory,MANE-4020,"['MANE-4010', 'MANE-4400', 'MANE-4020']"
+25948,Elements of Mechanical Design,MANE-4030,"['MATH-2400', 'ENGR-2530']"
+26508,Mechanical Systems Laboratory,MANE-4040,"['MANE-4030', 'MANE-4040']"
+26084,Modeling and Control of Dynamic Systems,MANE-4050,[]
+27827,Aerospace Structures and Materials,MANE-4060,['ENGR-2530']
+28813,Aerodynamics I,MANE-4070,"['ENGR-2250', 'MANE-2720', 'MATH-2010']"
+28821,Propulsion Systems,MANE-4080,"['MANE-4070', 'MANE-4010', 'MANE-4400', 'MANE-2710', 'MANE-2720']"
+25949,Flight Mechanics,MANE-4090,['MANE-4070']
+30174,Helicopter Aerodynamics and Performance,MANE-4120,['MANE-4070']
+29646,Vibrations,MANE-4160,"['ENGR-2090', 'MATH-2400']"
+26042,Inventors Studio 2,MANE-4220,"['MANE-2220', 'ENGR-2050']"
+25950,Introduction to Finite Elements,MANE-4240,"['ENGR-2250', 'MANE-2720', 'ENGR-2530', 'ECSE-4160']"
+30317,Space Vehicle Design,MANE-4250,[]
+25951,Multidisciplinary Capstone Design,MANE-4260,"['ENGR-2050', 'MANE-2220']"
+28606,Numerical Design Optimization,MANE-4280,"['MATH-2010', 'CSCI-1190', 'MANE-2110', 'CSCI-1010', 'CSCI-1100']"
+30187,Physics of Radiology,MANE-4340,['MANE-2830']
+25957,Nuclear Engineering Laboratory,MANE-4370,"['ENGR-2600', 'MANE-2830']"
+25958,Nuclear Engineering Senior Design Project I,MANE-4380,[]
+29574,Nuclear Power Systems Engineering,MANE-4400,"['ENGR-2250', 'MANE-2710', 'MANE-2720']"
+29575,Radiological Engineering,MANE-4470,['MANE-2830']
+29576,Physics of Nuclear Reactors,MANE-4480,['MANE-2400']
+29618,Modeling and Control of Dynamic Systems,MANE-4500,[]
+30180,Control Systems Laboratory,MANE-4510,[]
+29647,Mechatronics,MANE-4520,"['ENGR-2350', 'MANE-4050', 'MANE-4500', 'MANE-4510']"
+29577,Control Systems Engineering,MANE-4530,"['ECSE-2410', 'MANE-4050', 'MANE-4500']"
+30101,Robotics I,MANE-4560,"['MATH-2400', 'MATH-2010', 'ENGR-1100']"
+25953,Mechanical Behavior of Materials,MANE-4670,['ENGR-2530']
+29617,Heat Transfer,MANE-4730,['MANE-2710']
+30336,Thermal and Fluids Engineering Laboratory,MANE-4740,"['MANE-2710', 'MANE-2720']"
+27418,"Heating, Ventilation, and Air Conditioning",MANE-4760,"['MANE-4010', 'MANE-4730']"
+26033,Boundary Layers and Heat Transfer,MANE-4800,"['MANE-4070', 'MANE-4010', 'MANE-4720']"
+28895,,MANE-4880,
+28815,Aeroelasticity and Structural Vibrations,MANE-4900,"['MANE-4060', 'MATH-2400']"
+25954,Fluid Dynamics Laboratory,MANE-4910,['MANE-4070']
+28816,Aerospace Structures and Control Laboratory,MANE-4920,['MANE-4060']
+26788,"Individual Projects in Mechanical Engineering, Aerospace Engineering or Nuclear Engineering",MANE-4940,[]
+28570,,MANE-4964,
+29649,,MANE-4965,
+28896,Advanced Engineering Mathematics I,MANE-5000,[]
+30188,Helicopter Aerodynamics and Performance,MANE-6060,['MANE-4070']
+28026,Robotics I,MANE-6120,[]
+27166,Mechanics of Solids,MANE-6170,[]
+28575,Advanced Manufacturing Processes and Systems,MANE-6230,"['MANE-4640', 'ENGR-4710']"
+30189,Nuclear Reactor Analysis II,MANE-6280,['MANE-4480']
+29187,Reactor Reliability and Safety,MANE-6360,"['MANE-4050', 'MATH-4600']"
+28573,Fluid Mechanics,MANE-6520,"['MATH-2010', 'MANE-4800']"
+28285,Systems Analysis Techniques,MANE-6600,"['MANE-4050', 'ECSE-2410']"
+25955,Fundamentals of Finite Elements,MANE-6660,['MATH-2400']
+29573,Numerical Design Optimization,MANE-6710,"['MATH-2010', 'CSCI-1190']"
+30190,Tribology,MANE-6730,[]
+25956,Seminar,MANE-6900,[]
+26789,"Individual Projects in Mechanical Engineering, Aeronautical Engineering, Nuclear Engineering, or Engineering Physics",MANE-6940,[]
+30206,,MANE-6961,
+30226,,MANE-6962,
+30227,,MANE-6963,
+26946,Master's Project,MANE-6980,[]
+26832,Master's Thesis,MANE-6990,[]
+26829,Dissertation,MANE-9990,[]
+27858,Calculus I,MATH-1010,[]
+25623,Calculus II,MATH-1020,['MATH-1010']
+25631,"Calculus for Architecture, Management, and HASS",MATH-1500,[]
+30423,Art and Science of Mathematics I,MATH-1900,[]
+25634,Multivariable Calculus and Matrix Algebra,MATH-2010,['MATH-1020']
+26030,Introduction to Differential Equations,MATH-2400,['MATH-1020']
+26790,Readings in Mathematics,MATH-2940,[]
+30133,Introduction to Topology,MATH-4040,['MATH-4090']
+26744,Foundation of Analysis,MATH-4090,['MATH-2010']
+25648,Linear Algebra,MATH-4100,['MATH-2010']
+25649,Mathematical Analysis I,MATH-4200,"['MATH-1020', 'MATH-4090']"
+25657,Ordinary Differential Equations and Dynamical Systems,MATH-4400,"['MATH-2010', 'MATH-2400']"
+25650,Advanced Calculus,MATH-4600,['MATH-2010']
+25658,Foundations of Applied Mathematics,MATH-4700,"['MATH-2400', 'MATH-2010']"
+26088,Introduction to Financial Mathematics and Engineering,MATH-4740,['MATH-1020']
+25651,Numerical Computing,MATH-4800,"['MATH-2010', 'MATH-2400']"
+28607,Research in Mathematics,MATH-4950,[]
+30135,Real Analysis,MATH-6200,['MATH-4210']
+25652,Partial Differential Equations,MATH-6500,['MATH-4210']
+25653,Methods of Applied Mathematics,MATH-6600,"['MATH-2400', 'MATH-4600']"
+26035,Computational Linear Algebra,MATH-6800,"['MATH-4800', 'CSCI-4800']"
+30136,Finite Element Analysis,MATH-6860,"['MATH-4800', 'CSCI-4800']"
+25711,Teaching Seminar for Teaching Assistants,MATH-6950,[]
+26692,Master's Project,MATH-6980,[]
+27944,Master's Thesis,MATH-6990,[]
+26845,Dissertation,MATH-9990,[]
+25654,Probability Theory and Applications,MATP-4600,['MATH-1020']
+25655,Mathematical Models of Operations Research,MATP-4700,['MATH-2010']
+30154,Data Analytics Research,MATP-4910,"['MATP-4400', 'CSCI-4100', 'ECSC-6610', 'ITWS-4600', 'ISYE-6180', 'BIOL-4200']"
+25656,Introduction to Optimization,MATP-6600,"['MATH-2010', 'MATH-4090']"
+30334,Topics in Optimization,MATP-6960,[]
+25590,Introduction to Management,MGMT-1100,[]
+25871,Management Professional Development 1,MGMT-1240,[]
+25593,Business Law and Ethics,MGMT-1260,[]
+25822,Statistical Methods,MGMT-2100,"['MATH-1500', 'MATH-1520']"
+27888,Financial Accounting,MGMT-2300,['MGMT-1100']
+30128,Managerial Finance,MGMT-2320,['MGMT-2300']
+28042,Marketing Principles,MGMT-2430,['MGMT-1100']
+26727,Introduction to Data Management and Analytics,MGMT-2510,[]
+26794,Studies in Management,MGMT-2940,[]
+30130,Networks and Value Creation,MGMT-4080,['MGMT-4100']
+26028,Quantitative Methods for Business,MGMT-4100,['MGMT-2100']
+25991,Operations Management,MGMT-4110,[]
+25861,Computer Information Systems,MGMT-4140,[]
+28286,Data Resource Management,MGMT-4170,"['MGMT-4100', 'MGMT-4110']"
+30381,Introduction to Machine Learning Applications,MGMT-4190,[]
+25862,Systems Analysis and Design,MGMT-4240,[]
+30161,Financial Trading and Investing,MGMT-4310,['MGMT-2320']
+25596,Investments I,MGMT-4320,"['MGMT-2300', 'MGMT-2320']"
+27845,Advanced Corporate Finance,MGMT-4340,['MGMT-2320']
+28343,Consumer Behavior and Product Design,MGMT-4460,['MGMT-2430']
+27724,Marketing Research,MGMT-4470,['MGMT-2430']
+25863,"Invention, Innovation, and Entrepreneurship",MGMT-4510,[]
+25597,Organizational Behavior in High Performance Organizations,MGMT-4850,['MGMT-1100']
+25598,Human Resources in High Performance Organizations,MGMT-4860,['MGMT-1100']
+25600,Strategy and Policy,MGMT-4870,"['MGMT-2300', 'MGMT-2320', 'MGMT-2430', 'MGMT-4110']"
+28096,Practicum in Management,MGMT-4900,[]
+26795,Studies in Management,MGMT-4940,[]
+28894,,MGMT-4961,
+29702,,MGMT-4962,
+29768,,MGMT-4963,
+30394,,MGMT-4964,
+30405,,MGMT-4965,
+27197,Financial Management I,MGMT-6020,[]
+26525,Talent Management,MGMT-6040,[]
+26052,Business Implications of Emerging Technologies,MGMT-6060,[]
+28539,Networks and Value Creation,MGMT-6080,[]
+27867,Statistics for Managerial Decision-Making,MGMT-6100,[]
+27871,Introduction to Accounting and Financial Management,MGMT-6190,[]
+27002,Financial Trading and Investing,MGMT-6240,"['MGMT-6020', 'MGMT-6030']"
+27702,"Options, Futures, and Derivatives Markets",MGMT-6370,['MGMT-6020']
+30395,Advanced Corporate Finance,MGMT-6380,['MGMT-6020']
+30129,Financial Econometrics Modeling,MGMT-6400,['MGMT-6100']
+29767,Advanced Quantitative Methods for Business,MGMT-6460,[]
+27869,Competitive Advantage and Operations Strategy,MGMT-6490,[]
+27870,Financial Modeling,MGMT-6520,['MGMT-6510']
+28777,Marketing Research,MGMT-6550,['MGMT-6100']
+28687,Introduction to Machine Learning Applications,MGMT-6560,"['MGMT-4190', 'MGMT-6560']"
+29712,Advanced Data Resource Management,MGMT-6570,[]
+29530,Marketing High Technology Products,MGMT-6580,[]
+26526,"Invention, Innovation, and Entrepreneurship",MGMT-6640,[]
+28686,Consumer Behavior and Product Design,MGMT-6800,[]
+28550,Practicum in Management,MGMT-6840,[]
+29703,,MGMT-6962,
+30406,,MGMT-6965,
+28551,"Strategy, Technology, and Competition I",MGMT-7030,"['MGMT-6040', 'MGMT-7730', 'MGMT-6100', 'MGMT-6140', 'MGMT-6020', 'MGMT-7060', 'MGMT-6060']"
+26481,Professional Development Workshop I,MGMT-7230,[]
+26531,Economics and Institutions,MGMT-7730,[]
+26532,Accounting for Reporting and Control,MGMT-7740,[]
+28684,Professional Development Workshop I-M.S.,MGMT-7770,[]
+25741,Dissertation,MGMT-9990,[]
+27763,Introduction to Materials Engineering,MTLE-1200,[]
+28849,Structure of Engineering Materials,MTLE-2100,['ENGR-1600']
+26797,Readings in Materials,MTLE-2940,[]
+25807,Introduction to Polymers,MTLE-4050,['CHEM-4620']
+29594,Kinetics in Materials Systems,MTLE-4150,"['MTLE-4100', 'CHEM-1100', 'ENGR-1600']"
+30147,Corrosion,MTLE-4310,[]
+29595,Computational Materials Design,MTLE-4500,[]
+30472,Materials Selection,MTLE-4910,"['CHEM-1100', 'ENGR-1600']"
+27415,Multidisciplinary Capstone Design,MTLE-4920,"['ENGR-2050', 'MTLE-4910']"
+27403,,MTLE-4940,
+29214,Topics in Materials Engineering,MTLE-4960,[]
+26735,Advanced Thermodynamics,MTLE-6030,['MTLE-4100']
+29947,Introduction to Polymers,MTLE-6050,['CHEM-4620']
+27010,Advanced Mechanical Properties of Materials,MTLE-6250,[]
+27710,Advanced Structure and Bonding in Materials,MTLE-6460,[]
+25708,Graduate Seminar,MTLE-6900,[]
+26798,Materials Engineering Project,MTLE-6940,[]
+29215,Topics in Materials Engineering,MTLE-6960,[]
+30148,,MTLE-6961,
+26819,Master's Project,MTLE-6980,[]
+26857,Master’s Thesis,MTLE-6990,[]
+29941,Dissertation,MTLE-9990,[]
+25864,Introduction to Philosophy,PHIL-1110,[]
+27020,Introduction to Logic,PHIL-2140,[]
+29493,Philosophy of Biology,PHIL-2400,[]
+26799,Philosophy Studies,PHIL-2940,[]
+29142,Ethics,PHIL-4240,[]
+28888,Metaphysics and Consciousness,PHIL-4480,[]
+29498,Bioethics,PHIL-4500,[]
+26800,Topics in Philosophy,PHIL-4940,[]
+30404,,PHIL-4961,
+26811,Capstone Experience in Philosophy,PHIL-4990,[]
+25575,A Passion for Physics,PHYS-1010,[]
+25576,Physics I,PHYS-1100,[]
+27014,Honors Physics I,PHYS-1150,[]
+25581,Physics II,PHYS-1200,['PHYS-1100']
+28828,Materials Science,PHYS-1600,['CHEM-1100']
+28642,Topics in Physics,PHYS-1960,[]
+29161,,PHYS-1961,
+30455,,PHYS-1962,
+27830,Quantum Physics I,PHYS-2210,"['PHYS-1200', 'PHYS-1250', 'MATH-1020']"
+27885,Experimental Physics,PHYS-2350,['PHYS-2220']
+27252,Topics in Physics,PHYS-2960,[]
+30417,Introductory Quantum Mechanics,PHYS-4100,['PHYS-2220']
+29159,Electromagnetic Theory,PHYS-4210,"['PHYS-2220', 'MATH-4600']"
+30418,Theoretical Mechanics,PHYS-4330,"['PHYS-1250', 'PHYS-1200', 'MATH-2400', 'MATH-2010']"
+30271,Thermodynamics and Statistical Mechanics,PHYS-4420,"['PHYS-2220', 'MATH-2400', 'MATH-2010']"
+25588,Solid-State Physics,PHYS-4720,['PHYS-2220']
+28129,,PHYS-4961,
+28350,,PHYS-4962,
+29146,,PHYS-4964,
+29683,,PHYS-4965,
+30397,,PHYS-4966,
+26739,Quantum Mechanics I,PHYS-6510,['PHYS-4100']
+30149,Quantum Mechanics III,PHYS-6530,['PHYS-6510']
+26738,Statistical Mechanics,PHYS-6590,['PHYS-6510']
+25960,Seminar,PHYS-6900,[]
+30398,,PHYS-6961,
+30459,,PHYS-6965,
+27128,Master's Project,PHYS-6980,[]
+26821,Master’s Thesis,PHYS-6990,[]
+25717,Dissertation,PHYS-9990,[]
+25986,General Psychology,PSYC-1200,[]
+29501,Research Methods and Statistics I,PSYC-2310,"['PSYC-1200', 'COGS-2120']"
+25618,Social Psychology,PSYC-2730,['PSYC-1200']
+25899,Motivation and Performance,PSYC-4110,['PSYC-1200']
+29156,Research Methods and Statistics II,PSYC-4310,['PSYC-2310']
+30432,Introduction to Cognitive Neuroscience,PSYC-4330,"['PSYC-1200', 'COGS-2120']"
+26507,Cognitive Psychology,PSYC-4370,"['PSYC-1200', 'COGS-2120']"
+30213,Psychology of Mindfulness,PSYC-4430,[]
+29455,Sensibilities,PSYC-4440,"['IHSS-1150', 'IHSS-1140', 'PSYC-1200']"
+29693,"Drugs, Society, and Behavior",PSYC-4500,['PSYC-1200']
+29694,Abnormal Psychology,PSYC-4720,['PSYC-1200']
+28812,Positive Psychology,PSYC-4730,[]
+30402,Topics in Psychology,PSYC-4960,['PSYC-1200']
+28920,,PSYC-4962,
+28922,,PSYC-4963,
+26813,Undergraduate Thesis,PSYC-4990,[]
+25563,"Science, Technology, and Society",STSH-1110,[]
+30407,American History,STSH-2500,[]
+26806,Readings in Science and Technology Studies,STSH-2940,[]
+29723,Bioethics,STSH-4250,['STSS-1110']
+30215,Sustainability Careers,STSH-4300,['STSS-2300']
+29742,History of Medicine,STSH-4420,"['IHSS-1410', 'IHSS-1420', 'IHSS-1430', 'TSHS-1110', 'STSH-2500', 'STSS-2520']"
+26736,Design and Innovation Studio B,STSH-4610,['ENGR-2020']
+30313,Public Service and Social Justice,STSH-4800,[]
+26804,Readings in Science and Technology Studies,STSH-4940,[]
+29697,Design and Innovation Senior Project,STSH-4970,['ENGR-2020']
+26805,Readings in Science and Technology Studies,STSH-6940,[]
+25685,"Science, Technology, and Society",STSS-1110,[]
+30216,Investigating Society,STSS-2100,"['STSS-1110', 'STSH-1110', 'IHSS-1110']"
+30316,Environment and Society,STSS-2300,"['STSH-1110', 'STSS-1110']"
+26803,"Readings in Science and Technology Studies, Anthropology/Archaeology, History, Political Science, or Sociology",STSS-2940,[]
+29624,Professional Development  2 –Technical Issues and Solutions,STSS-4100,[]
+29638,Politics of Design,STSS-4350,[]
+30315,Public Service and Social Justice,STSS-4800,[]
+26807,"Readings in Science and Technology Studies, Anthropology/Archaeology, History, Political Science, or Sociology",STSS-4940,[]
+29698,Design and Innovation Senior Project,STSS-4970,['ENGR-2020']
+29467,Research Design,STSS-4980,[]
+29228,Concepts in Science and Technology Studies,STSS-6010,[]
+26808,Readings in Science and Technology Studies,STSS-6940,[]
+30229,Topics in Science and Technology Studies,STSS-6960,[]
+28141,Dissertation,STSS-9990,[]
+25709,Air Force Leadership Laboratory,USAF-0010,[]
+25731,Air and Space Studies 100A (Heritage and Values of the U.S. Air Force),USAF-1010,[]
+25732,Air and Space Studies 200A (Team and Leadership Fundamentals),USAF-2030,['USAF-0010']
+25733,Air and Space Studies 300A (Leading People and Effective Communication),USAF-2050,"['USAF-1010', 'USAF-1020', 'USAF-2030', 'USAF-2040', 'USAF-0080']"
+25734,Air and Space Studies 400A (National Security Affairs/Preparation for Active Duty),USAF-2070,"['USAF-1010', 'USAF-1020', 'USAF-2030', 'USAF-2040', 'USAF-2050', 'USAF-2060', 'USAF-0080']"
+27222,Fundamentals of Military Science Lab I,USAR-0010,[]
+27223,Applied Leadership Lab I,USAR-0030,[]
+27224,Applied Military Leadership Lab I,USAR-0050,[]
+27225,Advanced Military Management and Leadership Lab I,USAR-0070,[]
+25692,Fundamentals of Military Science,USAR-1010,[]
+25693,Applied Leadership I,USAR-2010,[]
+25694,Applied Military Leadership I,USAR-2060,[]
+25695,Advanced Military Management and Leadership I,USAR-4010,[]
+29708,Drill/Laboratory,USNA-0010,[]
+25697,Introduction to Naval Science,USNA-1010,[]
+25702,Leadership and Management,USNA-2030,[]
+25698,Navigation,USNA-2050,[]
+25700,Naval Ships Systems II,USNA-2070,[]
+28792,Writing in Context,WRIT-1110,[]
+28024,Creative Writing: Creative Non-Fiction,WRIT-2320,[]
+27914,Creative Writing:  The Short Story,WRIT-2330,[]
+28793,Speech Communication,WRIT-2340,[]
+29704,Proposing and Persuading,WRIT-4550,"['WRIT-1110', 'WRIT-2110', 'COMM-2520']"
+29828,,WRIT-6960,
+43519,,ADMN-1962,
+40359,Environmental and Ecological Systems,ARCH-2360,['ARCH-2370']
+42775,"Energy, Comfort, and Ecology",ARCH-2370,[]
+42779,Digital Constructs 2,ARCH-2530,['ARCH-2520']
+43178,Digital Constructs 4,ARCH-2550,['ARCH-2540']
+42776,Architectural Design Studio 2,ARCH-2810,['ARCH-2800']
+43161,Architectural Design Studio 4,ARCH-2830,['ARCH-2820']
+40480,Projects in Architecture and Environmental Design,ARCH-2940,[]
+42825,Architectural Case Studies,ARCH-4090,"['ARCH-2150', 'ARCH-2160']"
+43754,An Architectural Genealogy,ARCH-4100,"['ARCH-2150', 'ARCH-2160']"
+43472,Contemporary Design Approaches,ARCH-4150,['ARCH-4120']
+43755,Construction Industry Seminar 2,ARCH-4520,['ARCH-4510']
+43756,Building Sciences Capstone,ARCH-4530,['ARCH-4520']
+43757,Entrepreneurship and Architecture,ARCH-4590,['ARCH-4540']
+40360,Building Systems and Environment,ARCH-4740,['ARCH-2360']
+41525,Architectural Acoustics 2,ARCH-4850,['ARCH-4840']
+43762,Aural Architecture,ARCH-4880,['ARCH-4860']
+43436,Final Project Design Studio,ARCH-4920,"['ARCH-4910', 'ARCH-4790']"
+42178,,ARCH-4936,
+40104,Advanced Individual Projects in Architecture and Environmental Design,ARCH-4940,[]
+44075,,ARCH-4952,
+43786,,ARCH-4962,
+44967,,ARCH-4967,
+43215,,ARCH-4969,
+43201,"History, Theory, Criticism 2",ARCH-5110,['ARCH-5100']
+43205,Digital Constructs 2,ARCH-5170,['ARCH-5160']
+43204,Graduate Architecture Design 2,ARCH-5210,['ARCH-5200']
+43203,Environmental and Ecological Systems,ARCH-5310,[]
+43206,Entrepreneurship and Architecture,ARCH-5330,['ARCH-5380']
+43208,Building Systems and the Environment,ARCH-5360,['ARCH-5310']
+43209,Professional Practice 1,ARCH-5380,['ARCH-5330']
+43391,Professional Practice 2,ARCH-5390,['ARCH-5380']
+44072,Built Ecologies 2,ARCH-6330,"['ARCH-6310', 'ARCH-6320']"
+44066,Interdisciplinary Research Studio,ARCH-6360,"['ARCH-6340', 'ARCH-6350', 'ARCH-6310', 'ARCH-6320']"
+43207,Graduate Architecture Design 4,ARCH-6620,['ARCH-6610']
+43202,"History, Theory, Criticism 3",ARCH-6680,['ARCH-5110']
+41963,Graduate Thesis Seminar: Acoustics,ARCH-6830,['ARCH-6810']
+40411,Sonics Research Laboratory 2,ARCH-6880,"['ARCH-6870', 'ARCH-4870']"
+41962,Aural Architecture,ARCH-6890,['ARCH-6860']
+42477,Graduate Thesis Seminar,ARCH-6900,[]
+43400,Graduate Final Project,ARCH-6948,[]
+45017,,ARCH-6968,
+44639,,ARCH-6969,
+44397,Intermediate Digital Imaging,ARTS-2040,['ARTS-1020']
+44078,2D Experimental Animation,ARTS-2060,"['ARTS-1020', 'ARTS-1040', 'ARTS-1200']"
+44425,Deep Listening,ARTS-2180,[]
+44978,Histories of Western Music,ARTS-2500,[]
+44120,Ensemble Nonlinear,ARTS-2600,[]
+44992,,ARTS-2963,
+44993,,ARTS-2964,
+44402,3D Visual Effects,ARTS-4060,['ARTS-2230']
+45014,,ARTS-4080,
+43471,Music and Technology II,ARTS-4160,['ARTS-2020']
+42605,Advanced Drawing,ARTS-4200,['ARTS-1200']
+44405,Ensemble Nonlinear,ARTS-4600,[]
+44982,Exploring Movement and Sound,ARTS-4620,[]
+44181,Science Fictions,ARTS-4640,"['ARTS-1020', 'ARTS-1030', 'ARTS-1040', 'ARTS-1200', 'ARTS-2020', 'ARTS-2380', 'ARTS-2220', 'IHSS-1030', 'IHSS-1040', 'IHSS-1170', 'IHSS-1180', 'ARTS-4120', 'ARTS-4140']"
+44641,Sound Recording and Production II,ARTS-4700,['ARTS-2700']
+42606,Creative Seminar II,ARTS-4850,[]
+42828,Advanced Digital Imaging,ARTS-4860,[]
+44983,Interdisciplinary Research Seminar,ARTS-4880,"['ARTS-4380', 'ARTS-4160']"
+44994,Topics in the Arts,ARTS-4960,[]
+43781,Electronic Arts Overview,ARTS-6110,[]
+44979,"Art, Community, and Technology",ARTS-6250,[]
+44080,Ensemble Nonlinear,ARTS-6600,[]
+44182,Science Fictions,ARTS-6640,[]
+42829,Advanced Digital Imaging,ARTS-6860,[]
+44988,Topics in Electronic Arts,ARTS-6960,[]
+44995,,ARTS-6961,
+45015,,ARTS-6962,
+44918,"Stars, Galaxies, and the Cosmos",ASTR-1520,[]
+41297,Special Projects in Astronomy,ASTR-2940,[]
+44906,,ASTR-2962,
+42840,Gravitation and Cosmology,ASTR-4240,"['PHYS-4330', 'MATH-4600']"
+41298,Special Projects in Astronomy,ASTR-4940,[]
+41299,Readings in Astronomy and Astrophysics,ASTR-6940,[]
+43643,Professional Project,ASTR-6970,[]
+41584,,ASTR-9990,
+41332,Genetic Engineering,BCBP-4310,"['BCBP-4760', 'BIOL-4620']"
+42617,Molecular Modeling,BCBP-4550,"['MATH-1020', 'BIOL-4620', 'BIOL-4760']"
+43726,The Biology of Systems,BCBP-4660,"['BIOL-4620', 'BCBP-4760']"
+44065,Biochemistry Laboratory,BCBP-4710,"['BIOL-1010', 'BIOL-2120']"
+40019,Molecular Biochemistry II,BCBP-4770,['BCBP-4760']
+44717,,BCBP-4962,
+41331,Genetic Engineering,BCBP-6310,['BCBP-4310']
+42616,Molecular Modeling,BCBP-6420,"['MATH-1020', 'BIOL-4620', 'BIOL-4760']"
+43727,The Biology of Systems,BCBP-6650,"['BIOL-4620', 'BCBP-4760']"
+43200,,BCBP-6963,
+44279,Professional Project,BCBP-6970,[]
+45064,,BIOL-2941,
+41939,From Neuron to Behavior,BIOL-4100,"['BIOL-1010', 'BIOL-2120']"
+43458,Investigative Medicine II,BIOL-4120,['BIOL-4110']
+44133,Cellular Neuroscience,BIOL-4150,"['BIOL-4100', 'BIOL-4260']"
+41521,Developmental Biology,BIOL-4250,"['BIOL-2120', 'BIOL-2500']"
+42453,Microbiology,BIOL-4310,['BIOL-2120']
+40402,Molecular Modeling,BIOL-4550,"['MATH-1020', 'BIOL-4620', 'BIOL-4760']"
+40020,Molecular Biology,BIOL-4620,"['BIOL-2120', 'BIOL-2500']"
+43724,The Biology of Systems,BIOL-4660,"['BIOL-4620', 'BIOL-4760']"
+44061,Biochemistry Laboratory,BIOL-4710,"['BIOL-1010', 'BIOL-2120']"
+40021,Molecular Biochemistry II,BIOL-4770,['BIOL-4760']
+41349,Principles of Ecology,BIOL-4850,"['BIOL-1010', 'BIOL-2120']"
+42638,Evolution,BIOL-4860,['BIOL-2500']
+44062,The Global Environment,BIOL-4880,['BIOL-4850']
+44715,,BIOL-4962,
+42172,Biomedical Research,BIOL-4980,[]
+41942,From Neuron to Behavior,BIOL-6100,"['BIOL-1010', 'BIOL-2120']"
+44134,Cellular Neuroscience,BIOL-6150,"['BIOL-4100', 'BIOL-4260']"
+42180,Microbiology,BIOL-6310,[]
+42618,Molecular Modeling,BIOL-6420,"['MATH-1020', 'BIOL-4620', 'BIOL-4760']"
+41519,Biology Core Course II,BIOL-6520,['BIOL-6510']
+43725,The Biology of Systems,BIOL-6650,"['BIOL-4620', 'BIOL-4760']"
+44063,The Global Environment,BIOL-6880,['BIOL-4850']
+42646,Research Rotation ll,BIOL-6920,[]
+42647,Research Rotation lll,BIOL-6930,[]
+42276,,BIOL-6980,
+44767,Programming for BME,BMED-2050,['ENGR-1100']
+43783,Investigative Medicine II,BMED-4120,"['BIOL-4110', 'BMED-4110']"
+43784,Biomedical Research,BMED-4130,[]
+44768,Biomedical Transport Phenomena,BMED-4250,"['ENGR-1100', 'PHYS-1100', 'MATH-2400']"
+43738,BioMEMs,BMED-4410,[]
+43425,Biophotonics,BMED-4440,['PHYS-1200']
+42802,Biological Imaging Analysis,BMED-4460,['BMED-2300']
+44195,Biomedical Data Science,BMED-4480,"['MATH-2010', 'ENGR-2600']"
+41342,Intro to Cell and Tissue Engineering,BMED-4650,"['ENGR-2530', 'BMED-2540', 'BMED-4250', 'ENGR-2250']"
+43221,Muscle Mechanics and Modeling,BMED-4660,[]
+42803,,BMED-4962,
+43740,BioMEMs,BMED-6410,[]
+43426,Biophotonics,BMED-6440,['PHYS-1200']
+42804,Biological Imaging Analysis,BMED-6460,[]
+44196,Biomedical Data Science,BMED-6480,[]
+42636,Introduction to Cell and Tissue Engineering,BMED-6650,"['ENGR-2530', 'BMED-2540', 'ENGR-2250']"
+43222,Muscle Mechanics and Modeling,BMED-6660,[]
+44554,,BMED-6961,
+42837,,BMED-6962,
+40254,Chemistry II,CHEM-1200,"['CHEM-1100', 'CHEM-1110']"
+44460,Chemistry II (Without lab),CHEM-1210,"['CHEM-1100', 'CHEM-1110']"
+40018,Inorganic Chemistry I,CHEM-2030,"['CHEM-1200', 'ENGR-1600']"
+40572,Organic Chemistry II,CHEM-2260,['CHEM-2250']
+40476,Experimental Chemistry II: Synthesis and Characterization,CHEM-2290,[]
+42710,Chemistry Laboratory: Selected Experiments,CHEM-2360,[]
+42486,Introduction to Geochemistry,CHEM-2540,"['ERTH-1100', 'ERTH-1200']"
+40477,Experimental Chemistry IV: Physical and Instrumental Methods,CHEM-4120,[]
+44461,NMR Spectroscopy for Scientists and Engineers,CHEM-4140,[]
+44566,Industrial Chemistry,CHEM-4200,['CHEM-2250']
+41977,Introduction to Polymer Chemistry,CHEM-4620,['CHEM-2260']
+40074,Molecular Biochemistry II,CHEM-4770,['CHEM-4760']
+40498,,CHEM-4940,
+44938,,CHEM-4961,
+43514,,CHEM-4963,
+45055,,CHEM-4966,
+43648,Advanced Research Project,CHEM-4970,[]
+44462,NMR Spectroscopy for Scientists and Engineers,CHEM-6140,[]
+44463,Organic Spectra Interpretation,CHEM-6200,[]
+43714,"Glycochemistry, Glycobiology, and Glychotechnology",CHEM-6250,[]
+43888,Natural and Biobased Polymers and Materials,CHEM-6610,[]
+44939,,CHEM-6961,
+44102,"Energy, Entropy, and Equilibrium",CHME-2020,"['CHME-2010', 'MATH-2400']"
+41545,Chemical Process Design,CHME-4050,"['CHME-4040', 'CHME-4500']"
+41543,Chemical Engineering Laboratory II,CHME-4160,"['CHME-4150', 'CHME-4040', 'CHME-4500']"
+41542,Bioprocessing Laboratory Course,CHME-4170,['CHME-4430']
+41127,Chromatographic Separation Processes,CHME-4400,[]
+44135,,CHME-4962,
+45053,,CHME-4968,
+42650,Chromatographic Separations,CHME-6440,[]
+40306,Advanced Transport Phenomena I,CHME-6510,"['CHME-4010', 'CHME-4020']"
+44799,An Introduction to Multiphase Flow and Heat Transfer I,CHME-6840,[]
+44136,,CHME-6962,
+44987,,CHME-6969,
+42478,Introduction to Civil and Environmental Engineering,CIVL-1100,[]
+43995,Introduction to Transportation Engineering,CIVL-2030,[]
+44007,Introduction to Geotechnical Engineering,CIVL-2630,['ENGR-2530']
+44001,Introduction to Structural Engineering,CIVL-2670,['ENGR-2530']
+44056,Concrete Design,CIVL-4080,['CIVL-2670']
+40114,Geotechnical Design,CIVL-4150,['CIVL-2630']
+40150,Construction Management,CIVL-4270,[]
+43160,Design for Constructability,CIVL-4280,"['CIVL-4070', 'CIVL-4080']"
+41940,Matrix Structural Analysis,CIVL-4440,['CIVL-2670']
+42480,Conceptual Structural Systems,CIVL-4450,['CIVL-2670']
+44747,System Modeling for Civil and Environmental Engineering,CIVL-4570,[]
+44748,Mass Transit Systems,CIVL-4620,['CIVL-2030']
+43997,Transportation System Planning,CIVL-4640,['CIVL-2030']
+40311,Civil Engineering Capstone Design,CIVL-4920,"['CIVL-4070', 'CIVL-4080', 'CIVL-4010', 'CIVL-4140', 'CIVL-4150', 'CIVL-4620', 'CIVL-4640', 'CIVL-4660', 'CIVL-4670', 'ENVE-4200', 'ENVE-4330', 'ENVE-4340', 'ENVE-4350', 'ENGR-2050']"
+40500,Readings in Civil Engineering,CIVL-4940,[]
+44785,Topics in Civil Engineering,CIVL-4960,[]
+44557,,CIVL-4962,
+43998,Transportation Systems Planning,CIVL-6250,['CIVL-2030']
+40579,Advanced Steel Design,CIVL-6320,['CIVL-4070']
+44746,Advanced Foundations and Earth Structures,CIVL-6520,"['CIVL-4010', 'CIVL-4150']"
+44744,"Seepage, Drainage, and Groundwater",CIVL-6530,['CIVL-2630']
+40097,Civil and Environmental Engineering Graduate Seminar,CIVL-6900,[]
+44786,Topics in Civil Engineering,CIVL-6960,[]
+42841,Cognitive Modeling,COGS-4210,['CSCI-2300']
+44911,The Linguistics of Computational Linguistics,COGS-4340,['COGS-2340']
+42823,Behavioral Neuroscience,COGS-4360,"['PSYC-1200', 'PHIL-2120']"
+42590,Stress and the Brain,COGS-4610,['PSYC-1200']
+44913,Language-Endowed Intelligent Agents,COGS-4880,[]
+43180,Cognitive Modeling I,COGS-6210,[]
+44912,The Linguistics of Computational Linguistics,COGS-6340,[]
+44914,Language-Endowed Intelligent Agents,COGS-6880,[]
+44487,Topics in Cognitive Science,COGS-6960,[]
+43682,Typography,COMM-2570,[]
+42705,Writing for Games I,COMM-4240,"['GSAS-2520', 'WRIT-2330']"
+44477,Creative Seminar II,COMM-4350,['COMM-4340']
+43674,Information Design,COMM-4470,['COMM-2660']
+44420,Interface Design: Hypermedia Theory and Application,COMM-4690,['ITWS-1100']
+44925,Brand Identity Design,COMM-4730,"['COMM-2660', 'COMM-2570', 'COMM-2680']"
+44922,,COMM-4962,
+41125,,COOP-4010,
+42833,Principles of Software,CSCI-2600,"['CSCI-1200', 'CSCI-2200']"
+40335,Design and Analysis of Algorithms,CSCI-4020,['CSCI-2300']
+42678,Introduction to Artificial Intelligence,CSCI-4150,['CSCI-2300']
+40307,Operating Systems,CSCI-4210,"['CSCI-2300', 'CSCI-2500', 'ECSE-2660']"
+44842,Cryptography and Network Security I,CSCI-4230,"['CSCI-2300', 'CSCI-4210', 'CSCI-4220']"
+40328,Graph Theory,CSCI-4260,"['CSCI-1100', 'CSCI-2200']"
+44844,Computational Vision,CSCI-4270,"['CSCI-2300', 'MATH-2010']"
+43182,Parallel Programming,CSCI-4320,"['CSCI-2300', 'CSCI-2500', 'ECSE-2660']"
+42622,X-informatics,CSCI-4400,['CSCI-1200']
+44917,Computability and Logic,CSCI-4420,"['PHIL-2140', 'CSCI-2200']"
+43708,Principles of Program Analysis,CSCI-4450,['CSCI-4430']
+44903,Open Source Software,CSCI-4470,"['CSCI-2300', 'CSCI-2600']"
+44024,Distributed Computing Over The Internet,CSCI-4500,"['CSCI-4430', 'CSCI-4210', 'CSCI-4220']"
+44106,Advanced Computer Graphics,CSCI-4530,"['CSCI-2300', 'CSCI-2600', 'ECSE-4750']"
+43993,Game Development II,CSCI-4540,[]
+44924,,CSCI-4965,
+42807,,CSCI-4976,
+44843,Cryptography and Network Security I,CSCI-6230,"['CSCI-2300', 'CSCI-4210', 'CSCI-4220']"
+44845,Computational Vision,CSCI-6270,"['CSCI-2300', 'MATH-2010']"
+43183,Parallel Computing,CSCI-6360,['CSCI-4210']
+43186,Data and Society,CSCI-6370,"['CSCI-4350', 'ITWS-4350']"
+42623,X-informatics,CSCI-6400,['CSCI-1200']
+43709,Principles of Program Analysis,CSCI-6450,['CSCI-4430']
+44025,Distributed Computing Over The Internet,CSCI-6500,"['CSCI-4430', 'CSCI-4210', 'CSCI-4220']"
+44107,Advanced Computer Graphics,CSCI-6530,"['CSCI-2300', 'CSCI-2600', 'ECSE-4750']"
+44831,Numerical Solution of Ordinary Differential Equations,CSCI-6820,"['MATH-4800', 'CSCI-4800']"
+44866,Numerical Solution of Partial Differential Equations,CSCI-6840,"['MATH-4800', 'CSCI-4800']"
+41991,Topics in Computer Science,CSCI-6960,[]
+44027,,CSCI-6967,
+43245,Professional Project,CSCI-6970,[]
+44431,Economics of Biotech and Medical Innovations,ECON-4290,"['ECON-1200', 'IHSS-1200']"
+43698,Law and Economics,ECON-4310,"['ECON-1200', 'IHSS-1200']"
+44432,Economic Models of Decision-Making,ECON-4320,"['ECON-1200', 'IHSS-1200']"
+44362,Experimental Economics,ECON-4360,"['ECON-1200', 'IHSS-1200', 'ENGR-2600', 'MGMT-2100', 'MATP-4600', 'PSYC-2310', 'BIOL-4200']"
+44874,,ECON-4410,
+44875,Economics of Growth & Innovation,ECON-4430,"['ECON-2020', 'MATH-2010']"
+44876,Applied Econometrics,ECON-4580,"['ECON-4570', 'MATH-2010', 'ENGR-2600', 'MGMT-2100', 'MATP-4600', 'PSYC-2310', 'BIOL-4200']"
+44877,Advanced Data Analytics & Policy Evaluation,ECON-4590,"['ECON-4580', 'MATH-2010', 'ENGR-2600', 'MGMT-2100', 'MATP-4600', 'PSYC-2310', 'BIOL-4200']"
+44434,Applied Microeconomics,ECON-6010,[]
+44872,Advanced Data Analytics and Policy Evaluation,ECON-6040,['ECON-6030']
+44360,Economics of Growth and Innovation,ECON-6130,[]
+44436,Economics of Biotech and Medical Innovations,ECON-6290,[]
+44873,Economic Models of Decision-Making,ECON-6320,[]
+44421,Experimental Economics,ECON-6360,[]
+40153,,ECSE-2940,
+41350,Digital Electronics,ECSE-4040,"['ECSE-2050', 'ECSE-2610']"
+42844,Advanced Electronic Circuits,ECSE-4050,['ECSE-2050']
+41969,Electromechanics,ECSE-4120,['ECSE-2110']
+41970,EPE Laboratory,ECSE-4130,"['ECSE-4080', 'ECSE-4110', 'ECSE-4120']"
+44847,Modeling and Simulation for Cyber-Physical Systems,ECSE-4170,"['MATH-2010', 'MATH-2400']"
+43978,Introduction to Optoelectronics Technology,ECSE-4370,['ECSE-2210']
+44759,Robotics II,ECSE-4490,"['ECSE-4480', 'CSCI-4480']"
+43975,Distributed Systems and Sensor Networks,ECSE-4500,['ECSE-2410']
+41133,Introduction to Image Processing,ECSE-4540,"['ECSE-4530', 'MATH-2010']"
+43675,Digital Communications,ECSE-4560,['ECSE-4520']
+44849,Internetworking of Things,ECSE-4660,"['ECSE-2660', 'CSCI-2500']"
+43715,Applied Parallel Computing for Engineers,ECSE-4740,['ECSE-2660']
+40042,Real-Time Applications in Control and Communications,ECSE-4760,"['ECSE-4440', 'ECSE-4520']"
+44137,Introduction to Deep Learning,ECSE-4850,"['ECSE-2500', 'MATH-2010', 'CSCI-1200']"
+44762,,ECSE-4961,
+43721,,ECSE-4966,
+42845,Advanced Electronic Circuits,ECSE-6050,['ECSE-2050']
+44848,Modeling and Simulation for Cyber-Physical Systems,ECSE-6170,[]
+43977,Advanced Device Concepts,ECSE-6210,['ECSE-2210']
+40334,Integrated Circuit Fabrication Laboratory,ECSE-6300,['ECSE-4250']
+43979,Nonlinear Control Systems,ECSE-6420,"['ECSE-6400', 'MANE-6600']"
+44763,Adaptive Systems,ECSE-6480,['ECSE-6400']
+44760,Robotics II,ECSE-6490,"['ECSE-4480', 'CSCI-4480']"
+43976,Distributed Systems and Sensor Networks,ECSE-6500,['ECSE-2410']
+44764,Information Theory and Coding,ECSE-6530,[]
+43676,Digital Communications,ECSE-6560,['ECSE-4520']
+44850,Internetworking of Things,ECSE-6660,"['ECSE-2660', 'CSCI-2500']"
+44138,Introduction to Deep Learning,ECSE-6850,"['ECSE-2500', 'MATH-2010', 'CSCI-1200']"
+40507,"Readings in Electrical, Computer, and Systems Engineering",ECSE-6940,[]
+44765,,ECSE-6961,
+43679,,ECSE-6962,
+43456,Introduction to Manufacturing Planning,ENGR-2700,['MATH-1020']
+42644,Design and Innovation Studio C,ENGR-4610,['ENGR-2020']
+43369,Manufacturing Processes and Systems Laboratory II,ENGR-4720,['ENGR-4710']
+40509,,ENGR-4940,
+44000,Introduction to Environmental Engineering,ENVE-2110,"['CHEM-1100', 'MATH-2400', 'CIVL-2050']"
+40578,Environmental Process Design,ENVE-4180,['ENGR-2050']
+44296,Solid and Hazardous Waste Engineering,ENVE-4200,[]
+44750,Bench Scale Design,ENVE-4240,[]
+44776,Environmental Impact Analysis,ENVE-6160,[]
+40085,Geology II: Earth's Surface,ERTH-1200,[]
+43736,Geology ll: Earth's Surface Lab,ERTH-1250,['ERTH-1200']
+44568,Introduction to Astrobiology,ERTH-1510,[]
+43994,Introduction to Geophysics,ERTH-2100,['ERTH-1100']
+40130,Introduction to Geochemistry,ERTH-2140,[]
+42620,Xinformatics,ERTH-4400,"['CSCI-1200', 'CSCI-4960']"
+41949,"Earth's Climate: Past, Present, and Future",ERTH-4500,['CHEM-1100']
+45004,Aqueous Geochemistry,ERTH-4690,"['CHEM-1100', 'ERTH-1100']"
+43872,Geographic Information Systems in the Sciences,ERTH-4750,[]
+44998,,ERTH-4961,
+42621,Xinformatics,ERTH-6400,"['CSCI-1200', 'CSCI-6960']"
+45003,Seminar in Geophysics: Selected Topics,ERTH-6580,[]
+45063,Aqueous Geochemistry,ERTH-6690,"['CHEM-1100', 'ERTH-1100']"
+44884,Game Narrative Design,GSAS-4260,"['GSAS-2520', 'COMM-4240']"
+43816,Game Development II,GSAS-4540,['GSAS-4520']
+44885,Game Architecture,GSAS-4550,"['CSCI-4530', 'ECSE-4750']"
+44125,Topics in Games,GSAS-4960,[]
+44888,GSAS Capstone,GSAS-4990,['GSAS-4510']
+44889,Topics in Game Research,GSAS-6200,[]
+44890,Research Methods in Critical Game Design,GSAS-6300,[]
+44551,Environmental Seminar,IENV-1910,[]
+44857,Behind the TV Screen,IHSS-1030,[]
+44862,Documentary in the 21st Century: Identity Production,IHSS-1040,[]
+44863,"Philosophy, Technology, & the Human Future",IHSS-1130,[]
+44320,Science and Scientific Misconduct,IHSS-1160,[]
+44375,Great Ideas in Philosophy,IHSS-1165,[]
+43421,IT and Society,IHSS-1220,[]
+44189,A Century of Environmental Thought,IHSS-1320,[]
+44439,War and Society,IHSS-1510,[]
+43780,,IHSS-1966,
+44295,Design and Innovation Studio II,IHSS-2610,['IHSS-1610']
+44999,Ethnography,IHSS-6410,[]
+44567,Introduction to Astrobiology,ISCI-1510,[]
+45046,Capstone in Astrobiology,ISCI-4610,[]
+43455,Production and Operations Management,ISYE-2210,['MATH-1020']
+42344,Engineering Project Management,ISYE-4240,[]
+44909,Human Performance Modeling and Support,ISYE-4260,['ENGR-2600']
+44459,Systems Engineering and Social Media,ISYE-4350,[]
+45059,,ISYE-4961,
+42793,Applied Regression Analysis,ISYE-6010,"['ISYE-4140', 'MATP-4600', 'ISYE-4760', 'MATP-4620']"
+44910,Systems Engineering and Social Media,ISYE-6350,[]
+44832,Integer and Combinatorial Optimization,ISYE-6760,[]
+44458,Seminar in ISYE Research,ISYE-6900,[]
+42149,IT and Society,ITWS-1220,[]
+43695,Introduction to Human Computer Interaction,ITWS-2210,[]
+42340,Information System Security,ITWS-4370,"['CSCI-2500', 'ECSE-2660']"
+42595,X-Informatics,ITWS-4400,[]
+42806,Web Science Systems Development,ITWS-4500,"['ITWS-2110', 'CSCI-1200']"
+44932,,ITWS-4960,
+42596,X-Informatics,ITWS-6400,[]
+44933,,ITWS-6960,
+43399,Chinese V,LANG-4470,['LANG-4430']
+43810,Lighting Workshop,LGHT-4760,[]
+43809,Light and Health,LGHT-4870,['LGHT-4840']
+40267,Advanced Individual Projects in Lighting,LGHT-4940,[]
+40581,Lighting Workshop,LGHT-6760,['LGHT-4230']
+40693,Light and Health,LGHT-6770,['LGHT-4840']
+42822,Lighting Leadership Seminar,LGHT-6780,[]
+43225,,LGHT-6960,
+44387,Modern and Contemporary Literature,LITR-2150,[]
+44941,Irish Literature,LITR-4230,[]
+41306,Literature Studies,LITR-6940,[]
+43408,Fundamentals of Flight,MANE-1060,[]
+44331,Introduction to Nuclear Engineering,MANE-1100,[]
+44892,,MANE-1961,
+44011,Fundamentals of Nuclear Engineering,MANE-2400,['MANE-2830']
+40479,Spaceflight Mechanics,MANE-4100,"['ENGR-2090', 'MATH-2400']"
+43482,Introduction to Computational Fluid Dynamics,MANE-4140,"['ENGR-2250', 'MANE-2720', 'MATH-2010']"
+42353,Machine Dynamics,MANE-4170,"['ENGR-2090', 'MATH-2400']"
+40361,Mechanisms,MANE-4180,['ENGR-2090']
+44452,VTOL Aircraft Design,MANE-4210,"['MANE-4120', 'MANE-4130', 'MANE-4090']"
+42162,Air Vehicle Design,MANE-4230,"['MANE-4060', 'MANE-4070', 'MANE-4090']"
+43453,Inventor's Studio 3,MANE-4330,"['MANE-2220', 'ENGR-2050', 'MANE-4220']"
+44042,Nuclear Instrumentation and Measurement,MANE-4350,['MANE-2830']
+40367,Nuclear Engineering Senior Design Project II,MANE-4390,['MANE-4380']
+44794,Applied Atomic and Nuclear Physics,MANE-4410,['MANE-2830']
+44345,Radiation Technology,MANE-4420,['MANE-2830']
+44361,Engineering Materials for Nuclear Application,MANE-4460,[]
+44837,Analysis of Manufacturing Processes,MANE-4640,"['ENGR-2530', 'MANE-4030']"
+43722,,MANE-4961,
+44050,Introduction to CFD,MANE-6140,"['ENGR-2250', 'MANE-2720', 'MATH-2010']"
+44453,VTOL Aircraft Design,MANE-6210,"['MANE-4120', 'MANE-4130']"
+44356,Radiation Technology and Applications,MANE-6260,['MANE-2830']
+44363,Nuclear Reactor Materials,MANE-6380,['MANE-4480']
+44795,Atomic and Nuclear Physics Applications,MANE-6390,['MANE-2830']
+44796,Fracture Mechanics and Fatigue of Materials,MANE-6460,['MANE-4640']
+44838,Nonlinear Control Systems,MANE-6610,"['ECSE-6400', 'MANE-6600']"
+44797,Finite Element Programming,MANE-6680,"['MANE-6660', 'CIVL-6660', 'MATH-6860', 'CSCI-6860']"
+43181,Manufacturing Systems Integration,MANE-6800,[]
+44798,An Introduction to Multiphase Flow and Heat Transfer I,MANE-6840,[]
+43720,"Topics in Mechanical Engineering, Aeronautical Engineering, Nuclear Engineering, or Engineering Physics",MANE-6960,[]
+43401,Mathematical Methods in Management and Economics,MATH-1520,"['MATH-1010', 'MATH-1500']"
+40134,Abstract Algebra,MATH-4010,"['MATH-4090', 'MATH-4100']"
+44752,Introduction to Number Theory,MATH-4020,['MATH-1020']
+44899,Computability and Logic,MATH-4030,"['PHIL-2140', 'CSCI-2200']"
+44540,Graph Theory,MATH-4150,"['CSCI-1100', 'CSCI-2200', 'MATH-4090']"
+40024,Introduction to Complex Variables: Theory and Applications,MATH-4300,['MATH-2010']
+40025,Methods of Partial Differential Equations of Mathematical Physics,MATH-4500,"['MATH-2010', 'MATH-2400']"
+44753,Numerical Linear Algebra with Applications,MATH-4840,['MATH-4800']
+40594,Readings in Mathematics,MATH-4940,[]
+44756,Ordinary Differential Equations,MATH-6400,"['MATH-4300', 'MATH-4400']"
+44754,Complex Variables and Integral Transforms with Applications,MATH-6640,"['MATH-2400', 'MATH-4300', 'MATH-4600']"
+44755,Numerical Solution of Ordinary Differential Equations,MATH-6820,"['MATH-4800', 'CSCI-4800']"
+43667,Numerical Solution of Partial Differential Equations,MATH-6840,"['MATH-4800', 'CSCI-4800']"
+40515,Readings in Mathematics,MATH-6940,[]
+40384,Introduction to Research in Mathematics,MATH-6951,[]
+44931,Topics in Mathematics,MATH-6960,[]
+42939,Master’s Practicum in Mathematics,MATH-6970,[]
+43395,Introduction to Data Mathematics,MATP-4400,"['MATH-1010', 'CSCI-1100']"
+40022,Computational Optimization,MATP-4820,"['MATH-2010', 'ENGR-1100', 'CSCI-1100']"
+40435,Computational Optimization,MATP-6610,"['MATH-2010', 'ENGR-1100', 'CSCI-1100']"
+44757,Integer and Combinatorial Optimization,MATP-6620,"['MATH-2010', 'MATP-4700']"
+40106,"Readings in Mathematical Programming, Probability, and Mathematical Statistics",MATP-6940,[]
+40250,Management Professional Development 2,MGMT-1250,[]
+43372,IT Project Management,MGMT-4150,[]
+44878,Applied Analytics and Predictive Modeling,MGMT-4160,['MGMT-4100']
+45020,Supply Chain Analytics,MGMT-4175,"['MGMT-4100', 'MGMT-4110']"
+45039,Financial Statement Analysis,MGMT-4260,[]
+44769,Student Managed Investment Fund,MGMT-4420,['MGMT-4310']
+42461,Internet Marketing,MGMT-4450,['MGMT-2430']
+40010,Advertising Strategy and Promotions,MGMT-4490,['MGMT-2430']
+40442,Introduction to Technological Entrepreneurship,MGMT-4520,[]
+42156,Starting Up a New Venture,MGMT-4530,[]
+41956,Venture Capital Finance,MGMT-4540,"['MGMT-2300', 'MGMT-2320']"
+45041,,MGMT-4960,
+43510,,MGMT-4966,
+42683,,MGMT-4967,
+45009,,MGMT-4968,
+45042,,MGMT-4969,
+41343,Managing Digitization and Transformation,MGMT-6140,[]
+43373,Applied Analytics and Predictive Modeling,MGMT-6160,['MGMT-6100']
+41957,Entrepreneurial Finance,MGMT-6260,"['MGMT-6190', 'MGMT-6020']"
+43374,Supply Chain Capstone (SPCM only),MGMT-6310,[]
+44900,Operations and Supply Chain Management,MGMT-6330,[]
+43375,Supply Chain Analytics,MGMT-6350,"['MGMT-6100', 'MGMT-6460', 'ECON-6560']"
+42346,Quantitative Asset Management,MGMT-6410,['MGMT-6020']
+44771,Student Managed Investment Fund,MGMT-6420,['MGMT-6240']
+45040,Financial Statement Analysis,MGMT-6430,"['MGMT-6190', 'MGMT-7740']"
+44772,Financial Computation and Simulation,MGMT-6510,['MGMT-6520']
+41128,Marketing Communication and Branding Strategies,MGMT-6540,[]
+42463,Principles of Technological Entrepreneurship,MGMT-6620,[]
+42157,Starting Up A New Venture,MGMT-6630,[]
+43376,Negotiations,MGMT-6690,[]
+42513,Internet Marketing,MGMT-6720,[]
+43377,Business Analytics Capstone,MGMT-6790,"['MGMT-6100', 'MGMT-6560']"
+40518,Independent Study,MGMT-6940,[]
+44902,,MGMT-6961,
+44450,,MGMT-6963,
+45010,,MGMT-6968,
+45062,Professional Project,MGMT-6970,[]
+40580,Professional Development Workshop II,MGMT-7240,[]
+44370,Risk Analytics and Management,MGMT-7760,['MGMT-6520']
+43380,Professional Development Workshop II-M.S.,MGMT-7780,[]
+44930,,MTLE-2960,
+44778,Glass Science,MTLE-4030,[]
+44021,Thermodynamics of Materials,MTLE-4100,"['ENGR-2250', 'CHEM-1100', 'ENGR-1600']"
+43692,Electrical and Optical Properties of Materials,MTLE-4200,"['ENGR-1600', 'MTLE-2100', 'PHYS-1200']"
+44823,Mechanical Properties of Materials,MTLE-4250,"['ENGR-1600', 'MTLE-2100']"
+44412,Materials Synthesis and Processing,MTLE-4400,"['MTLE-4200', 'MTLE-4150', 'MTLE-4250']"
+44782,Thin Films,MTLE-4440,[]
+43766,,MTLE-4961,
+41351,Advanced Kinetics of Materials Reactions,MTLE-6060,"['MTLE-4100', 'MTLE-6030']"
+42488,Advanced Electronic Properties of Materials,MTLE-6120,[]
+41129,Integrated Circuit Fabrication Laboratory,MTLE-6300,['ECSE-4250']
+44783,Thin Films,MTLE-6440,[]
+43693,Nanostructured Materials,MTLE-6480,[]
+44989,,MTLE-6962,
+41114,Critical Thinking,PHIL-2100,[]
+45019,Topics in Philosophy,PHIL-2960,[]
+43982,Philosophy of Science,PHIL-4130,[]
+44898,Computability and Logic,PHIL-4420,['PHIL-2140']
+40073,General Physics,PHYS-1050,[]
+41534,Honors Physics II,PHYS-1250,['PHYS-1100']
+42481,Quantum Physics II,PHYS-2220,"['PHYS-2210', 'MATH-2010']"
+40140,Optics,PHYS-2620,['PHYS-1200']
+40519,Special Projects in Physics,PHYS-2940,[]
+44907,,PHYS-2962,
+45070,,PHYS-2963,
+42839,General Relativity,PHYS-4240,"['PHYS-4330', 'MATH-4600']"
+42166,Computational Physics,PHYS-4810,"['CSCI-1100', 'PHYS-1100', 'PHYS-1200']"
+42225,Culminating Experience Project,PHYS-4910,[]
+40520,,PHYS-4940,
+41628,Topics in Physics,PHYS-4960,[]
+45071,,PHYS-4963,
+41352,Electrodynamics,PHYS-6410,[]
+41354,Quantum Mechanics II,PHYS-6520,['PHYS-6510']
+40521,Readings in Physics,PHYS-6940,[]
+40336,Critical Thinking,PSYC-2100,[]
+43779,,PSYC-2960,
+42145,Industrial and Organizational Psychology,PSYC-4200,['PSYC-1200']
+44440,Mathematical Methods in Psychological Science,PSYC-4350,"['PSYC-1200', 'PSYC-4310', 'COGS-2120', 'CSCI-1100']"
+44919,Behavioral Neuroscience,PSYC-4360,"['PSYC-1200', 'PSYC-2120']"
+44915,Sensation and Perception,PSYC-4410,"['PSYC-1200', 'PSYC-2120']"
+42842,Cognitive Modeling,PSYC-4510,"['PSYC-1200', 'PSYC-2120', 'CSCI-2300', 'CSCI-4150', 'PSYC-4370']"
+42591,Stress and the Brain,PSYC-4610,['PSYC-1200']
+40522,Readings in Psychology,PSYC-4940,['PSYC-1200']
+42637,,PSYC-4961,
+44954,Sustainability by Design,STSH-4290,[]
+44103,Drugs in History,STSH-4430,[]
+44956,History of American Technology,STSH-4510,[]
+44374,History of Science and Technology,STSH-4530,"['IHSS-1420', 'IHSS-1430', 'STSH-2500', 'STSS-2520']"
+44957,Topics in Science and Technology Studies,STSH-4960,[]
+44676,,STSH-4963,
+44951,STS and Sustainability Senior Project,STSH-4990,['STSS-4980']
+41537,"Design, Culture, and Society",STSS-2210,[]
+44092,Sociology,STSS-2520,[]
+44955,Sustainability by Design,STSS-4290,"['STSS-2300', 'STSS-2210']"
+44105,Drugs in History,STSS-4430,"['STSS-1110', 'STSH-1110', 'STSS-2100', 'STSS-2520', 'STSS-2700', 'STSH-2500', 'STSS-2210']"
+42835,Design and Innovation  Studio C,STSS-4610,['ENGR-2020']
+44132,Topics in Science and Technology Studies,STSS-4960,[]
+44958,,STSS-4961,
+45034,,STSS-4962,
+44064,STS and Sustainability Senior Project,STSS-4990,['STSS-4980']
+44950,Science and Technology Policy,STSS-6100,[]
+42231,Master’s Internship,STSS-6970,[]
+41917,Master's Thesis,STSS-6990,[]
+40068,,USAF-0020,
+40091,Air and Space Studies 100B (Heritage and Values of the United States Air Force),USAF-1020,['USAF-0010']
+40003,Air and Space Studies 200B (Team and Leadership Fundamentals),USAF-2040,['USAF-0010']
+40004,Air and Space Studies 300B (Leading People and Effective Communication),USAF-2060,"['USAF-1010', 'USAF-1020', 'USAF-2030', 'USAF-2040', 'USAF-2050', 'USAF-0080']"
+40005,Air and Space Studies 400B (National Security Affairs/Preparation for Active Duty),USAF-2080,"['USAF-1010', 'USAF-1020', 'USAF-2030', 'USAF-2040', 'USAF-2050', 'USAF-2060', 'USAF-2070', 'USAF-0080']"
+41958,Fundamentals of Military Science Lab II,USAR-0020,[]
+41959,Applied Leadership Lab II,USAR-0040,[]
+41960,Applied Military Leadership Lab II,USAR-0060,[]
+41961,Advanced Military Management and Leadership Lab II,USAR-0080,[]
+40006,Fundamentals of Military Science II,USAR-1020,[]
+40007,Applied Leadership II,USAR-2020,[]
+40008,Applied Military Leadership II,USAR-2070,[]
+40067,Advanced Military Management and Leadership II,USAR-4020,[]
+40009,,USNA-0020,
+40141,Sea Power and Maritime Affairs,USNA-2020,[]
+44116,Evolution of Warfare,USNA-2150,[]
+40065,Naval Leadership and Ethics,USNA-4190,"['USNA-1010', 'USNA-2020', 'USNA-2030', 'USNA-2040', 'USNA-2050', 'USNA-2060', 'USNA-2070']"
+43664,Strategic Writing,WRIT-2110,[]
+44544,Writing and Response,WRIT-4380,[]
+44943,,WRIT-4961,
+44929,Writing and Response,WRIT-6380,[]
+44944,,WRIT-6961,
+15876,,ADMN-6600,
+16703,Topics in the Arts,ARTS-2960,[]
+16711,,ARTS-2962,
+16549,,ARTS-2965,
+16550,,ARTS-2967,
+16386,Topics in Astronomy and Astrophysics,ASTR-1960,[]
+16698,,ASTR-1961,
+16134,Master's Thesis,BCBP-6990,[]
+16380,Cognition and the Brain,COGS-4600,"['PSYC-4330', 'PSYC-4360', 'PSYC-4370']"
+16290,,CSCI-4963,
+16623,Environmental Geology,ERTH-4180,[]
+16704,Topics in Games,GSAS-2960,[]
+16571,,GSAS-2962,
+16573,,GSAS-2965,
+16705,Topics in Language,LANG-4960,[]
+16685,Materials Laboratory Skills,MTLE-2500,[]
+16276,,PSYC-4320,
+16381,Cognition and the Brain,PSYC-4600,"['PSYC-4330', 'PSYC-4360', 'PSYC-4370']"
+16552,Topics in Science and Technology Studies,STSH-2960,[]
+16581,Design and Innovation Studio A,STSH-4600,[]
+16371,,STSH-4961,
+16569,,STSH-4964,
+16679,"Food, Farms, and Famine",STSS-4260,[]
+16580,Design and Innovation Studio A,STSS-4600,[]
+16567,,STSS-4963,
