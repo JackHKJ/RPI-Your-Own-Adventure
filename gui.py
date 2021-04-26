@@ -348,8 +348,12 @@ class extrapage:
         self.extra_entry.insert(0, "Enter Course here")
         self.extra_entry.pack()
         self.extra_entry.place(x=500, y=150, width=150, height=50)
-        # Added the course
-        self.addextra = Button(
+
+        # this is a button sample background
+        self.buttonImg = PhotoImage(file="src/buttonSample.png")
+        self.buttonImg = self.buttonImg.subsample(2, 2)
+        # Add button
+        self.addExtra = Button(
             self.master,
             text="Add",
             compound='center',
@@ -358,8 +362,10 @@ class extrapage:
             bd=0,
             command=lambda: self.add()
         )
-        self.addextra.pack()
-        self.addextra.place(x=500, y=200, width=150, height=50)
+        self.addExtra.config(image=self.buttonImg)
+        self.addExtra.pack()
+        self.addExtra.place(x=500, y=200, width=150, height=50)
+
 
     def add(self):
         # print(self.extra_entry.get())
