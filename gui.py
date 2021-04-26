@@ -1,16 +1,15 @@
 # -*- encoding:utf-8 -*-
 # Dependencies
 from tkinter import *
-from basicClasses.InfoGatherer import InfoGatherer
+
 from PIL import Image, ImageTk
-import enum
-from tkinter import ttk
+
+from basicClasses.InfoGatherer import InfoGatherer
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
 # The following list is a stub when failed to load from SIS
-avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', \
-              'Join the sorosity', 'Work out at the RPI gym',
-              'Take the shuttle around the campus']  # list that is available
+avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', 'Join the sorority',
+              'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
 accept_list = []  # list you have accepted
 course_list = []
 
@@ -33,6 +32,7 @@ class pageEnum(enum.Enum):
     requestWindow = "requestWindow"
     extraWindow = "extraWindow"
 
+
 class loginWindow:
     """
     This is the page for user login / Guest mode selection
@@ -47,6 +47,7 @@ class loginWindow:
         self.user_type = None
         self.gatherer = None
         self.RIN = None
+        self.password = None
         self.next = None
         self.page_name = pageEnum.loginWindow
         """
@@ -96,7 +97,7 @@ class loginWindow:
         self.master.title("Logging in, please wait")
         self.RIN = self.RIN_entry.get()
         self.password = self.Password_entry.get()
-        if len(self.RIN) == 0 or len(self.password) == 0:
+        if self.RIN is None or self.password is None or len(self.RIN) == 0 or len(self.password) == 0:
             self.master.title("Please enter the username/password to continue")
             return
         self.gatherer = InfoGatherer(rin=self.RIN_entry.get(), password=self.Password_entry.get())
@@ -142,6 +143,7 @@ class mainWindow:
         self.ST = None
         self.gatherer = None
         self.show_skill_flag = False
+        self.accept_list = None
 
         # Skill Tree Diagram
         resize_img = Image.open("src/skillTreeDiagramPlaceHolder.png").resize((800, 570))
@@ -289,8 +291,8 @@ class mainWindow:
         newwindow = Toplevel(self.master)
         request = requestWindow(newwindow, personObj=self.PersonObj)
         self.master.wait_window(newwindow)
-        accept_list = request.return_list()
-        self.request_data.set(accept_list)
+        self.accept_list = request.return_list()
+        self.request_data.set(self.accept_list)
 
 
 class extrapage:
@@ -336,9 +338,10 @@ class extrapage:
         # self.courseframe=LabelFrame(self.master, text="Course List: ", font=("Georgia", 20))
         # self.courseframe.pack(side=TOP)
         self.course_data = StringVar()
-        self.courseList = Listbox(self.master, height=30, width=50, listvariable=self.course_data,selectmode='multiple')
+        self.courseList = Listbox(self.master, height=30, width=50, listvariable=self.course_data,
+                                  selectmode='multiple')
 
-        print(self.added_list)
+        # print(self.added_list)
 
         for course in self.added_list:
             self.courseList.insert(END, course)
@@ -369,7 +372,6 @@ class extrapage:
         self.addExtra.pack()
         self.addExtra.place(x=500, y=200, width=150, height=50)
 
-
     def add(self):
         # print(self.extra_entry.get())
         this_input = str(self.extra_entry.get())
@@ -385,12 +387,7 @@ class extrapage:
         this_skill = self.ST.add_custom_skill(skill_name=this_input, parent=selected_course)
         self.PersonObj.add_skill(self.ST, this_skill)
 
-
-
         self.go_back()
-
-
-
 
     def go_back(self):
         self.parent.sub_page_name = None
@@ -480,12 +477,12 @@ class AddSkillPage:
         self.buttonImg = PhotoImage(file="src/buttonSample.png")
         self.buttonImg = self.buttonImg.subsample(2, 2)
 
-        # entry for potential added course
-        self.potentialCourseName = StringVar
-        self.entryPotentialCourse = Entry(self.master, textvariable=self.potentialCourseName)
-        self.entryPotentialCourse.insert(0, "Enter course name")
-        self.entryPotentialCourse.pack()
-        self.entryPotentialCourse.place(x=750, y=50, width=150, height=50)
+        # # entry for potential added course
+        # self.potentialCourseName = StringVar
+        # self.entryPotentialCourse = Entry(self.master, textvariable=self.potentialCourseName)
+        # self.entryPotentialCourse.insert(0, "Enter course name")
+        # self.entryPotentialCourse.pack()
+        # self.entryPotentialCourse.place(x=750, y=50, width=150, height=50)
 
         # Add button
         self.add = Button(
@@ -577,22 +574,25 @@ class AddSkillPage:
         """
         self.statusBar.set("Adding course........")
         self.console.update()
-        # print(self.courseList_listbox.curselection()[0])
-        if self.courseList_listbox.curselection()[0] is not None and self.courseList_listbox.curselection()[0] >= 0:
-            # Get selection and add the skill
-            selected = self.courseList_listbox.get(self.courseList_listbox.curselection())
-            self.PersonObj.add_skill(self.ST, self.course_dict[selected])
-            self.courseList_listbox.delete(self.courseList_listbox.curselection())
-            self.course_list.remove(str(self.course_dict[selected]))
-            # Update the added skill
-            self.addedList_listbox.insert(END, str(self.course_dict[selected]))
-            self.added_list.append(str(self.course_dict[selected]))
-            self.statusBar.set("Added {}".format(selected))
-            self.console.update()
+        try:
+            if self.courseList_listbox.curselection()[0] is not None and self.courseList_listbox.curselection()[0] >= 0:
+                # Get selection and add the skill
+                selected = self.courseList_listbox.get(self.courseList_listbox.curselection())
+                self.PersonObj.add_skill(self.ST, self.course_dict[selected])
+                self.courseList_listbox.delete(self.courseList_listbox.curselection())
+                self.course_list.remove(str(self.course_dict[selected]))
+                # Update the added skill
+                self.addedList_listbox.insert(END, str(self.course_dict[selected]))
+                self.added_list.append(str(self.course_dict[selected]))
+                self.statusBar.set("Added {}".format(selected))
+                self.console.update()
 
-            # Try to add to SIS if logged in
-            if self.parent.user_type == UserTypeEnum.STUDENT:
-                self.parent.gatherer.add_course_from_SIS()
+                # Try to add to SIS if logged in
+                if self.parent.user_type == UserTypeEnum.STUDENT:
+                    self.parent.gatherer.add_course_from_SIS()
+        except IndexError:
+            self.statusBar.set("No course selected.")
+            self.console.update()
 
     def just_remove(self):
         """
@@ -600,22 +600,26 @@ class AddSkillPage:
         """
         self.statusBar.set("Removing course........")
         self.console.update()
-        print(self.addedList_listbox.curselection()[0])
-        if self.addedList_listbox.curselection()[0] is not None and self.addedList_listbox.curselection()[0] >= 0:
-            # Get selection and remove the skill
-            selected = self.addedList_listbox.get(self.addedList_listbox.curselection())
-            self.PersonObj.remove_skill(self.ST, self.course_dict[selected])
-            self.addedList_listbox.delete(self.addedList_listbox.curselection())
-            self.added_list.remove(str(self.course_dict[selected]))
-            # Update the available skills
-            self.courseList_listbox.insert(END, str(self.course_dict[selected]))
-            self.course_list.append(str(self.course_dict[selected]))
-            self.statusBar.set("Removed {}".format(selected))
-            self.console.update()
+        try:
+            # print(self.addedList_listbox.curselection()[0])
+            if self.addedList_listbox.curselection()[0] is not None and self.addedList_listbox.curselection()[0] >= 0:
+                # Get selection and remove the skill
+                selected = self.addedList_listbox.get(self.addedList_listbox.curselection())
+                self.PersonObj.remove_skill(self.ST, self.course_dict[selected])
+                self.addedList_listbox.delete(self.addedList_listbox.curselection())
+                self.added_list.remove(str(self.course_dict[selected]))
+                # Update the available skills
+                self.courseList_listbox.insert(END, str(self.course_dict[selected]))
+                self.course_list.append(str(self.course_dict[selected]))
+                self.statusBar.set("Removed {}".format(selected))
+                self.console.update()
 
-            # Try to remove from SIS if logged in
-            if self.parent.user_type == UserTypeEnum.STUDENT:
-                self.parent.gatherer.remove_course_from_SIS()
+                # Try to remove from SIS if logged in
+                if self.parent.user_type == UserTypeEnum.STUDENT:
+                    self.parent.gatherer.remove_course_from_SIS()
+        except IndexError:
+            self.statusBar.set("No course selected.")
+            self.console.update()
 
     def add_CRN(self):
         """
@@ -624,7 +628,7 @@ class AddSkillPage:
         self.statusBar.set("Busy!!! Adding course........")
         self.console.update()
         this_input = self.entryCRN.get()
-        print(this_input)
+        # print(this_input)
         # Try to find the course in the ST:
         this_course = self.ST.get_node_by_ID(this_input)
         if this_course is None:
@@ -651,7 +655,7 @@ class AddSkillPage:
             filter_text = force_str
         else:
             filter_text = self.Filter.get()
-        if filter_text == "" or filter_text == "Filter Text":
+        if filter_text == "" or filter_text == "Enter Text here":
             return
         self.courseList_listbox.delete(0, self.courseList_listbox.size())
         if filter_text == "$RELOAD$":

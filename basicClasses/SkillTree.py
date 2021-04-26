@@ -333,9 +333,9 @@ class SkillTree:
                 chosen_set.add(left)
                 chosen_set.add(right)
         for node in node_str:
-            print("THIS NODE IS:")
-            print(node)
-            print(str(rep_dict[node].parent[0]))
+            # print("THIS NODE IS:")
+            # print(node)
+            # print(str(rep_dict[node].parent[0]))
 
             if node in chosen_set and rep_dict[node].parent[0] != self.root_node:
                 continue

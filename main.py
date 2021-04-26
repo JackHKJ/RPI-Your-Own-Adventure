@@ -106,7 +106,6 @@ if __name__ == "__main__":
                     for skill in User.get_skills():
                         print(str(skill))
                     st.pretty_print_partial_tree(User.get_skills(), root_name=User.name + "-0000", save_fig=True)
-                    time.sleep(1)
                     GUI_thread.window.Update_skilltree()
                     break
 
