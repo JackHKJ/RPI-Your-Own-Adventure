@@ -29,7 +29,7 @@ class InfoGatherer:
             "Content-Type": "application/x-www-form-urlencoded",
         }
         login_url = "https://cas-auth-ent.rpi.edu/cas/login?service=https%3A%2F%2Fbannerapp04-bnrprd.server.rpi.edu" \
-                    "%3A443%2Fssomanager%2Fc%2FSSB "
+                    "%3A443%2Fssomanager%2Fc%2FSSB"
         login_page = self.__session.get(url=login_url)
         login_soup = BeautifulSoup(login_page.text.encode("utf8"), "html.parser")
         csrf = login_soup.find("input", attrs={"name": "execution"})["value"]

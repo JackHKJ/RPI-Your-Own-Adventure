@@ -20,7 +20,7 @@ st = SkillTree(
         shortName='Root',
         is_abstract=True),
     'Full Course Tree')
-tree_loader = threading.Thread(target=st.readSkillTreeFromFile, args=['./BasicClassTest/all_courses.csv'])
+tree_loader = threading.Thread(target=st.readSkillTreeFromFile, args=['./src/all_courses.csv'])
 tree_loader.start()
 
 
