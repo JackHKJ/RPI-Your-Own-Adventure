@@ -95,8 +95,11 @@ class loginWindow:
         """
         self.master.title("Logging in, please wait")
         self.RIN = self.RIN_entry.get()
+        self.password = self.Password_entry.get()
+        if len(self.RIN) == 0 or len(self.password) == 0:
+            self.master.title("Please enter the username/password to continue")
+            return
         self.gatherer = InfoGatherer(rin=self.RIN_entry.get(), password=self.Password_entry.get())
-
         if self.gatherer.logged_in:
             self.user_type = UserTypeEnum.STUDENT
             self.goNext()

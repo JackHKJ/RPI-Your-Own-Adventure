@@ -163,7 +163,8 @@ class SkillTree:
         :param child: a list of skillTreeNode to be added as the child
         :return: the created skillTreeNode
         """
-        this_skill_node = SkillTreeNode(ID="Cust-"+str(self.custom_counter), fullName=skill_name, shortName=skill_name)
+        this_skill_node = SkillTreeNode(ID="Cust-$" + str(self.custom_counter), fullName=skill_name,
+                                        shortName=skill_name)
         self.custom_counter += 1
         self.addSkill(skill=this_skill_node, parent=parent, child=child)
         return this_skill_node
@@ -242,7 +243,7 @@ class SkillTree:
         plt.clf()
         g = nx.Graph()
         g.add_edges_from(connection_list)
-        pos_counter = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+        pos_counter = [0, 1, 0.1, 1.2, 0.3, 1.4, 0.5, 1.6, 0.7, 1.8]
         pos = dict()
         color_map = []
 
@@ -252,7 +253,8 @@ class SkillTree:
                 if node == str(self.root_node):
                     color_map.append(self.root_color)
                     pos[node] = [-1, 0]
-                elif node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
+                elif node.find("-") >= 0 and node.rfind("$") == -1 \
+                        and node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
                     hard_level = int(node[node.rfind('-') + 1:node.rfind('-') + 2]) - 1
                     color_map.append(self.colors[hard_level])
                     pos[node] = [hard_level - 0.1 * pos_counter[hard_level], pos_counter[hard_level]]
@@ -333,11 +335,11 @@ class SkillTree:
         for node in node_str:
             print("THIS NODE IS:")
             print(node)
-            print(rep_dict[node].parent)
+            print(str(rep_dict[node].parent[0]))
 
             if node in chosen_set and rep_dict[node].parent[0] != self.root_node:
                 continue
-            this_connection.append([root_name, node])
+            this_connection.append([root_name, node_str[node]])
 
         self._pretty_print_helper(this_connection, method, save_fig=save_fig)
 
