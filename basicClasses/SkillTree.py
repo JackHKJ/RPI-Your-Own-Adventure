@@ -32,11 +32,11 @@ class SkillTree:
         :param root: optional root node
         :param name: name for this tree
         """
-        self.name = name
+        self.__name = name
         if root is not None and isinstance(root, SkillTreeNode):
             self.root_node = root
         else:
-            self.root_node = SkillTreeNode(fullName=self.name, shortName=self.name, ID="00000", is_abstract=True)
+            self.root_node = SkillTreeNode(fullName=self.__name, shortName=self.__name, ID="00000", is_abstract=True)
         self.node_set = set()
         self.node_set.add(self.root_node)
         self.connection = []

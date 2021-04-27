@@ -4,42 +4,185 @@ from basicClasses.SkillTreeNode import SkillTreeNode
 from basicClasses.SkillTree import SkillTree
 from basicClasses.Request import Request
 
+avail_list = ["Go to a concert in EMPAC", "Check the RPI website", "Tour around the campus", \
+              "Talk to a RPI student", "Apply for RPI", "Introduce RPI to others"]  # list that is available
+avail_list_student = ["Finished 4 4000-level courses", "Join 3 clubs", "Join the fraternity", \
+                      "Work out at the RPI gym", "Join the sorosity", "Take the shuttel around the campus"]
+
+class PersonBuilder():
+    """
+    This class is the builder for the person object
+    """
+    def __init__(self):
+        self.person = Person()
+
+    def set_name(self, name):
+        """
+        setter of the name
+        :param name: name of the user
+        """
+        self.person.set_name(name)
+
+    def set_location(self, location):
+        """
+        setter of the location
+        :param location: location of the user
+        """
+        self.person.set_location(location)
+
+    def set_gender(self, gender):
+        """
+        setter of the gender
+        :param gender: gender of the user
+        """
+        self.person.set_gender(gender)
+
+    def set_tel(self, tel):
+        """
+        setter of the tel
+        :param tel: telephone of the user
+        """
+        self.person.set_tel(tel)
+
+    def set_mail(self, mail):
+        """
+        setter of the mail
+        :param mail: mail of the user
+        """
+        self.person.set_mail(mail)
+
+    def set_skills(self, skill_tree, skills):
+        """
+        setter of the skilltree
+        :param skill_tree: skilltree of the user
+        :param skills: skills to be added to the user
+        """
+        if (skill_tree):
+            self.person.add_skills_by_shortName(skill_tree,skills)
+
+    def set_request(self,user_type):
+        """
+        setter of the requests
+        :param user_type: type of the user
+        """
+        if (user_type=="Guest"):
+            for request in avail_list:
+                self.person.add_avail_request(Request(request, [], ""))
+        else:
+            for request in avail_list_student:
+                self.person.add_avail_request(Request(request, [], ""))
+
+    def get_person(self):
+        """
+        getter of the Person object
+        :return: person
+        """
+        return self.person
+
+class Director():
+    def __init__(self, builder):
+        self.builder = builder
+
+    def constructStudent(self,name,skill_tree: SkillTree, skills):
+        """
+        Builder for a student type user
+        :param name: name of the student
+        :param skill_tree: skilltree for the student
+        :param skills: skills to be added to the tree
+        """
+        self.builder.set_name(name)
+        self.builder.set_gender("UNKNOWN")
+        self.builder.set_location("TROY")
+        self.builder.set_mail("UNKNOWN")
+        self.builder.set_skills(skill_tree,skills)
+        self.builder.set_tel("UNKNOWN")
+        self.builder.set_request("Student")
+
+    def constructGuest(self,name):
+        """
+        Builder for a guest type user
+        :param name: name of the guest
+        """
+        self.builder.set_name(name)
+        self.builder.set_gender("UNKNOWN")
+        self.builder.set_location("TROY")
+        self.builder.set_mail("UNKNOWN")
+        self.builder.set_skills(None,None)
+        self.builder.set_tel("UNKNOWN")
+        self.builder.set_request("Guest")
+
+    def get_person(self):
+        """
+        getter of the Person object
+        :return: person
+        """
+        return self.builder.get_person()
 
 class Person(object):
     """
     This class is to represent a player in our game
     """
 
-    def __init__(self, name, location="TROY", gender="UNKNOWN", tel="UNKNOWN", mail="UNKNOWN"):
+    def __init__(self):
         """
         The initializing function of the class
         """
-        self.name = name
-        self.location = location
-        self.gender = gender
-        self.tel = tel
-        self.mail = mail
-        self.skills = set()
-        self.skillConnection = []
+        self.__name = None
+        self.__location = None
+        self.__gender = None
+        self.__tel = None
+        self.__mail = None
+        self.__skills = set()
+        self.__skillConnection = []
         self.__avail_request = []
         self.__accept_request = []
 
     def __str__(self):
-        return "User [{}]".format(self.name)
+        return "User [{}]".format(self.__name)
+
+    def set_name(self,name):
+        """
+        setter of the name
+        """
+        self.__name = name
+
+    def set_location(self,location):
+        """
+        setter of the location
+        """
+        self.__location = location
+
+    def set_gender(self,gender):
+        """
+        setter of the gender
+        """
+        self.__gender = gender
+    
+    def set_mail(self,mail):
+        """
+        setter of the mail
+        """
+        self.__mail = mail
+
+    def set_tel(self,tel):
+        """
+        setter of the telephone
+        """
+        self.__tel = tel
 
     def get_name(self):
         """
         Getter of the name
         :return: name
         """
-        return self.name
+        return self.__name
 
     def get_skills(self):
         """
         Getter of the skills
         :return: skills
         """
-        return self.skills
+        return self.__skills
 
     def get_avail_request(self):
         """
@@ -113,17 +256,17 @@ class Person(object):
         :return: None
         """
         # If already contained, pass
-        if this_skill in self.skills:
+        if this_skill in self.__skills:
             return
-        self.skills.add(this_skill)
+        self.__skills.add(this_skill)
         if this_skill.parent is not None:
             for this_parent in this_skill.parent:
-                if this_parent in self.skills:
-                    self.skillConnection.append([str(this_parent), str(this_skill)])
+                if this_parent in self.__skills:
+                    self.__skillConnection.append([str(this_parent), str(this_skill)])
         if this_skill.child is not None:
             for this_child in this_skill.child:
-                if this_child in self.skills:
-                    self.skillConnection.append([str(this_child), str(this_skill)])
+                if this_child in self.__skills:
+                    self.__skillConnection.append([str(this_child), str(this_skill)])
 
     def remove_skill(self, main_tree: SkillTree, this_skill: SkillTreeNode):
         """
@@ -132,15 +275,15 @@ class Person(object):
         :param this_skill: skill to be removed
         :return: None
         """
-        if this_skill not in self.skills:
+        if this_skill not in self.__skills:
             return
         updated_connection = []
         str_rep = str(this_skill)
-        for connection in self.skillConnection:
+        for connection in self.__skillConnection:
             if str_rep not in connection:
                 updated_connection.append(connection)
-        self.skillConnection = updated_connection
-        self.skills.remove(this_skill)
+        self.__skillConnection = updated_connection
+        self.__skills.remove(this_skill)
 
     def add_skills_by_shortName(self, skill_tree: SkillTree, skills):
         """
@@ -167,10 +310,10 @@ class Person(object):
                 continue
             selectable = True
             for req in course.parent:
-                if req not in self.skills:
+                if req not in self.__skills:
                     selectable = False
                     break
-            if selectable and course not in self.skills:
+            if selectable and course not in self.__skills:
                 selectable_course.append(course)
                 continue
         return selectable_course
@@ -188,7 +331,7 @@ class Person(object):
         filtered = []
         filter_str = filter_str.lower()
         for course in selectable_courses:
-            if course.shortName.lower() == "root" or course.fullName.lower() == 'root':
+            if course.shortName.lower() == "root" or course.fullName.lower() == "root":
                 continue
             if filter_str in (course.fullName.lower()) or filter_str in (course.shortName.lower()) or filter_str in \
                     course.ID:

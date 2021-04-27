@@ -10,8 +10,6 @@ from basicClasses.Request import *
 from gui import *
 from gui import UserTypeEnum
 
-avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', 'Join the sorority',
-              'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
 # Load the SkillTree
 st = SkillTree(
     SkillTreeNode(
@@ -68,14 +66,17 @@ if __name__ == "__main__":
     print("Finished loading tree")
     # Create the relative information according to the user type
     if USER_TYPE == UserTypeEnum.GUEST:
-        User = Person("Guest")
+        personBuilder = PersonBuilder() 
+        director = Director(personBuilder)
+        director.constructGuest("Guest")
+        User = director.get_person()
     if USER_TYPE == UserTypeEnum.STUDENT:
-        User = Person(GUI_thread.window.RIN)
-        User.add_skills_by_shortName(st, GUI_thread.window.gatherer.get_learned_courses())
+        personBuilder = PersonBuilder() 
+        director = Director(personBuilder)
+        director.constructStudent(GUI_thread.window.RIN,st,GUI_thread.window.gatherer.get_learned_courses())
+        User = director.get_person()
         st.pretty_print_partial_tree(User.get_skills(), save_fig=True)
         USER_GATHERER = GUI_thread.window.gatherer
-    for request in avail_list:
-        User.add_avail_request(Request(request, [], ""))
     # Open the main page
     while True:
         if GUI_thread.window.next is not None:
@@ -106,7 +107,7 @@ if __name__ == "__main__":
                     print("Returning to the main Page")
                     for skill in User.get_skills():
                         print(str(skill))
-                    st.pretty_print_partial_tree(User.get_skills(), root_name=User.name + "-0000", save_fig=True)
+                    st.pretty_print_partial_tree(User.get_skills(), root_name=User.get_name() + "-0000", save_fig=True)
                     GUI_thread.window.Update_skilltree()
                     break
 
