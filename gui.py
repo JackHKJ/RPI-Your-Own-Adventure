@@ -7,10 +7,6 @@ from PIL import Image, ImageTk
 from basicClasses.InfoGatherer import InfoGatherer
 
 TEAM_SLOGAN_STR = "RPI YOUR OWN ADVENTURE"
-# The following list is a stub when failed to load from SIS
-avail_list = ['Join 3 clubs', 'Go to a concert in EMPAC', 'Join the fraternity', 'Join the sorority',
-              'Work out at the RPI gym', 'Take the shuttle around the campus']  # list that is available
-accept_list = []  # list you have accepted
 course_list = []
 
 

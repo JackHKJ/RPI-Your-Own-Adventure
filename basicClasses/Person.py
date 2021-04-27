@@ -4,10 +4,10 @@ from basicClasses.SkillTreeNode import SkillTreeNode
 from basicClasses.SkillTree import SkillTree
 from basicClasses.Request import Request
 
-avail_list = ['Go to a concert in EMPAC', 'Check the RPI website', 'Tour around the campus', \
-              'Talk to a RPI student', 'Apply for RPI', 'Introduce RPI to others']  # list that is available
-avail_list_student = ['Finished 4 4000-level courses', 'Join 3 clubs', 'Join the fraternity', \
-                      'Work out at the RPI gym', 'Join the sorosity', 'Take the shuttel around the campus']
+avail_list = ["Go to a concert in EMPAC", "Check the RPI website", "Tour around the campus", \
+              "Talk to a RPI student", "Apply for RPI", "Introduce RPI to others"]  # list that is available
+avail_list_student = ["Finished 4 4000-level courses", "Join 3 clubs", "Join the fraternity", \
+                      "Work out at the RPI gym", "Join the sorosity", "Take the shuttel around the campus"]
 
 class PersonBuilder():
     """
@@ -331,7 +331,7 @@ class Person(object):
         filtered = []
         filter_str = filter_str.lower()
         for course in selectable_courses:
-            if course.shortName.lower() == "root" or course.fullName.lower() == 'root':
+            if course.shortName.lower() == "root" or course.fullName.lower() == "root":
                 continue
             if filter_str in (course.fullName.lower()) or filter_str in (course.shortName.lower()) or filter_str in \
                     course.ID:
