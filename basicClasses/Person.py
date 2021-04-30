@@ -4,12 +4,12 @@ from basicClasses.SkillTreeNode import SkillTreeNode
 from basicClasses.SkillTree import SkillTree
 from basicClasses.Request import Request
 
-__avail_list = ["Go to a concert in EMPAC", "Check the RPI website", "Tour around the campus", \
-              "Talk to a RPI student", "Apply for RPI", "Introduce RPI to others"]  # list that is available
-__avail_list_student = ["Finished 4 4000-level courses", "Join 3 clubs", "Join the fraternity", \
-                      "Work out at the RPI gym", "Join the sorosity", "Take the shuttel around the campus"]
 
 class PersonBuilder():
+    __avail_list = ["Go to a concert in EMPAC", "Check the RPI website", "Tour around the campus", \
+              "Talk to a RPI student", "Apply for RPI", "Introduce RPI to others"]  # list that is available
+    __avail_list_student = ["Finished 4 4000-level courses", "Join 3 clubs", "Join the fraternity", \
+                      "Work out at the RPI gym", "Join the sorosity", "Take the shuttel around the campus"]
     """
     This class is the builder for the person object
     """
@@ -57,10 +57,10 @@ class PersonBuilder():
         :param user_type: type of the user
         """
         if (user_type=="Guest"):
-            for request in __avail_list:
+            for request in self.__avail_list:
                 self.person.add_avail_request(Request(request, [], ""))
         else:
-            for request in __avail_list_student:
+            for request in self.__avail_list_student:
                 self.person.add_avail_request(Request(request, [], ""))
 
     def get_person(self):
