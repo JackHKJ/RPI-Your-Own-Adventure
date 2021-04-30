@@ -4,12 +4,12 @@ from basicClasses.SkillTreeNode import SkillTreeNode
 from basicClasses.SkillTree import SkillTree
 from basicClasses.Request import Request
 
-avail_list = ["Go to a concert in EMPAC", "Check the RPI website", "Tour around the campus", \
-              "Talk to a RPI student", "Apply for RPI", "Introduce RPI to others"]  # list that is available
-avail_list_student = ["Finished 4 4000-level courses", "Join 3 clubs", "Join the fraternity", \
-                      "Work out at the RPI gym", "Join the sorosity", "Take the shuttel around the campus"]
 
 class PersonBuilder():
+    __avail_list = ["Go to a concert in EMPAC", "Check the RPI website", "Tour around the campus", \
+              "Talk to a RPI student", "Apply for RPI", "Introduce RPI to others"]  # list that is available
+    __avail_list_student = ["Finished 4 4000-level courses", "Join 3 clubs", "Join the fraternity", \
+                      "Work out at the RPI gym", "Join the sorosity", "Take the shuttel around the campus"]
     """
     This class is the builder for the person object
     """
@@ -51,25 +51,16 @@ class PersonBuilder():
         """
         self.person.set_mail(mail)
 
-    def set_skills(self, skill_tree, skills):
-        """
-        setter of the skilltree
-        :param skill_tree: skilltree of the user
-        :param skills: skills to be added to the user
-        """
-        if (skill_tree):
-            self.person.add_skills_by_shortName(skill_tree,skills)
-
     def set_request(self,user_type):
         """
         setter of the requests
         :param user_type: type of the user
         """
         if (user_type=="Guest"):
-            for request in avail_list:
+            for request in self.__avail_list:
                 self.person.add_avail_request(Request(request, [], ""))
         else:
-            for request in avail_list_student:
+            for request in self.__avail_list_student:
                 self.person.add_avail_request(Request(request, [], ""))
 
     def get_person(self):
@@ -83,7 +74,7 @@ class Director():
     def __init__(self, builder):
         self.builder = builder
 
-    def constructStudent(self,name,skill_tree: SkillTree, skills):
+    def constructStudent(self,name):
         """
         Builder for a student type user
         :param name: name of the student
@@ -94,7 +85,6 @@ class Director():
         self.builder.set_gender("UNKNOWN")
         self.builder.set_location("TROY")
         self.builder.set_mail("UNKNOWN")
-        self.builder.set_skills(skill_tree,skills)
         self.builder.set_tel("UNKNOWN")
         self.builder.set_request("Student")
 
@@ -103,20 +93,12 @@ class Director():
         Builder for a guest type user
         :param name: name of the guest
         """
-        self.builder.set_name(name)
+        self.builder.set_name(name="Guest")
         self.builder.set_gender("UNKNOWN")
         self.builder.set_location("TROY")
         self.builder.set_mail("UNKNOWN")
-        self.builder.set_skills(None,None)
         self.builder.set_tel("UNKNOWN")
         self.builder.set_request("Guest")
-
-    def get_person(self):
-        """
-        getter of the Person object
-        :return: person
-        """
-        return self.builder.get_person()
 
 class Person(object):
     """
@@ -259,12 +241,12 @@ class Person(object):
         if this_skill in self.__skills:
             return
         self.__skills.add(this_skill)
-        if this_skill.parent is not None:
-            for this_parent in this_skill.parent:
+        if this_skill.get_parent() is not None:
+            for this_parent in this_skill.get_parent():
                 if this_parent in self.__skills:
                     self.__skillConnection.append([str(this_parent), str(this_skill)])
-        if this_skill.child is not None:
-            for this_child in this_skill.child:
+        if this_skill.get_child() is not None:
+            for this_child in this_skill.get_child():
                 if this_child in self.__skills:
                     self.__skillConnection.append([str(this_child), str(this_skill)])
 
@@ -304,12 +286,12 @@ class Person(object):
         :return: list of SkillTreeNode that is selectable for the person
         """
         selectable_course = []
-        for course in skillTree.node_set:
-            if len(course.parent) == 0 or (len(course.parent) == 1 and course.parent[0] == skillTree.root_node):
+        for course in skillTree.get_node_set():
+            if len(course.get_parent()) == 0 or (len(course.get_parent()) == 1 and course.get_parent()[0] == skillTree.get_root_node()):
                 selectable_course.append(course)
                 continue
             selectable = True
-            for req in course.parent:
+            for req in course.get_parent():
                 if req not in self.__skills:
                     selectable = False
                     break

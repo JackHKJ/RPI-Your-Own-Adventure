@@ -23,17 +23,17 @@ class SkillTreeNode(Node):
         super().__init__(ID)
         if ID is None:
             raise Exception("Error, ID must be entered")
-        self.ID = str(ID)
-        self.fullName = str(fullName)
-        self.shortName = str(shortName)
-        self.skillType = str(skillType)
-        self.additional_info = additionalInfo
-        self.pass_requirement = passReq
-        self.is_abstract = is_abstract
+        self.__ID = str(ID)
+        self.__fullName = str(fullName)
+        self.__shortName = str(shortName)
+        self.__skillType = str(skillType)
+        self.__additional_info = additionalInfo
+        self.__pass_requirement = passReq
+        self.__is_abstract = is_abstract
 
-        self.parent = []
-        self.child = []
-        self.mastered = False
+        self.__parent = []
+        self.__child = []
+        self.__mastered = False
 
     def __eq__(self, other):
         """
@@ -43,17 +43,38 @@ class SkillTreeNode(Node):
         """
         if not isinstance(other, SkillTreeNode):
             return False
-        return (self.ID == other.ID) and (self.shortName == other.shortName) and (self.fullName == other.fullName)
+        return (self.__ID == other.get_ID()) and (self.__shortName == other.get_shortName()) and (self.__fullName == other.get_fullName())
 
     def __str__(self):
         """
         The representation to be shown in a printed graph
         :return: a string containing key identification part of this node
         """
-        return str(self.shortName)
+        return str(self.__shortName)
 
     def __hash__(self):
-        return hash("[SKILL " + self.ID + ":" + self.shortName + "]")
+        return hash("[SKILL " + self.__ID + ":" + self.__shortName + "]")
+
+    def get_ID(self):
+        """
+        Getter of ID
+        :return: the node's ID
+        """
+        return self.__ID
+
+    def get_shortName(self):
+        """
+        Getter of shortName
+        :return: the node's shortName
+        """
+        return self.__shortName
+    
+    def get_fullName(self):
+        """
+        Getter of fullName
+        :return: the node's fullName
+        """
+        return self.__fullName
 
     def pretty_print_with_height(self):
         """
@@ -65,7 +86,7 @@ class SkillTreeNode(Node):
 
         front_spacing = (len(str(self)) + 1) * " "
         ret_list = [str(self) + r":/---"]
-        for child in self.child:
+        for child in self.__child:
             for line in child.pretty_print_with_height():
                 ret_list.append(front_spacing + line)
         ret_list.append(front_spacing + r"\---")
@@ -78,23 +99,23 @@ class SkillTreeNode(Node):
         :return: None
         """
         if isinstance(parent, SkillTreeNode):
-            self.parent.append(parent)
+            self.__parent.append(parent)
         else:
             raise Exception("Parent must be a SkillTreeNode")
 
-    # def get_parent(self):
-    #     """
-    #     Getter of the parent representation
-    #     :return: parent
-    #     """
-    #     return self.parent
-    #
-    # def get_child(self):
-    #     """
-    #     Getter of the child representation
-    #     :return: child
-    #     """
-    #     return self.child
+    def get_parent(self):
+        """
+        Getter of the parent representation
+        :return: parent
+        """
+        return self.__parent
+    
+    def get_child(self):
+        """
+        Getter of the child representation
+        :return: child
+        """
+        return self.__child
 
     def remove_parent(self, parent):
         """
@@ -104,8 +125,8 @@ class SkillTreeNode(Node):
         """
         if not isinstance(parent, SkillTreeNode):
             raise Exception("Parent to be removed must be a SkillTreeNode")
-        if parent in self.parent:
-            self.parent.remove(parent)
+        if parent in self.__parent:
+            self.__parent.remove(parent)
 
     def add_child(self, child):
         """
@@ -114,7 +135,7 @@ class SkillTreeNode(Node):
         :return: None
         """
         if isinstance(child, SkillTreeNode):
-            self.child.append(child)
+            self.__child.append(child)
         else:
             raise Exception("Child must be a SkillTreeNode")
 
@@ -126,29 +147,22 @@ class SkillTreeNode(Node):
         """
         if not isinstance(child, SkillTreeNode):
             raise Exception("Parent to be removed must be a SkillTreeNode")
-        if child in self.child:
-            self.child.remove(child)
-
-    def get_full_name(self):
-        """
-        The getter of the name
-        :return: name
-        """
-        return self.fullName
+        if child in self.__child:
+            self.__child.remove(child)
 
     def is_mastered(self):
         """
         Getter of the mastered
         :return: mastered
         """
-        return self.mastered
+        return self.__mastered
 
     def get_is_abstract(self):
         """
         Getter of the is_abstract
         :return: is_abstract
         """
-        return self.is_abstract
+        return self.__is_abstract
 
     def try_to_pass(self, your_result):
         """
@@ -163,4 +177,4 @@ class SkillTreeNode(Node):
         Judge whether this node is a leaf node
         :return: True if the child list is empty, False otherwise
         """
-        return len(self.child) == 0
+        return len(self.__child) == 0
