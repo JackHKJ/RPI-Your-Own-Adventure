@@ -73,8 +73,9 @@ if __name__ == "__main__":
     if USER_TYPE == UserTypeEnum.STUDENT:
         personBuilder = PersonBuilder() 
         director = Director(personBuilder)
-        director.constructStudent(GUI_thread.window.RIN,st,GUI_thread.window.gatherer.get_learned_courses())
+        director.constructStudent(GUI_thread.window.RIN)
         User = director.get_person()
+        User.add_skills_by_shortName(st,GUI_thread.window.gatherer.get_learned_courses())
         st.pretty_print_partial_tree(User.get_skills(), save_fig=True)
         USER_GATHERER = GUI_thread.window.gatherer
     # Open the main page

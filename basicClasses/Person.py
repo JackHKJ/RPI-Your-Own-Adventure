@@ -51,15 +51,6 @@ class PersonBuilder():
         """
         self.person.set_mail(mail)
 
-    def set_skills(self, skill_tree, skills):
-        """
-        setter of the skilltree
-        :param skill_tree: skilltree of the user
-        :param skills: skills to be added to the user
-        """
-        if (skill_tree):
-            self.person.add_skills_by_shortName(skill_tree,skills)
-
     def set_request(self,user_type):
         """
         setter of the requests
@@ -83,7 +74,7 @@ class Director():
     def __init__(self, builder):
         self.builder = builder
 
-    def constructStudent(self,name,skill_tree: SkillTree, skills):
+    def constructStudent(self,name):
         """
         Builder for a student type user
         :param name: name of the student
@@ -94,7 +85,6 @@ class Director():
         self.builder.set_gender("UNKNOWN")
         self.builder.set_location("TROY")
         self.builder.set_mail("UNKNOWN")
-        self.builder.set_skills(skill_tree,skills)
         self.builder.set_tel("UNKNOWN")
         self.builder.set_request("Student")
 
@@ -103,11 +93,10 @@ class Director():
         Builder for a guest type user
         :param name: name of the guest
         """
-        self.builder.set_name(name)
+        self.builder.set_name(name="Guest")
         self.builder.set_gender("UNKNOWN")
         self.builder.set_location("TROY")
         self.builder.set_mail("UNKNOWN")
-        self.builder.set_skills(None,None)
         self.builder.set_tel("UNKNOWN")
         self.builder.set_request("Guest")
 
