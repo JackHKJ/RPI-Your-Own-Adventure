@@ -259,12 +259,12 @@ class Person(object):
         if this_skill in self.__skills:
             return
         self.__skills.add(this_skill)
-        if this_skill.parent is not None:
-            for this_parent in this_skill.parent:
+        if this_skill.get_parent() is not None:
+            for this_parent in this_skill.get_parent():
                 if this_parent in self.__skills:
                     self.__skillConnection.append([str(this_parent), str(this_skill)])
-        if this_skill.child is not None:
-            for this_child in this_skill.child:
+        if this_skill.get_child() is not None:
+            for this_child in this_skill.get_child():
                 if this_child in self.__skills:
                     self.__skillConnection.append([str(this_child), str(this_skill)])
 
@@ -304,12 +304,12 @@ class Person(object):
         :return: list of SkillTreeNode that is selectable for the person
         """
         selectable_course = []
-        for course in skillTree.node_set:
-            if len(course.parent) == 0 or (len(course.parent) == 1 and course.parent[0] == skillTree.root_node):
+        for course in skillTree.get_node_set():
+            if len(course.get_parent()) == 0 or (len(course.get_parent()) == 1 and course.get_parent()[0] == skillTree.get_root_node()):
                 selectable_course.append(course)
                 continue
             selectable = True
-            for req in course.parent:
+            for req in course.get_parent():
                 if req not in self.__skills:
                     selectable = False
                     break

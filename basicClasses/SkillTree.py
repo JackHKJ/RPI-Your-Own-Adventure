@@ -21,9 +21,9 @@ class SkillTree:
     2. adding child: manage the parent pointer
     """
     # The default color sequence for printing the tree
-    root_color = '#777777'
-    colors = ['#ffff99', '#ffff00', '#ff9933', '#ff6600', '#ff3300', '#cc0000', '#990000', '#660000', '#705c5c']
-    custom_counter = 0
+    __root_color = '#777777'
+    __colors = ['#ffff99', '#ffff00', '#ff9933', '#ff6600', '#ff3300', '#cc0000', '#990000', '#660000', '#705c5c']
+    __custom_counter = 0
 
     # The entry to the tree
     def __init__(self, root=None, name="#DEFAULT_NAME"):
@@ -34,12 +34,12 @@ class SkillTree:
         """
         self.__name = name
         if root is not None and isinstance(root, SkillTreeNode):
-            self.root_node = root
+            self.__root_node = root
         else:
-            self.root_node = SkillTreeNode(fullName=self.__name, shortName=self.__name, ID="00000", is_abstract=True)
-        self.node_set = set()
-        self.node_set.add(self.root_node)
-        self.connection = []
+            self.__root_node = SkillTreeNode(fullName=self.__name, shortName=self.__name, ID="00000", is_abstract=True)
+        self.__node_set = set()
+        self.__node_set.add(self.__root_node)
+        self.__connection = []
 
     def readSkillTreeFromFileDefaultPath(self):
         """
@@ -70,7 +70,7 @@ class SkillTree:
                     fullName=row['full_name'],
                     shortName=row['short_name'])
                 if crn not in prerequisites or 'prerequisites' not in prerequisites[crn]:
-                    self.addSkill(node, parent=self.root_node)
+                    self.addSkill(node, parent=self.__root_node)
                 else:
                     p = self.__parse(prerequisites[crn]['prerequisites'])
                     flatten = self.__flatten(p)
@@ -81,7 +81,7 @@ class SkillTree:
                                 parents.append(n)
                     self.addSkill(node, parent=parents)
                 pool.add(node)
-                self.node_set.add(node)
+                self.__node_set.add(node)
 
     def readSkillTreeFromFile(self, input_file):
         """
@@ -102,10 +102,10 @@ class SkillTree:
                 shortName=row['short_name'])
             pre_req = row['prerequisites']
             if type(pre_req) != str or len(pre_req[1:-1]) == 0:
-                self.addSkill(node, parent=self.root_node)
+                self.addSkill(node, parent=self.__root_node)
             else:
                 find_parents[node] = pre_req
-            dic_by_shortName[node.shortName] = node
+            dic_by_shortName[node.get_shortName()] = node
 
         # pool = set(find_parents.keys()) | self.node_set
         for node in find_parents:
@@ -118,6 +118,20 @@ class SkillTree:
                     parents.append(dic_by_shortName[p])
             self.addSkill(node, parent=parents)
 
+    def get_node_set(self):
+        """
+        Getter of nodeset
+        :return: nodeset
+        """
+        return self.__node_set
+    
+    def get_root_node(self):
+        """
+        Getter of root_node
+        :return: root_node
+        """
+        return self.__root_node
+
     def addSkill(self, skill: SkillTreeNode, parent=None, child=None):
         """
         Add the given skill to the skill tree (not only in the skill tree representation but also the skill itself)
@@ -126,7 +140,7 @@ class SkillTree:
         :param child: child of the skill (None as default)
         :return: None
         """
-        if skill in self.node_set:
+        if skill in self.__node_set:
             # print("Skill already added, returning without operation")
             return
         if parent is not None:
@@ -134,27 +148,27 @@ class SkillTree:
                 for par in parent:
                     par.add_child(skill)
                     skill.add_parent(par)
-                    if [str(skill), str(par)] not in self.connection:
-                        self.connection.append([str(skill), str(par)])
+                    if [str(skill), str(par)] not in self.__connection:
+                        self.__connection.append([str(skill), str(par)])
             elif isinstance(parent, SkillTreeNode):
                 parent.add_child(skill)
                 skill.add_parent(parent)
-                if [str(skill), str(parent)] not in self.connection:
-                    self.connection.append([str(skill), str(parent)])
+                if [str(skill), str(parent)] not in self.__connection:
+                    self.__connection.append([str(skill), str(parent)])
 
         if child is not None:
             if isinstance(child, list):
                 for chi in child:
                     chi.add_parent(skill)
                     skill.add_child(chi)
-                    if [str(chi), str(skill)] not in self.connection:
-                        self.connection.append([str(chi), str(skill)])
+                    if [str(chi), str(skill)] not in self.__connection:
+                        self.__connection.append([str(chi), str(skill)])
             elif isinstance(child, SkillTreeNode):
                 child.add_parent(skill)
                 skill.add_child(child)
-                if [str(child), str(skill)] not in self.connection:
-                    self.connection.append([str(child), str(skill)])
-        self.node_set.add(skill)
+                if [str(child), str(skill)] not in self.__connection:
+                    self.__connection.append([str(child), str(skill)])
+        self.__node_set.add(skill)
 
     def add_custom_skill(self, skill_name, parent=None, child=None):
         """
@@ -163,9 +177,9 @@ class SkillTree:
         :param child: a list of skillTreeNode to be added as the child
         :return: the created skillTreeNode
         """
-        this_skill_node = SkillTreeNode(ID="Cus-$" + str(self.custom_counter), fullName=skill_name,
+        this_skill_node = SkillTreeNode(ID="Cus-$" + str(self.__custom_counter), fullName=skill_name,
                                         shortName=skill_name)
-        self.custom_counter += 1
+        self.__custom_counter += 1
         self.addSkill(skill=this_skill_node, parent=parent, child=child)
         return this_skill_node
 
@@ -175,19 +189,19 @@ class SkillTree:
         :param skill: skill to be added
         :return: None
         """
-        if skill not in self.node_set:
+        if skill not in self.__node_set:
             print("Skill not exist, returning without operation")
             return
         parLst = skill.get_parent()
         chiLst = skill.get_child()
 
         for par in parLst:
-            if par in self.node_set:
+            if par in self.__node_set:
                 par.remove_child(skill)
         for chi in chiLst:
-            if chi in self.node_set:
+            if chi in self.__node_set:
                 chi.remove_parent(skill)
-        self.node_set.remove(skill)
+        self.__node_set.remove(skill)
 
     def get_node_by_ID(self, ID):
         """
@@ -195,8 +209,8 @@ class SkillTree:
         :param ID: The ID of the Node
         :return: Node found by ID, None otherwise
         """
-        for node in self.node_set:
-            if node.ID == ID:
+        for node in self.__node_set:
+            if node.get_ID() == ID:
                 return node
         return None
 
@@ -206,8 +220,8 @@ class SkillTree:
         :param shortName: shortName of the node
         :return: Node found by shortName, None otherwise
         """
-        for node in self.node_set:
-            if node.shortName == shortName:
+        for node in self.__node_set:
+            if node.get_shortName() == shortName:
                 return node
         return None
 
@@ -217,8 +231,8 @@ class SkillTree:
         :param fullName: fullName of the Node
         :return: Node found by fullName, None otherwise
         """
-        for node in self.node_set:
-            if node.fullName == fullName:
+        for node in self.__node_set:
+            if node.get_fullName() == fullName:
                 return node
         return None
 
@@ -250,13 +264,13 @@ class SkillTree:
         if method == "Stack":
             for node in g:
                 node = str(node)
-                if node == str(self.root_node):
-                    color_map.append(self.root_color)
+                if node == str(self.__root_node):
+                    color_map.append(self.__root_color)
                     pos[node] = [-1, 0]
                 elif node.find("-") >= 0 and node.rfind("$") == -1 \
                         and node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
                     hard_level = int(node[node.rfind('-') + 1:node.rfind('-') + 2]) - 1
-                    color_map.append(self.colors[hard_level])
+                    color_map.append(self.__colors[hard_level])
                     pos[node] = [hard_level - 0.1 * pos_counter[hard_level], pos_counter[hard_level]]
                     pos_counter[hard_level] += 2
                 else:
@@ -275,11 +289,11 @@ class SkillTree:
         elif method == "Spring":
             for node in g:
                 node = str(node)
-                if node == str(self.root_node):
-                    color_map.append(self.root_color)
+                if node == str(self.__root_node):
+                    color_map.append(self.__root_color)
                 elif node[node.rfind('-') + 1:node.rfind('-') + 2].isnumeric():
                     hard_level = int(node[node.rfind('-') + 1:node.rfind('-') + 2]) - 1
-                    color_map.append(self.colors[hard_level])
+                    color_map.append(self.__colors[hard_level])
                     pos_counter[hard_level] += 1
                 else:
                     color_map.append('#777777')
@@ -302,7 +316,7 @@ class SkillTree:
         Method can be ['Stack','Spring']
         :return:
         """
-        self._pretty_print_helper(self.connection, method, save_fig=save_fig)
+        self._pretty_print_helper(self.__connection, method, save_fig=save_fig)
 
     def pretty_print_partial_tree(self, nodes, method="Stack", root_name="root-0000", save_fig=False, verbose=False):
         """
@@ -318,16 +332,16 @@ class SkillTree:
         rep_dict = dict()
         if not verbose:
             for this_node in nodes:
-                node_str[str(this_node)] = this_node.shortName
+                node_str[str(this_node)] = this_node.get_shortName()
                 rep_dict[str(this_node)] = this_node
         else:
             for this_node in nodes:
-                node_str[str(this_node)] = str(this_node.ID) + ":" + str(this_node.shortName)
+                node_str[str(this_node)] = str(this_node.get_ID()) + ":" + str(this_node.get_shortName())
                 rep_dict[str(this_node)] = this_node
 
         chosen_set = set()
         this_connection = []
-        for left, right in self.connection:
+        for left, right in self.__connection:
             if left in node_str and right in node_str:
                 this_connection.append([node_str[left], node_str[right]])
                 chosen_set.add(left)
@@ -337,7 +351,7 @@ class SkillTree:
             # print(node)
             # print(str(rep_dict[node].parent[0]))
 
-            if node in chosen_set and rep_dict[node].parent[0] != self.root_node:
+            if node in chosen_set and rep_dict[node].get_parent()[0] != self.__root_node:
                 continue
             this_connection.append([root_name, node_str[node]])
 

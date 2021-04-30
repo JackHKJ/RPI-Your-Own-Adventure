@@ -10,26 +10,26 @@ class Node:
         """
         :param ID: the unique identification string of the Node
         """
-        self.ID = ID
+        self.__ID = ID
         # parent: a list representation of parents
-        self.parent = []
+        self.__parent = []
         # child: a list representation of childs
-        self.child = []
+        self.__child = []
 
     def get_ID(self):
         """
         Getter of the name
         """
-        return self.ID
+        return self.__ID
 
     def get_parent(self):
         """
         Getter of the parent
         """
-        return self.parent
+        return self.__parent
 
     def get_child(self):
         """
         Getter of the child
         """
-        return self.child
+        return self.__child
