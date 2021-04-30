@@ -100,13 +100,6 @@ class Director():
         self.builder.set_tel("UNKNOWN")
         self.builder.set_request("Guest")
 
-    def get_person(self):
-        """
-        getter of the Person object
-        :return: person
-        """
-        return self.builder.get_person()
-
 class Person(object):
     """
     This class is to represent a player in our game
