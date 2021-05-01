@@ -455,9 +455,12 @@ class AddSkillPage:
             for item in self.course_list:
                 self.course_dict[item] = item
 
+        self.course_list.sort()
+        self.added_list.sort()
+
         # Show the selectable course in a list
         for item in self.course_list:
-            if item not in self.added_list:
+            if item not in self.added_list and item.lower() != "root":
                 self.courseList_listbox.insert(END, item)
         self.courseList_listbox.pack()
         self.courseList_listbox.place(x=100, y=50)

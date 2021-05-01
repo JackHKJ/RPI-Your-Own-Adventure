@@ -5,14 +5,15 @@ from basicClasses.SkillTree import SkillTree
 from basicClasses.Request import Request
 
 
-class PersonBuilder():
-    __avail_list = ["Go to a concert in EMPAC", "Check the RPI website", "Tour around the campus", \
-              "Talk to a RPI student", "Apply for RPI", "Introduce RPI to others"]  # list that is available
-    __avail_list_student = ["Finished 4 4000-level courses", "Join 3 clubs", "Join the fraternity", \
-                      "Work out at the RPI gym", "Join the sorosity", "Take the shuttel around the campus"]
+class PersonBuilder:
+    __avail_list = ["Go to a concert in EMPAC", "Check the RPI website", "Tour around the campus",
+                    "Talk to a RPI student", "Apply for RPI", "Introduce RPI to others"]  # list that is available
+    __avail_list_student = ["Finished 4 4000-level courses", "Join 3 clubs", "Join the fraternity",
+                            "Work out at the RPI gym", "Join the sorosity", "Take the shuttel around the campus"]
     """
     This class is the builder for the person object
     """
+
     def __init__(self):
         self.person = Person()
 
@@ -51,12 +52,12 @@ class PersonBuilder():
         """
         self.person.set_mail(mail)
 
-    def set_request(self,user_type):
+    def set_request(self, user_type):
         """
         setter of the requests
         :param user_type: type of the user
         """
-        if (user_type=="Guest"):
+        if user_type == "Guest":
             for request in self.__avail_list:
                 self.person.add_avail_request(Request(request, [], ""))
         else:
@@ -70,16 +71,15 @@ class PersonBuilder():
         """
         return self.person
 
-class Director():
+
+class Director:
     def __init__(self, builder):
         self.builder = builder
 
-    def constructStudent(self,name):
+    def constructStudent(self, name):
         """
         Builder for a student type user
         :param name: name of the student
-        :param skill_tree: skilltree for the student
-        :param skills: skills to be added to the tree
         """
         self.builder.set_name(name)
         self.builder.set_gender("UNKNOWN")
@@ -88,7 +88,7 @@ class Director():
         self.builder.set_tel("UNKNOWN")
         self.builder.set_request("Student")
 
-    def constructGuest(self,name):
+    def constructGuest(self, name):
         """
         Builder for a guest type user
         :param name: name of the guest
@@ -99,6 +99,7 @@ class Director():
         self.builder.set_mail("UNKNOWN")
         self.builder.set_tel("UNKNOWN")
         self.builder.set_request("Guest")
+
 
 class Person(object):
     """
@@ -122,31 +123,31 @@ class Person(object):
     def __str__(self):
         return "User [{}]".format(self.__name)
 
-    def set_name(self,name):
+    def set_name(self, name):
         """
         setter of the name
         """
         self.__name = name
 
-    def set_location(self,location):
+    def set_location(self, location):
         """
         setter of the location
         """
         self.__location = location
 
-    def set_gender(self,gender):
+    def set_gender(self, gender):
         """
         setter of the gender
         """
         self.__gender = gender
-    
-    def set_mail(self,mail):
+
+    def set_mail(self, mail):
         """
         setter of the mail
         """
         self.__mail = mail
 
-    def set_tel(self,tel):
+    def set_tel(self, tel):
         """
         setter of the telephone
         """
@@ -287,7 +288,8 @@ class Person(object):
         """
         selectable_course = []
         for course in skillTree.get_node_set():
-            if len(course.get_parent()) == 0 or (len(course.get_parent()) == 1 and course.get_parent()[0] == skillTree.get_root_node()):
+            if len(course.get_parent()) == 0 \
+                    or (len(course.get_parent()) == 1 and course.get_parent()[0] == skillTree.get_root_node()):
                 selectable_course.append(course)
                 continue
             selectable = True
@@ -313,9 +315,9 @@ class Person(object):
         filtered = []
         filter_str = filter_str.lower()
         for course in selectable_courses:
-            if course.shortName.lower() == "root" or course.fullName.lower() == "root":
+            if course.get_shortName().lower() == "root" or course.get_fullName().lower() == "root":
                 continue
-            if filter_str in (course.fullName.lower()) or filter_str in (course.shortName.lower()) or filter_str in \
-                    course.ID:
+            if filter_str in (course.get_fullName().lower()) or filter_str in (course.get_shortName().lower()) \
+                    or filter_str in course.get_ID():
                 filtered.append(course)
         return filtered
