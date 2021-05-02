@@ -321,3 +321,19 @@ class Person(object):
                     or filter_str in course.get_ID():
                 filtered.append(course)
         return filtered
+
+    def info_checker(self, target_ID):
+        """
+        This checks all the Node family in the person representation(SkillTreeNode, request) and finds the matched ID
+        :param target_ID: the target ID
+        :return: the Node element if found, None otherwise
+        """
+        this_list = []
+        this_list.extend(list(self.__skills))
+        this_list.extend(self.__accept_request)
+        this_list.extend(self.__avail_request)
+        for node_instance in this_list:
+            if node_instance.get_ID() == target_ID:
+                return node_instance
+
+

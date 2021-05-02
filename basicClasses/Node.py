@@ -16,6 +16,13 @@ class Node:
         # child: a list representation of childs
         self.__child = []
 
+    def __str__(self):
+        """
+        The str representation, used to override
+        :return:
+        """
+        return str(self.__ID)
+
     def get_ID(self):
         """
         Getter of the name
